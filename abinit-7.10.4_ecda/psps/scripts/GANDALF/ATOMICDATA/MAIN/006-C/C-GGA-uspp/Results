@@ -1,0 +1,16 @@
+C-GGA-uspp
+
+
+ABINIT v5.3.4
+USPP v7.3.6
+uspp2abinit v2.2.1
+
+XC= PBE
+R-PAW=1.54 a.u.
+Author= parametrization by Campos; translated for Abinit by Francois Jollet
+
+FCC-diamond:
+  Ecut=12.Ha
+  a=3.57 A  (6.76 a.u.)
+  B=435.3 GPa
+  V/at=5.705 A3

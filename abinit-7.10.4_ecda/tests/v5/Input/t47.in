@@ -1,0 +1,67 @@
+#Comment: Boron 4 atoms, test of lobpcgII
+#Definition of acell
+ acell 3*8.3
+#Primitive cell sc
+ rprim 1.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 1.0
+ ntypat 1           # There is one type of atom
+ znucl 5           # This is Boron
+
+ #Definition of the atoms(four atoms)
+ natom 4
+ typat 4*1
+
+ #Definition of the k-point grid
+  kptopt 0
+ nkpt 1            # Only one k point (iswfk 2)
+ #Definition of the planewave basis set
+  nline 4
+  nnsclo 1
+
+  iprcch 0  intxc 0  fftalg 400
+  optcell 0  ionmov 0
+  ortalg 1
+  ecut 30.0
+ occopt 3
+ tsmear 0.04
+ nband 30
+ #Timing info
+ timopt -1
+#Definition of the SCF procedure
+ wfoptalg 5 #This is lobpcgII (only for testing purposes, NOT for production)
+ iscf 2
+ nstep 3  #on peut aussi tester avec 20
+ toldfe 1.0d-10
+ diemac 1.0
+ diemix 0.0
+ iprcel 0
+xred
+9.69352483749e-05 6.55898630619e-05 0.000155466413498
+0.249872799325 0.249979644747 -2.70123302937e-05
+0.249997580157 0.00016469181776 0.249943109339
+-5.40672421455e-05 0.24985907675 0.250108477402
+vel
+-0.00857235497324 0.013251792816 -0.00162531986615
+-0.0129699938057 -0.00143355944159 0.0263535583944
+0.0080743069217 0.0179631749288 0.00863211962203
+0.0120566953846 -0.00813237801645 0.0186719478928
+# add to conserve old < 6.7.2 behavior for calculating forces at each SCF step
+ optforces 1
+
+
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = abinit
+#%% [files]
+#%% files_to_test = 
+#%%   t47.out, tolnlines = 0, tolabs = 0.000e+00, tolrel = 0.000e+00
+#%% psp_files = 5b.3.hgh
+#%% [paral_info]
+#%% max_nprocs = 1
+#%% [extra_info]
+#%% authors = 
+#%% keywords = 
+#%% description = 
+#%%   This is a test of the version of the lobpcgII method, where, when an eigenvalue diverges, 
+#%%   the vector with the smallest
+#%%   residual is kept (ideas from S. Leroux, A. Knyazev, still under development)
+#%%<END TEST_INFO>

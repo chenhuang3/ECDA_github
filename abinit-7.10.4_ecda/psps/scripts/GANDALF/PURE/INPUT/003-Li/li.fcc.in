@@ -1,0 +1,25 @@
+#Li structure fcc
+pawovlp 20
+iscf 17
+ndtset 10
+ecut 20
+pawecutdg 40.0
+nstep 50
+toldfe 1.0d-8
+nband 5
+occopt 7 tsmear 5.0d-3
+getwfk -1 getocc -1
+rprim 0.0 1/2 1/2
+      1/2 0.0 1/2
+      1/2 1/2 0.0
+natom 1 ntypat 1 typat 1 
+znucl 3
+xred 0 0 0
+acell: 3*7.85 acell+ 3*0.05
+kptopt 1 kptrlatt 6 0 0 0 6 0 0 0 6
+nshiftk 4
+shiftk
+1/2 1/2 1/2
+1/2 0.0 0.0
+0.0 1/2 0.0
+0.0 0.0 1/2

@@ -1,0 +1,179 @@
+#!/bin/sh
+#    This utility runs the ABINIT code for 
+#    various atomic data and configurations
+# ==============================================
+
+GANDALFDIR=""
+WORKDIR="${GANDALFDIR}/PURE"
+ABINIS="${GANDALFDIR}/../../../build/src/98_main/abinit"
+OUTPUT=OUTPUT
+
+#The following keyword is used in the framework of hcp, dhcp ... calculations.
+#That is to say, when the lattice is not a cubic one: c or b /= a.
+#If this keyword equals 1, an opthcp, optdhcp ... output file is searched.
+#If this one exists, the a0 and c0 equilibrium lattice parameters are stored and 
+#used in the hcp, dhcp ... calculation in order to obtain the 0K equation of 
+#state (B0, E0, B') with a a0/c0 constant ratio which is no longer equals to 1.63.
+OPTIMIZECOVERA=0
+#TO BE USED IN SINGLE CALCULATION ONLY!!! (see the third argument).
+#IF YOU WANT TO USE THIS OPTION FOR VARIOUS ATOMIC DATA AND ONE ATOMIC SPECIES,
+#BE AWARE OF THE DISCREPENCIES WHICH WILL APPEAR BETWEEN THEIR ABSCISSA. THE
+#BIRCH MURNAGHAN FITS AND XMGRACE VIZUALIZATION ARE NO LONGER POSSIBLE FOR ALL 
+#THE OUTPUTS TOGETHER, BUT REMAIN USABLE FOR A SINGLE ONE.
+
+#When the type of calculation is not a ecut one, an ecut converged calculation 
+#is possible. If this keyword equals 1, an ecut output file is searched. 
+#The gandalf.extract script find out the ecut value corresponding to a 10-3 Ha convergence. 
+CONVERGEDCALCULATION=1  
+
+#Define the type of calculation
+#==============================
+if [  ! "$#" = 3 ]
+then
+ echo "Three arguments are needed for" $0
+ echo "The first one deals with the input file: ecut, atom, dimer, fcc, bcc, diamond, ... ====== or all"
+ echo "The second one deals with the species: 001-H, 008-O, .... ====== or all"
+ echo "The third one deals with the atomic data: /users/home/GANDALF/H.LDA-PW-paw.abinit, ... ====== or all"
+ exit 1
+fi
+argument1=$1
+argument2=$2
+argument3=$3
+listkey="ecut atom dimer fcc bcc opthcp hcp optdhcp dhcp diamond"
+
+echo "##############################################################################################################################"
+case $argument1 in
+ ecut | atom | dimer | fcc | bcc | opthcp | hcp | optdhcp | dhcp | diamond) echo "# This script will launch ABINIT  with the ${argument1}.in input file and the ${argument2} element(s) #############";
+ listtype="${argument1}";;
+ all) echo "########## This script will launch ABINIT with all the input files and the ${argument2} element(s) ##########";
+ listtype=$listkey;;
+ *) echo "########## The first argument is not allowed. There is no ${argument1} type of calculation ##########";
+ exit 1
+esac
+echo "##############################################################################################################################"
+
+cd ${WORKDIR}
+if [ -d ${OUTPUT}/${argument2} ] ; then
+ DIRECTORY=`expr ${argument2} | sed 's/\///g'`
+elif [ ${argument2} == all ] ; then
+ DIRECTORY=*
+else
+ echo "The second argument is not allowed. There is no ${OUTPUT}/${argument2} directory."
+ exit 1
+fi
+rm -fr Bug_abinit
+
+#Search for abinis
+#=================
+if [ ! -f "${ABINIS}" ];then
+ echo 'abinis missing !'
+ echo 'There is no ${ABINIS}'
+ echo 'Nothing done !'
+ exit 1
+fi
+ 
+#Loop on atomic species in ${OUTPUT} directory
+#=============================================
+cd ${OUTPUT}
+for ATOM in ${DIRECTORY} ; do
+ if [ -d "${ATOM}" ] ; then
+  cd ${ATOM}
+  echo ""
+  echo "+++++++++++++++++++++++++++++++++"${ATOM}" species+++++++++++++++++++++++++++++++++"
+
+# Loop on atomic data for this atomic species
+# ===========================================
+  NPSEUDO=`cat pseudo.in | wc -l`
+  rm -fr all.out all.log all.in all_STATUS *WFK
+  for (( IPSEUDO=1 ; IPSEUDO <= ${NPSEUDO} ; IPSEUDO++)) ; do
+   PSEUDO=`awk 'NR=='${IPSEUDO}' {print $1}' pseudo.in`
+   if [ "${PSEUDO}" == "${argument3}" -o "${argument3}" == 'all' ] ; then
+    echo''
+    echo "all.in" > all.files
+    echo "all.out" >> all.files
+    echo "allo" >> all.files
+    echo "alli" >> all.files
+    echo "all" >> all.files
+    echo "${PSEUDO}" >> all.files
+    echo "Copy the ${PSEUDO} filename in the all.files file"
+
+
+#   Loop on input file for this atomic data
+#   =======================================
+    for itype in ${listtype} ; do
+     if [ -f *.${itype}.in ] ; then
+      if [ ! -f ${IPSEUDO}.${itype}.out ] ; then
+       cp *.${itype}.in all.in
+
+       if [ ${CONVERGEDCALCULATION} == 1 -a ! "${itype}" = 'ecut' ] ; then
+        if [ -f ${IPSEUDO}.ecut.out ] ; then
+         python ${WORKDIR}/gandalf.extract ecut ${ATOM} ${IPSEUDO}.ecut.out > python.log
+         ECUT=`tail -n 1 python.log | awk '{print $1} '`
+         PAWECUTDG=`tail -n 1 python.log | awk '{print $1*2} '`
+         rm -fr python.log
+         sed '/ecut /D' *.${itype}.in | sed '/pawecutdg/D' > all.in
+         echo "ecut ${ECUT}" >> all.in
+         echo "pawecutdg ${PAWECUTDG}" >> all.in
+        fi
+        echo "  --->The coarse (fine) grid cutoff parameter ecut (pawecutdg) is adjusted to "${ECUT}" ("${PAWECUTDG}")"
+       fi
+
+       if [ ${OPTIMIZECOVERA} == 1 ] ; then
+        if [ "${itype}" == 'dhcp' -a -f ${IPSEUDO}.optdhcp.out ] ; then
+         alatt=`grep acell ${IPSEUDO}.optdhcp.out | tail -n 1 | awk '{print $2*(0.99)**5} ' `
+         blatt=`grep acell ${IPSEUDO}.optdhcp.out | tail -n 1 | awk '{print $3*(0.99)**5} ' `
+         clatt=`grep acell ${IPSEUDO}.optdhcp.out | tail -n 1 | awk '{print $4*(0.99)**5} ' `
+         sed '/acell/D' all.in | sed '/ndtset/D' > tmp.in
+         echo "ndtset 10" >> tmp.in
+         echo "acell: ${alatt} ${blatt} ${clatt} acell* 3*1.01" >> tmp.in
+         echo "  --->The starting equilibrium lattice parameters used in this calculation are: acell " ${alatt} ${blatt} ${clatt}
+         echo "  --->Be aware of the limitations coming from the use of this option"
+         mv tmp.in all.in
+        fi
+        if [ "${itype}" == 'hcp' -a -f ${IPSEUDO}.opthcp.out ] ; then
+         alatt=`grep acell ${IPSEUDO}.opthcp.out | tail -n 1 | awk '{print $2*(0.99)**5} ' `
+         blatt=`grep acell ${IPSEUDO}.opthcp.out | tail -n 1 | awk '{print $3*(0.99)**5} ' `
+         clatt=`grep acell ${IPSEUDO}.opthcp.out | tail -n 1 | awk '{print $4*(0.99)**5} ' `
+         sed '/acell/D' all.in | sed '/ndtset/D' > tmp.in
+         echo "ndtset 10" >> tmp.in
+         echo "acell: ${alatt} ${blatt} ${clatt} acell* 3*1.01" >> tmp.in
+         echo "  --->The starting equilibrium lattice parameters used in this calculation are: acell " ${alatt} ${blatt} ${clatt}
+         echo "  --->Be aware of the limitations coming from the use of this option"
+         mv tmp.in all.in
+        fi
+       fi
+
+       echo '  Launching ABINIT in the '${OUTPUT}/${ATOM}' directory with the '${itype}'.in input file'
+       ${ABINIS} < all.files > all.log
+       run_OK=$?
+       if [ "${run_OK}" = 0 ] ; then
+        echo '  ABINIT code successfully terminated.' 
+        echo '  Copy the all.out standard output to '${IPSEUDO}'.'${itype}'.out'
+        mv all.out ${IPSEUDO}.${itype}.out
+       else
+        echo '  ABINIT code abnormally terminated *********************************' 
+        echo '  ABINIT code abnormally terminated in the '${OUTPUT}/${PURE}' directory' >> ../../Bug_abinit
+        echo '         with the '${PSEUDO}' atomic data and the '${itype}'.in input file' >> ../../Bug_abinit
+        mv all.log ${IPSEUDO}.${itype}.log
+        echo '  Copy the all.out standard output to '${IPSEUDO}'.'${itype}'.tmp'
+        mv all.out ${IPSEUDO}.${itype}.tmp
+       fi
+       rm -fr all.out all.log all.in all_STATUS *WFK *EIG *DEN *DDB
+      else
+       echo "There is a ${IPSEUDO}.${itype}.out output file already created"
+      fi
+     fi
+    done
+
+#    End loop on atomic data
+#    =======================
+   fi
+  done
+
+# End loop on couple of ${PSEUDO}
+# ===============================
+  cd ..
+ fi
+done
+cd ..
+echo "############################## DONE #######################################"

@@ -1,0 +1,21 @@
+C-LDA-uspp
+
+
+ABINIT v5.3.4
+USPP v7.3.6
+uspp2abinit v2.2.1
+
+XC= PZ-CA
+R-PAW=1.54 a.u.
+Author= parametrization by Campos; translated for Abinit by Francois Jollet
+
+FCC-diamond:
+  Ecut=12.Ha
+  a=3.53 A  (6.68 a.u.)
+  B=469.0 GPa
+  V/at=5.52 A3
+
+Ref: N.A.W. Holzwarth et al., PRB 55, 2005 (1997)
+    LAPW, LDA
+    a=3.54 A
+    B=470 GPa

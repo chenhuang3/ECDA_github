@@ -1,0 +1,113 @@
+# Al
+
+ ndtset  6
+
+ acell   3*7.60
+ occopt  4
+ rprim   0 .5 .5  .5 0 .5  .5 .5 0
+ natom   1
+ ntypat  1
+ typat   1
+ xred    0.000  0.000  0.000
+ znucl   13.0
+ ecut    2.5
+ ecutwfn 1.09358498E+01 
+
+# wavefunction calculation
+ kssform1     3
+ nband1      17
+ nbandkss1   12
+ nbdbuf1     5
+ prtvol1     0
+ nstep1      20
+ symmorphi1  0
+
+# screening calculation
+ optdriver2       3
+ getkss2          -1
+ nband2           10
+ npweps2          9
+ symmorphi2       0
+ inclvkb2         2
+ gw_eet2          2
+ gw_eet_inclvkb2  0
+
+# sigma calculation
+ optdriver3       4
+ getkss3          -2
+ getscr3          -1
+ nband3           5
+ npwsigx3         27
+ symmorphi3       0
+ nkptgw3          1
+ kptgw3           0.250  0.750  0.250
+ bdgw3            2 3
+ gw_eet3          2
+ gw_eet_inclvkb3  0
+
+ icutcoul3        3            # old deprecated value of icutcoul, only used for legacy
+
+
+# wavefunction calculation
+ kssform4     3
+ nband4      17
+ nbandkss4   12
+ nbdbuf4     5
+ prtvol4     0
+ nstep4      20
+ symmorphi4  1
+
+# screening calculation
+ optdriver5       3
+ getkss5          -1
+ nband5           10
+ npweps5          9
+ symmorphi5       1
+ inclvkb5         0
+ gw_eet5          1
+ gw_eet_inclvkb5  1
+ gw_eet_nband5    8
+
+# sigma calculation
+ optdriver6       4
+ getkss6          -2
+ getscr6          -1
+ nband6           7
+ npwsigx6         27
+ symmorphi6       1
+ nkptgw6          1
+ kptgw6           0.250  0.750  0.250
+ bdgw6            2 3
+ gw_eet6          1
+ gw_eet_inclvkb6  1
+ gw_eet_nband6    6
+
+ icutcoul6        3            # old deprecated value of icutcoul, only used for legacy
+
+# valid for all datasets
+ tolwfr  1.0d-16
+ kptopt  1
+ ngkpt   2 2 2
+ nshiftk 4
+ shiftk  0.5 0.5 0.5
+         0.5 0.0 0.0
+         0.0 0.5 0.0
+         0.0 0.0 0.5
+ istwfk  8*1
+
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = abinit
+#%% [files]
+#%% files_to_test = 
+#%%   t28.out, tolnlines = 30, tolabs = 2.0e-1, tolrel = 5.0e-1, fld_options =  -medium
+#%% psp_files = 13al.pspnc
+#%% [paral_info]
+#%% max_nprocs = 2
+#%% [extra_info]
+#%% authors = A. Berger
+#%% keywords = GW
+#%% description = 
+#%%   Aluminium
+#%%   Calculation of quasi-particle energies  using the effective energy technique (EET).
+#%%<END TEST_INFO>

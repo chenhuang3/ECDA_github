@@ -1,0 +1,22 @@
+This 'HowTo' file has the purpose to explain why and how to use patch.Yambo
+
+(XG 20 March 2013)
+
+The goal of patch.Yambo is to patch ABINIT, in order for it to produce modified KSS
+files, that include spinor and spin-orbit information and are suitable for use 
+for pseudos with multiple projectors.
+
+Such KSS file changes would break the backward compatibility, and also impact
+the use of ABINIT by other developers of software applications linked with ABINIT.
+As such, one has to work concurrently with these other developers before delivering
+a version of ABINIT that includes such modifications by default.
+In the meantime, it was decided to include a patch, so that YAMBO users can 
+use the newer version of ABINIT with the functionalities that they expect.
+So, the file patch.Yambo is present in ABINITv7.2, but we hope there will not be
+any patch.Yambo present ABINITv7.4, as the transition should have been done by that time.
+
+To do so, simply issue, while being in the main ~abinit directory :
+
+patch -p1 < patch.Yambo
+
+Then, go on with the usual configure, make, etc ...

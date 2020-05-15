@@ -1,0 +1,135 @@
+GFORTRAN module version '10' created from m_ListCdagC.F90
+MD5:679ae7c183cd3948b65dce4c02d2864e -- If you edit this, you'll get what you deserve.
+
+(() () () () () () () () () () () () () () () () () () () () () () ()
+() () () ())
+
+()
+
+(('listcdagc' 'm_listcdagc' 2) ('listcdagc_firsthigher' 'm_listcdagc' 3)
+('listcdagc_sort' 'm_listcdagc' 4 5))
+
+()
+
+()
+
+()
+
+(2 'Listcdagc' 'm_listcdagc' '' 1 ((DERIVED UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN 0 0 ALLOC_COMP PRIVATE_COMP) (UNKNOWN 0 0 0 0 UNKNOWN ())
+0 0 () () 0 ((6 'size' (INTEGER 4 0 0 0 INTEGER ()) () (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) PRIVATE (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '0')) (7 'tail' (INTEGER 4 0 0 0 INTEGER ())
+() (UNKNOWN-FL UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0)
+UNKNOWN-ACCESS (CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '0')) (8 'list'
+(REAL 8 0 0 0 REAL ()) (2 0 DEFERRED () () () ()) (UNKNOWN-FL
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 ALLOCATABLE DIMENSION)
+UNKNOWN-ACCESS ())) PUBLIC (() () () ()) () 0 0 70746443)
+9 'listcdagc' 'm_listcdagc' '' 1 ((PROCEDURE UNKNOWN-INTENT UNKNOWN-PROC
+DECL UNKNOWN 0 0 FUNCTION GENERIC) (UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () ()
+0 () () () 0 0)
+10 'listcdagc_assign' 'm_listcdagc' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 SUBROUTINE) (UNKNOWN 0 0 0 0 UNKNOWN ()) 11
+0 (12 13) () 0 () () () 0 0)
+14 'listcdagc_clear' 'm_listcdagc' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 SUBROUTINE IMPLICIT_PURE) (UNKNOWN 0 0 0 0
+UNKNOWN ()) 15 0 (16) () 0 () () () 0 0)
+17 'listcdagc_destroy' 'm_listcdagc' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 SUBROUTINE) (UNKNOWN 0 0 0 0 UNKNOWN ()) 18
+0 (19) () 0 () () () 0 0)
+20 'listcdagc_erase' 'm_listcdagc' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 SUBROUTINE) (UNKNOWN 0 0 0 0 UNKNOWN ()) 21
+0 (22 23) () 0 () () () 0 0)
+24 'listcdagc_init' 'm_listcdagc' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 SUBROUTINE ALWAYS_EXPLICIT) (UNKNOWN 0 0 0
+0 UNKNOWN ()) 25 0 (26 27) () 0 () () () 0 0)
+28 'listcdagc_insert' 'm_listcdagc' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 SUBROUTINE) (UNKNOWN 0 0 0 0 UNKNOWN ()) 29
+0 (30 31 32) () 0 () () () 0 0)
+33 'listcdagc_popback' 'm_listcdagc' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 SUBROUTINE IMPLICIT_PURE) (UNKNOWN 0 0 0 0
+UNKNOWN ()) 34 0 (35) () 0 () () () 0 0)
+36 'listcdagc_print' 'm_listcdagc' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 SUBROUTINE ALWAYS_EXPLICIT) (UNKNOWN 0 0 0
+0 UNKNOWN ()) 37 0 (38 39) () 0 () () () 0 0)
+40 'listcdagc_pushback' 'm_listcdagc' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 SUBROUTINE) (UNKNOWN 0 0 0 0 UNKNOWN ()) 41
+0 (42 43) () 0 () () () 0 0)
+5 'listcdagc_quicksort' 'm_listcdagc' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 SUBROUTINE RECURSIVE) (UNKNOWN 0 0 0 0
+UNKNOWN ()) 44 0 (45 46 47) () 0 () () () 0 0)
+48 'listcdagc_setsize' 'm_listcdagc' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 SUBROUTINE) (UNKNOWN 0 0 0 0 UNKNOWN ()) 49
+0 (50 51) () 0 () () () 0 0)
+4 'listcdagc_sort' 'm_listcdagc' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 SUBROUTINE GENERIC) (UNKNOWN 0 0 0 0
+UNKNOWN ()) 52 0 (53) () 0 () () () 0 0)
+54 'listcdagc_swap' 'm_listcdagc' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 SUBROUTINE) (UNKNOWN 0 0 0 0 UNKNOWN ()) 55
+0 (56 57) () 0 () () () 0 0)
+3 'listcdagc_firsthigherthanreal' 'm_listcdagc' '' 1 ((PROCEDURE
+UNKNOWN-INTENT MODULE-PROC DECL UNKNOWN 0 0 FUNCTION IMPLICIT_PURE) (
+INTEGER 4 0 0 0 INTEGER ()) 58 0 (59 60) () 3 () () () 0 0)
+12 'this' '' '' 11 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+13 'list_2' '' '' 11 ((VARIABLE IN UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+16 'this' '' '' 15 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+19 'this' '' '' 18 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+22 'this' '' '' 21 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+23 'position' '' '' 21 ((VARIABLE IN UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+26 'this' '' '' 25 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+27 'size' '' '' 25 ((VARIABLE IN UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+OPTIONAL DUMMY) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+30 'this' '' '' 29 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+31 'cdagc_1' '' '' 29 ((VARIABLE IN UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DIMENSION DUMMY) (REAL 8 0 0 0 REAL ()) 0 0 () (1 0 EXPLICIT (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER 4 0 0 0 INTEGER ())
+0 '2')) 0 () () () 0 0)
+32 'position' '' '' 29 ((VARIABLE IN UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+35 'this' '' '' 34 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+38 'this' '' '' 37 ((VARIABLE IN UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DUMMY)
+(DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+39 'ostream' '' '' 37 ((VARIABLE IN UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+OPTIONAL DUMMY) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+42 'this' '' '' 41 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+43 'cdagc_1' '' '' 41 ((VARIABLE IN UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DIMENSION DUMMY) (REAL 8 0 0 0 REAL ()) 0 0 () (1 0 EXPLICIT (CONSTANT (
+INTEGER 4 0 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER 4 0 0 0 INTEGER ())
+0 '2')) 0 () () () 0 0)
+45 'this' '' '' 44 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+46 'begin' '' '' 44 ((VARIABLE IN UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DUMMY)
+(INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+47 'end' '' '' 44 ((VARIABLE IN UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DUMMY)
+(INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+50 'this' '' '' 49 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+51 'new_tail' '' '' 49 ((VARIABLE IN UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+53 'this' '' '' 52 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+56 'this' '' '' 55 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+57 'list_2' '' '' 55 ((VARIABLE INOUT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+DUMMY) (DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+59 'this' '' '' 58 ((VARIABLE IN UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DUMMY)
+(DERIVED 2 0 0 0 DERIVED ()) 0 0 () () 0 () () () 0 0)
+60 'time' '' '' 58 ((VARIABLE IN UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DUMMY)
+(REAL 8 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+)
+
+('Listcdagc' 0 2 'listcdagc' 0 9 'listcdagc_assign' 0 10 'listcdagc_clear'
+0 14 'listcdagc_destroy' 0 17 'listcdagc_erase' 0 20 'listcdagc_init' 0
+24 'listcdagc_insert' 0 28 'listcdagc_popback' 0 33 'listcdagc_print' 0
+36 'listcdagc_pushback' 0 40 'listcdagc_quicksort' 0 5 'listcdagc_setsize'
+0 48 'listcdagc_sort' 0 4 'listcdagc_swap' 0 54)

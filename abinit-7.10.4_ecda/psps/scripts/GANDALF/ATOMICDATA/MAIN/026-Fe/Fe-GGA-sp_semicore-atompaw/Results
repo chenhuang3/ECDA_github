@@ -1,0 +1,42 @@
+Fe-GGA-sp_semicore-atompaw
+
+ABINIT v5.3.4
+atompaw v2.1
+atompaw2abinit v3.1.1
+
+XC= PBE
+Valence= 3s 3p 4s 4p 3d
+R-PAW=2.0 a.u.
+Author= Marc Torrent
+
+BCC:
+  Ferromagnetic
+  Ecut for Delta(Etotal)=0.001 Ha : 13. Ha
+  Ecut for Delta(Etotal)=0.0001 Ha: 20. Ha
+  a0=2.85 A3
+  B=188 GPa
+  mu=2.22
+
+HCP:
+  Nonmagnetic
+    a0=2.46 A3
+    B=278 GPa
+  Antiferromagnetic II
+    a0=2.49 A3
+    B=210 GPa
+
+    
+      
+Ref: G. Steinle-Neumann et al., PRB 60, 791 (1999)
+  FLAPW GGA
+  BCC:
+    a0=2.83 A3
+    B=189 GPa
+    mu=2.17
+  HCP:
+  Nonmagnetic
+    a0=2.46 A3
+    B=291 GPa
+  Antiferromagnetic II
+    a0=2.49 A3
+    B=209 GPa

@@ -1,0 +1,18 @@
+H 1
+LDA-PW scalarrelativistic loggrid 1000
+1 0 0 0 0 0
+1 0 1
+0 0 0
+v
+0
+0.8 0.7 0.5 0.8
+y
+1.
+n
+custom rrkj vanderbiltortho besselshape
+bessel
+0.8
+0.8
+2
+default
+0

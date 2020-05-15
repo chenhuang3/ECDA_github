@@ -1,0 +1,11 @@
+ #                  a0(A)    V0(A3)   K0(GPa)   mu
+Atompaw    gga     3.518   10.883      204     0.62
+
+Vasp [1]   gga      3.52    10.9       194     0.61
+
+FLAPW [1]  gga      3.52    10.9       200     0.60
+
+Exp. (dewaele)     3.524   10.945    176+-8   
+
+[1]from Kresse/Joubert PRB 59 1758 (1999)
+

@@ -1,0 +1,6089 @@
+
+function malloc_allocatable_integer_1(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(1)
+ integer,allocatable,intent(inout) :: array(:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_integer_1
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_real_sp1(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(1)
+ real(sp),allocatable,intent(inout) :: array(:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_real_sp1
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_real_dp1(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(1)
+ real(dp),allocatable,intent(inout) :: array(:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_real_dp1
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_complex_spc1(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(1)
+ complex(spc),allocatable,intent(inout) :: array(:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_complex_spc1
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_complex_dpc1(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(1)
+ complex(dpc),allocatable,intent(inout) :: array(:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_complex_dpc1
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_logical_1(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(1)
+ logical,allocatable,intent(inout) :: array(:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_logical_1
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_integer_1(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(1)
+ integer,pointer,intent(inout) :: array(:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_integer_1
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_real_sp1(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(1)
+ real(sp),pointer,intent(inout) :: array(:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_real_sp1
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_real_dp1(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(1)
+ real(dp),pointer,intent(inout) :: array(:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_real_dp1
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_complex_spc1(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(1)
+ complex(spc),pointer,intent(inout) :: array(:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_complex_spc1
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_complex_dpc1(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(1)
+ complex(dpc),pointer,intent(inout) :: array(:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_complex_dpc1
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_logical_1(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(1)
+ logical,pointer,intent(inout) :: array(:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_logical_1
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_integer_2(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(2)
+ integer,allocatable,intent(inout) :: array(:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_integer_2
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_real_sp2(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(2)
+ real(sp),allocatable,intent(inout) :: array(:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_real_sp2
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_real_dp2(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(2)
+ real(dp),allocatable,intent(inout) :: array(:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_real_dp2
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_complex_spc2(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(2)
+ complex(spc),allocatable,intent(inout) :: array(:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_complex_spc2
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_complex_dpc2(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(2)
+ complex(dpc),allocatable,intent(inout) :: array(:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_complex_dpc2
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_logical_2(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(2)
+ logical,allocatable,intent(inout) :: array(:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_logical_2
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_integer_2(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(2)
+ integer,pointer,intent(inout) :: array(:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_integer_2
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_real_sp2(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(2)
+ real(sp),pointer,intent(inout) :: array(:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_real_sp2
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_real_dp2(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(2)
+ real(dp),pointer,intent(inout) :: array(:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_real_dp2
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_complex_spc2(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(2)
+ complex(spc),pointer,intent(inout) :: array(:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_complex_spc2
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_complex_dpc2(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(2)
+ complex(dpc),pointer,intent(inout) :: array(:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_complex_dpc2
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_logical_2(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(2)
+ logical,pointer,intent(inout) :: array(:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_logical_2
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_integer_3(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(3)
+ integer,allocatable,intent(inout) :: array(:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_integer_3
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_real_sp3(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(3)
+ real(sp),allocatable,intent(inout) :: array(:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_real_sp3
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_real_dp3(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(3)
+ real(dp),allocatable,intent(inout) :: array(:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_real_dp3
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_complex_spc3(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(3)
+ complex(spc),allocatable,intent(inout) :: array(:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_complex_spc3
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_complex_dpc3(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(3)
+ complex(dpc),allocatable,intent(inout) :: array(:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_complex_dpc3
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_logical_3(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(3)
+ logical,allocatable,intent(inout) :: array(:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_logical_3
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_integer_3(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(3)
+ integer,pointer,intent(inout) :: array(:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_integer_3
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_real_sp3(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(3)
+ real(sp),pointer,intent(inout) :: array(:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_real_sp3
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_real_dp3(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(3)
+ real(dp),pointer,intent(inout) :: array(:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_real_dp3
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_complex_spc3(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(3)
+ complex(spc),pointer,intent(inout) :: array(:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_complex_spc3
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_complex_dpc3(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(3)
+ complex(dpc),pointer,intent(inout) :: array(:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_complex_dpc3
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_logical_3(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(3)
+ logical,pointer,intent(inout) :: array(:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_logical_3
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_integer_4(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(4)
+ integer,allocatable,intent(inout) :: array(:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_integer_4
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_real_sp4(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(4)
+ real(sp),allocatable,intent(inout) :: array(:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_real_sp4
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_real_dp4(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(4)
+ real(dp),allocatable,intent(inout) :: array(:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_real_dp4
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_complex_spc4(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(4)
+ complex(spc),allocatable,intent(inout) :: array(:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_complex_spc4
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_complex_dpc4(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(4)
+ complex(dpc),allocatable,intent(inout) :: array(:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_complex_dpc4
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_logical_4(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(4)
+ logical,allocatable,intent(inout) :: array(:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_logical_4
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_integer_4(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(4)
+ integer,pointer,intent(inout) :: array(:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_integer_4
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_real_sp4(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(4)
+ real(sp),pointer,intent(inout) :: array(:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_real_sp4
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_real_dp4(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(4)
+ real(dp),pointer,intent(inout) :: array(:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_real_dp4
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_complex_spc4(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(4)
+ complex(spc),pointer,intent(inout) :: array(:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_complex_spc4
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_complex_dpc4(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(4)
+ complex(dpc),pointer,intent(inout) :: array(:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_complex_dpc4
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_logical_4(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(4)
+ logical,pointer,intent(inout) :: array(:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_logical_4
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_integer_5(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(5)
+ integer,allocatable,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_integer_5
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_real_sp5(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(5)
+ real(sp),allocatable,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_real_sp5
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_real_dp5(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(5)
+ real(dp),allocatable,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_real_dp5
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_complex_spc5(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(5)
+ complex(spc),allocatable,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_complex_spc5
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_complex_dpc5(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(5)
+ complex(dpc),allocatable,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_complex_dpc5
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_logical_5(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(5)
+ logical,allocatable,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_logical_5
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_integer_5(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(5)
+ integer,pointer,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_integer_5
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_real_sp5(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(5)
+ real(sp),pointer,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_real_sp5
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_real_dp5(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(5)
+ real(dp),pointer,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_real_dp5
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_complex_spc5(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(5)
+ complex(spc),pointer,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_complex_spc5
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_complex_dpc5(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(5)
+ complex(dpc),pointer,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_complex_dpc5
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_logical_5(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(5)
+ logical,pointer,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_logical_5
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_integer_6(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(6)
+ integer,allocatable,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_integer_6
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_real_sp6(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(6)
+ real(sp),allocatable,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_real_sp6
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_real_dp6(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(6)
+ real(dp),allocatable,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_real_dp6
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_complex_spc6(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(6)
+ complex(spc),allocatable,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_complex_spc6
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_complex_dpc6(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(6)
+ complex(dpc),allocatable,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_complex_dpc6
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_logical_6(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(6)
+ logical,allocatable,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_logical_6
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_integer_6(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(6)
+ integer,pointer,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_integer_6
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_real_sp6(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(6)
+ real(sp),pointer,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_real_sp6
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_real_dp6(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(6)
+ real(dp),pointer,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_real_dp6
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_complex_spc6(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(6)
+ complex(spc),pointer,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_complex_spc6
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_complex_dpc6(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(6)
+ complex(dpc),pointer,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_complex_dpc6
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_logical_6(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(6)
+ logical,pointer,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_logical_6
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_integer_7(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(7)
+ integer,allocatable,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6),arr_shape(7)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_integer_7
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_real_sp7(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(7)
+ real(sp),allocatable,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6),arr_shape(7)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_real_sp7
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_real_dp7(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(7)
+ real(dp),allocatable,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6),arr_shape(7)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_real_dp7
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_complex_spc7(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(7)
+ complex(spc),allocatable,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6),arr_shape(7)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_complex_spc7
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_complex_dpc7(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(7)
+ complex(dpc),allocatable,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6),arr_shape(7)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_complex_dpc7
+
+!--------------------------------------------------------------------------------
+
+function malloc_allocatable_logical_7(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(7)
+ logical,allocatable,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (allocated(array)) then
+   call malloc_abort(-1,"allocatable arrays is already associated",&
+& __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6),arr_shape(7)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_allocatable_logical_7
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_integer_7(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(7)
+ integer,pointer,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6),arr_shape(7)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_integer_7
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_real_sp7(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(7)
+ real(sp),pointer,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6),arr_shape(7)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_real_sp7
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_real_dp7(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(7)
+ real(dp),pointer,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6),arr_shape(7)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_real_dp7
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_complex_spc7(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(7)
+ complex(spc),pointer,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6),arr_shape(7)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_complex_spc7
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_complex_dpc7(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(7)
+ complex(dpc),pointer,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6),arr_shape(7)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_complex_dpc7
+
+!--------------------------------------------------------------------------------
+
+function malloc_pointer_logical_7(array,arr_shape,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,intent(in) :: arr_shape(7)
+ logical,pointer,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+
+! *************************************************************************
+
+  ! Check pointer status
+ if (associated(array)) then
+   call malloc_abort(-1,"pointer is already associated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Allocate memory
+ allocate(array(arr_shape(1),arr_shape(2),arr_shape(3),arr_shape(4),arr_shape(5),arr_shape(6),arr_shape(7)),stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function malloc_pointer_logical_7
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_integer_1(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,allocatable,intent(inout) :: array(:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_integer_1
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_real_sp1(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(sp),allocatable,intent(inout) :: array(:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_real_sp1
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_real_dp1(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(dp),allocatable,intent(inout) :: array(:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_real_dp1
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_complex_spc1(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(spc),allocatable,intent(inout) :: array(:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_complex_spc1
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_complex_dpc1(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(dpc),allocatable,intent(inout) :: array(:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_complex_dpc1
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_logical_1(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ logical,allocatable,intent(inout) :: array(:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_logical_1
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_integer_1(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,pointer,intent(inout) :: array(:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_integer_1
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_real_sp1(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(sp),pointer,intent(inout) :: array(:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_real_sp1
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_real_dp1(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(dp),pointer,intent(inout) :: array(:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_real_dp1
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_complex_spc1(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(spc),pointer,intent(inout) :: array(:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_complex_spc1
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_complex_dpc1(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(dpc),pointer,intent(inout) :: array(:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_complex_dpc1
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_logical_1(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ logical,pointer,intent(inout) :: array(:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_logical_1
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_integer_2(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,allocatable,intent(inout) :: array(:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_integer_2
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_real_sp2(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(sp),allocatable,intent(inout) :: array(:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_real_sp2
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_real_dp2(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(dp),allocatable,intent(inout) :: array(:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_real_dp2
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_complex_spc2(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(spc),allocatable,intent(inout) :: array(:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_complex_spc2
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_complex_dpc2(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(dpc),allocatable,intent(inout) :: array(:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_complex_dpc2
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_logical_2(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ logical,allocatable,intent(inout) :: array(:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_logical_2
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_integer_2(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,pointer,intent(inout) :: array(:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_integer_2
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_real_sp2(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(sp),pointer,intent(inout) :: array(:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_real_sp2
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_real_dp2(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(dp),pointer,intent(inout) :: array(:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_real_dp2
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_complex_spc2(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(spc),pointer,intent(inout) :: array(:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_complex_spc2
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_complex_dpc2(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(dpc),pointer,intent(inout) :: array(:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_complex_dpc2
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_logical_2(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ logical,pointer,intent(inout) :: array(:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_logical_2
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_integer_3(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,allocatable,intent(inout) :: array(:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_integer_3
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_real_sp3(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(sp),allocatable,intent(inout) :: array(:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_real_sp3
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_real_dp3(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(dp),allocatable,intent(inout) :: array(:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_real_dp3
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_complex_spc3(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(spc),allocatable,intent(inout) :: array(:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_complex_spc3
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_complex_dpc3(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(dpc),allocatable,intent(inout) :: array(:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_complex_dpc3
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_logical_3(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ logical,allocatable,intent(inout) :: array(:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_logical_3
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_integer_3(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,pointer,intent(inout) :: array(:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_integer_3
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_real_sp3(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(sp),pointer,intent(inout) :: array(:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_real_sp3
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_real_dp3(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(dp),pointer,intent(inout) :: array(:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_real_dp3
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_complex_spc3(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(spc),pointer,intent(inout) :: array(:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_complex_spc3
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_complex_dpc3(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(dpc),pointer,intent(inout) :: array(:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_complex_dpc3
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_logical_3(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ logical,pointer,intent(inout) :: array(:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_logical_3
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_integer_4(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,allocatable,intent(inout) :: array(:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_integer_4
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_real_sp4(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(sp),allocatable,intent(inout) :: array(:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_real_sp4
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_real_dp4(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(dp),allocatable,intent(inout) :: array(:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_real_dp4
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_complex_spc4(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(spc),allocatable,intent(inout) :: array(:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_complex_spc4
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_complex_dpc4(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(dpc),allocatable,intent(inout) :: array(:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_complex_dpc4
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_logical_4(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ logical,allocatable,intent(inout) :: array(:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_logical_4
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_integer_4(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,pointer,intent(inout) :: array(:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_integer_4
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_real_sp4(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(sp),pointer,intent(inout) :: array(:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_real_sp4
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_real_dp4(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(dp),pointer,intent(inout) :: array(:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_real_dp4
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_complex_spc4(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(spc),pointer,intent(inout) :: array(:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_complex_spc4
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_complex_dpc4(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(dpc),pointer,intent(inout) :: array(:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_complex_dpc4
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_logical_4(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ logical,pointer,intent(inout) :: array(:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_logical_4
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_integer_5(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,allocatable,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_integer_5
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_real_sp5(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(sp),allocatable,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_real_sp5
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_real_dp5(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(dp),allocatable,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_real_dp5
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_complex_spc5(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(spc),allocatable,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_complex_spc5
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_complex_dpc5(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(dpc),allocatable,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_complex_dpc5
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_logical_5(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ logical,allocatable,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_logical_5
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_integer_5(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,pointer,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_integer_5
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_real_sp5(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(sp),pointer,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_real_sp5
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_real_dp5(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(dp),pointer,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_real_dp5
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_complex_spc5(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(spc),pointer,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_complex_spc5
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_complex_dpc5(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(dpc),pointer,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_complex_dpc5
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_logical_5(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ logical,pointer,intent(inout) :: array(:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_logical_5
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_integer_6(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,allocatable,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_integer_6
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_real_sp6(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(sp),allocatable,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_real_sp6
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_real_dp6(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(dp),allocatable,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_real_dp6
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_complex_spc6(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(spc),allocatable,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_complex_spc6
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_complex_dpc6(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(dpc),allocatable,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_complex_dpc6
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_logical_6(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ logical,allocatable,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_logical_6
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_integer_6(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,pointer,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_integer_6
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_real_sp6(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(sp),pointer,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_real_sp6
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_real_dp6(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(dp),pointer,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_real_dp6
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_complex_spc6(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(spc),pointer,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_complex_spc6
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_complex_dpc6(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(dpc),pointer,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_complex_dpc6
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_logical_6(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ logical,pointer,intent(inout) :: array(:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_logical_6
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_integer_7(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,allocatable,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_integer_7
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_real_sp7(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(sp),allocatable,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_real_sp7
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_real_dp7(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(dp),allocatable,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_real_dp7
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_complex_spc7(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(spc),allocatable,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_complex_spc7
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_complex_dpc7(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(dpc),allocatable,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_complex_dpc7
+
+!--------------------------------------------------------------------------------
+
+function free_allocatable_logical_7(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ logical,allocatable,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+ 
+  ! Check allocatable status
+ if (.not.allocated(array)) then
+   call malloc_abort(-1,"allocatable array is not allocated",&
+&  __FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_allocatable_logical_7
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_integer_7(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ integer,pointer,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_integer_7
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_real_sp7(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(sp),pointer,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_real_sp7
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_real_dp7(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ real(dp),pointer,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_real_dp7
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_complex_spc7(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(spc),pointer,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_complex_spc7
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_complex_dpc7(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ complex(dpc),pointer,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_complex_dpc7
+
+!--------------------------------------------------------------------------------
+
+function free_pointer_logical_7(array,arr_name,file_name,func_name,line) result(istat)
+
+ implicit none
+
+!arguments
+!scalars
+ integer :: istat
+ integer,intent(in) :: line
+ character(len=*), intent(in) :: arr_name,file_name,func_name
+!arrays
+ logical,pointer,intent(inout) :: array(:,:,:,:,:,:,:)
+
+!local variables
+! *************************************************************************
+
+  ! Check pointer status
+ if (.not.associated(array)) then
+   call malloc_abort(-1,"pointer is not associated",&
+&__FILE__,&
+&  ABI_FUNC,__LINE__)
+ end if
+ 
+
+ ! Deallocate memory
+ deallocate(array, stat=istat)
+ nullify(array)
+
+ ! Compute the memory and call the routine that performs most of the work.
+ call malloc_register(istat,&
+&  -1_i8b * product(shape(array))*kind(array),&
+&  arr_name,file_name,func_name,line)
+
+end function free_pointer_logical_7
+

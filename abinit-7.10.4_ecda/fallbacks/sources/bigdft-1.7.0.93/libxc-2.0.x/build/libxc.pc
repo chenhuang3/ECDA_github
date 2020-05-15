@@ -1,0 +1,11 @@
+prefix=/gpfs/home/chuang3/XCEP_codes/abinit-7.10.4_xcep_v1/fallbacks/exports
+exec_prefix=${prefix}
+libdir=/gpfs/home/chuang3/XCEP_codes/abinit-7.10.4_xcep_v1/fallbacks/exports/lib
+includedir=${prefix}/include
+
+Name: libxc
+Description: Library of exchange and correlation functionals to be used in DFT codes
+Requires: 
+Version: 2.0.x
+Libs: -L${libdir} -lxc
+Cflags: -I${includedir}

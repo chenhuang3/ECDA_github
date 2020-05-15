@@ -1,0 +1,9 @@
+ #                  a0(A)    V0(A3)   K0(GPa)   mu
+uspp       lda     3.419    9.993      259     0.58
+
+Vasp [1]   lda      3.43    10.9       251     0.58
+
+Exp. (dewaele)     3.524   10.945    176+-8   
+
+[1]from Kresse/Joubert PRB 59 1758 (1999)
+

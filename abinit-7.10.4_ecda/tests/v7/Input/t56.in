@@ -1,0 +1,36 @@
+2
+temperature.out
+0.1
+y
+1000 100
+3
+t55o_DS13_DDB t55o_DS23_DDB t55o_DS33_DDB
+t55o_DS11_EIG.nc
+t55o_DS12_EIG.nc
+t55o_DS13_EIGR2D
+t55o_DS13_FAN
+t55o_DS22_EIG.nc
+t55o_DS23_EIGR2D
+t55o_DS23_FAN
+t55o_DS32_EIG.nc
+t55o_DS33_EIGR2D
+t55o_DS33_FAN
+
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = temperature.py
+#%% test_chain = t55.in, t56.in
+#%% [files]
+#%% files_to_test = 
+#%%  temperature.out, tolnlines = 7, tolabs = 1.1e-3, tolrel = 2.0e-4, fld_options = -medium
+#%% [paral_info]
+#%% max_nprocs = 1
+#%% [extra_info]
+#%% authors = S. Ponc\'e 
+#%% keywords = NC, DFPT
+#%% description = 
+#%%  Diamond.
+#%%  Diamond dynamical temperature-dependent of the electronic structure using the temperature.py python script. 
+#%%  Three q-points are computed and the ZPR is calculated. The temperature between 0 and 1000K is computed
+#%%  by steps of 100K.
+#%%<END TEST_INFO>

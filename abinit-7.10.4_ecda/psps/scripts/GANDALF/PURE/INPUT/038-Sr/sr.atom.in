@@ -1,0 +1,19 @@
+npulayit 5
+diemac 2.0
+
+nsym 1
+occopt 0
+nband 6
+occ 2 2 2 2 2 0 
+
+pawovlp 1
+iscf 17
+ecut 20
+pawecutdg 40.0
+nstep 50
+toldfe 1.0d-8
+natom 1 ntypat 1 typat 1*1 
+znucl 38
+xcart 0 0 0
+acell 3*20.0
+kptopt 1 kptrlatt 1 0 0 0 1 0 0 0 1

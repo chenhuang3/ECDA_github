@@ -1,0 +1,272 @@
+# ===========================================
+# Makefile
+# Use it to build a standalone LIBPAW library
+#               M.T. June 2013, rev Feb. 2014
+# ===========================================
+
+# Define main directories
+SRC_DIR=$(PWD)/src
+LIB_DIR=$(PWD)/lib
+INC_DIR=$(PWD)/inc
+CONFIG_DIR=$(PWD)/config
+
+# Define install directories
+INSTALL_DIR=$(PWD)/install
+INSTALL_LIB_DIR=$(INSTALL_DIR)/lib
+INSTALL_INC_DIR=$(INSTALL_DIR)/include
+
+# Define src directories
+DEFS_BASIS_SRCDIR=$(LIB_DIR)/defs_basis
+MEM_PROFILING_SRCDIR=$(LIB_DIR)/memory_profiling
+HIDEMPI_SRCDIR=$(LIB_DIR)/hide_mpi
+HIDEWRITE_SRCDIR=$(LIB_DIR)/hidewrite
+HIDELEAVE_SRCDIR=$(LIB_DIR)/hideleave
+
+# Define build directories
+BUILD_DIR=$(PWD)/build
+SRC_BUILD_DIR=$(BUILD_DIR)/src
+LIB_BUILD_DIR=$(BUILD_DIR)/lib
+DEFS_BASIS_BUILD_DIR=$(LIB_BUILD_DIR)/defs_basis
+MEM_PROFILING_BUILD_DIR=$(LIB_BUILD_DIR)/memory_profiling
+HIDEMPI_BUILD_DIR=$(LIB_BUILD_DIR)/hide_mpi
+HIDEWRITE_BUILD_DIR=$(LIB_BUILD_DIR)/hidewrite
+HIDELEAVE_BUILD_DIR=$(LIB_BUILD_DIR)/hideleave
+
+#Useful commands
+ifndef GREP
+  GREP=grep
+endif
+ifndef ECHO
+  ECHO=echo
+endif
+ifndef TEST
+  TEST=test
+endif
+ifndef SED
+  SED=sed
+endif
+ifndef MKDIR
+  MKDIR=mkdir
+endif
+ifndef RM
+  RM=rm
+endif
+ifndef CP
+  CP=cp
+endif
+ifndef CD
+  CD=cd
+endif
+ifndef LS
+  LS=ls
+endif
+ifndef AR
+  AR=ar
+endif
+ifndef TAR
+  TAR=tar
+endif
+ifndef ZIP
+  ZIP=gzip
+endif
+
+# Retrieve compilation options
+include makefile.in
+DO_BUILD_DEFS_BASIS=0
+ifndef DEFS_BASIS_MODDIR
+  DO_BUILD_DEFS_BASIS=1
+  DEFS_BASIS_MODDIR=$(DEFS_BASIS_BUILD_DIR)
+endif
+DO_BUILD_MEM_PROFILING=0
+ifndef MEM_PROFILING_MODDIR
+  DO_BUILD_MEM_PROFILING=1
+  MEM_PROFILING_MODDIR=$(MEM_PROFILING_BUILD_DIR)
+endif
+DO_BUILD_HIDEMPI=0
+ifndef HIDEMPI_MODDIR
+  DO_BUILD_HIDEMPI=1
+  HIDEMPI_MODDIR=$(HIDEMPI_BUILD_DIR)
+endif
+DO_BUILD_HIDEWRITE=0
+ifndef HIDEWRITE_MODDIR
+  DO_BUILD_HIDEWRITE=1
+  HIDEWRITE_MODDIR=$(HIDEWRITE_BUILD_DIR)
+endif
+DO_BUILD_HIDELEAVE=0
+ifndef HIDELEAVE_MODDIR
+  DO_BUILD_HIDELEAVE=1
+  HIDELEAVE_MODDIR=$(HIDELEAVE_BUILD_DIR)
+endif
+
+# Define src and obj files
+include $(CONFIG_DIR)/libpaw.src
+LIBPAW_SRC=$(shell $(LS) $(SRC_DIR)/interfaces_*.F90 2> /dev/null) \
+           $(foreach FF,$(LIBPAW_SRC_FILES),$(SRC_DIR)/$(FF))
+LIBPAW_OBJ= $(LIBPAW_SRC:.F90=.o)
+DEFS_BASIS_SRC=$(shell $(LS) $(DEFS_BASIS_SRCDIR)/interfaces_*.F90 2> /dev/null) \
+               $(shell $(LS) $(DEFS_BASIS_SRCDIR)/m_*.F90 2> /dev/null) \
+               $(shell $(LS) $(DEFS_BASIS_SRCDIR)/*.F90 | $(SED) -e "s/.*\/interfaces_.*\.F90//g" \
+                                                     | $(SED) -e "s/.*\/m_.*\.F90//g")
+DEFS_BASIS_OBJ= $(DEFS_BASIS_SRC:.F90=.o)
+MEM_PROFILING_SRC=$(shell $(LS) $(MEM_PROFILING_SRCDIR)/interfaces_*.F90 2> /dev/null) \
+                  $(shell $(LS) $(MEM_PROFILING_SRCDIR)/m_x*.F90 2> /dev/null) \
+                  $(shell $(LS) $(MEM_PROFILING_SRCDIR)/m_[^x]*.F90 2> /dev/null) \
+                  $(shell $(LS) $(MEM_PROFILING_SRCDIR)/*.F90 | $(SED) -e "s/.*\/interfaces_.*\.F90//g" \
+                                                           | $(SED) -e "s/.*\/m_.*\.F90//g")
+MEM_PROFILING_OBJ=$(MEM_PROFILING_SRC:.F90=.o)
+HIDEMPI_SRC=$(shell $(LS) $(HIDEMPI_SRCDIR)/interfaces_*.F90 2> /dev/null) \
+              $(shell $(LS) $(HIDEMPI_SRCDIR)/m_x*.F90 2> /dev/null) \
+              $(shell $(LS) $(HIDEMPI_SRCDIR)/m_[^x]*.F90 2> /dev/null) \
+              $(shell $(LS) $(HIDEMPI_SRCDIR)/*.F90 | $(SED) -e "s/.*\/interfaces_.*\.F90//g" \
+                                                     | $(SED) -e "s/.*\/m_.*\.F90//g")
+HIDEMPI_OBJ=$(HIDEMPI_SRC:.F90=.o)
+HIDEWRITE_SRC=$(shell $(LS) $(HIDEWRITE_SRCDIR)/interfaces_*.F90 2> /dev/null) \
+              $(shell $(LS) $(HIDEWRITE_SRCDIR)/m_x*.F90 2> /dev/null) \
+              $(shell $(LS) $(HIDEWRITE_SRCDIR)/m_[^x]*.F90 2> /dev/null) \
+              $(shell $(LS) $(HIDEWRITE_SRCDIR)/*.F90 | $(SED) -e "s/.*\/interfaces_.*\.F90//g" \
+                                                     | $(SED) -e "s/.*\/m_.*\.F90//g")
+HIDEWRITE_OBJ= $(HIDEWRITE_SRC:.F90=.o)
+HIDELEAVE_SRC=$(shell $(LS) $(HIDELEAVE_SRCDIR)/interfaces_*.F90 2> /dev/null) \
+              $(shell $(LS) $(HIDELEAVE_SRCDIR)/m_x*.F90 2> /dev/null) \
+              $(shell $(LS) $(HIDELEAVE_SRCDIR)/m_[^x]*.F90 2> /dev/null) \
+              $(shell $(LS) $(HIDELEAVE_SRCDIR)/*.F90 | $(SED) -e "s/.*\/interfaces_.*\.F90//g" \
+                                                   | $(SED) -e "s/.*\/m_.*\.F90//g")
+HIDELEAVE_OBJ= $(HIDELEAVE_SRC:.F90=.o)
+
+#Define object files to include in final library file
+LIBPAW_CONTENT=$(shell $(LS) $(SRC_BUILD_DIR)/*.o | $(SED) -e "s/.*\/interfaces_.*\.o//g")
+ifeq ($(DO_BUILD_DEFS_BASIS),1)
+  LIBPAW_CONTENT+=$(shell $(LS) $(DEFS_BASIS_BUILD_DIR)/*.o | $(SED) -e "s/.*\/interfaces_.*\.o//g")
+endif
+ifeq ($(DO_BUILD_MEM_PROFILING),1)
+  LIBPAW_CONTENT+=$(shell $(LS) $(MEM_PROFILING_BUILD_DIR)/*.o | $(SED) -e "s/.*\/interfaces_.*\.o//g")
+endif
+ifeq ($(DO_BUILD_HIDEMPI),1)
+  LIBPAW_CONTENT+=$(shell $(LS) $(HIDEMPI_BUILD_DIR)/*.o | $(SED) -e "s/.*\/interfaces_.*\.o//g")
+endif
+ifeq ($(DO_BUILD_HIDEWRITE),1)
+  LIBPAW_CONTENT+=$(shell $(LS) $(HIDEWRITE_BUILD_DIR)/*.o | $(SED) -e "s/.*\/interfaces_.*\.o//g")
+endif
+ifeq ($(DO_BUILD_HIDELEAVE),1)
+  LIBPAW_CONTENT+=$(shell $(LS) $(HIDELEAVE_BUILD_DIR)/*.o | $(SED) -e "s/.*\/interfaces_.*\.o//g")
+endif
+
+all: libpaw
+
+default: libpaw
+
+clean:
+	@$(RM) -rf build install
+
+libpaw: libpaw-mkbuilddir libpaw-libs libpaw-objs libpaw-mklib libpaw-install
+
+libpaw-mkbuilddir:
+	@if ! $(TEST) -d $(BUILD_DIR); then $(MKDIR) $(BUILD_DIR);fi
+	@if ! $(TEST) -d $(INSTALL_DIR); then $(MKDIR) $(INSTALL_DIR);fi
+	@$(RM) -rf $(BUILD_DIR)/*
+	@if ! $(TEST) -d $(SRC_BUILD_DIR); then $(MKDIR) $(SRC_BUILD_DIR);fi
+	@$(CP) $(CONFIG_DIR)/Makefile.src $(SRC_BUILD_DIR)/Makefile
+	@$(CP) $(CONFIG_DIR)/libpaw.src $(SRC_BUILD_DIR)
+	@if ! $(TEST) -d $(LIB_BUILD_DIR); then $(MKDIR) $(LIB_BUILD_DIR);fi
+	@if $(TEST) $(DO_BUILD_DEFS_BASIS) = 1;then \
+	  $(MKDIR) $(DEFS_BASIS_BUILD_DIR); \
+	  $(CP) $(CONFIG_DIR)/Makefile.lib $(DEFS_BASIS_BUILD_DIR)/Makefile; \
+	 fi
+	@if $(TEST) $(DO_BUILD_MEM_PROFILING) = 1;then \
+	  $(MKDIR) $(MEM_PROFILING_BUILD_DIR); \
+	  $(CP) $(CONFIG_DIR)/Makefile.lib $(MEM_PROFILING_BUILD_DIR)/Makefile; \
+	 fi
+	@if $(TEST) $(DO_BUILD_HIDEMPI) = 1;then \
+	  $(MKDIR) $(HIDEMPI_BUILD_DIR); \
+	  $(CP) $(CONFIG_DIR)/Makefile.lib $(HIDEMPI_BUILD_DIR)/Makefile; \
+	 fi
+	@if $(TEST) $(DO_BUILD_HIDEWRITE) = 1;then \
+	  $(MKDIR) $(HIDEWRITE_BUILD_DIR); \
+	  $(CP) $(CONFIG_DIR)/Makefile.lib $(HIDEWRITE_BUILD_DIR)/Makefile; \
+	 fi
+	@if $(TEST) $(DO_BUILD_HIDELEAVE) = 1;then \
+	  $(MKDIR) $(HIDELEAVE_BUILD_DIR); \
+	  $(CP) $(CONFIG_DIR)/Makefile.lib $(HIDELEAVE_BUILD_DIR)/Makefile; \
+	 fi
+
+libpaw-mklib:
+	@$(ECHO)
+	@$(AR) rvs $(BUILD_DIR)/libpaw.a $(LIBPAW_CONTENT) 2>&1
+
+libpaw-install:
+	@$(ECHO)
+	@$(ECHO) "Installing library and modules in "$(INSTALL_DIR)
+	@if ! $(TEST) -d $(INSTALL_LIB_DIR); then $(MKDIR) $(INSTALL_LIB_DIR);fi
+	@$(RM) -rf $(INSTALL_LIB_DIR)/*
+	@$(CP) -rf $(BUILD_DIR)/libpaw.a $(INSTALL_LIB_DIR)
+	@if ! $(TEST) -d $(INSTALL_INC_DIR); then $(MKDIR) $(INSTALL_INC_DIR);fi
+	@$(RM) -rf $(INSTALL_INC_DIR)/*
+	@$(CP) $(SRC_BUILD_DIR)/*.mod $(INSTALL_INC_DIR)
+	@$(RM) -rf $(INSTALL_INC_DIR)/interfaces_??_libpaw.mod
+        ### Uncomment to allow access to wrtout, leave_new, xmpi... from library
+# 	@$(CP) $(INC_DIR)/abi_common.h $(INSTALL_INC_DIR)
+# 	@if $(TEST) $(DO_BUILD_DEFS_BASIS) = 1;then \
+# 	   $(CP) $(DEFS_BASIS_MODDIR)/defs_basis.mod $(INSTALL_INC_DIR); \
+# 	 fi
+# 	@if $(TEST) $(DO_BUILD_MEM_PROFILING) = 1;then \
+# 	   $(CP) $(MEM_PROFILING_MODDIR)/m_profiling.mod $(INSTALL_INC_DIR); \
+# 	 fi
+# 	@if $(TEST) $(DO_BUILD_HIDEMPI) = 1;then \
+# 	   $(CP) $(HIDEMPI_MODDIR)/m_xmpi.mod $(INSTALL_INC_DIR); \
+# 	   $(CP) $(HIDEMPI_MODDIR)/m_xomp.mod $(INSTALL_INC_DIR); \
+# 	 fi
+# 	@if $(TEST) $(DO_BUILD_HIDELEAVE) = 1;then \
+# 	   $(CP) $(HIDELEAVE_MODDIR)/m_xieee.mod $(INSTALL_INC_DIR); \
+# 	   $(CP) $(HIDELEAVE_MODDIR)/m_errors.mod $(INSTALL_INC_DIR); \
+# 	 fi
+# 	@if $(TEST) $(DO_BUILD_HIDEWRITE) = 1;then \
+# 	   $(CP) $(HIDEWRITE_MODDIR)/interfaces_??_*.mod $(INSTALL_INC_DIR); \
+# 	 fi
+# 	@if $(TEST) $(DO_BUILD_HIDELEAVE) = 1;then \
+# 	   $(CP) $(HIDELEAVE_MODDIR)/interfaces_??_*.mod $(INSTALL_INC_DIR); \
+# 	 fi
+
+libpaw-objs:
+	@$(CD) $(SRC_BUILD_DIR); \
+	$(MAKE) $(LIBPAW_OBJ) \
+	 INCS=-I$(INC_DIR)\ -I$(DEFS_BASIS_MODDIR)\ -I$(MEM_PROFILING_MODDIR)\ -I$(HIDEMPI_MODDIR)\ -I$(HIDEWRITE_MODDIR)\ -I$(HIDELEAVE_MODDIR)
+
+libpaw-libs: libpaw-defs-basis libpaw-mem-profiling libpaw-hidempi libpaw-hidewrite libpaw-hideleave
+
+libpaw-defs-basis:
+	@if $(TEST) $(DO_BUILD_DEFS_BASIS) = 1;then \
+	  $(CD) $(DEFS_BASIS_BUILD_DIR); \
+	  $(MAKE) $(DEFS_BASIS_OBJ); \
+	fi
+
+libpaw-mem-profiling:
+	@if $(TEST) $(DO_BUILD_MEM_PROFILING) = 1;then \
+	  $(CD) $(MEM_PROFILING_BUILD_DIR); \
+	  $(MAKE) $(MEM_PROFILING_OBJ) \
+	   INCS=-I$(INC_DIR)\ -I$(DEFS_BASIS_MODDIR); \
+	fi
+
+libpaw-hidempi:
+	@if $(TEST) $(DO_BUILD_HIDEMPI) = 1;then \
+	  $(CD) $(HIDEMPI_BUILD_DIR); \
+	  $(MAKE) $(HIDEMPI_OBJ) \
+	   INCS=-I$(INC_DIR)\ -I$(DEFS_BASIS_MODDIR)\ -I$(MEM_PROFILING_MODDIR); \
+	fi
+
+libpaw-hidewrite:
+	@if $(TEST) $(DO_BUILD_HIDEWRITE) = 1;then \
+	  $(CD) $(HIDEWRITE_BUILD_DIR); \
+	  $(MAKE) $(HIDEWRITE_OBJ) \
+	   INCS=-I$(INC_DIR)\ -I$(DEFS_BASIS_MODDIR)\ -I$(MEM_PROFILING_MODDIR)\ -I$(HIDEMPI_MODDIR); \
+	fi
+
+libpaw-hideleave:
+	@if $(TEST) $(DO_BUILD_HIDELEAVE) = 1;then \
+	  $(CD) $(HIDELEAVE_BUILD_DIR); \
+	  $(MAKE) $(HIDELEAVE_OBJ) \
+	   INCS=-I$(INC_DIR)\ -I$(DEFS_BASIS_MODDIR)\ -I$(MEM_PROFILING_MODDIR)\ -I$(HIDEMPI_MODDIR)\ -I$(HIDEWRITE_MODDIR); \
+	fi
+
+#Generic rules
+%.o: %.F90
+	$(FC) $(FCFLAGS) -o $(@F) -c $<

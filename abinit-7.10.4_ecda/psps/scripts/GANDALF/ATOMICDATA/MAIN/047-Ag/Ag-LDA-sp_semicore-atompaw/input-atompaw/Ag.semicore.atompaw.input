@@ -1,0 +1,35 @@
+Ag  47
+LDA-PW loggrid 2000 scalarrelativistic
+5 4 4 0 0 0
+5 0 1
+0 0 0
+c
+c
+c
+v
+v
+c
+c
+v
+c
+v
+2
+2.0
+n
+y
+2.
+n
+y
+4.
+n
+custom polynom2 7 10. vanderbiltortho besselshape
+3 0.
+2.0
+2.0
+2.0
+2.0
+2.0
+2.0
+2
+default
+0

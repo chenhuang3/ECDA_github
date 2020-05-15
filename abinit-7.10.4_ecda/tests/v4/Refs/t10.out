@@ -1,0 +1,1324 @@
+
+.Version 7.3.2 of ABINIT 
+.(MPI version, prepared for a x86_64_linux_gnu4.7 computer) 
+
+.Copyright (C) 1998-2014 ABINIT group . 
+ ABINIT comes with ABSOLUTELY NO WARRANTY.
+ It is free software, and you are welcome to redistribute it
+ under certain conditions (GNU General Public License,
+ see ~abinit/COPYING or http://www.gnu.org/copyleft/gpl.txt).
+
+ ABINIT is a project of the Universite Catholique de Louvain,
+ Corning Inc. and other collaborators, see ~abinit/doc/developers/contributors.txt .
+ Please read ~abinit/doc/users/acknowledgments.html for suggested
+ acknowledgments of the ABINIT effort.
+ For more information, see http://www.abinit.org .
+
+.Starting date : Mon 20 May 2013.
+- ( at 14h14 )
+  
+- input  file    -> /home/gonze/ABINIT/ABINITv7.3.2/gonze/7.3.2-private/tests/v4/Input/t10.in
+- output file    -> t10.out
+- root for input  files -> t10i
+- root for output files -> t10o
+
+
+ DATASET    1 : space group Pm -3 m (#221); Bravais cP (primitive cubic)
+================================================================================
+ Values of the parameters that define the memory need for DATASET  1.
+   intxc =         0  ionmov =         0    iscf =         5 xclevel =         1
+  lmnmax =         1   lnmax =         1   mband =         2  mffmem =         1
+P  mgfft =        15   mkmem =         1 mpssoang=         1     mpw =        62
+  mqgrid =      3001   natom =         1    nfft =      3375    nkpt =         1
+  nloalg =         4  nspden =         1 nspinor =         1  nsppol =         1
+    nsym =        48  n1xccc =         0  ntypat =         1  occopt =         1
+================================================================================
+P This job should need less than                       1.139 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      0.004 Mbytes ; DEN or POT disk file :      0.028 Mbytes.
+================================================================================
+
+
+ DATASET    2 : space group Pm -3 m (#221); Bravais cP (primitive cubic)
+================================================================================
+ Values of the parameters that define the memory need for DATASET  2.
+   intxc =         0  ionmov =         0    iscf =        -2 xclevel =         1
+  lmnmax =         1   lnmax =         1   mband =         6  mffmem =         1
+P  mgfft =        15   mkmem =         1 mpssoang=         1     mpw =        62
+  mqgrid =      3001   natom =         1    nfft =      3375    nkpt =         1
+  nloalg =         4  nspden =         1 nspinor =         1  nsppol =         1
+    nsym =        48  n1xccc =         0  ntypat =         1  occopt =         1
+================================================================================
+P This job should need less than                       0.887 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      0.008 Mbytes ; DEN or POT disk file :      0.028 Mbytes.
+================================================================================
+
+
+ DATASET    3 : space group Pm -3 m (#221); Bravais cP (primitive cubic)
+================================================================================
+ Values of the parameters that define the memory need for DATASET  3.
+   intxc =         0  ionmov =         0    iscf =         5 xclevel =         1
+  lmnmax =         1   lnmax =         1   mband =         6  mffmem =         1
+P  mgfft =        15   mkmem =         1 mpssoang=         1     mpw =        62
+  mqgrid =      3001   natom =         1    nfft =      3375    nkpt =         1
+  nloalg =         4  nspden =         1 nspinor =         1  nsppol =         1
+    nsym =        48  n1xccc =         0  ntypat =         1  occopt =         1
+================================================================================
+P This job should need less than                       1.145 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      0.008 Mbytes ; DEN or POT disk file :      0.028 Mbytes.
+================================================================================
+
+
+ DATASET    4 : space group Pm -3 m (#221); Bravais cP (primitive cubic)
+================================================================================
+ Values of the parameters that define the memory need for DATASET  4.
+   intxc =         0  ionmov =         0    iscf =         5 xclevel =         1
+  lmnmax =         1   lnmax =         1   mband =         6  mffmem =         1
+P  mgfft =        15   mkmem =         1 mpssoang=         1     mpw =        62
+  mqgrid =      3001   natom =         1    nfft =      3375    nkpt =         1
+  nloalg =         4  nspden =         1 nspinor =         1  nsppol =         1
+    nsym =        48  n1xccc =         0  ntypat =         1  occopt =         1
+================================================================================
+P This job should need less than                       1.145 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      0.008 Mbytes ; DEN or POT disk file :      0.028 Mbytes.
+================================================================================
+
+
+ DATASET    5 : space group Pm -3 m (#221); Bravais cP (primitive cubic)
+================================================================================
+ Values of the parameters that define the memory need for DATASET  5.
+   intxc =         0  ionmov =         0    iscf =         5 xclevel =         1
+  lmnmax =         1   lnmax =         1   mband =         6  mffmem =         1
+P  mgfft =        15   mkmem =         1 mpssoang=         1     mpw =        62
+  mqgrid =      3001   natom =         1    nfft =      3375    nkpt =         1
+  nloalg =         4  nspden =         1 nspinor =         1  nsppol =         1
+    nsym =        48  n1xccc =         0  ntypat =         1  occopt =         1
+================================================================================
+P This job should need less than                       1.145 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      0.008 Mbytes ; DEN or POT disk file :      0.028 Mbytes.
+================================================================================
+
+
+ DATASET    6 : space group Pm -3 m (#221); Bravais cP (primitive cubic)
+================================================================================
+ Values of the parameters that define the memory need for DATASET  6.
+   intxc =         0  ionmov =         0    iscf =         5 xclevel =         1
+  lmnmax =         1   lnmax =         1   mband =         6  mffmem =         1
+P  mgfft =        15   mkmem =         1 mpssoang=         1     mpw =        62
+  mqgrid =      3001   natom =         1    nfft =      3375    nkpt =         1
+  nloalg =         4  nspden =         1 nspinor =         1  nsppol =         1
+    nsym =        48  n1xccc =         0  ntypat =         1  occopt =         1
+================================================================================
+P This job should need less than                       1.145 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      0.008 Mbytes ; DEN or POT disk file :      0.028 Mbytes.
+================================================================================
+
+
+ DATASET    7 : space group Pm -3 m (#221); Bravais cP (primitive cubic)
+================================================================================
+ Values of the parameters that define the memory need for DATASET  7.
+   intxc =         0  ionmov =         0    iscf =         5 xclevel =         1
+  lmnmax =         1   lnmax =         1   mband =         6  mffmem =         1
+P  mgfft =        15   mkmem =         1 mpssoang=         1     mpw =        62
+  mqgrid =      3001   natom =         1    nfft =      3375    nkpt =         1
+  nloalg =         4  nspden =         1 nspinor =         1  nsppol =         1
+    nsym =        48  n1xccc =         0  ntypat =         1  occopt =         1
+================================================================================
+P This job should need less than                       1.145 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      0.008 Mbytes ; DEN or POT disk file :      0.028 Mbytes.
+================================================================================
+
+
+ DATASET    8 : space group Pm -3 m (#221); Bravais cP (primitive cubic)
+================================================================================
+ Values of the parameters that define the memory need for DATASET  8.
+   intxc =         0  ionmov =         0    iscf =         5 xclevel =         1
+  lmnmax =         1   lnmax =         1   mband =         6  mffmem =         1
+P  mgfft =        15   mkmem =         1 mpssoang=         1     mpw =        62
+  mqgrid =      3001   natom =         1    nfft =      3375    nkpt =         1
+  nloalg =         4  nspden =         1 nspinor =         1  nsppol =         1
+    nsym =        48  n1xccc =         0  ntypat =         1  occopt =         1
+================================================================================
+P This job should need less than                       1.145 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      0.008 Mbytes ; DEN or POT disk file :      0.028 Mbytes.
+================================================================================
+
+
+ DATASET    9 : space group Pm -3 m (#221); Bravais cP (primitive cubic)
+================================================================================
+ Values of the parameters that define the memory need for DATASET  9.
+   intxc =         0  ionmov =         0    iscf =         5 xclevel =         1
+  lmnmax =         1   lnmax =         1   mband =         6  mffmem =         1
+P  mgfft =        15   mkmem =         1 mpssoang=         1     mpw =        62
+  mqgrid =      3001   natom =         1    nfft =      3375    nkpt =         1
+  nloalg =         4  nspden =         1 nspinor =         1  nsppol =         1
+    nsym =        48  n1xccc =         0  ntypat =         1  occopt =         1
+================================================================================
+P This job should need less than                       1.145 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      0.008 Mbytes ; DEN or POT disk file :      0.028 Mbytes.
+================================================================================
+
+
+ DATASET   10 : space group Pm -3 m (#221); Bravais cP (primitive cubic)
+================================================================================
+ Values of the parameters that define the memory need for DATASET 10.
+   intxc =         0  ionmov =         0    iscf =         5 xclevel =         1
+  lmnmax =         1   lnmax =         1   mband =         6  mffmem =         1
+P  mgfft =        15   mkmem =         1 mpssoang=         1     mpw =        62
+  mqgrid =      3001   natom =         1    nfft =      3375    nkpt =         1
+  nloalg =         4  nspden =         1 nspinor =         1  nsppol =         1
+    nsym =        48  n1xccc =         0  ntypat =         1  occopt =         1
+================================================================================
+P This job should need less than                       1.145 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      0.008 Mbytes ; DEN or POT disk file :      0.028 Mbytes.
+================================================================================
+
+--------------------------------------------------------------------------------
+------------- Echo of variables that govern the present computation ------------
+--------------------------------------------------------------------------------
+-
+- outvars: echo of selected default values                                      
+-   accesswff0 =  0 , fftalg0 =112 , wfoptalg0 =  0
+-
+- outvars: echo of global parameters not present in the input file              
+-  max_nthreads =    0
+-
+ -outvars: echo values of preprocessed input variables --------
+            acell      1.0000000000E+01  1.0000000000E+01  1.0000000000E+01 Bohr
+              amu      4.00260200E+00
+           diecut1     2.20000000E+00 Hartree
+           diecut2     2.20000000E+00 Hartree
+           diecut3     1.80000000E+00 Hartree
+           diecut4     1.80000000E+00 Hartree
+           diecut5     1.80000000E+00 Hartree
+           diecut6     1.80000000E+00 Hartree
+           diecut7     1.80000000E+00 Hartree
+           diecut8     1.80000000E+00 Hartree
+           diecut9     1.80000000E+00 Hartree
+           diecut10    1.80000000E+00 Hartree
+           diegap1     1.00000000E-01 Hartree
+           diegap2     1.00000000E-01 Hartree
+           diegap3     0.00000000E+00 Hartree
+           diegap4     0.00000000E+00 Hartree
+           diegap5     0.00000000E+00 Hartree
+           diegap6     0.00000000E+00 Hartree
+           diegap7     0.00000000E+00 Hartree
+           diegap8     0.00000000E+00 Hartree
+           diegap9     0.00000000E+00 Hartree
+           diegap10    0.00000000E+00 Hartree
+           dielam1     5.00000000E-01
+           dielam2     5.00000000E-01
+           dielam3     1.00000000E+00
+           dielam4     1.00000000E+00
+           dielam5     1.00000000E+00
+           dielam6     1.00000000E+00
+           dielam7     1.00000000E+00
+           dielam8     1.00000000E+00
+           dielam9     1.00000000E+00
+           dielam10    1.00000000E+00
+           diemac      1.00000000E+00
+             ecut      1.80000000E+00 Hartree
+        freqsuslo1     1.00000000E+00
+        freqsuslo2     1.00000000E+00
+        freqsuslo3     1.00000000E+00
+        freqsuslo4     1.00000000E+00
+        freqsuslo5     0.00000000E+00
+        freqsuslo6     0.00000000E+00
+        freqsuslo7     0.00000000E+00
+        freqsuslo8     0.00000000E+00
+        freqsuslo9     0.00000000E+00
+        freqsuslo10    0.00000000E+00
+           getden1          0
+           getden2          1
+           getden3          1
+           getden4          1
+           getden5          1
+           getden6          1
+           getden7          1
+           getden8          1
+           getden9          1
+           getden10         1
+           getwfk1          0
+           getwfk2          1
+           getwfk3          2
+           getwfk4          2
+           getwfk5          2
+           getwfk6          2
+           getwfk7          2
+           getwfk8          2
+           getwfk9          2
+           getwfk10         2
+           idyson1          1
+           idyson2          1
+           idyson3          1
+           idyson4          1
+           idyson5          2
+           idyson6          1
+           idyson7          1
+           idyson8          1
+           idyson9          1
+           idyson10         1
+            ikhxc1          0
+            ikhxc2          0
+            ikhxc3          1
+            ikhxc4          1
+            ikhxc5          3
+            ikhxc6          2
+            ikhxc7          2
+            ikhxc8          4
+            ikhxc9          5
+            ikhxc10         6
+         intexact1          0
+         intexact2          0
+         intexact3          0
+         intexact4          1
+         intexact5          0
+         intexact6          0
+         intexact7          0
+         intexact8          0
+         intexact9          0
+         intexact10         0
+             iscf1          5
+             iscf2         -2
+             iscf3          5
+             iscf4          5
+             iscf5          5
+             iscf6          5
+             iscf7          5
+             iscf8          5
+             iscf9          5
+             iscf10         5
+           istwfk        2
+           jdtset        1    2    3    4    5    6    7    8    9   10
+           kptopt           0
+           ldgapp1          0
+           ldgapp2          0
+           ldgapp3          0
+           ldgapp4          0
+           ldgapp5          1
+           ldgapp6          0
+           ldgapp7          0
+           ldgapp8          0
+           ldgapp9          0
+           ldgapp10         0
+P           mkmem           1
+            natom           1
+            nband1          2
+            nband2          6
+            nband3          6
+            nband4          6
+            nband5          6
+            nband6          6
+            nband7          6
+            nband8          6
+            nband9          6
+            nband10         6
+         nbandsus1         -1
+         nbandsus2         -1
+         nbandsus3         -1
+         nbandsus4         -1
+         nbandsus5         -1
+         nbandsus6         -1
+         nbandsus7          5
+         nbandsus8         -1
+         nbandsus9         -1
+         nbandsus10        -1
+           nbdbuf1          0
+           nbdbuf2          2
+           nbdbuf3          0
+           nbdbuf4          0
+           nbdbuf5          0
+           nbdbuf6          0
+           nbdbuf7          0
+           nbdbuf8          0
+           nbdbuf9          0
+           nbdbuf10         0
+           ndtset          10
+           ndyson1         -1
+           ndyson2         -1
+           ndyson3          3
+           ndyson4         -1
+           ndyson5          5
+           ndyson6          3
+           ndyson7          3
+           ndyson8          3
+           ndyson9          3
+           ndyson10         3
+         nfreqsus1          0
+         nfreqsus2          0
+         nfreqsus3         16
+         nfreqsus4         16
+         nfreqsus5          1
+         nfreqsus6          1
+         nfreqsus7          1
+         nfreqsus8          1
+         nfreqsus9          1
+         nfreqsus10         1
+            ngfft          15      15      15
+             nkpt           1
+            nstep1         25
+            nstep2         25
+            nstep3         30
+            nstep4         30
+            nstep5         30
+            nstep6         30
+            nstep7         30
+            nstep8         30
+            nstep9         30
+            nstep10        30
+             nsym          48
+           ntypat           1
+              occ1     2.000000  0.000000
+              occ3     2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+              occ4     2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+              occ5     2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+              occ6     2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+              occ7     2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+              occ8     2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+              occ9     2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+              occ10    2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+        optdriver1          0
+        optdriver2          0
+        optdriver3          2
+        optdriver4          2
+        optdriver5          2
+        optdriver6          2
+        optdriver7          2
+        optdriver8          2
+        optdriver9          2
+        optdriver10         2
+       optfreqsus1          2
+       optfreqsus2          2
+       optfreqsus3          0
+       optfreqsus4          0
+       optfreqsus5          0
+       optfreqsus6          0
+       optfreqsus7          0
+       optfreqsus8          0
+       optfreqsus9          0
+       optfreqsus10         0
+          spgroup         221
+           symrel      1  0  0   0  1  0   0  0  1      -1  0  0   0 -1  0   0  0 -1
+                      -1  0  0   0  1  0   0  0 -1       1  0  0   0 -1  0   0  0  1
+                      -1  0  0   0 -1  0   0  0  1       1  0  0   0  1  0   0  0 -1
+                       1  0  0   0 -1  0   0  0 -1      -1  0  0   0  1  0   0  0  1
+                       0  1  0   1  0  0   0  0  1       0 -1  0  -1  0  0   0  0 -1
+                       0 -1  0   1  0  0   0  0 -1       0  1  0  -1  0  0   0  0  1
+                       0 -1  0  -1  0  0   0  0  1       0  1  0   1  0  0   0  0 -1
+                       0  1  0  -1  0  0   0  0 -1       0 -1  0   1  0  0   0  0  1
+                       0  0  1   1  0  0   0  1  0       0  0 -1  -1  0  0   0 -1  0
+                       0  0 -1   1  0  0   0 -1  0       0  0  1  -1  0  0   0  1  0
+                       0  0 -1  -1  0  0   0  1  0       0  0  1   1  0  0   0 -1  0
+                       0  0  1  -1  0  0   0 -1  0       0  0 -1   1  0  0   0  1  0
+                       1  0  0   0  0  1   0  1  0      -1  0  0   0  0 -1   0 -1  0
+                      -1  0  0   0  0  1   0 -1  0       1  0  0   0  0 -1   0  1  0
+                      -1  0  0   0  0 -1   0  1  0       1  0  0   0  0  1   0 -1  0
+                       1  0  0   0  0 -1   0 -1  0      -1  0  0   0  0  1   0  1  0
+                       0  1  0   0  0  1   1  0  0       0 -1  0   0  0 -1  -1  0  0
+                       0 -1  0   0  0  1  -1  0  0       0  1  0   0  0 -1   1  0  0
+                       0 -1  0   0  0 -1   1  0  0       0  1  0   0  0  1  -1  0  0
+                       0  1  0   0  0 -1  -1  0  0       0 -1  0   0  0  1   1  0  0
+                       0  0  1   0  1  0   1  0  0       0  0 -1   0 -1  0  -1  0  0
+                       0  0 -1   0  1  0  -1  0  0       0  0  1   0 -1  0   1  0  0
+                       0  0 -1   0 -1  0   1  0  0       0  0  1   0  1  0  -1  0  0
+                       0  0  1   0 -1  0  -1  0  0       0  0 -1   0  1  0   1  0  0
+           tolvrs1     1.00000000E-08
+           tolvrs2     0.00000000E+00
+           tolvrs3     0.00000000E+00
+           tolvrs4     0.00000000E+00
+           tolvrs5     0.00000000E+00
+           tolvrs6     0.00000000E+00
+           tolvrs7     0.00000000E+00
+           tolvrs8     0.00000000E+00
+           tolvrs9     0.00000000E+00
+           tolvrs10    0.00000000E+00
+           tolwfr1     0.00000000E+00
+           tolwfr2     1.00000000E-04
+           tolwfr3     0.00000000E+00
+           tolwfr4     0.00000000E+00
+           tolwfr5     0.00000000E+00
+           tolwfr6     0.00000000E+00
+           tolwfr7     0.00000000E+00
+           tolwfr8     0.00000000E+00
+           tolwfr9     0.00000000E+00
+           tolwfr10    0.00000000E+00
+            typat      1
+            znucl        2.00000
+
+================================================================================
+
+ chkinp: Checking input parameters for consistency, jdtset=   1.
+
+ chkinp: Checking input parameters for consistency, jdtset=   2.
+
+ chkinp: Checking input parameters for consistency, jdtset=   3.
+
+ chkinp: Checking input parameters for consistency, jdtset=   4.
+
+ chkinp: Checking input parameters for consistency, jdtset=   5.
+
+ chkinp: Checking input parameters for consistency, jdtset=   6.
+
+ chkinp: Checking input parameters for consistency, jdtset=   7.
+
+ chkinp: Checking input parameters for consistency, jdtset=   8.
+
+ chkinp: Checking input parameters for consistency, jdtset=   9.
+
+ chkinp: Checking input parameters for consistency, jdtset=  10.
+
+================================================================================
+== DATASET  1 ==================================================================
+-   nproc =    1
+
+ Exchange-correlation functional for the present dataset will be:
+  LDA: new Teter (4/93) with spin-polarized option - ixc=1
+ Citation for XC functional:
+  S. Goedecker, M. Teter, J. Huetter, PRB 54, 1703 (1996)
+
+ Real(R)+Recip(G) space primitive vectors, cartesian coordinates (Bohr,Bohr^-1):
+ R(1)= 10.0000000  0.0000000  0.0000000  G(1)=  0.1000000  0.0000000  0.0000000
+ R(2)=  0.0000000 10.0000000  0.0000000  G(2)=  0.0000000  0.1000000  0.0000000
+ R(3)=  0.0000000  0.0000000 10.0000000  G(3)=  0.0000000  0.0000000  0.1000000
+ Unit cell volume ucvol=  1.0000000E+03 bohr^3
+ Angles (23,13,12)=  9.00000000E+01  9.00000000E+01  9.00000000E+01 degrees
+
+ getcut: wavevector=  0.0000  0.0000  0.0000  ngfft=  15  15  15
+         ecut(hartree)=      1.800   => boxcut(ratio)=   2.31807
+
+ getcut : COMMENT -
+  Note that boxcut > 2.2 ; recall that boxcut=Gcut(box)/Gcut(sphere) = 2
+  is sufficient for exact treatment of convolution.
+  Such a large boxcut is a waste : you could raise ecut
+  e.g. ecut=    2.418053 Hartrees makes boxcut=2
+
+
+--- Pseudopotential description ------------------------------------------------
+- pspini: atom type   1  psp file is /home/gonze/ABINIT/ABINITv7.3.2/gonze/7.3.2-private/tests/Psps_for_tests/2he_ca_30t.psp
+- pspatm: opening atomic psp file    /home/gonze/ABINIT/ABINITv7.3.2/gonze/7.3.2-private/tests/Psps_for_tests/2he_ca_30t.psp
+- Helium, fhi98PP : TM-type, LDA, l=0 local
+-  2.00000   2.00000       211                znucl, zion, pspdat
+    6    1    0    0       415   0.00000      pspcod,pspxc,lmax,lloc,mmax,r2well
+  No XC core correction.
+  1.024700          amesh (Hamman grid)
+ Note: local psp for atom with Z=  2.0
+ pspatm: epsatm=   11.14564823
+         --- l  ekb(1:nproj) -->
+ pspatm: atomic psp has been read  and splines computed
+
+   2.22912965E+01                                ecore*ucvol(ha*bohr**3)
+--------------------------------------------------------------------------------
+
+P newkpt: treating      2 bands with npw=      62 for ikpt=   1 by node    0
+
+_setup2: Arith. and geom. avg. npw (full set) are     123.000     123.000
+
+================================================================================
+
+     iter   Etot(hartree)      deltaE(h)  residm     vres2
+ ETOT  1  -2.0228900674123    -2.023E+00 3.582E-06 3.292E+01
+ ETOT  2  -2.0539799532599    -3.109E-02 4.662E-07 1.337E+00
+ ETOT  3  -2.0540965888493    -1.166E-04 6.431E-06 9.681E-03
+ ETOT  4  -2.0540932132390     3.376E-06 2.310E-07 6.176E-01
+ ETOT  5  -2.0540958168912    -2.604E-06 7.841E-08 1.416E-01
+ ETOT  6  -2.0540964459601    -6.291E-07 1.986E-08 3.257E-02
+ ETOT  7  -2.0540965982554    -1.523E-07 5.014E-09 7.511E-03
+ ETOT  8  -2.0540966351648    -3.691E-08 1.263E-09 1.738E-03
+ ETOT  9  -2.0540966441191    -8.954E-09 3.175E-10 4.032E-04
+ ETOT 10  -2.0540966462935    -2.174E-09 7.969E-11 9.390E-05
+ ETOT 11  -2.0540966468220    -5.285E-10 1.997E-11 2.194E-05
+ ETOT 12  -2.0540966469506    -1.286E-10 4.996E-12 5.144E-06
+ ETOT 13  -2.0540966469819    -3.131E-11 1.249E-12 1.211E-06
+ ETOT 14  -2.0540966469895    -7.581E-12 3.116E-13 2.859E-07
+ ETOT 15  -2.0540966469913    -1.878E-12 7.770E-14 6.776E-08
+ ETOT 16  -2.0540966469917    -3.872E-13 1.935E-14 1.612E-08
+ ETOT 17  -2.0540966469919    -1.235E-13 4.816E-15 3.847E-09
+
+ At SCF step   17       vres2   =  3.85E-09 < tolvrs=  1.00E-08 =>converged.
+
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  5.25146397E-04  sigma(3 2)=  0.00000000E+00
+  sigma(2 2)=  5.25146397E-04  sigma(3 1)=  0.00000000E+00
+  sigma(3 3)=  5.25146397E-04  sigma(2 1)=  0.00000000E+00
+
+================================================================================
+
+ ----iterations are completed or convergence reached----
+
+ Mean square residual over all n,k,spin=   4.7917E-15; max=  4.8156E-15
+   0.0000  0.0000  0.0000    1  4.81558E-15 kpt; spin; max resid(k); each band:
+  4.77E-15 4.82E-15
+ reduced coordinates (array xred) for    1 atoms
+       0.000000000000      0.000000000000      0.000000000000
+ rms dE/dt=  0.0000E+00; max dE/dt=  0.0000E+00; dE/dt below (all hartree)
+    1       0.000000000000      0.000000000000      0.000000000000
+
+ cartesian coordinates (angstrom) at end:
+    1      0.00000000000000     0.00000000000000     0.00000000000000
+
+ cartesian forces (hartree/bohr) at end:
+    1     -0.00000000000000    -0.00000000000000    -0.00000000000000
+ frms,max,avg= 0.0000000E+00 0.0000000E+00   0.000E+00  0.000E+00  0.000E+00 h/b
+
+ cartesian forces (eV/Angstrom) at end:
+    1     -0.00000000000000    -0.00000000000000    -0.00000000000000
+ frms,max,avg= 0.0000000E+00 0.0000000E+00   0.000E+00  0.000E+00  0.000E+00 e/A
+ length scales= 10.000000000000 10.000000000000 10.000000000000 bohr
+              =  5.291772085900  5.291772085900  5.291772085900 angstroms
+ prteigrs : about to open file t10o_DS1_EIG
+ Fermi (or HOMO) energy (hartree) =  -0.49257   Average Vxc (hartree)=  -0.06344
+ Eigenvalues (hartree) for nkpt=   1  k points:
+ kpt#   1, nband=  2, wtk=  1.00000, kpt=  0.0000  0.0000  0.0000 (reduced coord)
+  -0.49257  -0.02023
+ Total charge density [el/Bohr^3]
+,     Maximum=    1.7004E-01  at reduced coord.    0.0000    0.0000    0.0000
+,Next maximum=    1.3247E-01  at reduced coord.    0.0000    0.0000    0.9333
+,     Minimum=    7.7379E-08  at reduced coord.    0.4667    0.4000    0.0000
+,Next minimum=    7.7379E-08  at reduced coord.    0.5333    0.4000    0.0000
+,  Integrated=    2.0000E+00
+
+--------------------------------------------------------------------------------
+ Components of total free energy (in Hartree) :
+
+    Kinetic energy  =  1.08122327052426E+00
+    Hartree energy  =  7.18496591238472E-01
+    XC energy       = -6.37569898983405E-01
+    Ewald energy    = -5.67459495896131E-01
+    PspCore energy  =  2.22912964518362E-02
+    Loc. psp. energy= -2.67107841032689E+00
+    NL   psp  energy=  0.00000000000000E+00
+    >>>>>>>>> Etotal= -2.05409664699186E+00
+
+ Other information on the energy :
+    Total energy(eV)= -5.58948123468343E+01 ; Band energy (Ha)=  -9.8513344168E-01
+--------------------------------------------------------------------------------
+
+ Cartesian components of stress tensor (hartree/bohr^3)
+  sigma(1 1)=  5.25146397E-04  sigma(3 2)=  0.00000000E+00
+  sigma(2 2)=  5.25146397E-04  sigma(3 1)=  0.00000000E+00
+  sigma(3 3)=  5.25146397E-04  sigma(2 1)=  0.00000000E+00
+
+-Cartesian components of stress tensor (GPa)         [Pressure= -1.5450E+01 GPa]
+- sigma(1 1)=  1.54503378E+01  sigma(3 2)=  0.00000000E+00
+- sigma(2 2)=  1.54503378E+01  sigma(3 1)=  0.00000000E+00
+- sigma(3 3)=  1.54503378E+01  sigma(2 1)=  0.00000000E+00
+
+================================================================================
+== DATASET  2 ==================================================================
+-   nproc =    1
+
+ mkfilename : getwfk/=0, take file _WFK from output of DATASET   1.
+
+ mkfilename : getden/=0, take file _DEN from output of DATASET   1.
+
+ Exchange-correlation functional for the present dataset will be:
+  LDA: new Teter (4/93) with spin-polarized option - ixc=1
+ Citation for XC functional:
+  S. Goedecker, M. Teter, J. Huetter, PRB 54, 1703 (1996)
+
+ Real(R)+Recip(G) space primitive vectors, cartesian coordinates (Bohr,Bohr^-1):
+ R(1)= 10.0000000  0.0000000  0.0000000  G(1)=  0.1000000  0.0000000  0.0000000
+ R(2)=  0.0000000 10.0000000  0.0000000  G(2)=  0.0000000  0.1000000  0.0000000
+ R(3)=  0.0000000  0.0000000 10.0000000  G(3)=  0.0000000  0.0000000  0.1000000
+ Unit cell volume ucvol=  1.0000000E+03 bohr^3
+ Angles (23,13,12)=  9.00000000E+01  9.00000000E+01  9.00000000E+01 degrees
+
+ getcut: wavevector=  0.0000  0.0000  0.0000  ngfft=  15  15  15
+         ecut(hartree)=      1.800   => boxcut(ratio)=   2.31807
+
+ getcut : COMMENT -
+  Note that boxcut > 2.2 ; recall that boxcut=Gcut(box)/Gcut(sphere) = 2
+  is sufficient for exact treatment of convolution.
+  Such a large boxcut is a waste : you could raise ecut
+  e.g. ecut=    2.418053 Hartrees makes boxcut=2
+
+--------------------------------------------------------------------------------
+
+-inwffil : will read wavefunctions from disk file t10o_DS1_WFK
+P newkpt: treating      6 bands with npw=      62 for ikpt=   1 by node    0
+
+
+================================================================================
+ prteigrs : about to open file t10o_DS2_EIG
+ Non-SCF case, kpt    1 (  0.00000  0.00000  0.00000), residuals and eigenvalues=
+  1.22E-14  4.45E-13  3.57E-05  9.60E-05  6.87E-05  4.12E-05
+ -4.9257E-01 -2.0227E-02  1.4479E-01  1.4504E-01  1.4957E-01  1.5251E-01
+================================================================================
+
+ ----iterations are completed or convergence reached----
+
+ Mean square residual over all n,k,spin=   4.0259E-05; max=  9.5979E-05
+   0.0000  0.0000  0.0000    1  9.59789E-05 kpt; spin; max resid(k); each band:
+  1.22E-14 4.45E-13 3.57E-05 9.60E-05 6.87E-05 4.12E-05
+ reduced coordinates (array xred) for    1 atoms
+       0.000000000000      0.000000000000      0.000000000000
+
+ cartesian coordinates (angstrom) at end:
+    1      0.00000000000000     0.00000000000000     0.00000000000000
+ length scales= 10.000000000000 10.000000000000 10.000000000000 bohr
+              =  5.291772085900  5.291772085900  5.291772085900 angstroms
+ prteigrs : about to open file t10o_DS2_EIG
+ Eigenvalues (hartree) for nkpt=   1  k points:
+ kpt#   1, nband=  6, wtk=  1.00000, kpt=  0.0000  0.0000  0.0000 (reduced coord)
+  -0.49257  -0.02023   0.14479   0.14504   0.14957   0.15251
+ Total charge density [el/Bohr^3]
+,     Maximum=    1.7004E-01  at reduced coord.    0.0000    0.0000    0.0000
+,Next maximum=    1.3247E-01  at reduced coord.    0.0000    0.0000    0.9333
+,     Minimum=    7.7379E-08  at reduced coord.    0.4667    0.4000    0.0000
+,Next minimum=    7.7379E-08  at reduced coord.    0.5333    0.4000    0.0000
+,  Integrated=    2.0000E+00
+
+================================================================================
+== DATASET  3 ==================================================================
+-   nproc =    1
+
+ mkfilename : getwfk/=0, take file _WFK from output of DATASET   2.
+
+ mkfilename : getden/=0, take file _DEN from output of DATASET   1.
+
+ Exchange-correlation functional for the present dataset will be:
+  LDA: new Teter (4/93) with spin-polarized option - ixc=1
+ Citation for XC functional:
+  S. Goedecker, M. Teter, J. Huetter, PRB 54, 1703 (1996)
+
+ inwffil : will read wavefunctions from disk file t10o_DS2_WFK
+ inwffil3: treating      6 bands with npw=      62 for ikpt=   1 by node    0
+
+
+ xcacfd: check on dynamical susceptibility for imaginary frequencies -----------
+  Number of planewaves in the susceptibility matrices          :             123
+  Number of bands used for the susceptibility matrices         :               6
+  Number of imaginary frequencies                              :              16
+  Min. frequency (Ha)                                          :  2.54460438E-02
+  Max. frequency (Ha)                                          :  6.28145429E+01
+  Coulomb cut-off radius (bohr)                                :  5.00000000E+00
+  Number of points used for coupling-constant int. (excl. 0, 1):               3
+  Dyson equation solved as a linear system.
+  Average Kohn-Sham polarizability at min. frequency (1/bohr^3):  5.13438174E+00
+  Average Kohn-Sham polarizability at max. frequency (1/bohr^3):  5.34822348E-04
+  Average       RPA polarizability at min. frequency (1/bohr^3):  3.45871948E+00
+  Average       RPA polarizability at max. frequency (1/bohr^3):  5.34792076E-04
+  Kohn-Sham exchange energy from density matrix (Ha)           : -6.18474880E-01
+. ACFD Kohn-Sham exchange energy (Ha)                          : -6.18474863E-01
+. ACFD-RPA correlation energy (Ha)                             : -5.25959418E-02
+
+================================================================================
+== DATASET  4 ==================================================================
+-   nproc =    1
+
+ mkfilename : getwfk/=0, take file _WFK from output of DATASET   2.
+
+ mkfilename : getden/=0, take file _DEN from output of DATASET   1.
+
+ Exchange-correlation functional for the present dataset will be:
+  LDA: new Teter (4/93) with spin-polarized option - ixc=1
+ Citation for XC functional:
+  S. Goedecker, M. Teter, J. Huetter, PRB 54, 1703 (1996)
+
+ inwffil : will read wavefunctions from disk file t10o_DS2_WFK
+ inwffil3: treating      6 bands with npw=      62 for ikpt=   1 by node    0
+
+
+ xcacfd: The integration over the coupling constant will be performed analytically,
+ using a Coulomb interaction with a cut-off in real space. The interacting
+ susceptiblity matrix, which is not needed in that case, will not be calculated.
+
+ xcacfd: check on dynamical susceptibility for imaginary frequencies -----------
+  Number of planewaves in the susceptibility matrices          :             123
+  Number of bands used for the susceptibility matrices         :               6
+  Number of imaginary frequencies                              :              16
+  Min. frequency (Ha)                                          :  2.54460438E-02
+  Max. frequency (Ha)                                          :  6.28145429E+01
+  Coulomb cut-off radius (bohr)                                :  5.00000000E+00
+  Average Kohn-Sham polarizability at min. frequency (1/bohr^3):  5.13438174E+00
+  Average Kohn-Sham polarizability at max. frequency (1/bohr^3):  5.34822348E-04
+  Kohn-Sham exchange energy from density matrix (Ha)           : -6.18474880E-01
+. ACFD Kohn-Sham exchange energy (Ha)                          : -6.18474863E-01
+. ACFD-RPA correlation energy (Ha)                             : -5.25955432E-02
+
+================================================================================
+== DATASET  5 ==================================================================
+-   nproc =    1
+
+ mkfilename : getwfk/=0, take file _WFK from output of DATASET   2.
+
+ mkfilename : getden/=0, take file _DEN from output of DATASET   1.
+
+ Exchange-correlation functional for the present dataset will be:
+  LDA: new Teter (4/93) with spin-polarized option - ixc=1
+ Citation for XC functional:
+  S. Goedecker, M. Teter, J. Huetter, PRB 54, 1703 (1996)
+
+ inwffil : will read wavefunctions from disk file t10o_DS2_WFK
+ inwffil3: treating      6 bands with npw=      62 for ikpt=   1 by node    0
+
+
+ xcacfd: check on dynamical susceptibility for imaginary frequencies -----------
+  Number of planewaves in the susceptibility matrices          :             123
+  Number of bands used for the susceptibility matrices         :               6
+  Number of imaginary frequencies                              :               1
+  Min. frequency (Ha)                                          :  0.00000000E+00
+  Max. frequency (Ha)                                          :  0.00000000E+00
+  Coulomb cut-off radius (bohr)                                :  5.00000000E+00
+  Number of points used for coupling-constant int. (excl. 0, 1):               5
+  Dyson equation solved as a differential equation.
+  Average Kohn-Sham polarizability at min. frequency (1/bohr^3):  5.14255412E+00
+  Average Kohn-Sham polarizability at max. frequency (1/bohr^3):  5.14255412E+00
+  Average       PGG polarizability at min. frequency (1/bohr^3):  4.06230743E+00
+  Average       PGG polarizability at max. frequency (1/bohr^3):  4.06230743E+00
+  Kohn-Sham exchange energy from density matrix (Ha)           : -6.18474880E-01
+. ACFD Kohn-Sham exchange energy (Ha)                          : -6.08490038E-01
+. ACFD-PGG correlation energy (Ha)                             : -5.78231292E-02
+. Lein, Dobson and Gross first-order approximation (Ha)        : -6.61808749E-02
+
+================================================================================
+== DATASET  6 ==================================================================
+-   nproc =    1
+
+ mkfilename : getwfk/=0, take file _WFK from output of DATASET   2.
+
+ mkfilename : getden/=0, take file _DEN from output of DATASET   1.
+
+ Exchange-correlation functional for the present dataset will be:
+  LDA: new Teter (4/93) with spin-polarized option - ixc=1
+ Citation for XC functional:
+  S. Goedecker, M. Teter, J. Huetter, PRB 54, 1703 (1996)
+
+ inwffil : will read wavefunctions from disk file t10o_DS2_WFK
+ inwffil3: treating      6 bands with npw=      62 for ikpt=   1 by node    0
+
+
+ xcacfd: check on dynamical susceptibility for imaginary frequencies -----------
+  Number of planewaves in the susceptibility matrices          :             123
+  Number of bands used for the susceptibility matrices         :               6
+  Number of imaginary frequencies                              :               1
+  Min. frequency (Ha)                                          :  0.00000000E+00
+  Max. frequency (Ha)                                          :  0.00000000E+00
+  Coulomb cut-off radius (bohr)                                :  5.00000000E+00
+  Number of points used for coupling-constant int. (excl. 0, 1):               3
+  Dyson equation solved as a linear system.
+  Average Kohn-Sham polarizability at min. frequency (1/bohr^3):  5.14255412E+00
+  Average Kohn-Sham polarizability at max. frequency (1/bohr^3):  5.14255412E+00
+  Average      ALDA polarizability at min. frequency (1/bohr^3):  5.61044926E+00
+  Average      ALDA polarizability at max. frequency (1/bohr^3):  5.61044926E+00
+  Kohn-Sham exchange energy from density matrix (Ha)           : -6.18474880E-01
+. ACFD Kohn-Sham exchange energy (Ha)                          : -6.08490038E-01
+. ACFD-ALDA correlation energy (Ha)                            :  7.30401401E-02
+
+================================================================================
+== DATASET  7 ==================================================================
+-   nproc =    1
+
+ mkfilename : getwfk/=0, take file _WFK from output of DATASET   2.
+
+ mkfilename : getden/=0, take file _DEN from output of DATASET   1.
+
+ Exchange-correlation functional for the present dataset will be:
+  LDA: new Teter (4/93) with spin-polarized option - ixc=1
+ Citation for XC functional:
+  S. Goedecker, M. Teter, J. Huetter, PRB 54, 1703 (1996)
+
+ inwffil : will read wavefunctions from disk file t10o_DS2_WFK
+ inwffil3: treating      6 bands with npw=      62 for ikpt=   1 by node    0
+
+
+ xcacfd: check on dynamical susceptibility for imaginary frequencies -----------
+  Number of planewaves in the susceptibility matrices          :             123
+  Number of bands used for the susceptibility matrices         :               5
+  Number of imaginary frequencies                              :               1
+  Min. frequency (Ha)                                          :  0.00000000E+00
+  Max. frequency (Ha)                                          :  0.00000000E+00
+  Coulomb cut-off radius (bohr)                                :  5.00000000E+00
+  Number of points used for coupling-constant int. (excl. 0, 1):               3
+  Dyson equation solved as a linear system.
+  Average Kohn-Sham polarizability at min. frequency (1/bohr^3):  5.16187682E+00
+  Average Kohn-Sham polarizability at max. frequency (1/bohr^3):  5.16187682E+00
+  Average      ALDA polarizability at min. frequency (1/bohr^3):  5.63531606E+00
+  Average      ALDA polarizability at max. frequency (1/bohr^3):  5.63531606E+00
+  Kohn-Sham exchange energy from density matrix (Ha)           : -6.18474880E-01
+. ACFD Kohn-Sham exchange energy (Ha)                          : -6.11431043E-01
+. ACFD-ALDA correlation energy (Ha)                            :  7.38090558E-02
+
+================================================================================
+== DATASET  8 ==================================================================
+-   nproc =    1
+
+ mkfilename : getwfk/=0, take file _WFK from output of DATASET   2.
+
+ mkfilename : getden/=0, take file _DEN from output of DATASET   1.
+
+ Exchange-correlation functional for the present dataset will be:
+  LDA: new Teter (4/93) with spin-polarized option - ixc=1
+ Citation for XC functional:
+  S. Goedecker, M. Teter, J. Huetter, PRB 54, 1703 (1996)
+
+ inwffil : will read wavefunctions from disk file t10o_DS2_WFK
+ inwffil3: treating      6 bands with npw=      62 for ikpt=   1 by node    0
+
+
+ xcacfd: check on dynamical susceptibility for imaginary frequencies -----------
+  Number of planewaves in the susceptibility matrices          :             123
+  Number of bands used for the susceptibility matrices         :               6
+  Number of imaginary frequencies                              :               1
+  Min. frequency (Ha)                                          :  0.00000000E+00
+  Max. frequency (Ha)                                          :  0.00000000E+00
+  Coulomb cut-off radius (bohr)                                :  5.00000000E+00
+  Number of points used for coupling-constant int. (excl. 0, 1):               3
+  Dyson equation solved as a linear system.
+  Average Kohn-Sham polarizability at min. frequency (1/bohr^3):  5.14255412E+00
+  Average Kohn-Sham polarizability at max. frequency (1/bohr^3):  5.14255412E+00
+  Average       BPG polarizability at min. frequency (1/bohr^3):  4.59081241E+00
+  Average       BPG polarizability at max. frequency (1/bohr^3):  4.59081241E+00
+  Kohn-Sham exchange energy from density matrix (Ha)           : -6.18474880E-01
+. ACFD Kohn-Sham exchange energy (Ha)                          : -6.08490038E-01
+. ACFD-BPG correlation energy (Ha)                             : -2.47453334E-02
+
+================================================================================
+== DATASET  9 ==================================================================
+-   nproc =    1
+
+ mkfilename : getwfk/=0, take file _WFK from output of DATASET   2.
+
+ mkfilename : getden/=0, take file _DEN from output of DATASET   1.
+
+ Exchange-correlation functional for the present dataset will be:
+  LDA: new Teter (4/93) with spin-polarized option - ixc=1
+ Citation for XC functional:
+  S. Goedecker, M. Teter, J. Huetter, PRB 54, 1703 (1996)
+
+ inwffil : will read wavefunctions from disk file t10o_DS2_WFK
+ inwffil3: treating      6 bands with npw=      62 for ikpt=   1 by node    0
+
+
+ xcacfd: check on dynamical susceptibility for imaginary frequencies -----------
+  Number of planewaves in the susceptibility matrices          :             123
+  Number of bands used for the susceptibility matrices         :               6
+  Number of imaginary frequencies                              :               1
+  Min. frequency (Ha)                                          :  0.00000000E+00
+  Max. frequency (Ha)                                          :  0.00000000E+00
+  Coulomb cut-off radius (bohr)                                :  5.00000000E+00
+  Number of points used for coupling-constant int. (excl. 0, 1):               3
+  Dyson equation solved as a linear system.
+  Average Kohn-Sham polarizability at min. frequency (1/bohr^3):  5.14255412E+00
+  Average Kohn-Sham polarizability at max. frequency (1/bohr^3):  5.14255412E+00
+  Average      EOK1 polarizability at min. frequency (1/bohr^3):  4.20981764E+00
+  Average      EOK1 polarizability at max. frequency (1/bohr^3):  4.20981764E+00
+  Kohn-Sham exchange energy from density matrix (Ha)           : -6.18474880E-01
+. ACFD Kohn-Sham exchange energy (Ha)                          : -6.08490038E-01
+. ACFD-EOK1 correlation energy (Ha)                            : -2.47477327E-02
+
+================================================================================
+== DATASET 10 ==================================================================
+-   nproc =    1
+
+ mkfilename : getwfk/=0, take file _WFK from output of DATASET   2.
+
+ mkfilename : getden/=0, take file _DEN from output of DATASET   1.
+
+ Exchange-correlation functional for the present dataset will be:
+  LDA: new Teter (4/93) with spin-polarized option - ixc=1
+ Citation for XC functional:
+  S. Goedecker, M. Teter, J. Huetter, PRB 54, 1703 (1996)
+
+ inwffil : will read wavefunctions from disk file t10o_DS2_WFK
+ inwffil3: treating      6 bands with npw=      62 for ikpt=   1 by node    0
+
+
+ xcacfd: check on dynamical susceptibility for imaginary frequencies -----------
+  Number of planewaves in the susceptibility matrices          :             123
+  Number of bands used for the susceptibility matrices         :               6
+  Number of imaginary frequencies                              :               1
+  Min. frequency (Ha)                                          :  0.00000000E+00
+  Max. frequency (Ha)                                          :  0.00000000E+00
+  Coulomb cut-off radius (bohr)                                :  5.00000000E+00
+  Number of points used for coupling-constant int. (excl. 0, 1):               3
+  Dyson equation solved as a linear system.
+  Average Kohn-Sham polarizability at min. frequency (1/bohr^3):  5.14255412E+00
+  Average Kohn-Sham polarizability at max. frequency (1/bohr^3):  5.14255412E+00
+  Average      EOK2 polarizability at min. frequency (1/bohr^3):  4.17169401E+00
+  Average      EOK2 polarizability at max. frequency (1/bohr^3):  4.17169401E+00
+  Kohn-Sham exchange energy from density matrix (Ha)           : -6.18474880E-01
+. ACFD Kohn-Sham exchange energy (Ha)                          : -6.08490038E-01
+. ACFD-EOK2 correlation energy (Ha)                            : -2.68708277E-02
+
+== END DATASET(S) ==============================================================
+================================================================================
+  
+ -outvars: echo values of variables after computation  --------
+            acell      1.0000000000E+01  1.0000000000E+01  1.0000000000E+01 Bohr
+              amu      4.00260200E+00
+           diecut1     2.20000000E+00 Hartree
+           diecut2     2.20000000E+00 Hartree
+           diecut3     1.80000000E+00 Hartree
+           diecut4     1.80000000E+00 Hartree
+           diecut5     1.80000000E+00 Hartree
+           diecut6     1.80000000E+00 Hartree
+           diecut7     1.80000000E+00 Hartree
+           diecut8     1.80000000E+00 Hartree
+           diecut9     1.80000000E+00 Hartree
+           diecut10    1.80000000E+00 Hartree
+           diegap1     1.00000000E-01 Hartree
+           diegap2     1.00000000E-01 Hartree
+           diegap3     0.00000000E+00 Hartree
+           diegap4     0.00000000E+00 Hartree
+           diegap5     0.00000000E+00 Hartree
+           diegap6     0.00000000E+00 Hartree
+           diegap7     0.00000000E+00 Hartree
+           diegap8     0.00000000E+00 Hartree
+           diegap9     0.00000000E+00 Hartree
+           diegap10    0.00000000E+00 Hartree
+           dielam1     5.00000000E-01
+           dielam2     5.00000000E-01
+           dielam3     1.00000000E+00
+           dielam4     1.00000000E+00
+           dielam5     1.00000000E+00
+           dielam6     1.00000000E+00
+           dielam7     1.00000000E+00
+           dielam8     1.00000000E+00
+           dielam9     1.00000000E+00
+           dielam10    1.00000000E+00
+           diemac      1.00000000E+00
+             ecut      1.80000000E+00 Hartree
+           etotal1    -2.0540966470E+00
+           etotal3     0.0000000000E+00
+           etotal4     0.0000000000E+00
+           etotal5     0.0000000000E+00
+           etotal6     0.0000000000E+00
+           etotal7     0.0000000000E+00
+           etotal8     0.0000000000E+00
+           etotal9     0.0000000000E+00
+           etotal10    0.0000000000E+00
+            fcart1    -0.0000000000E+00 -0.0000000000E+00 -0.0000000000E+00
+            fcart3     0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+            fcart4     0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+            fcart5     0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+            fcart6     0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+            fcart7     0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+            fcart8     0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+            fcart9     0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+            fcart10    0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+        freqsuslo1     1.00000000E+00
+        freqsuslo2     1.00000000E+00
+        freqsuslo3     1.00000000E+00
+        freqsuslo4     1.00000000E+00
+        freqsuslo5     0.00000000E+00
+        freqsuslo6     0.00000000E+00
+        freqsuslo7     0.00000000E+00
+        freqsuslo8     0.00000000E+00
+        freqsuslo9     0.00000000E+00
+        freqsuslo10    0.00000000E+00
+           getden1          0
+           getden2          1
+           getden3          1
+           getden4          1
+           getden5          1
+           getden6          1
+           getden7          1
+           getden8          1
+           getden9          1
+           getden10         1
+           getwfk1          0
+           getwfk2          1
+           getwfk3          2
+           getwfk4          2
+           getwfk5          2
+           getwfk6          2
+           getwfk7          2
+           getwfk8          2
+           getwfk9          2
+           getwfk10         2
+           idyson1          1
+           idyson2          1
+           idyson3          1
+           idyson4          1
+           idyson5          2
+           idyson6          1
+           idyson7          1
+           idyson8          1
+           idyson9          1
+           idyson10         1
+            ikhxc1          0
+            ikhxc2          0
+            ikhxc3          1
+            ikhxc4          1
+            ikhxc5          3
+            ikhxc6          2
+            ikhxc7          2
+            ikhxc8          4
+            ikhxc9          5
+            ikhxc10         6
+         intexact1          0
+         intexact2          0
+         intexact3          0
+         intexact4          1
+         intexact5          0
+         intexact6          0
+         intexact7          0
+         intexact8          0
+         intexact9          0
+         intexact10         0
+             iscf1          5
+             iscf2         -2
+             iscf3          5
+             iscf4          5
+             iscf5          5
+             iscf6          5
+             iscf7          5
+             iscf8          5
+             iscf9          5
+             iscf10         5
+           istwfk        2
+           jdtset        1    2    3    4    5    6    7    8    9   10
+           kptopt           0
+           ldgapp1          0
+           ldgapp2          0
+           ldgapp3          0
+           ldgapp4          0
+           ldgapp5          1
+           ldgapp6          0
+           ldgapp7          0
+           ldgapp8          0
+           ldgapp9          0
+           ldgapp10         0
+P           mkmem           1
+            natom           1
+            nband1          2
+            nband2          6
+            nband3          6
+            nband4          6
+            nband5          6
+            nband6          6
+            nband7          6
+            nband8          6
+            nband9          6
+            nband10         6
+         nbandsus1         -1
+         nbandsus2         -1
+         nbandsus3         -1
+         nbandsus4         -1
+         nbandsus5         -1
+         nbandsus6         -1
+         nbandsus7          5
+         nbandsus8         -1
+         nbandsus9         -1
+         nbandsus10        -1
+           nbdbuf1          0
+           nbdbuf2          2
+           nbdbuf3          0
+           nbdbuf4          0
+           nbdbuf5          0
+           nbdbuf6          0
+           nbdbuf7          0
+           nbdbuf8          0
+           nbdbuf9          0
+           nbdbuf10         0
+           ndtset          10
+           ndyson1         -1
+           ndyson2         -1
+           ndyson3          3
+           ndyson4         -1
+           ndyson5          5
+           ndyson6          3
+           ndyson7          3
+           ndyson8          3
+           ndyson9          3
+           ndyson10         3
+         nfreqsus1          0
+         nfreqsus2          0
+         nfreqsus3         16
+         nfreqsus4         16
+         nfreqsus5          1
+         nfreqsus6          1
+         nfreqsus7          1
+         nfreqsus8          1
+         nfreqsus9          1
+         nfreqsus10         1
+            ngfft          15      15      15
+             nkpt           1
+            nstep1         25
+            nstep2         25
+            nstep3         30
+            nstep4         30
+            nstep5         30
+            nstep6         30
+            nstep7         30
+            nstep8         30
+            nstep9         30
+            nstep10        30
+             nsym          48
+           ntypat           1
+              occ1     2.000000  0.000000
+              occ3     2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+              occ4     2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+              occ5     2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+              occ6     2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+              occ7     2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+              occ8     2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+              occ9     2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+              occ10    2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+        optdriver1          0
+        optdriver2          0
+        optdriver3          2
+        optdriver4          2
+        optdriver5          2
+        optdriver6          2
+        optdriver7          2
+        optdriver8          2
+        optdriver9          2
+        optdriver10         2
+       optfreqsus1          2
+       optfreqsus2          2
+       optfreqsus3          0
+       optfreqsus4          0
+       optfreqsus5          0
+       optfreqsus6          0
+       optfreqsus7          0
+       optfreqsus8          0
+       optfreqsus9          0
+       optfreqsus10         0
+          spgroup         221
+           strten1     5.2514639706E-04  5.2514639706E-04  5.2514639706E-04
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+           strten3     0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+           strten4     0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+           strten5     0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+           strten6     0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+           strten7     0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+           strten8     0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+           strten9     0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+           strten10    0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+           symrel      1  0  0   0  1  0   0  0  1      -1  0  0   0 -1  0   0  0 -1
+                      -1  0  0   0  1  0   0  0 -1       1  0  0   0 -1  0   0  0  1
+                      -1  0  0   0 -1  0   0  0  1       1  0  0   0  1  0   0  0 -1
+                       1  0  0   0 -1  0   0  0 -1      -1  0  0   0  1  0   0  0  1
+                       0  1  0   1  0  0   0  0  1       0 -1  0  -1  0  0   0  0 -1
+                       0 -1  0   1  0  0   0  0 -1       0  1  0  -1  0  0   0  0  1
+                       0 -1  0  -1  0  0   0  0  1       0  1  0   1  0  0   0  0 -1
+                       0  1  0  -1  0  0   0  0 -1       0 -1  0   1  0  0   0  0  1
+                       0  0  1   1  0  0   0  1  0       0  0 -1  -1  0  0   0 -1  0
+                       0  0 -1   1  0  0   0 -1  0       0  0  1  -1  0  0   0  1  0
+                       0  0 -1  -1  0  0   0  1  0       0  0  1   1  0  0   0 -1  0
+                       0  0  1  -1  0  0   0 -1  0       0  0 -1   1  0  0   0  1  0
+                       1  0  0   0  0  1   0  1  0      -1  0  0   0  0 -1   0 -1  0
+                      -1  0  0   0  0  1   0 -1  0       1  0  0   0  0 -1   0  1  0
+                      -1  0  0   0  0 -1   0  1  0       1  0  0   0  0  1   0 -1  0
+                       1  0  0   0  0 -1   0 -1  0      -1  0  0   0  0  1   0  1  0
+                       0  1  0   0  0  1   1  0  0       0 -1  0   0  0 -1  -1  0  0
+                       0 -1  0   0  0  1  -1  0  0       0  1  0   0  0 -1   1  0  0
+                       0 -1  0   0  0 -1   1  0  0       0  1  0   0  0  1  -1  0  0
+                       0  1  0   0  0 -1  -1  0  0       0 -1  0   0  0  1   1  0  0
+                       0  0  1   0  1  0   1  0  0       0  0 -1   0 -1  0  -1  0  0
+                       0  0 -1   0  1  0  -1  0  0       0  0  1   0 -1  0   1  0  0
+                       0  0 -1   0 -1  0   1  0  0       0  0  1   0  1  0  -1  0  0
+                       0  0  1   0 -1  0  -1  0  0       0  0 -1   0  1  0   1  0  0
+           tolvrs1     1.00000000E-08
+           tolvrs2     0.00000000E+00
+           tolvrs3     0.00000000E+00
+           tolvrs4     0.00000000E+00
+           tolvrs5     0.00000000E+00
+           tolvrs6     0.00000000E+00
+           tolvrs7     0.00000000E+00
+           tolvrs8     0.00000000E+00
+           tolvrs9     0.00000000E+00
+           tolvrs10    0.00000000E+00
+           tolwfr1     0.00000000E+00
+           tolwfr2     1.00000000E-04
+           tolwfr3     0.00000000E+00
+           tolwfr4     0.00000000E+00
+           tolwfr5     0.00000000E+00
+           tolwfr6     0.00000000E+00
+           tolwfr7     0.00000000E+00
+           tolwfr8     0.00000000E+00
+           tolwfr9     0.00000000E+00
+           tolwfr10    0.00000000E+00
+            typat      1
+            znucl        2.00000
+
+================================================================================
+
+
+- Timing analysis has been suppressed with timopt=0
+
+
+
+================================================================================
+
+ Suggested references for the acknowledgment of ABINIT usage.
+
+ The users of ABINIT have little formal obligations with respect to the ABINIT group
+ (those specified in the GNU General Public License, http://www.gnu.org/copyleft/gpl.txt).
+ However, it is common practice in the scientific literature,
+ to acknowledge the efforts of people that have made the research possible.
+ In this spirit, please find below suggested citations of work written by ABINIT developers,
+ corresponding to implementations inside of ABINIT that you have used in the present run.
+ Note also that it will be of great value to readers of publications presenting these results,
+ to read papers enabling them to understand the theoretical formalism and details
+ of the ABINIT implementation.
+ For information on why they are suggested, see also http://www.abinit.org/about/?text=acknowledgments.
+
+ [1] Ab initio pseudopotentials for electronic structure calculations of poly-atomic systems, 
+ using density-functional theory.
+ M. Fuchs, M. Scheffler, Comput. Phys. Commun. 119, 67 (1999).
+ Comment : Some pseudopotential generated using the FHI code were used.
+
+ [2] ABINIT : First-principles approach of materials and nanosystem properties.
+ X. Gonze, B. Amadon, P.-M. Anglade, J.-M. Beuken, F. Bottin, P. Boulanger, F. Bruneval,
+ D. Caliste, R. Caracas, M. Cote, T. Deutsch, L. Genovese, Ph. Ghosez, M. Giantomassi
+ S. Goedecker, D.R. Hamann, P. Hermet, F. Jollet, G. Jomard, S. Leroux, M. Mancini, S. Mazevet,
+ M.J.T. Oliveira, G. Onida, Y. Pouillon, T. Rangel, G.-M. Rignanese, D. Sangalli, R. Shaltaf,
+ M. Torrent, M.J. Verstraete, G. Zerah, J.W. Zwanziger
+ Computer Phys. Comm. 180, 2582-2615 (2009).
+ Comment : the third generic paper describing the ABINIT project.
+ Note that a version of this paper, that is not formatted for Computer Phys. Comm. 
+ is available at http://www.abinit.org/about/ABINIT_CPC_v10.pdf .
+ The licence allows the authors to put it on the Web.
+
+ [3] A brief introduction to the ABINIT software package.
+ X. Gonze, G.-M. Rignanese, M. Verstraete, J.-M. Beuken, Y. Pouillon, R. Caracas, F. Jollet,
+ M. Torrent, G. Zerah, M. Mikami, Ph. Ghosez, M. Veithen, J.-Y. Raty, V. Olevano, F. Bruneval,
+ L. Reining, R. Godby, G. Onida, D.R. Hamann, and D.C. Allan.
+ Z. Kristallogr. 220, 558-562 (2005).
+ Comment : the second generic paper describing the ABINIT project. Note that this paper
+ should be cited especially if you are using the GW part of ABINIT, as several authors
+ of this part are not in the list of authors of the first or third paper.
+ The .pdf of the latter paper is available at http://www.abinit.org/about/zfk_0505-06_558-562.pdf.
+ Note that it should not redistributed (Copyright by Oldenburg Wissenshaftverlag,
+ the licence allows the authors to put it on the Web).
+
+
+ And optionally :
+
+ [4] First-principles computation of material properties : the ABINIT software project. 
+ X. Gonze, J.-M. Beuken, R. Caracas, F. Detraux, M. Fuchs, G.-M. Rignanese, L. Sindic,
+ M. Verstraete, G. Zerah, F. Jollet, M. Torrent, A. Roy, M. Mikami, Ph. Ghosez, J.-Y. Raty, D.C. Allan.
+ Computational Materials Science 25, 478-492 (2002). http://dx.doi.org/10.1016/S0927-0256(02)00325-7
+ Comment : the original paper describing the ABINIT project.
+
+ [5] Fast radix 2, 3, 4 and 5 kernels for Fast Fourier Transformations
+ on computers with overlapping multiply-add instructions.
+ S. Goedecker, SIAM J. on Scientific Computing 18, 1605 (1997).
+-
+- Proc.   0 individual time (sec): cpu=          2.6  wall=          2.6
+
+================================================================================
+
+ Calculation completed.
+.Delivered   21 WARNINGs and  24 COMMENTs to log file.
++Overall time at end (sec) : cpu=          2.6  wall=          2.6

@@ -1,0 +1,1596 @@
+
+.Version 7.10.4 of CUT3D 
+.(MPI version, prepared for a x86_64_linux_gnu4.7 computer) 
+
+.Copyright (C) 1998-2014 ABINIT group . 
+ CUT3D comes with ABSOLUTELY NO WARRANTY.
+ It is free software, and you are welcome to redistribute it
+ under certain conditions (GNU General Public License,
+ see ~abinit/COPYING or http://www.gnu.org/copyleft/gpl.txt).
+
+ ABINIT is a project of the Universite Catholique de Louvain,
+ Corning Inc. and other collaborators, see ~abinit/doc/developers/contributors.txt .
+ Please read ~abinit/doc/users/acknowledgments.html for suggested
+ acknowledgments of the ABINIT effort.
+ For more information, see http://www.abinit.org .
+
+.Starting date : Wed 11 Mar 2015.
+- ( at 10h26 )
+  
+
+  What is the name of the 3D function (density, potential or wavef) file ?
+  => Your 3D function file is : t47o_DS2_WFK
+
+  Does this file contain formatted 3D ASCII data (=0)  
+   or unformatted binary header + 3D data        (=1) ?
+   or ETSF binary                                (=2) ?
+  1 => Your file contains unformatted binary header + 3D data
+  The information it contains should be sufficient.
+  cut3d : read file t47o_DS2_WFK from unit number 19.
+
+ ===============================================================================
+ ECHO of the ABINIT file header 
+ 
+ First record :
+.codvsn,headform,fform = 7.10.4   57    2
+ 
+ Second record :
+ bantot,intxc,ixc,natom  =   108     0     3     2
+ ngfft(1:3),nkpt         =    15    15    15    27
+ nspden,nspinor          =     1     1
+ nsppol,nsym,npsp,ntypat =     1    48     1     1
+ occopt,pertcase,usepaw  =     1     0     0
+ ecut,ecutdg,ecutsm      =  4.0000000000E+00  4.0000000000E+00  0.0000000000E+00
+ ecut_eff                =  4.0000000000E+00
+ qptn(1:3)               =  0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+ rprimd(1:3,1)           =  0.0000000000E+00  5.1022625650E+00  5.1022625650E+00
+ rprimd(1:3,2)           =  5.1022625650E+00  0.0000000000E+00  5.1022625650E+00
+ rprimd(1:3,3)           =  5.1022625650E+00  5.1022625650E+00  0.0000000000E+00
+ stmbias,tphysel,tsmear  =  0.0000000000E+00  0.0000000000E+00  4.0000000000E-02
+
+ Third record :
+ istwfk=   2   1   1   1   1   1   1   1   1   1   1   1
+   1   1   1   1   1   1   1   1   1   1   1   1
+   1   1   1
+ nband =   4   4   4   4   4   4   4   4   4   4   4   4
+   4   4   4   4   4   4   4   4   4   4   4   4
+   4   4   4
+ npwarr=   57   98   98   98  104  101   98  101  104   98
+  104  101  104   98  101  101  101  101   98  101
+  104  101  101  101  104  101   98
+ so_psp=   1
+ symafm=
+          1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+          1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+ symrel=
+           1   0   0   0   1   0   0   0   1    -1   0   0   0  -1   0   0   0  -1
+           0  -1   1   0  -1   0   1  -1   0     0   1  -1   0   1   0  -1   1   0
+          -1   0   0  -1   0   1  -1   1   0     1   0   0   1   0  -1   1  -1   0
+           0   1  -1   1   0  -1   0   0  -1     0  -1   1  -1   0   1   0   0   1
+          -1   0   0  -1   1   0  -1   0   1     1   0   0   1  -1   0   1   0  -1
+           0  -1   1   1  -1   0   0  -1   0     0   1  -1  -1   1   0   0   1   0
+           1   0   0   0   0   1   0   1   0    -1   0   0   0   0  -1   0  -1   0
+           0   1  -1   0   0  -1   1   0  -1     0  -1   1   0   0   1  -1   0   1
+          -1   0   1  -1   1   0  -1   0   0     1   0  -1   1  -1   0   1   0   0
+           0  -1   0   1  -1   0   0  -1   1     0   1   0  -1   1   0   0   1  -1
+           1   0  -1   0   0  -1   0   1  -1    -1   0   1   0   0   1   0  -1   1
+           0   1   0   0   0   1   1   0   0     0  -1   0   0   0  -1  -1   0   0
+           1   0  -1   0   1  -1   0   0  -1    -1   0   1   0  -1   1   0   0   1
+           0  -1   0   0  -1   1   1  -1   0     0   1   0   0   1  -1  -1   1   0
+          -1   0   1  -1   0   0  -1   1   0     1   0  -1   1   0   0   1  -1   0
+           0   1   0   1   0   0   0   0   1     0  -1   0  -1   0   0   0   0  -1
+           0   0  -1   0   1  -1   1   0  -1     0   0   1   0  -1   1  -1   0   1
+           1  -1   0   0  -1   1   0  -1   0    -1   1   0   0   1  -1   0   1   0
+           0   0   1   1   0   0   0   1   0     0   0  -1  -1   0   0   0  -1   0
+          -1   1   0  -1   0   0  -1   0   1     1  -1   0   1   0   0   1   0  -1
+           0   0   1   0   1   0   1   0   0     0   0  -1   0  -1   0  -1   0   0
+           1  -1   0   0  -1   0   0  -1   1    -1   1   0   0   1   0   0   1  -1
+           0   0  -1   1   0  -1   0   1  -1     0   0   1  -1   0   1   0  -1   1
+          -1   1   0  -1   0   1  -1   0   0     1  -1   0   1   0  -1   1   0   0
+ type  =   1   1
+ kptns =                 (max 50 k-points will be written)
+            0.000000E+00    0.000000E+00    0.000000E+00
+            3.333333E-01    0.000000E+00    0.000000E+00
+           -3.333333E-01    0.000000E+00    0.000000E+00
+            0.000000E+00    3.333333E-01    0.000000E+00
+            3.333333E-01    3.333333E-01    0.000000E+00
+           -3.333333E-01    3.333333E-01    0.000000E+00
+            0.000000E+00   -3.333333E-01    0.000000E+00
+            3.333333E-01   -3.333333E-01    0.000000E+00
+           -3.333333E-01   -3.333333E-01    0.000000E+00
+            0.000000E+00    0.000000E+00    3.333333E-01
+            3.333333E-01    0.000000E+00    3.333333E-01
+           -3.333333E-01    0.000000E+00    3.333333E-01
+            0.000000E+00    3.333333E-01    3.333333E-01
+            3.333333E-01    3.333333E-01    3.333333E-01
+           -3.333333E-01    3.333333E-01    3.333333E-01
+            0.000000E+00   -3.333333E-01    3.333333E-01
+            3.333333E-01   -3.333333E-01    3.333333E-01
+           -3.333333E-01   -3.333333E-01    3.333333E-01
+            0.000000E+00    0.000000E+00   -3.333333E-01
+            3.333333E-01    0.000000E+00   -3.333333E-01
+           -3.333333E-01    0.000000E+00   -3.333333E-01
+            0.000000E+00    3.333333E-01   -3.333333E-01
+            3.333333E-01    3.333333E-01   -3.333333E-01
+           -3.333333E-01    3.333333E-01   -3.333333E-01
+            0.000000E+00   -3.333333E-01   -3.333333E-01
+            3.333333E-01   -3.333333E-01   -3.333333E-01
+           -3.333333E-01   -3.333333E-01   -3.333333E-01
+ wtk =
+          0.04  0.04  0.04  0.04  0.04  0.04  0.04  0.04  0.04  0.04
+          0.04  0.04  0.04  0.04  0.04  0.04  0.04  0.04  0.04  0.04
+          0.04  0.04  0.04  0.04  0.04  0.04  0.04
+   occ =
+          2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00
+          2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00
+          2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00
+          2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00
+          2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00
+          2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00
+          2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00
+          2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00
+          2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00
+          2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00
+          2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00
+ tnons =
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+  znucl= 14.00
+
+ Pseudopotential info :
+ title=2 bohr rc 15 hartree ec psp for silicon 8 November 1991 (new)
+  znuclpsp= 14.00, zionpsp=  4.00, pspso=  0, pspdat=980710, pspcod=  5, pspxc=  3
+  lmnmax  =  4
+ 
+ Last record :
+ residm,etot,fermie=    9.009961E-13   -7.817057267462E+00    0.000000E+00
+ xred =
+            0.000000E+00    0.000000E+00    0.000000E+00
+            2.500000E-01    2.500000E-01    2.500000E-01
+ End the ECHO of the ABINIT file header 
+ ===============================================================================
+
+ ===========================================================
+
+ ECHO important input variables ...
+
+  Dimensional primitive vectors (ABINIT equivalent : rprimd):
+    0.000000E+00    5.102263E+00    5.102263E+00
+    5.102263E+00    0.000000E+00    5.102263E+00
+    5.102263E+00    5.102263E+00    0.000000E+00
+  Grid density (ABINIT equivalent : ngfft):    15   15   15
+  Number of atoms       :           2
+  Number of atomic types:           1
+
+   #    Atomic positions (cartesian coordinates - Bohr)
+   1    0.000000E+00    0.000000E+00    0.000000E+00
+   2    2.551131E+00    2.551131E+00    2.551131E+00
+
+  This file is a WF file. 
+  If you want to analyze one wavefunction,                   type  0 
+  If you want to construct Wannier-type Localized Orbitals,  type  2 
+  You typed            2
+-instrng :    42 lines of input have been read from file t48.in_aux
+
+
+ Echoing out the read input variables for WLO calculation:
+
+ ncenter        4
+ norb           4
+ supercell      3   3   3
+ wfcell         3   3   3
+ alpha           1.000000E+00
+ lofwrite       1
+ shiftk          0.000000E+00    0.000000E+00    0.000000E+00
+ insmet         1
+ efermi          0.000000E+00
+ tsmear          0.000000E+00
+ For each atom :        rcoord(1:3)                                 numorb
+           1    1.250000E-01    1.250000E-01    1.250000E-01          1
+           2    6.250000E-01    1.250000E-01    1.250000E-01          1
+           3    1.250000E-01    6.250000E-01    1.250000E-01          1
+           4    1.250000E-01    1.250000E-01    6.250000E-01          1
+ For each orbital : spin, ltypeorb     and      rtheta(1:3) 
+           1         1         1        0.000000E+00    0.000000E+00    0.000000E+00
+           2         1         1        0.000000E+00    0.000000E+00    0.000000E+00
+           3         1         1        0.000000E+00    0.000000E+00    0.000000E+00
+           4         1         1        0.000000E+00    0.000000E+00    0.000000E+00
+ wfconstrctn    4
+ They are :
+    1   2   3   4
+ real space grids:    15    15    15
+ k space grids:     3     3     3
+ rlx rly rlz    1.020453E+01    1.020453E+01    1.020453E+01
+ Box width outside which localized template is set to zero:
+          15  x           15  x           15
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   1   1
+ folded to:   3   3   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   1   1
+ folded to:   1   3   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   1   1
+ folded to:   2   3   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   2   1
+ folded to:   3   1   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   2   1
+ folded to:   1   1   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   2   1
+ folded to:   2   1   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   3   1
+ folded to:   3   2   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   3   1
+ folded to:   1   2   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   3   1
+ folded to:   2   2   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   1   2
+ folded to:   3   3   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   1   2
+ folded to:   1   3   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   1   2
+ folded to:   2   3   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   2   2
+ folded to:   3   1   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   2   2
+ folded to:   1   1   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   2   2
+ folded to:   2   1   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   3   2
+ folded to:   3   2   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   3   2
+ folded to:   1   2   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   3   2
+ folded to:   2   2   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   1   3
+ folded to:   3   3   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   1   3
+ folded to:   1   3   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   1   3
+ folded to:   2   3   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   2   3
+ folded to:   3   1   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   2   3
+ folded to:   1   1   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   2   3
+ folded to:   2   1   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   3   3
+ folded to:   3   2   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   3   3
+ folded to:   1   2   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   3   3
+ folded to:   2   2   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  reading
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   1   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   1   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   1   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   2   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   2   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   2   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   3   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   3   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   3   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   1   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   1   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   1   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   2   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   2   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   2   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   3   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   3   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   3   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   1   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   1   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   1   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   2   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   2   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   2   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   3   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   3   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   3   3
+  ========================
+  WLO :            1 csppol:           1
+  normalization:     1.0000000012315855     
+  qo center x   1.2696395047801452     
+  qo center y   1.2696395137911307     
+  qo center z   1.2696395176718991     
+ -----------------------------
+  loclength_x*x   2.0492663377719680     
+  loclength_y*y   2.0492663092902790     
+  loclength_z*z   2.0492662867449054     
+ mid points :   23   23   23
+ center sites :   25   25   25
+ plotting range of LO :
+ plot x :   11   40
+ plot y :   11   40
+ plot z :   11   40
+ ng :   15   15   15
+        45   45   45
+-wanmax:   25   25   25
+    6.036601E-02   -3.429208E-10
+ norm enclosed:  0.98902703967286243     
+  reading
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   1   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   1   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   1   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   2   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   2   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   2   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   3   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   3   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   3   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   1   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   1   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   1   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   2   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   2   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   2   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   3   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   3   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   3   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   1   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   1   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   1   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   2   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   2   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   2   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   3   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   3   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   3   3
+  ========================
+  WLO :            2 csppol:           1
+  normalization:     1.0000000019749984     
+  qo center x   1.2696392265693905     
+  qo center y   3.6702853129753832     
+  qo center z   3.6702853214495788     
+ -----------------------------
+  loclength_x*x   2.0492674444376071     
+  loclength_y*y   3.2464917841573957     
+  loclength_z*z   3.2464917876618404     
+ mid points :   23   23   23
+ center sites :   32   25   25
+ plotting range of LO :
+ plot x :   16   45
+ plot y :   11   40
+ plot z :   11   40
+ ng :   15   15   15
+        45   45   45
+-wanmax:   32   25   25
+    6.036601E-02    1.272650E-09
+ norm enclosed:  0.98388528476621495     
+  reading
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   1   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   1   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   1   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   2   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   2   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   2   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   3   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   3   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   3   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   1   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   1   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   1   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   2   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   2   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   2   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   3   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   3   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   3   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   1   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   1   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   1   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   2   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   2   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   2   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   3   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   3   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   3   3
+  ========================
+  WLO :            3 csppol:           1
+  normalization:     1.0000000020527098     
+  qo center x   3.6702853155707289     
+  qo center y   1.2696392197901556     
+  qo center z   3.6702853193137166     
+ -----------------------------
+  loclength_x*x   3.2464918562548224     
+  loclength_y*y   2.0492674327565492     
+  loclength_z*z   3.2464918710507966     
+ mid points :   23   23   23
+ center sites :   25   32   25
+ plotting range of LO :
+ plot x :   11   40
+ plot y :   16   45
+ plot z :   11   40
+ ng :   15   15   15
+        45   45   45
+-wanmax:   25   32   25
+    6.036601E-02    1.655346E-09
+ norm enclosed:  0.98388528420808252     
+  reading
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   1   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   1   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   1   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   2   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   2   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   2   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   3   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   3   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   3   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   1   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   1   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   1   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   2   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   2   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   2   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   3   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   3   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   3   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   1   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   1   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   1   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   2   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   2   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   2   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   3   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   3   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   3   3
+  ========================
+  WLO :            4 csppol:           1
+  normalization:     1.0000000019547921     
+  qo center x   3.6702853234509485     
+  qo center y   3.6702853031869851     
+  qo center z   1.2696392498181330     
+ -----------------------------
+  loclength_x*x   3.2464917297392706     
+  loclength_y*y   3.2464917672094202     
+  loclength_z*z   2.0492673906839771     
+ mid points :   23   23   23
+ center sites :   25   25   32
+ plotting range of LO :
+ plot x :   11   40
+ plot y :   11   40
+ plot z :   16   45
+ ng :   15   15   15
+        45   45   45
+-wanmax:   25   25   32
+    6.036601E-02    1.328444E-09
+ norm enclosed:  0.98388528435875322     
+  
+  ###################################################### 
+  
+  Localized orbital files fort.1**1 for spin up 
+                      and fort.1**2 for spin dn written.
+  
+  ###################################################### 
+-
+- Proc.   0 individual time (sec): cpu=          3.1  wall=          3.1
+
+  Thank you for using me
+

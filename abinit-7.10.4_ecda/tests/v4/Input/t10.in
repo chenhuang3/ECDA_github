@@ -1,0 +1,257 @@
+# DATASET No 1:
+#   Groundstate calculation.
+#
+# DATASET No 2:
+#   Get unoccupied states.
+#
+# DATASET No 3:
+#   Computes the ACFD-RPA correlation energy of an He atom in a big box,
+#   using:
+#   a. Gauss-Legendre integration along the imaginary frequency axis,
+#      on a predefined grid.
+#   b. Gauss-Legendre integration for the coupling constant, with
+#      3 points (excluding 0 and 1). The Dyson equation is solved
+#      as a linear system.
+#   Also computes the RPA polarizabilities of the He atom at various frequencies.
+#
+# DATASET No 4:
+#   Computes the ACFD-RPA correlation energy of an He atom in a big box,
+#   using:
+#   a. Gauss-Legendre integration along the imaginary frequency axis,
+#      on a predefined grid.
+#   b. Exact integration over the coupling constant.
+#
+# DATASET No 5:
+#   Computes the iu = 0 contribution to the ACFD-PGG correlation energy of
+#   an He atom in a big box, using Gauss-Legendre integration for the
+#   coupling constant, with 5 points (excluding 0 and 1). The Dyson equation
+#   is solved as a differential equation with respect to the coupling
+#   constant. The Lein, Dobson and Gross first-order approximation is
+#   also computed, as well as the static PGG polarizability of the He atom.
+#
+# DATASET No 6 and 7:
+#   Computes the iu = 0 contribution to the ACFD-ALDA correlation energy
+#   of the He atom, using Gauss-Legendre integration for the coupling
+#   constant, with 3 points (excluding 0 and 1). The Dyson equation
+#   is solved as a linear system. The static ALDA polarizability of the
+#   He atom is also computed.
+#
+# DATASET No 8:
+#   Computes the iu = 0 contribution to the ACFD-BPG correlation energy
+#   of the He atom, using Gauss-Legendre integration for the coupling
+#   constant, with 3 points (excluding 0 and 1). The Dyson equation
+#   is solved as a linear system. The static BPG polarizability of the
+#   He atom is also computed.
+#
+# DATASET No 9:
+#   Computes the iu = 0 contribution to the ACFD-EOK1 correlation energy
+#   of the He atom, using Gauss-Legendre integration for the coupling
+#   constant, with 3 points (excluding 0 and 1). The Dyson equation
+#   is solved as a linear system. The static EOK1 polarizability of the
+#   He atom is also computed.
+#
+# DATASET No 10.
+#   Computes the iu = 0 contribution to the ACFD-EOK2 correlation energy
+#   of the He atom, using Gauss-Legendre integration for the coupling
+#   constant, with 3 points (excluding 0 and 1). The Dyson equation
+#   is solved as a linear system. The static EOK2 polarizability of the
+#   He atom is also computed.
+
+ ndtset      10
+ jdtset 1 2 3 4 5 6 7 8 9 10
+
+#Run 1: Groundstate calculation.
+ nband1      2
+ iscf1       5
+ nstep1     25
+ tolvrs1     1.0d-8
+ prtden1     1
+
+#Run 2: Get unoccupied states.
+ iscf2      -2
+ getden2     1
+ getwfk2     1
+ nband2      6
+ nstep2     25
+ tolwfr2     1.0d-4
+
+#Run 3: Calculate ACFD energy.
+ optdriver3  2
+ getden3     1
+ getwfk3     2
+ nband3      6
+ ikhxc3      1    #RPA.
+ diecut3     1.8
+ optfreqsus3 0    #Use a predefined grid
+ nfreqsus3   16   #Automatically selects MF's He grid.
+ idyson3     1    #Solve the Dyson equation as a linear system.
+ ndyson3     3    #Use 3 points for coupling constant integration.
+ dielam3     1.0
+ diegap3     0.0
+
+#Run 4: Calculate ACFD energy.
+ optdriver4  2
+ getden4     1
+ getwfk4     2
+ nband4      6
+ ikhxc4      1    #RPA.
+ diecut4     1.8
+ optfreqsus4 0    #Use a predefined grid
+ nfreqsus4   16   #Automatically selects MF's He grid.
+ intexact4   1    #Exact integration over the coupling constant.
+ dielam4     1.0
+ diegap4     0.0
+
+#Run 5: Calculate ACFD energy.
+ optdriver5  2
+ getden5     1
+ getwfk5     2
+ nband5      6
+ ikhxc5      3    #PGG.
+ diecut5     1.8
+ optfreqsus5 0    #Use a predefined grid
+ freqsuslo5  0.0
+ nfreqsus5   1
+ idyson5     2    #Solve the Dyson equation as a differential equation.
+ ndyson5     5    #Use 5 points for coupling constant integration.
+ ldgapp5     1    #Also compute the Lein, Dobson and Gross first-order app.
+ dielam5     1.0
+ diegap5     0.0
+
+#Run 6: Calculate ACFD energy.
+ optdriver6  2
+ getden6     1
+ getwfk6     2
+ nband6      6
+ ikhxc6      2    #ALDA.
+ diecut6     1.8
+ optfreqsus6 0    #Use a predefined grid
+ freqsuslo6  0.0
+ nfreqsus6   1
+ idyson6     1    #Solve the Dyson equation as a linear system.
+ ndyson6     3    #Use 3 points for coupling constant integration.
+ dielam6     1.0
+ diegap6     0.0
+
+#Run 7: Calculate ACFD energy : test nbandsus and suskxcrs.
+ optdriver7  2
+ getden7     1
+ getwfk7     2
+ nband7      6
+ nbandsus7   5
+ ikhxc7      2    #ALDA
+#suskxcrs7   1        # Sorry, does not work !!!
+ diecut7     1.8
+ optfreqsus7 0    #Use a predefined grid
+ freqsuslo7  0.0
+ nfreqsus7   1
+ idyson7     1    #Solve the Dyson equation as a linear system.
+ ndyson7     3    #Use 3 points for coupling constant integration.
+ dielam7     1.0
+ diegap7     0.0
+
+#Run 8: Calculate ACFD energy.
+ optdriver8  2
+ getden8     1
+ getwfk8     2
+ nband8      6
+ ikhxc8      4    #BPG.
+ diecut8     1.8
+ optfreqsus8 0    #Use a predefined grid
+ freqsuslo8  0.0
+ nfreqsus8   1
+ idyson8     1    #Solve the Dyson equation as a linear system.
+ ndyson8     3    #Use 3 points for coupling constant integration.
+ dielam8     1.0
+ diegap8     0.0
+
+#Run 9: Calculate ACFD energy.
+ optdriver9  2
+ getden9     1
+ getwfk9     2
+ nband9      6
+ ikhxc9      5    #EOK1.
+ diecut9     1.8
+ optfreqsus9 0    #Use a predefined grid
+ freqsuslo9  0.0
+ nfreqsus9   1
+ idyson9     1    #Solve the Dyson equation as a linear system.
+ ndyson9     3    #Use 3 points for coupling constant integration.
+ dielam9     1.0
+ diegap9     0.0
+
+#Run 10: Calculate ACFD energy.
+ optdriver10  2
+ getden10     1
+ getwfk10     2
+ nband10      6
+ ikhxc10      6    #EOK2.
+ diecut10     1.8
+ optfreqsus10 0    #Use a predefined grid
+ freqsuslo10  0.0
+ nfreqsus10   1
+ idyson10     1    #Solve the Dyson equation as a linear system.
+ ndyson10     3    #Use 3 points for coupling constant integration.
+ dielam10     1.0
+ diegap10     0.0
+
+#Structure:
+ rprim       1.0  0.0  0.0
+             0.0  1.0  0.0
+             0.0  0.0  1.0
+ acell       10.0  10.0  10.0
+ natom       1
+ ntypat      1
+ znucl       2.0
+ typat       1
+ xred        0.0  0.0  0.0
+
+#Common:
+ ecut        1.8
+ ixc         1
+ kptopt      0
+ nkpt        1
+ kpt         0.0 0.0 0.0
+ wtk         1.0
+ occopt      1
+ diemac      1.0
+# This line added when defaults were changed (v5.3) to keep the previous, old behaviour
+ iscf        5
+
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = abinit
+#%% [files]
+#%% files_to_test = 
+#%%   t10.out, tolnlines = 0, tolabs = 0.000e+00, tolrel = 0.000e+00
+#%% psp_files = 2he_ca_30t.psp
+#%% [paral_info]
+#%% max_nprocs = 1
+#%% [extra_info]
+#%% authors = YM. Niquet
+#%% keywords = ACFD 
+#%% description = 
+#%%   He atom in a big box. ACFD-RPA correlation energy.
+#%%   - Gauss-Legendre integration along the imaginary frequency axis,
+#%%   on a predefined grid
+#%%   - Gauss-Legendre integration for the coupling contant, with
+#%%   3 points (excluding 0 and 1). The Dyson equation is solved
+#%%   as a linear system.
+#%%   - Exact integration over the coupling constant.
+#%%   He atom in a big box. ACFD-PGG correlation energy,
+#%%   iu=0 contribution.
+#%%   Gauss-Legendre integration for the coupling constant,
+#%%   with 5 points (excluding 0 and 1). The Dyson equation
+#%%   is solved as a differential equation with respect
+#%%   to the coupling constant. The Lein, Dobson and Gross
+#%%   first-order approximation to the correlation energy
+#%%   is also computed, as well as the static PGG polarizability of
+#%%   the He atom.
+#%%   Gauss-Legendre integration for the coupling constant,
+#%%   with 3 points (excluding 0 and 1). The Dyson equation
+#%%   is solved as a linear system. The static ALDA polarizability
+#%%   of the He atom is also computed.
+#%%   Same as previously within the ACFD-BPG approximation.
+#%%   Same as previously using the linear energy optimized kernel.
+#%%   Same as previously using the non-linear energy optimized kernel.
+#%%<END TEST_INFO>

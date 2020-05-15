@@ -1,0 +1,24 @@
+#Ti structure hcp
+#spgroup 194
+pawovlp 20
+ndtset 10
+iscf 17
+diemix 0.5
+ecut 20
+pawecutdg 40.0
+nstep 50
+toldfe 1.0d-8
+nband 18
+occopt 7 tsmear 5.0d-3
+getwfk -1 getocc -1
+acell: 5.20 5.20 8.4915644416483502 acell* 3*1.01
+rprim  0.86602540378  0.5  0.0
+      -0.86602540378  0.5  0.0
+       0.0            0.0  1.0
+natom 2 ntypat 1 typat 2*1 
+znucl 22
+xred .3333333333   .6666666667   .25000000   
+     .6666666667   .3333333333   .75000000  
+kptopt 1 kptrlatt 6 0 0 0 6 0 0 0 6
+nshiftk 1
+shiftk 0. 0. 0.5

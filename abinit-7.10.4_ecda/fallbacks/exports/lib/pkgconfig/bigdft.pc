@@ -1,0 +1,11 @@
+prefix=/gpfs/home/chuang3/XCEP_codes/abinit-7.10.4_xcep/fallbacks/exports
+exec_prefix=${prefix}
+libdir=/gpfs/home/chuang3/XCEP_codes/abinit-7.10.4_xcep/fallbacks/exports/lib
+includedir=${prefix}/include
+
+Name: libbigdft
+Description: Library for DFT calculation over wavelets.
+Requires: 
+Version: 1.7.0.93
+Libs: -L${libdir} @LIBS_DEPENDENCIES@  -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L. -L/gpfs/home/chuang3/codes/libxc-2.0.2/install/lib -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. -lgfortran -lm -lquadmath
+Cflags: -I${includedir}

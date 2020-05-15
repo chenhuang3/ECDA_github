@@ -1,0 +1,24 @@
+#Zr structure cfc
+iscf 17
+pawovlp 20
+ndtset 10
+ecut 15
+pawecutdg 30.0
+nstep 50
+toldfe 1.0d-7
+nband 12
+occopt 7 tsmear 5.0d-3
+getocc -1 getwfk -1
+natom 1 ntypat 1 typat 1 
+znucl 13
+xred 0 0 0
+acell: 3*5.90 acell+ 3*0.05 
+kptopt 1 
+#BCC structure 26 kpts
+kptrlatt 10 0 0 0 10 0 0 0 10
+rprim -.5  .5  .5
+       .5 -.5  .5
+       .5  .5 -.5
+nshiftk 1
+shiftk 0.5 0.5 0.5
+

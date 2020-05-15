@@ -1,0 +1,17 @@
+**********************************************************************
+Warning pattern : 'Unused dummy argument'
+**********************************************************************
+kpgio.F90 : var = kgnam [56_recipspace]
+kpgio.F90 : var = unkg [56_recipspace]
+initylmg.F90 : var = unkg [56_recipspace]
+initylmg.F90 : var = unylm [56_recipspace]
+outwant.F90 : var = mpi_enreg [62_iowfdenpot]
+ctocprj.F90 : var = unkg [65_nonlocal]
+ctocprj.F90 : var = unylm [65_nonlocal]
+ctocprj.F90 : var = wffnow [65_nonlocal]
+berryphase.F90 : var = mpi_enreg [67_common]
+inwffil.F90 : var = unwfnow [79_seqpar_mpi]
+inwffil.F90 : var = wft1nm [79_seqpar_mpi]
+**********************************************************************
+Warning count = 11
+**********************************************************************

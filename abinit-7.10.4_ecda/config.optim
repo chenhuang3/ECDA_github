@@ -1,0 +1,2 @@
+fcflags_opt_default='-O2 -mtune=native -march=native'
+fcflags_opt_dirlist=''

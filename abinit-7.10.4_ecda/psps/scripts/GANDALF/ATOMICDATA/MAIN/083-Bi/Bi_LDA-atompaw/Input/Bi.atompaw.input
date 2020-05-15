@@ -1,0 +1,41 @@
+Bi 83
+LDA-PW scalarrelativistic loggrid 2001
+6 6 5 4 0 0 
+6 1 3	!6p, 3 electrons
+0 0 0   !last line of occupation
+c !1s  1  core
+c !2s  2
+c !3s  3
+c !4s  4
+c !5s  5
+v !6s  6 valence
+c !2p  7
+c !3p  8
+c !4p  9
+c !5p 10
+v !6p 11 valence
+c !3d 12
+c !4d 13
+v !5d 14 valence
+c !4f 15
+2        !lmax spdf, f electrons present, so 3
+2.6 2.6 2.6 2.6      ! rpaw rshape rvloc rcore
+y
+4.
+n
+y
+3
+n
+y
+2
+n
+vanderbilt
+3 0. ultrasoft
+2.6
+2.6
+2.6
+2.6
+2.6
+2.6
+0
+vanderbilt

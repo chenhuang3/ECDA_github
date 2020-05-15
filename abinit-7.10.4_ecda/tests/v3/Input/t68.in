@@ -1,0 +1,44 @@
+#   This file is to be complemented by a CML file.
+#   Here, only non-CML data are stored.
+#   The system will be  : Mo surface 5 layers of 2 atoms + 3 of vacuum ; surface cell is two primitive
+#   surface cells ; 1 special points.
+
+ cmlfile t68.in.cml
+ diemac 1.0d0
+ diemix 0.125d0
+ ecut 5.5
+ enunit 2
+ ionmov 0
+  kptopt 0
+ nkpt        1
+ kpt   1 1 1
+ kptnrm     4
+ nband 36
+ nline 3  nstep 2
+ occopt  4
+ ortalg -2
+ prtvol 10
+ tolmxf  5.0d-5
+ toldff  1.0d-5
+ tsmear 0.040
+ wtk  1.0
+
+# This line added when defaults were changed (v5.3) to keep the previous, old behaviour
+  iscf 5
+
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = abinit
+#%% [files]
+#%% files_to_test = 
+#%%   t68.out, tolnlines = 0, tolabs = 0.000e+00, tolrel = 0.000e+00
+#%% extra_inputs = t68.in.cml
+#%% psp_files = 42mo.pspnc
+#%% [paral_info]
+#%% max_nprocs = 1
+#%% [extra_info]
+#%% authors = 
+#%% keywords = CML
+#%% description = 
+#%% Slab of Mo (see test v1 #41) Test the reading of a CML file 
+#%%<END TEST_INFO>

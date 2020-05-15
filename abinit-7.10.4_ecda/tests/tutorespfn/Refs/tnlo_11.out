@@ -1,0 +1,1412 @@
+
+.Version 7.10.4 of ABINIT 
+.(MPI version, prepared for a x86_64_linux_gnu4.7 computer) 
+
+.Copyright (C) 1998-2014 ABINIT group . 
+ ABINIT comes with ABSOLUTELY NO WARRANTY.
+ It is free software, and you are welcome to redistribute it
+ under certain conditions (GNU General Public License,
+ see ~abinit/COPYING or http://www.gnu.org/copyleft/gpl.txt).
+
+ ABINIT is a project of the Universite Catholique de Louvain,
+ Corning Inc. and other collaborators, see ~abinit/doc/developers/contributors.txt .
+ Please read ~abinit/doc/users/acknowledgments.html for suggested
+ acknowledgments of the ABINIT effort.
+ For more information, see http://www.abinit.org .
+
+.Starting date : Sun  1 Feb 2015.
+- ( at 15h03 )
+  
+- input  file    -> tnlo_11.in
+- output file    -> tnlo_11.out
+- root for input  files -> tnlo_11i
+- root for output files -> tnlo_11o
+
+
+ Symmetries : space group F-4 3 m (#216); Bravais cF (face-center cubic)
+================================================================================
+ Values of the parameters that define the memory need of the present run
+   intxc =         0  ionmov =         0    iscf =         5 xclevel =         1
+  lmnmax =         2   lnmax =         2   mband =         4  mffmem =         1
+P  mgfft =        12   mkmem =       432 mpssoang=         3     mpw =        80
+  mqgrid =      3001   natom =         2    nfft =      1728    nkpt =       432
+  nloalg =         4  nspden =         1 nspinor =         1  nsppol =         1
+    nsym =        24  n1xccc =      2501  ntypat =         2  occopt =         1
+================================================================================
+P This job should need less than                       3.995 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      2.111 Mbytes ; DEN or POT disk file :      0.015 Mbytes.
+================================================================================
+
+--------------------------------------------------------------------------------
+------------- Echo of variables that govern the present computation ------------
+--------------------------------------------------------------------------------
+-
+- outvars: echo of selected default values                                      
+-   accesswff0 =  0 , fftalg0 =112 , wfoptalg0 =  0
+-
+- outvars: echo of global parameters not present in the input file              
+-  max_nthreads =    0
+-
+ -outvars: echo values of preprocessed input variables --------
+            acell      1.0530000000E+01  1.0530000000E+01  1.0530000000E+01 Bohr
+              amu      2.69815390E+01  7.49215900E+01
+          dilatmx      1.05000000E+00
+             ecut      2.80000000E+00 Hartree
+           ecutsm      5.00000000E-01 Hartree
+-          fftalg         112
+           irdden           1
+           irdwfk           1
+          ird1den           1
+           ird1wf           1
+             iscf           5
+              ixc           3
+              kpt     -8.33333333E-02 -1.66666667E-01  0.00000000E+00
+                      -1.66666667E-01 -8.33333333E-02  0.00000000E+00
+                      -8.33333333E-02 -8.33333333E-02  8.33333333E-02
+                      -8.33333333E-02 -3.33333333E-01  0.00000000E+00
+                      -1.66666667E-01 -2.50000000E-01  0.00000000E+00
+                      -8.33333333E-02 -2.50000000E-01  8.33333333E-02
+                      -2.50000000E-01 -1.66666667E-01  0.00000000E+00
+                      -1.66666667E-01 -1.66666667E-01  8.33333333E-02
+                      -8.33333333E-02 -1.66666667E-01  1.66666667E-01
+                      -3.33333333E-01 -8.33333333E-02  0.00000000E+00
+                      -2.50000000E-01 -8.33333333E-02  8.33333333E-02
+                      -1.66666667E-01 -8.33333333E-02  1.66666667E-01
+                      -8.33333333E-02 -8.33333333E-02  2.50000000E-01
+                      -8.33333333E-02  5.00000000E-01  0.00000000E+00
+                      -1.66666667E-01 -4.16666667E-01  0.00000000E+00
+                      -8.33333333E-02 -4.16666667E-01  8.33333333E-02
+                      -2.50000000E-01 -3.33333333E-01  0.00000000E+00
+                      -1.66666667E-01 -3.33333333E-01  8.33333333E-02
+                      -8.33333333E-02 -3.33333333E-01  1.66666667E-01
+                      -3.33333333E-01 -2.50000000E-01  0.00000000E+00
+                      -2.50000000E-01 -2.50000000E-01  8.33333333E-02
+                      -1.66666667E-01 -2.50000000E-01  1.66666667E-01
+                      -8.33333333E-02 -2.50000000E-01  2.50000000E-01
+                      -4.16666667E-01 -1.66666667E-01  0.00000000E+00
+                      -3.33333333E-01 -1.66666667E-01  8.33333333E-02
+                      -2.50000000E-01 -1.66666667E-01  1.66666667E-01
+                      -1.66666667E-01 -1.66666667E-01  2.50000000E-01
+                      -8.33333333E-02 -1.66666667E-01  3.33333333E-01
+                       5.00000000E-01 -8.33333333E-02  0.00000000E+00
+                      -4.16666667E-01 -8.33333333E-02  8.33333333E-02
+                      -3.33333333E-01 -8.33333333E-02  1.66666667E-01
+                      -2.50000000E-01 -8.33333333E-02  2.50000000E-01
+                      -1.66666667E-01 -8.33333333E-02  3.33333333E-01
+                      -8.33333333E-02 -8.33333333E-02  4.16666667E-01
+                      -8.33333333E-02  3.33333333E-01  0.00000000E+00
+                      -1.66666667E-01  4.16666667E-01  0.00000000E+00
+                      -8.33333333E-02  4.16666667E-01  8.33333333E-02
+                      -2.50000000E-01  5.00000000E-01  0.00000000E+00
+                      -1.66666667E-01  5.00000000E-01  8.33333333E-02
+                      -8.33333333E-02  5.00000000E-01  1.66666667E-01
+                      -3.33333333E-01 -4.16666667E-01  0.00000000E+00
+                      -2.50000000E-01 -4.16666667E-01  8.33333333E-02
+                      -1.66666667E-01 -4.16666667E-01  1.66666667E-01
+                      -8.33333333E-02 -4.16666667E-01  2.50000000E-01
+                      -4.16666667E-01 -3.33333333E-01  0.00000000E+00
+                      -3.33333333E-01 -3.33333333E-01  8.33333333E-02
+                      -2.50000000E-01 -3.33333333E-01  1.66666667E-01
+                      -1.66666667E-01 -3.33333333E-01  2.50000000E-01
+                      -8.33333333E-02 -3.33333333E-01  3.33333333E-01
+                       5.00000000E-01 -2.50000000E-01  0.00000000E+00
+                       outvar_i_n : Printing only first  50 k-points.
+           kptopt           2
+         kptrlatt        6   -6    6     -6    6    6     -6   -6    6
+          kptrlen      6.31800000E+01
+P           mkmem         432
+            natom           2
+            nband           4
+            ngfft          12      12      12
+             nkpt         432
+            nstep         100
+             nsym          24
+           ntypat           2
+              occ      2.000000  2.000000  2.000000  2.000000
+        optdriver           5
+         rf1atpol           1       2
+           rf1dir           1       1       1
+          rf1elfd           1
+          rf1phon           1
+           rf2dir           1       1       1
+          rf2elfd           1
+           rf3dir           1       1       1
+          rf3elfd           1
+            rprim      0.0000000000E+00  5.0000000000E-01  5.0000000000E-01
+                       5.0000000000E-01  0.0000000000E+00  5.0000000000E-01
+                       5.0000000000E-01  5.0000000000E-01  0.0000000000E+00
+           shiftk      5.00000000E-01  5.00000000E-01  5.00000000E-01
+          spgroup         216
+           symrel      1  0  0   0  1  0   0  0  1       0 -1  1   0 -1  0   1 -1  0
+                      -1  0  0  -1  0  1  -1  1  0       0  1 -1   1  0 -1   0  0 -1
+                      -1  0  0  -1  1  0  -1  0  1       0 -1  1   1 -1  0   0 -1  0
+                       1  0  0   0  0  1   0  1  0       0  1 -1   0  0 -1   1  0 -1
+                      -1  0  1  -1  1  0  -1  0  0       0 -1  0   1 -1  0   0 -1  1
+                       1  0 -1   0  0 -1   0  1 -1       0  1  0   0  0  1   1  0  0
+                       1  0 -1   0  1 -1   0  0 -1       0 -1  0   0 -1  1   1 -1  0
+                      -1  0  1  -1  0  0  -1  1  0       0  1  0   1  0  0   0  0  1
+                       0  0 -1   0  1 -1   1  0 -1       1 -1  0   0 -1  1   0 -1  0
+                       0  0  1   1  0  0   0  1  0      -1  1  0  -1  0  0  -1  0  1
+                       0  0  1   0  1  0   1  0  0       1 -1  0   0 -1  0   0 -1  1
+                       0  0 -1   1  0 -1   0  1 -1      -1  1  0  -1  0  1  -1  0  0
+            typat      1  2
+              wtk        0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231
+                       outvars : Printing only first  50 k-points.
+           xangst      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       1.3930590016E+00  1.3930590016E+00  1.3930590016E+00
+            xcart      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       2.6325000000E+00  2.6325000000E+00  2.6325000000E+00
+             xred      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       2.5000000000E-01  2.5000000000E-01  2.5000000000E-01
+            znucl       13.00000   33.00000
+
+================================================================================
+
+ chkinp: Checking input parameters for consistency.
+
+================================================================================
+== DATASET  1 ==================================================================
+-   nproc =    1
+
+ Exchange-correlation functional for the present dataset will be:
+  LDA: old Teter (4/91) fit to Ceperley-Alder data - ixc=3
+
+
+ The list of irreducible elements of the Raman and non-linear
+ optical susceptibility tensors is:
+
+            i1pert  i1dir   i2pert  i2dir   i3pert  i3dir
+     1)       1       1       4       1       4       1
+     2)       1       1       4       1       4       2
+     3)       1       1       4       2       4       1
+     4)       2       1       4       1       4       1
+     5)       2       1       4       1       4       2
+     6)       2       1       4       2       4       1
+     7)       4       1       1       1       4       1
+     8)       4       1       1       1       4       2
+     9)       4       1       2       1       4       1
+    10)       4       1       2       1       4       2
+    11)       4       1       4       1       4       1
+    12)       4       1       4       1       4       2
+    13)       4       1       4       2       4       1
+    14)       4       1       4       2       4       2
+    15)       4       1       4       2       4       3
+
+
+
+ Real(R)+Recip(G) space primitive vectors, cartesian coordinates (Bohr,Bohr^-1):
+ R(1)=  0.0000000  5.2650000  5.2650000  G(1)= -0.0949668  0.0949668  0.0949668
+ R(2)=  5.2650000  0.0000000  5.2650000  G(2)=  0.0949668 -0.0949668  0.0949668
+ R(3)=  5.2650000  5.2650000  0.0000000  G(3)=  0.0949668  0.0949668 -0.0949668
+ Unit cell volume ucvol=  2.9189397E+02 bohr^3
+ Angles (23,13,12)=  6.00000000E+01  6.00000000E+01  6.00000000E+01 degrees
+
+ getcut: wavevector=  0.0000  0.0000  0.0000  ngfft=  12  12  12
+         ecut(hartree)=      3.087   => boxcut(ratio)=   2.03767
+
+--- Pseudopotential description ------------------------------------------------
+- pspini: atom type   1  psp file is /data/ABINIT/testf_gcc47/trunk_7.10.4-training/tests/Psps_for_tests/13al.pspnc
+- pspatm: opening atomic psp file    /data/ABINIT/testf_gcc47/trunk_7.10.4-training/tests/Psps_for_tests/13al.pspnc
+-  Troullier-Martins psp for element  Al        Thu Oct 27 17:31:05 EDT 1994
+- 13.00000   3.00000    940714                znucl, zion, pspdat
+    1    1    2    2      2001   0.00000      pspcod,pspxc,lmax,lloc,mmax,r2well
+    0   4.657  11.889    1   2.2761078        l,e99.0,e99.9,nproj,rcpsp
+   0.00000000   0.00000000   0.00000000   0.00000000     rms, ekb1, ekb2, epsatm
+    1   1.829   2.761    1   2.2761078        l,e99.0,e99.9,nproj,rcpsp
+   0.00000000   0.00000000   0.00000000   0.00000000     rms, ekb1, ekb2, epsatm
+    2   0.000   0.000    0   2.2761078        l,e99.0,e99.9,nproj,rcpsp
+   0.00000000   0.00000000   0.00000000   0.00000000     rms, ekb1, ekb2, epsatm
+    2.09673076353074    0.12648111154518    1.01742091001718   rchrg,fchrg,qchrg
+ pspatm: epsatm=    0.22155260
+         --- l  ekb(1:nproj) -->
+             0    2.540658
+             1    1.353815
+ pspatm: atomic psp has been read  and splines computed
+
+- pspini: atom type   2  psp file is /data/ABINIT/testf_gcc47/trunk_7.10.4-training/tests/Psps_for_tests/33as.pspnc
+- pspatm: opening atomic psp file    /data/ABINIT/testf_gcc47/trunk_7.10.4-training/tests/Psps_for_tests/33as.pspnc
+-  Troullier-Martins psp for element  As        Thu Oct 27 17:37:14 EDT 1994
+- 33.00000   5.00000    940714                znucl, zion, pspdat
+    1    1    1    1      2001   0.00000      pspcod,pspxc,lmax,lloc,mmax,r2well
+    0   4.772  10.829    1   2.5306160        l,e99.0,e99.9,nproj,rcpsp
+   0.00000000   0.00000000   0.00000000   0.00000000     rms, ekb1, ekb2, epsatm
+    1   2.745   5.580    0   2.5306160        l,e99.0,e99.9,nproj,rcpsp
+   0.00000000   0.00000000   0.00000000   0.00000000     rms, ekb1, ekb2, epsatm
+    2.05731715564010    0.36322996461007    2.76014815959125   rchrg,fchrg,qchrg
+ pspatm: epsatm=   27.20579911
+         --- l  ekb(1:nproj) -->
+             0    0.838751
+ pspatm: atomic psp has been read  and splines computed
+
+   2.19418814E+02                                ecore*ucvol(ha*bohr**3)
+--------------------------------------------------------------------------------
+
+-inwffil : will read wavefunctions from disk file tnlo_11i_WFK
+P newkpt: treating      4 bands with npw=      68 for ikpt=   1 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   2 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   3 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   4 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   5 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   6 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   7 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   8 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   9 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  10 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  11 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  12 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  13 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  14 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  15 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  16 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  17 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  18 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  19 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  20 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  21 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  22 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  23 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  24 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  25 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  26 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  27 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  28 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  29 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  30 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  31 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  32 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  33 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  34 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  35 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  36 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  37 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  38 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  39 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  40 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  41 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  42 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  43 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  44 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  45 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  46 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  47 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  48 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  49 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  50 by node    0
+ newkpt: prtvol=0 or 1, do not print more k-points.
+
+
+ getshell : finite difference formula of Marzari and Vanderbilt
+            (see Marzari and Vanderbilt, PRB 56, 12847 (1997), Appendix B)
+
+            number of first neighbours  :   6
+            weight :     1995.8562000
+-inwffil : will read wavefunctions from disk file tnlo_11i_1WF1
+P newkpt: treating      4 bands with npw=      68 for ikpt=   1 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   2 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   3 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   4 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   5 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   6 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   7 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   8 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   9 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  10 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  11 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  12 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  13 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  14 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  15 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  16 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  17 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  18 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  19 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  20 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  21 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  22 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  23 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  24 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  25 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  26 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  27 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  28 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  29 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  30 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  31 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  32 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  33 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  34 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  35 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  36 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  37 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  38 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  39 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  40 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  41 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  42 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  43 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  44 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  45 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  46 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  47 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  48 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  49 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  50 by node    0
+ newkpt: prtvol=0 or 1, do not print more k-points.
+
+-inwffil : will read wavefunctions from disk file tnlo_11i_1WF10
+P newkpt: treating      4 bands with npw=      68 for ikpt=   1 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   2 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   3 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   4 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   5 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   6 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   7 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   8 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   9 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  10 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  11 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  12 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  13 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  14 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  15 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  16 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  17 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  18 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  19 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  20 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  21 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  22 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  23 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  24 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  25 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  26 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  27 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  28 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  29 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  30 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  31 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  32 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  33 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  34 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  35 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  36 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  37 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  38 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  39 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  40 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  41 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  42 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  43 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  44 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  45 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  46 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  47 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  48 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  49 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  50 by node    0
+ newkpt: prtvol=0 or 1, do not print more k-points.
+
+
+
+ Decomposition of the third-order energy for the set of perturbations
+
+ j1 : displacement of atom   1 along direction   1
+ j3 : homogeneous electric field along direction    1
+
+ j2 : homogeneous electric field along direction    1
+                    real part             imaginary part
+     xc          -0.4741577262             0.0000000000
+     ddk        -26.0223867607             0.0000000000
+     dft          0.3928483231             0.0000000000
+
+ j2 : homogeneous electric field along direction    2
+                    real part             imaginary part
+     xc           0.2370788626             0.0000000000
+     ddk         13.0111934335             0.0000000000
+     dft         -0.1964241572             0.0000000000
+
+-inwffil : will read wavefunctions from disk file tnlo_11i_1WF11
+P newkpt: treating      4 bands with npw=      68 for ikpt=   1 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   2 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   3 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   4 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   5 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   6 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   7 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   8 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   9 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  10 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  11 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  12 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  13 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  14 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  15 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  16 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  17 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  18 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  19 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  20 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  21 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  22 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  23 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  24 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  25 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  26 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  27 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  28 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  29 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  30 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  31 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  32 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  33 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  34 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  35 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  36 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  37 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  38 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  39 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  40 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  41 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  42 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  43 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  44 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  45 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  46 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  47 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  48 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  49 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  50 by node    0
+ newkpt: prtvol=0 or 1, do not print more k-points.
+
+ j2 : homogeneous electric field along direction    1
+                    real part             imaginary part
+     xc           0.2370788626             0.0000000000
+     ddk         13.0111934202             0.0000000000
+     dft         -0.1964241569             0.0000000000
+
+-inwffil : will read wavefunctions from disk file tnlo_11i_1WF4
+P newkpt: treating      4 bands with npw=      68 for ikpt=   1 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   2 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   3 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   4 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   5 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   6 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   7 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   8 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   9 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  10 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  11 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  12 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  13 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  14 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  15 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  16 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  17 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  18 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  19 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  20 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  21 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  22 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  23 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  24 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  25 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  26 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  27 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  28 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  29 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  30 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  31 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  32 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  33 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  34 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  35 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  36 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  37 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  38 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  39 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  40 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  41 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  42 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  43 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  44 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  45 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  46 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  47 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  48 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  49 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  50 by node    0
+ newkpt: prtvol=0 or 1, do not print more k-points.
+
+-inwffil : will read wavefunctions from disk file tnlo_11i_1WF10
+P newkpt: treating      4 bands with npw=      68 for ikpt=   1 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   2 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   3 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   4 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   5 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   6 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   7 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   8 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   9 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  10 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  11 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  12 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  13 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  14 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  15 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  16 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  17 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  18 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  19 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  20 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  21 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  22 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  23 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  24 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  25 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  26 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  27 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  28 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  29 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  30 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  31 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  32 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  33 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  34 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  35 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  36 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  37 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  38 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  39 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  40 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  41 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  42 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  43 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  44 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  45 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  46 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  47 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  48 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  49 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  50 by node    0
+ newkpt: prtvol=0 or 1, do not print more k-points.
+
+
+
+ Decomposition of the third-order energy for the set of perturbations
+
+ j1 : displacement of atom   2 along direction   1
+ j3 : homogeneous electric field along direction    1
+
+ j2 : homogeneous electric field along direction    1
+                    real part             imaginary part
+     xc          -1.2530308556             0.0000000000
+     ddk         18.0105590517             0.0000000000
+     dft          3.0688824630             0.0000000000
+
+ j2 : homogeneous electric field along direction    2
+                    real part             imaginary part
+     xc           0.6265154247             0.0000000000
+     ddk         -9.0052793156             0.0000000000
+     dft         -1.5344412216             0.0000000000
+
+-inwffil : will read wavefunctions from disk file tnlo_11i_1WF11
+P newkpt: treating      4 bands with npw=      68 for ikpt=   1 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   2 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   3 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   4 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   5 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   6 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   7 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   8 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   9 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  10 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  11 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  12 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  13 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  14 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  15 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  16 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  17 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  18 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  19 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  20 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  21 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  22 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  23 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  24 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  25 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  26 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  27 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  28 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  29 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  30 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  31 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  32 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  33 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  34 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  35 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  36 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  37 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  38 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  39 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  40 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  41 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  42 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  43 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  44 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  45 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  46 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  47 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  48 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  49 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  50 by node    0
+ newkpt: prtvol=0 or 1, do not print more k-points.
+
+ j2 : homogeneous electric field along direction    1
+                    real part             imaginary part
+     xc           0.6265154247             0.0000000000
+     ddk         -9.0052793108             0.0000000000
+     dft         -1.5344412172             0.0000000000
+
+-inwffil : will read wavefunctions from disk file tnlo_11i_1WF10
+P newkpt: treating      4 bands with npw=      68 for ikpt=   1 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   2 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   3 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   4 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   5 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   6 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   7 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   8 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   9 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  10 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  11 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  12 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  13 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  14 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  15 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  16 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  17 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  18 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  19 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  20 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  21 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  22 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  23 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  24 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  25 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  26 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  27 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  28 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  29 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  30 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  31 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  32 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  33 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  34 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  35 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  36 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  37 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  38 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  39 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  40 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  41 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  42 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  43 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  44 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  45 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  46 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  47 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  48 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  49 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  50 by node    0
+ newkpt: prtvol=0 or 1, do not print more k-points.
+
+-inwffil : will read wavefunctions from disk file tnlo_11i_1WF10
+P newkpt: treating      4 bands with npw=      68 for ikpt=   1 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   2 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   3 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   4 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   5 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   6 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   7 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   8 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   9 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  10 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  11 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  12 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  13 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  14 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  15 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  16 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  17 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  18 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  19 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  20 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  21 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  22 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  23 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  24 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  25 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  26 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  27 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  28 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  29 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  30 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  31 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  32 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  33 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  34 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  35 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  36 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  37 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  38 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  39 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  40 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  41 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  42 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  43 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  44 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  45 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  46 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  47 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  48 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  49 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  50 by node    0
+ newkpt: prtvol=0 or 1, do not print more k-points.
+
+ j2 : displacement of atom   1 along direction   1
+                    real part             imaginary part
+     xc          -3.0893388904             0.0000000000
+     dft        -48.2301808297             0.0000000000
+
+ j2 : displacement of atom   2 along direction   1
+                    real part             imaginary part
+     xc          -1.3215226072             0.0000000000
+     dft         64.9482807428             0.0000000000
+
+
+
+ Decomposition of the third-order energy for the set of perturbations
+
+ j1 : homogeneous electric field along direction    1
+ j3 : homogeneous electric field along direction    1
+
+ j2 : homogeneous electric field along direction    1
+                    real part             imaginary part
+     xc           1.4908702943             0.0000000000
+     ddk        213.3958748695             0.0000000000
+     dft          0.0512490465             0.0000000000
+
+ j2 : homogeneous electric field along direction    2
+                    real part             imaginary part
+     xc          -0.4969567643             0.0000000000
+     ddk        -71.1319582891             0.0000000000
+     dft         -0.0170830145             0.0000000000
+
+-inwffil : will read wavefunctions from disk file tnlo_11i_1WF11
+P newkpt: treating      4 bands with npw=      68 for ikpt=   1 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   2 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   3 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   4 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   5 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   6 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   7 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   8 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   9 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  10 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  11 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  12 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  13 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  14 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  15 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  16 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  17 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  18 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  19 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  20 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  21 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  22 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  23 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  24 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  25 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  26 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  27 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  28 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  29 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  30 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  31 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  32 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  33 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  34 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  35 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  36 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  37 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  38 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  39 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  40 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  41 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  42 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  43 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  44 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  45 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  46 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  47 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  48 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  49 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  50 by node    0
+ newkpt: prtvol=0 or 1, do not print more k-points.
+
+ j2 : displacement of atom   1 along direction   1
+                    real part             imaginary part
+     xc           1.5446694445             0.0000000000
+     dft         24.1150903167             0.0000000000
+
+ j2 : displacement of atom   2 along direction   1
+                    real part             imaginary part
+     xc           0.6607613010             0.0000000000
+     dft        -32.4741407269             0.0000000000
+
+
+
+ Decomposition of the third-order energy for the set of perturbations
+
+ j1 : homogeneous electric field along direction    1
+ j3 : homogeneous electric field along direction    2
+
+ j2 : homogeneous electric field along direction    1
+                    real part             imaginary part
+     xc          -0.4969567643             0.0000000000
+     ddk        -71.1319580656             0.0000000000
+     dft         -0.0170830082             0.0000000000
+
+ j2 : homogeneous electric field along direction    2
+                    real part             imaginary part
+     xc          -0.4969567642             0.0000000000
+     ddk        -71.1319585083             0.0000000000
+     dft         -0.0170830028             0.0000000000
+
+-inwffil : will read wavefunctions from disk file tnlo_11i_1WF12
+P newkpt: treating      4 bands with npw=      68 for ikpt=   1 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   2 by node    0
+P newkpt: treating      4 bands with npw=      68 for ikpt=   3 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   4 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   5 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   6 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   7 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=   8 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=   9 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  10 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  11 by node    0
+P newkpt: treating      4 bands with npw=      73 for ikpt=  12 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  13 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  14 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  15 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  16 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  17 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  18 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  19 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  20 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  21 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  22 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  23 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  24 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  25 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  26 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  27 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  28 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  29 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  30 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  31 by node    0
+P newkpt: treating      4 bands with npw=      75 for ikpt=  32 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  33 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  34 by node    0
+P newkpt: treating      4 bands with npw=      74 for ikpt=  35 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  36 by node    0
+P newkpt: treating      4 bands with npw=      76 for ikpt=  37 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  38 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  39 by node    0
+P newkpt: treating      4 bands with npw=      78 for ikpt=  40 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  41 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  42 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  43 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  44 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  45 by node    0
+P newkpt: treating      4 bands with npw=      79 for ikpt=  46 by node    0
+P newkpt: treating      4 bands with npw=      80 for ikpt=  47 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  48 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  49 by node    0
+P newkpt: treating      4 bands with npw=      77 for ikpt=  50 by node    0
+ newkpt: prtvol=0 or 1, do not print more k-points.
+
+ j2 : homogeneous electric field along direction    2
+                    real part             imaginary part
+     xc           0.4969567656             0.0000000000
+     ddk         71.1319582783             0.0000000000
+     dft          0.0170829813             0.0000000000
+
+
+ --- Third order energy calculation completed --- 
+
+
+ Matrix of third-order derivatives (reduced coordinates)
+ before computing the permutations of the perturbations
+
+     j1       j2       j3              matrix element
+  dir pert dir pert dir pert           real part           imaginary part
+   1    1   1    4   1    4        -26.1036961638          0.0000000000
+   1    1   1    4   2    4         13.0518481259          0.0000000000
+   1    1   1    4   3    4         13.0518481259          0.0000000000
+   1    1   2    4   1    4         13.0518481389          0.0000000000
+   1    1   2    4   2    4          0.0000000000          0.0000000000
+   1    1   2    4   3    4          0.0000000000          0.0000000000
+   1    1   3    4   1    4         13.0518481389          0.0000000000
+   1    1   3    4   2    4          0.0000000000          0.0000000000
+   1    1   3    4   3    4          0.0000000000          0.0000000000
+   2    1   1    4   1    4          0.0000000000          0.0000000000
+   2    1   1    4   2    4         13.0518481389          0.0000000000
+   2    1   1    4   3    4          0.0000000000          0.0000000000
+   2    1   2    4   1    4         13.0518480509          0.0000000000
+   2    1   2    4   2    4        -26.1036961638          0.0000000000
+   2    1   2    4   3    4         13.0518481259          0.0000000000
+   2    1   3    4   1    4          0.0000000000          0.0000000000
+   2    1   3    4   2    4         13.0518481389          0.0000000000
+   2    1   3    4   3    4          0.0000000000          0.0000000000
+   3    1   1    4   1    4          0.0000000000          0.0000000000
+   3    1   1    4   2    4          0.0000000000          0.0000000000
+   3    1   1    4   3    4         13.0518481389          0.0000000000
+   3    1   2    4   1    4          0.0000000000          0.0000000000
+   3    1   2    4   2    4          0.0000000000          0.0000000000
+   3    1   2    4   3    4         13.0518481389          0.0000000000
+   3    1   3    4   1    4         13.0518481259          0.0000000000
+   3    1   3    4   2    4         13.0518480509          0.0000000000
+   3    1   3    4   3    4        -26.1036961638          0.0000000000
+   1    2   1    4   1    4         19.8264106590          0.0000000000
+   1    2   1    4   2    4         -9.9132051033          0.0000000000
+   1    2   1    4   3    4         -9.9132051033          0.0000000000
+   1    2   2    4   1    4         -9.9132051124          0.0000000000
+   1    2   2    4   2    4          0.0000000000          0.0000000000
+   1    2   2    4   3    4          0.0000000000          0.0000000000
+   1    2   3    4   1    4         -9.9132051124          0.0000000000
+   1    2   3    4   2    4          0.0000000000          0.0000000000
+   1    2   3    4   3    4          0.0000000000          0.0000000000
+   2    2   1    4   1    4          0.0000000000          0.0000000000
+   2    2   1    4   2    4         -9.9132051124          0.0000000000
+   2    2   1    4   3    4          0.0000000000          0.0000000000
+   2    2   2    4   1    4         -9.9132055648          0.0000000000
+   2    2   2    4   2    4         19.8264106590          0.0000000000
+   2    2   2    4   3    4         -9.9132051033          0.0000000000
+   2    2   3    4   1    4          0.0000000000          0.0000000000
+   2    2   3    4   2    4         -9.9132051124          0.0000000000
+   2    2   3    4   3    4          0.0000000000          0.0000000000
+   3    2   1    4   1    4          0.0000000000          0.0000000000
+   3    2   1    4   2    4          0.0000000000          0.0000000000
+   3    2   1    4   3    4         -9.9132051124          0.0000000000
+   3    2   2    4   1    4          0.0000000000          0.0000000000
+   3    2   2    4   2    4          0.0000000000          0.0000000000
+   3    2   2    4   3    4         -9.9132051124          0.0000000000
+   3    2   3    4   1    4         -9.9132051033          0.0000000000
+   3    2   3    4   2    4         -9.9132055648          0.0000000000
+   3    2   3    4   3    4         19.8264106590          0.0000000000
+   1    4   1    1   1    4        -51.3195197200          0.0000000000
+   1    4   1    1   2    4         25.6597597612          0.0000000000
+   1    4   1    1   3    4         25.6597597612          0.0000000000
+   1    4   2    1   1    4          0.0000000000          0.0000000000
+   1    4   2    1   2    4         25.6597597612          0.0000000000
+   1    4   2    1   3    4          0.0000000000          0.0000000000
+   1    4   3    1   1    4          0.0000000000          0.0000000000
+   1    4   3    1   2    4          0.0000000000          0.0000000000
+   1    4   3    1   3    4         25.6597597612          0.0000000000
+   1    4   1    2   1    4         63.6267581356          0.0000000000
+   1    4   1    2   2    4        -31.8133794259          0.0000000000
+   1    4   1    2   3    4        -31.8133794259          0.0000000000
+   1    4   2    2   1    4          0.0000000000          0.0000000000
+   1    4   2    2   2    4        -31.8133794259          0.0000000000
+   1    4   2    2   3    4          0.0000000000          0.0000000000
+   1    4   3    2   1    4          0.0000000000          0.0000000000
+   1    4   3    2   2    4          0.0000000000          0.0000000000
+   1    4   3    2   3    4        -31.8133794259          0.0000000000
+   1    4   1    4   1    1        -26.1036961638          0.0000000000
+   1    4   1    4   2    1          0.0000000000          0.0000000000
+   1    4   1    4   3    1          0.0000000000          0.0000000000
+   1    4   1    4   1    2         19.8264106590          0.0000000000
+   1    4   1    4   2    2          0.0000000000          0.0000000000
+   1    4   1    4   3    2          0.0000000000          0.0000000000
+   1    4   1    4   1    4        214.9379942103          0.0000000000
+   1    4   1    4   2    4        -71.6459978381          0.0000000000
+   1    4   1    4   3    4        -71.6459982753          0.0000000000
+   1    4   2    4   1    1         13.0518481389          0.0000000000
+   1    4   2    4   2    1         13.0518481259          0.0000000000
+   1    4   2    4   3    1          0.0000000000          0.0000000000
+   1    4   2    4   1    2         -9.9132051124          0.0000000000
+   1    4   2    4   2    2         -9.9132051033          0.0000000000
+   1    4   2    4   3    2          0.0000000000          0.0000000000
+   1    4   2    4   1    4        -71.6459980680          0.0000000000
+   1    4   2    4   2    4        -71.6459982753          0.0000000000
+   1    4   2    4   3    4         71.6459980252          0.0000000000
+   1    4   3    4   1    1         13.0518481389          0.0000000000
+   1    4   3    4   2    1          0.0000000000          0.0000000000
+   1    4   3    4   3    1         13.0518481259          0.0000000000
+   1    4   3    4   1    2         -9.9132051124          0.0000000000
+   1    4   3    4   2    2          0.0000000000          0.0000000000
+   1    4   3    4   3    2         -9.9132051033          0.0000000000
+   1    4   3    4   1    4        -71.6459980680          0.0000000000
+   1    4   3    4   2    4         71.6459983181          0.0000000000
+   1    4   3    4   3    4        -71.6459978381          0.0000000000
+   2    4   1    1   1    4         25.6597597612          0.0000000000
+   2    4   1    1   2    4          0.0000000000          0.0000000000
+   2    4   1    1   3    4          0.0000000000          0.0000000000
+   2    4   2    1   1    4         25.6597599588          0.0000000000
+   2    4   2    1   2    4        -51.3195197200          0.0000000000
+   2    4   2    1   3    4         25.6597597612          0.0000000000
+   2    4   3    1   1    4          0.0000000000          0.0000000000
+   2    4   3    1   2    4          0.0000000000          0.0000000000
+   2    4   3    1   3    4         25.6597597612          0.0000000000
+   2    4   1    2   1    4        -31.8133794259          0.0000000000
+   2    4   1    2   2    4          0.0000000000          0.0000000000
+   2    4   1    2   3    4          0.0000000000          0.0000000000
+   2    4   2    2   1    4        -31.8133787097          0.0000000000
+   2    4   2    2   2    4         63.6267581356          0.0000000000
+   2    4   2    2   3    4        -31.8133794259          0.0000000000
+   2    4   3    2   1    4          0.0000000000          0.0000000000
+   2    4   3    2   2    4          0.0000000000          0.0000000000
+   2    4   3    2   3    4        -31.8133794259          0.0000000000
+   2    4   1    4   1    1         13.0518481259          0.0000000000
+   2    4   1    4   2    1         13.0518480119          0.0000000000
+   2    4   1    4   3    1          0.0000000000          0.0000000000
+   2    4   1    4   1    2         -9.9132051033          0.0000000000
+   2    4   1    4   2    2         -9.9132055375          0.0000000000
+   2    4   1    4   3    2          0.0000000000          0.0000000000
+   2    4   1    4   1    4        -71.6459978381          0.0000000000
+   2    4   1    4   2    4        -71.6459980743          0.0000000000
+   2    4   1    4   3    4         71.6459977953          0.0000000000
+   2    4   2    4   1    1          0.0000000000          0.0000000000
+   2    4   2    4   2    1        -26.1036961638          0.0000000000
+   2    4   2    4   3    1          0.0000000000          0.0000000000
+   2    4   2    4   1    2          0.0000000000          0.0000000000
+   2    4   2    4   2    2         19.8264106590          0.0000000000
+   2    4   2    4   3    2          0.0000000000          0.0000000000
+   2    4   2    4   1    4        -71.6459982753          0.0000000000
+   2    4   2    4   2    4        214.9379942103          0.0000000000
+   2    4   2    4   3    4        -71.6459978381          0.0000000000
+   2    4   3    4   1    1          0.0000000000          0.0000000000
+   2    4   3    4   2    1         13.0518481389          0.0000000000
+   2    4   3    4   3    1         13.0518481259          0.0000000000
+   2    4   3    4   1    2          0.0000000000          0.0000000000
+   2    4   3    4   2    2         -9.9132051124          0.0000000000
+   2    4   3    4   3    2         -9.9132051033          0.0000000000
+   2    4   3    4   1    4         71.6459983181          0.0000000000
+   2    4   3    4   2    4        -71.6459980680          0.0000000000
+   2    4   3    4   3    4        -71.6459982753          0.0000000000
+   3    4   1    1   1    4         25.6597597612          0.0000000000
+   3    4   1    1   2    4          0.0000000000          0.0000000000
+   3    4   1    1   3    4          0.0000000000          0.0000000000
+   3    4   2    1   1    4          0.0000000000          0.0000000000
+   3    4   2    1   2    4         25.6597597612          0.0000000000
+   3    4   2    1   3    4          0.0000000000          0.0000000000
+   3    4   3    1   1    4         25.6597597612          0.0000000000
+   3    4   3    1   2    4         25.6597599588          0.0000000000
+   3    4   3    1   3    4        -51.3195197200          0.0000000000
+   3    4   1    2   1    4        -31.8133794259          0.0000000000
+   3    4   1    2   2    4          0.0000000000          0.0000000000
+   3    4   1    2   3    4          0.0000000000          0.0000000000
+   3    4   2    2   1    4          0.0000000000          0.0000000000
+   3    4   2    2   2    4        -31.8133794259          0.0000000000
+   3    4   2    2   3    4          0.0000000000          0.0000000000
+   3    4   3    2   1    4        -31.8133794259          0.0000000000
+   3    4   3    2   2    4        -31.8133787097          0.0000000000
+   3    4   3    2   3    4         63.6267581356          0.0000000000
+   3    4   1    4   1    1         13.0518481259          0.0000000000
+   3    4   1    4   2    1          0.0000000000          0.0000000000
+   3    4   1    4   3    1         13.0518481389          0.0000000000
+   3    4   1    4   1    2         -9.9132051033          0.0000000000
+   3    4   1    4   2    2          0.0000000000          0.0000000000
+   3    4   1    4   3    2         -9.9132051124          0.0000000000
+   3    4   1    4   1    4        -71.6459980454          0.0000000000
+   3    4   1    4   2    4         71.6459977953          0.0000000000
+   3    4   1    4   3    4        -71.6459980680          0.0000000000
+   3    4   2    4   1    1          0.0000000000          0.0000000000
+   3    4   2    4   2    1         13.0518481259          0.0000000000
+   3    4   2    4   3    1         13.0518480119          0.0000000000
+   3    4   2    4   1    2          0.0000000000          0.0000000000
+   3    4   2    4   2    2         -9.9132051033          0.0000000000
+   3    4   2    4   3    2         -9.9132055375          0.0000000000
+   3    4   2    4   1    4         71.6459980252          0.0000000000
+   3    4   2    4   2    4        -71.6459978381          0.0000000000
+   3    4   2    4   3    4        -71.6459980743          0.0000000000
+   3    4   3    4   1    1          0.0000000000          0.0000000000
+   3    4   3    4   2    1          0.0000000000          0.0000000000
+   3    4   3    4   3    1        -26.1036961638          0.0000000000
+   3    4   3    4   1    2          0.0000000000          0.0000000000
+   3    4   3    4   2    2          0.0000000000          0.0000000000
+   3    4   3    4   3    2         19.8264106590          0.0000000000
+   3    4   3    4   1    4        -71.6459980969          0.0000000000
+   3    4   3    4   2    4        -71.6459982753          0.0000000000
+   3    4   3    4   3    4        214.9379942103          0.0000000000
+ 
+
+  Non-linear optical susceptibility tensor d (pm/V)
+  in cartesian coordinates
+   i1dir  i2dir  i3dir             d
+      1      1      1         -0.000000004
+      1      1      2          0.000000018
+      1      1      3         -0.000000004
+      1      2      1          0.000000018
+      1      2      2         -0.000000004
+      1      2      3         21.175513619
+      1      3      1         -0.000000004
+      1      3      2         21.175513619
+      1      3      3          0.000000005
+      2      1      1          0.000000018
+      2      1      2         -0.000000004
+      2      1      3         21.175513619
+      2      2      1         -0.000000004
+      2      2      2         -0.000000002
+      2      2      3          0.000000006
+      2      3      1         21.175513619
+      2      3      2          0.000000006
+      2      3      3         -0.000000016
+      3      1      1         -0.000000004
+      3      1      2         21.175513619
+      3      1      3          0.000000005
+      3      2      1         21.175513619
+      3      2      2          0.000000006
+      3      2      3         -0.000000016
+      3      3      1          0.000000005
+      3      3      2         -0.000000016
+      3      3      3         -0.000000004
+ 
+
+  First-order change in the electronic dielectric 
+  susceptibility tensor (Bohr^-1)
+  induced by an atomic displacement
+   atom  displacement
+    1          1       -0.000000000        0.000000000        0.000000000
+                        0.000000000       -0.000000000       -0.094601228
+                        0.000000000       -0.094601228        0.000000000
+    1          2        0.000000000       -0.000000000       -0.094601228
+                       -0.000000000       -0.000000000       -0.000000000
+                       -0.094601228       -0.000000000       -0.000000000
+    1          3       -0.000000000       -0.094601228       -0.000000000
+                       -0.094601228       -0.000000000       -0.000000000
+                       -0.000000000       -0.000000000       -0.000000000
+
+    2          1       -0.000000000        0.000000000        0.000000000
+                       -0.000000000       -0.000000000        0.094375219
+                       -0.000000000        0.094375219        0.000000000
+    2          2        0.000000000       -0.000000000        0.094375219
+                       -0.000000000       -0.000000000       -0.000000000
+                        0.094375219       -0.000000000       -0.000000000
+    2          3       -0.000000000        0.094375219       -0.000000000
+                        0.094375219       -0.000000000       -0.000000000
+                       -0.000000000       -0.000000000       -0.000000000
+
+
+== END DATASET(S) ==============================================================
+================================================================================
+  
+ -outvars: echo values of variables after computation  --------
+            acell      1.0530000000E+01  1.0530000000E+01  1.0530000000E+01 Bohr
+              amu      2.69815390E+01  7.49215900E+01
+          dilatmx      1.05000000E+00
+             ecut      2.80000000E+00 Hartree
+           ecutsm      5.00000000E-01 Hartree
+           etotal      1.0000000000E+20
+            fcart      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+-          fftalg         112
+           irdden           1
+           irdwfk           1
+          ird1den           1
+           ird1wf           1
+             iscf           5
+              ixc           3
+              kpt     -8.33333333E-02 -1.66666667E-01  0.00000000E+00
+                      -1.66666667E-01 -8.33333333E-02  0.00000000E+00
+                      -8.33333333E-02 -8.33333333E-02  8.33333333E-02
+                      -8.33333333E-02 -3.33333333E-01  0.00000000E+00
+                      -1.66666667E-01 -2.50000000E-01  0.00000000E+00
+                      -8.33333333E-02 -2.50000000E-01  8.33333333E-02
+                      -2.50000000E-01 -1.66666667E-01  0.00000000E+00
+                      -1.66666667E-01 -1.66666667E-01  8.33333333E-02
+                      -8.33333333E-02 -1.66666667E-01  1.66666667E-01
+                      -3.33333333E-01 -8.33333333E-02  0.00000000E+00
+                      -2.50000000E-01 -8.33333333E-02  8.33333333E-02
+                      -1.66666667E-01 -8.33333333E-02  1.66666667E-01
+                      -8.33333333E-02 -8.33333333E-02  2.50000000E-01
+                      -8.33333333E-02  5.00000000E-01  0.00000000E+00
+                      -1.66666667E-01 -4.16666667E-01  0.00000000E+00
+                      -8.33333333E-02 -4.16666667E-01  8.33333333E-02
+                      -2.50000000E-01 -3.33333333E-01  0.00000000E+00
+                      -1.66666667E-01 -3.33333333E-01  8.33333333E-02
+                      -8.33333333E-02 -3.33333333E-01  1.66666667E-01
+                      -3.33333333E-01 -2.50000000E-01  0.00000000E+00
+                      -2.50000000E-01 -2.50000000E-01  8.33333333E-02
+                      -1.66666667E-01 -2.50000000E-01  1.66666667E-01
+                      -8.33333333E-02 -2.50000000E-01  2.50000000E-01
+                      -4.16666667E-01 -1.66666667E-01  0.00000000E+00
+                      -3.33333333E-01 -1.66666667E-01  8.33333333E-02
+                      -2.50000000E-01 -1.66666667E-01  1.66666667E-01
+                      -1.66666667E-01 -1.66666667E-01  2.50000000E-01
+                      -8.33333333E-02 -1.66666667E-01  3.33333333E-01
+                       5.00000000E-01 -8.33333333E-02  0.00000000E+00
+                      -4.16666667E-01 -8.33333333E-02  8.33333333E-02
+                      -3.33333333E-01 -8.33333333E-02  1.66666667E-01
+                      -2.50000000E-01 -8.33333333E-02  2.50000000E-01
+                      -1.66666667E-01 -8.33333333E-02  3.33333333E-01
+                      -8.33333333E-02 -8.33333333E-02  4.16666667E-01
+                      -8.33333333E-02  3.33333333E-01  0.00000000E+00
+                      -1.66666667E-01  4.16666667E-01  0.00000000E+00
+                      -8.33333333E-02  4.16666667E-01  8.33333333E-02
+                      -2.50000000E-01  5.00000000E-01  0.00000000E+00
+                      -1.66666667E-01  5.00000000E-01  8.33333333E-02
+                      -8.33333333E-02  5.00000000E-01  1.66666667E-01
+                      -3.33333333E-01 -4.16666667E-01  0.00000000E+00
+                      -2.50000000E-01 -4.16666667E-01  8.33333333E-02
+                      -1.66666667E-01 -4.16666667E-01  1.66666667E-01
+                      -8.33333333E-02 -4.16666667E-01  2.50000000E-01
+                      -4.16666667E-01 -3.33333333E-01  0.00000000E+00
+                      -3.33333333E-01 -3.33333333E-01  8.33333333E-02
+                      -2.50000000E-01 -3.33333333E-01  1.66666667E-01
+                      -1.66666667E-01 -3.33333333E-01  2.50000000E-01
+                      -8.33333333E-02 -3.33333333E-01  3.33333333E-01
+                       5.00000000E-01 -2.50000000E-01  0.00000000E+00
+                       outvar_i_n : Printing only first  50 k-points.
+           kptopt           2
+         kptrlatt        6   -6    6     -6    6    6     -6   -6    6
+          kptrlen      6.31800000E+01
+P           mkmem         432
+            natom           2
+            nband           4
+            ngfft          12      12      12
+             nkpt         432
+            nstep         100
+             nsym          24
+           ntypat           2
+              occ      2.000000  2.000000  2.000000  2.000000
+        optdriver           5
+         rf1atpol           1       2
+           rf1dir           1       1       1
+          rf1elfd           1
+          rf1phon           1
+           rf2dir           1       1       1
+          rf2elfd           1
+           rf3dir           1       1       1
+          rf3elfd           1
+            rprim      0.0000000000E+00  5.0000000000E-01  5.0000000000E-01
+                       5.0000000000E-01  0.0000000000E+00  5.0000000000E-01
+                       5.0000000000E-01  5.0000000000E-01  0.0000000000E+00
+           shiftk      5.00000000E-01  5.00000000E-01  5.00000000E-01
+          spgroup         216
+           strten      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+           symrel      1  0  0   0  1  0   0  0  1       0 -1  1   0 -1  0   1 -1  0
+                      -1  0  0  -1  0  1  -1  1  0       0  1 -1   1  0 -1   0  0 -1
+                      -1  0  0  -1  1  0  -1  0  1       0 -1  1   1 -1  0   0 -1  0
+                       1  0  0   0  0  1   0  1  0       0  1 -1   0  0 -1   1  0 -1
+                      -1  0  1  -1  1  0  -1  0  0       0 -1  0   1 -1  0   0 -1  1
+                       1  0 -1   0  0 -1   0  1 -1       0  1  0   0  0  1   1  0  0
+                       1  0 -1   0  1 -1   0  0 -1       0 -1  0   0 -1  1   1 -1  0
+                      -1  0  1  -1  0  0  -1  1  0       0  1  0   1  0  0   0  0  1
+                       0  0 -1   0  1 -1   1  0 -1       1 -1  0   0 -1  1   0 -1  0
+                       0  0  1   1  0  0   0  1  0      -1  1  0  -1  0  0  -1  0  1
+                       0  0  1   0  1  0   1  0  0       1 -1  0   0 -1  0   0 -1  1
+                       0  0 -1   1  0 -1   0  1 -1      -1  1  0  -1  0  1  -1  0  0
+            typat      1  2
+              wtk        0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231    0.00231    0.00231    0.00231    0.00231
+                         0.00231    0.00231
+                       outvars : Printing only first  50 k-points.
+           xangst      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       1.3930590016E+00  1.3930590016E+00  1.3930590016E+00
+            xcart      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       2.6325000000E+00  2.6325000000E+00  2.6325000000E+00
+             xred      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       2.5000000000E-01  2.5000000000E-01  2.5000000000E-01
+            znucl       13.00000   33.00000
+
+================================================================================
+
+
+- Timing analysis has been suppressed with timopt=0
+
+
+
+================================================================================
+
+ Suggested references for the acknowledgment of ABINIT usage.
+
+ The users of ABINIT have little formal obligations with respect to the ABINIT group
+ (those specified in the GNU General Public License, http://www.gnu.org/copyleft/gpl.txt).
+ However, it is common practice in the scientific literature,
+ to acknowledge the efforts of people that have made the research possible.
+ In this spirit, please find below suggested citations of work written by ABINIT developers,
+ corresponding to implementations inside of ABINIT that you have used in the present run.
+ Note also that it will be of great value to readers of publications presenting these results,
+ to read papers enabling them to understand the theoretical formalism and details
+ of the ABINIT implementation.
+ For information on why they are suggested, see also http://www.abinit.org/about/?text=acknowledgments.
+
+ [1] Nonlinear optical susceptibilities, Raman efficiencies, and electrooptic tensors
+ from first principles density functional theory.
+ M. Veithen, X. Gonze, and Ph. Ghosez, Phys. Rev. B 71, 125107 (2005).
+ Comment : to be cited for non-linear response calculations, with optdriver=5.
+
+ [2] ABINIT : First-principles approach of materials and nanosystem properties.
+ X. Gonze, B. Amadon, P.-M. Anglade, J.-M. Beuken, F. Bottin, P. Boulanger, F. Bruneval,
+ D. Caliste, R. Caracas, M. Cote, T. Deutsch, L. Genovese, Ph. Ghosez, M. Giantomassi
+ S. Goedecker, D.R. Hamann, P. Hermet, F. Jollet, G. Jomard, S. Leroux, M. Mancini, S. Mazevet,
+ M.J.T. Oliveira, G. Onida, Y. Pouillon, T. Rangel, G.-M. Rignanese, D. Sangalli, R. Shaltaf,
+ M. Torrent, M.J. Verstraete, G. Zerah, J.W. Zwanziger
+ Computer Phys. Comm. 180, 2582-2615 (2009).
+ Comment : the third generic paper describing the ABINIT project.
+ Note that a version of this paper, that is not formatted for Computer Phys. Comm. 
+ is available at http://www.abinit.org/about/ABINIT_CPC_v10.pdf .
+ The licence allows the authors to put it on the Web.
+
+ [3] A brief introduction to the ABINIT software package.
+ X. Gonze, G.-M. Rignanese, M. Verstraete, J.-M. Beuken, Y. Pouillon, R. Caracas, F. Jollet,
+ M. Torrent, G. Zerah, M. Mikami, Ph. Ghosez, M. Veithen, J.-Y. Raty, V. Olevano, F. Bruneval,
+ L. Reining, R. Godby, G. Onida, D.R. Hamann, and D.C. Allan.
+ Z. Kristallogr. 220, 558-562 (2005).
+ Comment : the second generic paper describing the ABINIT project. Note that this paper
+ should be cited especially if you are using the GW part of ABINIT, as several authors
+ of this part are not in the list of authors of the first or third paper.
+ The .pdf of the latter paper is available at http://www.abinit.org/about/zfk_0505-06_558-562.pdf.
+ Note that it should not redistributed (Copyright by Oldenburg Wissenshaftverlag,
+ the licence allows the authors to put it on the Web).
+
+
+ And optionally :
+
+ [4] First-principles computation of material properties : the ABINIT software project. 
+ X. Gonze, J.-M. Beuken, R. Caracas, F. Detraux, M. Fuchs, G.-M. Rignanese, L. Sindic,
+ M. Verstraete, G. Zerah, F. Jollet, M. Torrent, A. Roy, M. Mikami, Ph. Ghosez, J.-Y. Raty, D.C. Allan.
+ Computational Materials Science 25, 478-492 (2002). http://dx.doi.org/10.1016/S0927-0256(02)00325-7
+ Comment : the original paper describing the ABINIT project.
+
+ [5] Fast radix 2, 3, 4 and 5 kernels for Fast Fourier Transformations
+ on computers with overlapping multiply-add instructions.
+ S. Goedecker, SIAM J. on Scientific Computing 18, 1605 (1997).
+-
+- Proc.   0 individual time (sec): cpu=          3.5  wall=          3.5
+
+================================================================================
+
+ Calculation completed.
+.Delivered    2 WARNINGs and   0 COMMENTs to log file.
++Overall time at end (sec) : cpu=          3.5  wall=          3.5

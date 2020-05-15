@@ -1,0 +1,24 @@
+pawovlp 20
+nsppol 2
+spinat 0.0 0.0 6.0
+
+ndtset 10
+ecut 15
+pawecutdg 30.0
+iscf 17
+nstep 50
+toldfe 1.0d-7
+nband 12
+getwfk -1 getocc -1
+occopt 7 tsmear 5.0d-3
+natom 1 ntypat 1 typat 1 
+znucl 26
+xred 0 0 0
+acell: 3*5.10 acell+ 3*0.05 
+kptopt 1 
+kptrlatt 8 0 0 0 8 0 0 0 8
+nshiftk 1
+rprim -.5  .5  .5
+       .5 -.5  .5
+       .5  .5 -.5
+shiftk 0.5 0.5 0.5

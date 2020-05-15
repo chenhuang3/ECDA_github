@@ -1,0 +1,44 @@
+Bi R-3m alpha=58.14147044 deg
+
+HiLAPW 12*12*12 k-points e_cut= 15/60 Ryd
+Coefficients for 3rd order Birch-Murnaghan fitting
+c1    =    0.4470750680D+01
+c2    =    0.9456166612D+00
+c3     =        0.0023087469
+V0    =      449.9235300000
+E0    =   -86075.0205188531
+B'    =        4.7278679226
+B0    =        0.0037364045       54.9625096867 GPa
+
+Abinit 12*12*12 k-points, e_cut=40 Ha
+Coefficients for 3rd order Birch-Murnaghan fitting
+c1    =    0.4394260262D+01
+c2    =    0.9293664511D+00
+c3     =        0.0001731832
+V0    =      450.8165840000
+E0    =     -289.4745186568
+B'    =        4.7282320733
+B0    =        0.0036649207       53.9109832891 GPa
+--
+
+Cubic BiAlO3 Pm-3m
+
+HiLAPW 8*8*8 k-points e_cut=30/120 Ryd
+Coefficients for 3rd order Birch-Murnaghan fitting
+c1    =    0.1222944753D+02
+c2    =    0.2875882713D+01
+c3     =        0.0008144404
+V0    =      349.2366052482
+E0    =   -43970.8825580064
+B'    =        4.2524152561
+B0    =        0.0146395890      215.3483548192 GPa
+
+Abinit 8*8*8 k-points e_cut=45 Ha
+Coefficients for 3rd order Birch-Murnaghan fitting
+c1    =    0.1225924276D+02
+c2    =    0.2874824704D+01
+c3     =        0.0002523914
+V0    =      347.0853216391
+E0    =     -404.7109387886
+B'    =        4.2643444476
+B0    =        0.0147249081      216.6033985613 GPa

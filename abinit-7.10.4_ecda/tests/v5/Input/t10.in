@@ -1,0 +1,22 @@
+2
+t09o
+0.073119 0.0000001 5.00 1000
+
+
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = conducti
+#%% test_chain = t09.in, t10.in
+#%% [files]
+#%% files_to_test = 
+#%%   t10.out, tolnlines = 0, tolabs = 0.000e+00, tolrel = 0.000e+00
+#%% extra_inputs = 
+#%% psp_files = 
+#%% [paral_info]
+#%% max_nprocs = 1
+#%% [extra_info]
+#%% authors = S. Mazevet
+#%% keywords = 
+#%% description = 
+#%%   Test a PAW conductivity calculation. The code conducti calls conducti_paw
+#%%<END TEST_INFO>

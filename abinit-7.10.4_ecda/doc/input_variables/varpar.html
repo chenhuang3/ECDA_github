@@ -1,0 +1,656 @@
+<html>
+<head><title>PARALLELISATION variables.</title>
+<link rel=stylesheet type="text/css" href="formabinit.css">
+</head>
+<body bgcolor="#ffffff">
+
+<hr>
+<a name="top"></a>
+
+<h1>ABINIT parallelisation input variables:</h1>
+<h2>List and description.</h2>
+
+<hr>
+
+<p>This document lists and provides the description
+of the name (keywords) of parallelisation input
+variables to be used in the main input file of the abinit code.
+
+<p>The new user is advised to read first the
+  <a href="../users/new_user_guide.html">new user's guide</a>,
+  before reading the present file. It will be easier to discover the
+  present file with the help of the <a href="../tutorial/welcome.html">tutorial</a>.
+
+<p>When the user is sufficiently familiarized with ABINIT, the reading of the
+  ~abinit/doc/users/tuning file might be useful. For response-function calculations using
+  abinit, please read <a href="../users/respfn_help.html">the response function help file</a>
+
+<h5>Copyright (C) 1998-2014 ABINIT group (DCA, XG, RC)
+<br> This file is distributed under the terms of the GNU General Public License, see
+~abinit/COPYING or <a href="http://www.gnu.org/copyleft/gpl.txt">
+http://www.gnu.org/copyleft/gpl.txt </a>.
+<br> For the initials of contributors, see ~abinit/doc/developers/contributors.txt .
+</h5>
+
+<script type="text/javascript" src="list_internal_links.js"> </script>
+
+<script type="text/javascript" src="list_htmlfiles_input_variables.js"> </script>
+
+<h3><b> Content of the file : alphabetical list of variables.</b></h3>
+ <br>A.
+ <a href="varpar.html#autoparal">autoparal</a>&nbsp;&nbsp;
+ <br>B.
+ <a href="varpar.html#bandpp">bandpp</a>&nbsp;&nbsp;
+ <br>C.
+ <br>D.
+ <br>E.
+ <br>F.
+ <br>G.
+ <a href="varpar.html#gpu_linalg_limit">gpu_linalg_limit</a>&nbsp;&nbsp;
+ <a href="varpar.html#gwpara">gwpara</a>&nbsp;&nbsp;
+ <br>H.
+ <br>I.
+ <br>J.
+ <br>K.
+ <br>L.
+ <a href="varpar.html#localrdwf">localrdwf</a>&nbsp;&nbsp;
+ <br>M.
+ <a href="varpar.html#max_ncpus">max_ncpus</a>&nbsp;&nbsp;
+ <br>N.
+ <a href="varpar.html#npband">npband</a>&nbsp;&nbsp;
+ <a href="varpar.html#npfft">npfft</a>&nbsp;&nbsp;
+ <a href="varpar.html#nphf">nphf</a>&nbsp;&nbsp;
+ <a href="varpar.html#npimage">npimage</a>&nbsp;&nbsp;
+ <a href="varpar.html#npkpt">npkpt</a>&nbsp;&nbsp;
+ <a href="varpar.html#nppert">nppert</a>&nbsp;&nbsp;
+ <a href="varpar.html#npspinor">npspinor</a>&nbsp;&nbsp;
+ <a href="varpar.html#np_slk">np_slk</a>&nbsp;&nbsp;
+ <br>O.
+ <br>P.
+ <a href="varpar.html#paral_atom">paral_atom</a>&nbsp;&nbsp;
+ <a href="varpar.html#paral_kgb">paral_kgb</a>&nbsp;&nbsp;
+ <a href="varpar.html#paral_rf">paral_rf</a>&nbsp;&nbsp;
+ <br>Q.
+ <br>R.
+ <br>S.
+ <br>T.
+ <br>U.
+ <a href="varpar.html#use_gpu_cuda">use_gpu_cuda</a>&nbsp;&nbsp;
+ <a href="varpar.html#use_slk">use_slk</a>&nbsp;&nbsp;
+ <br>V.
+ <br>W.
+ <br>X.
+ <br>Y.
+ <br>Z.
+
+<br><br><br><br><hr>
+
+
+<br><font id="title"><a name="autoparal">autoparal</a></font>
+<br><font id="definition">Mnemonics: AUTOmatisation of the PARALlelism</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#develop">DEVELOP</a>, PARALLEL </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0</font>
+<br><br><font id="text">
+<p>
+This input variable is used only when running ABINIT in parallel and for Ground-State calculations.<br>
+It controls the automatic determination of parameters related to parallel work distribution (if not imposed in input file).
+Given a total number of processors, ABINIT can find a suitable distribution that fill (when possible)
+all the differents levels of parallelization. ABINIT can also determine optimal parameters for
+the use of parallel Linear Algebra routines (using Scalapack or Cuda, at present).<br>
+The different values for <b>autoparal</b> are:
+<ul>
+<li>
+<b>0:</b> The <b>autoparal</b> feature is deactivated. For ground-state  abd response function calculations,
+ABINIT can only activate automatically the parallelism over spins and k-points.
+</li>
+<li>
+<b>1:</b> The number of processors per parallelization level is determined by mean of
+a simple (but relatively efficient) heuristic. A scaling factor is attributed to each level
+and an simple speedup factor is computed. The selected parameters are those giving the best speedup factor.<br>
+Possibly concerned parameters: <a href="varpar.html#npimage">npimage</a>, <a href="varpar.html#npkpt">npkpt</a>,
+ <a href="varpar.html#npspinor">npspinor</a>, <a href="varpar.html#npfft">npfft</a>,
+ <a href="varpar.html#npband">npband</a>, <a href="varpar.html#bandpp">bandpp</a>.
+</li>
+<li>
+<b>2:</b> The number of processors per parallelization level is first determined by mean of
+a simple (but relatively efficient) heuristic (see 1 above). Then the code perfoms a series
+of small benchmarks using the scheme applied for the LOBPCG algorithm
+ (see: <a href="vardev.html#wfoptalg">wfoptalg</a>=4 or 14). The parallel distribution is then
+changed according to the benchmarks.<br>
+Possibly concerned parameters: <a href="varpar.html#npimage">npimage</a>, <a href="varpar.html#npkpt">npkpt</a>,
+ <a href="varpar.html#npspinor">npspinor</a>, <a href="varpar.html#npfft">npfft</a>,
+ <a href="varpar.html#npband">npband</a>, <a href="varpar.html#bandpp">bandpp</a>.
+</li>
+<li>
+<b>3:</b>
+Same as <b>autoparal</b>=1, plus automatic determination of Linear Algebra routines parameters.<br>
+In addition, the code perfoms a series of small benchmarks using the Linear Algebra routines
+(ScaLapack or Cuda-GPU). The parameters used to optimize Linear Algebra work distribution
+are then changed according to the benchmarks.<br>
+Possibly concerned parameters (in addition to those modified for <b>autoparal</b>=1):
+ <a href="varpar.html#use_slk">use_slk</a>, <a href="varpar.html#np_slk">np_slk</a>,
+ <a href="varpar.html#gpu_linalg_limit">gpu_linalg_limit</a>
+</li>
+<li>
+<b>4:</b> combination of <b>autoparal</b>=2 and <b>autoparal</b>=3.
+</li>
+</ul>
+Note that <b>autoparal</b>=1 can be used on every set of processors; <b>autoparal</b> &gt; 1 should be used on a sufficiently large number of MPI process.<br>
+Also note that <b>autoparal</b> can be used simultaneously with
+ <a href="varpar.html#max_ncpus">max_ncpus</a>; in this case, ABINIT performs
+an optimization of process distribution for each total number of processors from 2
+to <a href="varpar.html#max_ncpus">max_ncpus</a>.
+A weight is associated to each distribution and the higher this weight is the better the distribution is. 
+After having printed out the weights, the code stops.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="bandpp">bandpp</a></font>
+<br><font id="definition">Mnemonics: BAND Per Processor </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#develop">DEVELOP</a> </font>
+<br><font id="vartype">Variable type: integer parameter </font>
+<br><font id="default">Default is 1.</font>
+<br><font id="text">
+<p>
+Control the size of the block in the LOBPCG algorithm.
+This keyword works only with <a href="varpar.html#paral_kgb">paral_kgb</a>=1 and has to be either 1 or a multiple of 2.
+<br><br>-- With <a href="varpar.html#npband">npband</a>=1:
+<ul>
+<li>1 =&gt; band-per-band algorithm</li>
+<li>n =&gt; The minimization is performed using <a href="varbas.html#nband">nband</a>/n blocks of n bands.</li>
+</ul>
+Note: <a href="varbas.html#nband">nband</a>/n has to be an integer.
+<br><br>-- With <a href="varpar.html#npband">npband</a>/=1:
+<ul>
+<li>1 =&gt; The minimization is performed using <a href="varbas.html#nband">nband</a>/<a href="varpar.html#npband">npband</a> blocks of <a href="varpar.html#npband">npband</a> bands.</li>
+<li>n =&gt; The minimization is performed using <a href="varbas.html#nband">nband</a>/(<a href="varpar.html#npband">npband</a>*n) blocks of <a href="varpar.html#npband">npband</a>*n bands.</li>
+</ul>
+Note: <a href="varbas.html#nband">nband</a>/(<a href="varpar.html#npband">npband</a>*n) has to be an integer.
+<br><br>By minimizing a larger number of bands together in LOBPCG, we increase the convergency of the residual.
+The better minimization procedure (as concerns the convergency, but not as concerns the speed) is generally
+performed by using <b>bandpp</b>*<a href="varpar.html#npband">npband</a>=<a href="varbas.html#nband">nband</a>.
+Put <b>bandpp</b>=2 when <a href="vardev.html#istwfk">istwfk</a>=2 (the time spent in FFTs is divided by two).
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="gpu_linalg_limit">gpu_linalg_limit</a></font>
+<br><font id="definition">Mnemonics: GPU (Cuda): LINear ALGebra LIMIT </font>
+<br><font id="category">Characteristic: </font>
+<br><font id="vartype">Variable type: integer parameter </font>
+<br><font id="default">Default is 2000000.  </font>
+<br>
+<br><font id="text">
+<p>
+Only relevant if <a href="varpar.html#use_gpu_cuda">use_gpu_cuda</a>=1, that is, if ABINIT is used with CUDA functionality.<br><br>
+Use of linear algebra and matrix algebra on GPU is only efficient if the size of the involved matrices is large enough.
+The <b>gpu_linalg_limit</b> parameter defines the threshold above which linear (and matrix) algebra operations
+are done on the Graphics Processing Unit.<br>
+The considered matrix size is equal to:<br>
+<li>SIZE=(<a href="varint.html#mpw">mpw</a>*<a href="vargs.html#nspinor">nspinor</a>/
+<a href="varpar.html#npspinor">npspinor</a>)*
+(<a href="varpar.html#npband">npband</a>*<a href="varpar.html#bandpp">bandpp</a>)**2
+</li><br>
+When SIZE>=<b>gpu_linalg_limit</b>, <a href="vardev.html#wfoptalg">wfoptalg</a> parameter is
+automatically set to 14 which corresponds to the use of LOBPCG algorithm for the calculation of the eigenstates.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="gwpara">gwpara</a></font>
+<br><font id="definition">Mnemonics: GW PARAllelization level </font>
+<br><font id="category">Characteristic: GW, PARALLEL</font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 1 <B>TODO: default should be 2</b>.</font>
+<br><br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations.
+<p>
+<b>gwpara</b> is used to choose between the two different parallelization levels
+available in the GW code. The available options are:
+
+<ul>
+<li> =1 =&gt; parallelisation on k points </li>
+<li> =2 =&gt; parallelisation on bands    </li>
+</ul>
+
+<p>
+Additional notes:
+<br>
+In the present status of the code, only the parallelization over bands (<b>gwpara</b>=2)
+allows to reduce the memory allocated by each processor.
+<br>
+Using <b>gwpara</b>=1, indeed, requires the same amount of memory as a sequential run,
+irrespectively of the number of CPU's used.
+<p>
+A reduction of the requireed memory can be achieved by opting for an out-of-core solution
+(<a href="varfil.html#mkmem">mkmem</a>=0, only coded for <a href="vargs.html#optdriver">optdriver</a>=3)
+at the price of a drastic worsening of the performance.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="localrdwf">localrdwf</a></font>
+<br><font id="definition">Mnemonics: LOCAL ReaD WaveFunctions</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#develop">DEVELOP</a>, PARALLEL </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 1.</font>
+<br><br><font id="text">
+<p>
+This input variable is used only when running abinit in parallel.
+If <b>localrdwf</b>=1, the input wavefunction disk file or the KSS/SCR file in case of GW
+calculations, is read locally by each processor, while
+if <b>localrdwf</b>=0, only one processor reads it, and
+broadcast the data to the other processors.
+<p> The option <b>localrdwf</b>=0 is NOT allowed when parallel I/O are activated (MPI-IO access),
+i.e. when <a href="vardev.html#accesswff">accesswff</a>==1.
+<p> The option <b>localrdwf</b>=0 is NOT allowed when
+<a href="varfil.html#mkmem">mkmem</a>==0 (or, for RF, when
+<a href="varrf.html#mkqmem">mkqmem</a>==0, or <a href="varrf.html#mk1mem">mk1mem</a>==0), that
+is, when the wavefunctions are stored on disk.
+This is still to be coded ...
+<p> In the case of a parallel computer with a unique file system,
+both options are as convenient for the user. However, if the I/O
+are slow compared to communications between processors,
+(e.g. for CRAY T3E machines), <b>localrdwf</b>=0 should be much more
+efficient;
+if you really need temporary disk storage, switch to localrdwf=1 ).
+<p> In the case of a cluster of nodes, with a different file system for
+each machine, the input wavefunction file must be available on all
+nodes if <b>localrdwf</b>=1, while it is needed only for the
+master node if <b>localrdwf</b>=0.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="max_ncpus">max_ncpus</a></font>
+<br><font id="definition">Mnemonics: MAXimum Number of CPUS</font>
+<br><font id="category">Characteristic: PARALLEL</font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0</b>.</font>
+<br><br><font id="text">
+<p>
+If <a href="varpar.html#autoparal">autoparal</a> &gt; 1 and <b>max_ncpus</b> is greater than 0,
+ABINIT analyzes the efficiency of the process distribution for each possible number of processors 
+from 2 to <b>max_ncpus</b>.
+After having printed out the efficiency, the code stops.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="npband">npband</a></font>
+<br><font id="definition">Mnemonics: Number of Processors at the BAND level </font>
+<br><font id="category">Characteristic: </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 1.</font>
+<br><br><font id="text">
+<p>
+Relevant only for the band/FFT parallelisation
+(see the <a href="varpar.html#paral_kgb">paral_kgb</a> input variable).
+<br> <b>npband</b> gives the number of processors among which the work load over the band level is shared.
+<b>npband</b>, <a href="varpar.html#npfft">npfft</a>,
+<a href="varpar.html#npkpt">npkpt</a> and <a href="varpar.html#npspinor">npspinor</a>
+are combined to give the total number
+of processors (nproc) working on the band/FFT/k-point parallelisation.<br>
+See <a href="varpar.html#npfft">npfft</a>, <a href="varpar.html#npkpt">npkpt</a>,
+<a href="varpar.html#npspinor">npspinor</a> and
+<a href="varpar.html#paral_kgb">paral_kgb</a> for the additional information on the use of
+band/FFT/k-point parallelisation.
+<p>
+Note : at present, <b>npband</b> has to be a divisor or equal to <a href="varbas.html#nband">nband</a>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="npfft">npfft</a></font>
+<br><font id="definition">Mnemonics: Number of Processors at the FFT level </font>
+<br><font id="category">Characteristic: </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is nproc.</font>
+<br><br><font id="text">
+<p>
+Relevant only for the band/FFT/k-point parallelisation
+(see the <a href="varpar.html#paral_kgb">paral_kgb</a> input variable).
+<br> <b>npfft</b> gives the number of processors among
+which the work load over the FFT level is shared.
+<b>npfft</b>, <a href="varpar.html#npkpt">npkpt</a>,
+<a href="varpar.html#npband">npband</a> and <a href="varpar.html#npspinor">npspinor</a>
+are combined to give the total number
+of processors (nproc) working on the band/FFT/k-point parallelisation.<br>
+See <a href="varpar.html#npband">npband</a>, <a href="varpar.html#npkpt">npkpt</a>,
+<a href="varpar.html#npspinor">npspinor</a>, and
+<a href="varpar.html#paral_kgb">paral_kgb</a> for the additional information on the use of
+band/FFT/k-point parallelisation.
+<p>
+
+Note : <a href="vargs.html#ngfft">ngfft</a> is automatically adjusted to <b>npfft</b>.
+If the number of processor is changed from a calculation to another one,
+<b>npfft</b> may change, and then <a href="vargs.html#ngfft">ngfft</a> also.
+
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="nphf">nphf</a></font>
+<br><font id="definition">Mnemonics: Number of Processors for Fock exact exchange </font>
+<br><font id="category">Characteristic: </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 1.</font>
+<br><br><font id="text">
+<p>
+Relevant only for the k-point/fock parallelisation
+(option <a href="varpar.html#paral_kgb">paral_kgb</a> input variable).
+<br> <b>nphf</b> gives the number of processors among
+which the work load over the occupied states level is shared.
+<b>nphf</b> and <a href="varpar.html#npkpt">npkpt</a> are combined to give the total number
+of processors (nproc) working on the parallelisation.<br>
+<p>
+
+Note : <b>nphf</b> should be a divisor or equal to the number of k-point times the number of bands for 
+exact exchange (<a href="varbas.html#nkpthf">nkpthf</a>*<a href="varbas.html#nbandhf">nbandhf</a>)
+in order to have the better load-balancing and efficiency.
+<br>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="npimage">npimage</a></font>
+<br><font id="definition">Mnemonics: Number of Processors at the IMAGE level </font>
+<br><font id="category">Characteristic: </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is min(nproc,<a href="varint.html#ndynimage">ndynimage</a>) (see below).</font>
+<br><br><font id="text">
+<p>
+Relevant only
+when sets of images are activated (see <a href="varrlx.html#imgmov">imgmov</a>
+and <a href="varrlx.html#nimage">nimage</a>.
+<br> <b>npimage</b> gives the number of processors among
+which the work load over the image level is shared. It is compatible with all other parallelization
+levels available for ground-state calculations.<br>
+Note on the <b>npimage</b> default value: this default value is crude.
+It is set to the number of dynamic images (<a href="varint.html#ndynimage">ndynimage</a>)
+ if the number of available processors allows this choice.
+If <a href="varrlx.html#ntimimage">ntimimage</a>=1, <b>npimage</b> is set to
+min(nproc,<a href="varrlx.html#nimage">nimage</a>).<br>
+
+<br><br>
+
+<i>See <a href="varpar.html#paral_kgb">paral_kgb</a>,
+ <a href="varpar.html#npkpt">npkpt</a>,
+ <a href="varpar.html#npband">npband</a>,
+ <a href="varpar.html#npfft">npfft</a>
+ and <a href="varpar.html#npspinor">npspinor</a>
+ for the additional information on the use of k-point/band/FFT parallelisation.</i>
+<p>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="npkpt">npkpt</a></font>
+<br><font id="definition">Mnemonics: Number of Processors at the K-Point Level </font>
+<br><font id="category">Characteristic: </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 1.</font>
+<br><br><font id="text">
+<p>
+Relevant only for the band/FFT/k-point parallelisation
+(see the <a href="varpar.html#paral_kgb">paral_kgb</a> input variable).
+<br> <b>npkpt</b> gives the number of processors among
+which the work load over the k-point/spin-component level is shared.
+<b>npkpt</b>, <a href="varpar.html#npfft">npfft</a>, <a href="varpar.html#npband">npband</a> and
+<a href="varpar.html#npspinor">npspinor</a> are combined to give the total number
+of processors (nproc) working on the band/FFT/k-point parallelisation.<br>
+See <a href="varpar.html#npband">npband</a>, <a href="varpar.html#npfft">npfft</a>,
+<a href="varpar.html#npspinor">npspinor</a> and
+<a href="varpar.html#paral_kgb">paral_kgb</a> for the additional information on the use of
+band/FFT/k-point parallelisation.
+<p>
+
+Note : <b>npkpt</b> should be a divisor or equal to with the number of k-point/spin-components
+(<a href="varbas.html#nkpt">nkpt</a>*<a href="varbas.html#nsppol">nsppol</a>)
+in order to have the better load-balancing and efficiency.
+<br>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="nppert">nppert</a></font>
+<br><font id="definition">Mnemonics: Number of Processors at the PERTurbation level  </font>
+<br><font id="category">Characteristic: can even be specified separately for each dataset, parameter paral_rf is necessary </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 1.</font>
+<br><br><font id="text">
+<p>
+This parameter is used in connection to the parallelization over perturbations(see <a href="varpar.html#paral_rf">paral_rf</a> ), 
+for a linear response calculation.
+<b>nppert</b> gives the number of processors among which the work load over the perturbation level is shared.
+<br>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="npspinor">npspinor</a></font>
+<br><font id="definition">Mnemonics: Number of Processors at the SPINOR level </font>
+<br><font id="category">Characteristic: </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 1.</font>
+<br><br><font id="text">
+<p>
+Can be 1 or 2 (if <a href="vargs.html#nspinor">nspinor</a>=2).<br>
+Relevant only for the band/FFT/k-point parallelisation
+(see the <a href="varpar.html#paral_kgb">paral_kgb</a> input variable).
+<br> <b>npspinor</b> gives the number of processors among
+which the work load over the spinorial components of wave-functions is shared.
+<b>npspinor</b>, <a href="varpar.html#npfft">npfft</a>,
+<a href="varpar.html#npband">npband</a> and <a href="varpar.html#npkpt">npkpt</a>
+are combined to give the total number of processors (nproc)
+working on the band/FFT/k-point parallelisation.<br>
+See <a href="varpar.html#npkpt">npkpt</a>, <a href="varpar.html#npband">npband</a>,
+<a href="varpar.html#npfft">npfft</a>, and
+<a href="varpar.html#paral_kgb">paral_kgb</a> for the additional information on the use of
+band/FFT/k-point parallelisation.
+<br>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="np_slk">np_slk</a></font>
+<br><font id="definition">Mnemonics: Number of mpi Processors used for ScaLapacK calls</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#develop">DEVELOP</a>  </font>
+<br><font id="vartype">Variable type: integer parameter</font>
+<br><font id="default">Default is 1000000</font>
+<br><font id="text">
+<p>
+Only relevant (for Ground-State calculations) when <a href="varpar.html#paral_kgb">paral_kgb</a>=1
+and LOBPCG algorithm is used.<br>
+When using Scalapack (or any similar Matrix Algebra library), the efficiency of the eigenproblem resolution saturates as the number of CPU cores
+increases. It is better to use a smaller number of CPU cores for the LINALG calls.<br>
+This maximum number of cores can be set with <b>np_slk</b>.<br>
+A large number for <b>np_slk</b> (i.e. 1000000) means that all cores are used for the
+Linear Algebra calls.
+<br>np_slk must divide the number of processors involved in diagonalizations (<a href="varpar.html#npband">npband</a>*<a href="varpar.html#npfft">npfft</a>*<a href="varpar.html#npspinor">npspinor</a>).
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="paral_atom">paral_atom</a></font>
+<br><font id="definition">Mnemonics: activate PARALelization over (paw) ATOMic sites</font>
+<br><font id="category">Characteristic: </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0.</font>
+<br><br><font id="text">
+<p>
+Relevant only for PAW calculations.<br>
+This keyword controls the parallel distribution of memory over atomic sites. Calculations are
+also distributed using the "kpt-band" communicator.<br>
+Warning: use of <b>paral_atom</b> is highly experimental.<br>
+Only compatible (for the moment) with ground-state calculations.
+<br>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="paral_kgb">paral_kgb</a></font>
+<br><font id="definition">Mnemonics: activate PARALelization over K-point, G-vectors and Bands</font>
+<br><font id="category">Characteristic: </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0.</font>
+<br><br><font id="text">
+<p>
+<b>If paral_kgb is not explicitely put in the input file</b>,
+ABINIT automatically detects if the job has been sent in sequential or in parallel. 
+In this last case, it detects the number of processors on which the job has been sent and calculates values of
+ <a href="varpar.html#npkpt">npkpt</a>, <a href="varpar.html#npfft">npfft</a>,
+<a href="varpar.html#npband">npband</a>, <a href="varpar.html#bandpp">bandpp</a> ,<a href="varpar.html#npimage">npimage</a> and <a href="varpar.html#npspinor">npspinor</a> that are compatible with the number of processors. It then set
+paral_kgb to 0 or 1 (see hereunder) and launches the job.
+</p>
+<b>If paral_kgb=0</b>,
+the parallelization over k-points only is activated. In this case,
+ <a href="varpar.html#npkpt">npkpt</a>, <a href="varpar.html#npfft">npfft</a> and
+<a href="varpar.html#npband">npband</a> are ignored. Require compilation option --enable-mpi="yes".
+</p>
+
+<p>
+<b>If paral_kgb=1</b>,
+the parallelization over bands, FFTs, and k-point/spin-components is activated
+(see <a href="varpar.html#npkpt">npkpt</a>, <a href="varpar.html#npfft">npfft</a> and
+<a href="varpar.html#npband">npband</a>). With this parallelization, the work load is split over
+three levels of parallelization. The different communications almost occur
+along one dimension only. Require compilation option --enable-mpi="yes".
+</p>
+
+
+
+HOWTO fix the number of processors along one level of parallelisation:
+<br>
+At first, try to parallelise over the k point and spin
+(see <a href="varpar.html#npkpt">npkpt</a>).
+Otherwise, for unpolarized calculation at the gamma point, parallelise over the
+two other levels: the band and FFT ones. For nproc<=50,
+the best speed-up is achieved for
+<a href="varpar.html#npband">npband</a>=nproc and
+<a href="varpar.html#npfft">npfft</a>=1 (which is not yet the default).
+For nproc>=50, the best speed-up is achieved for
+<a href="varpar.html#npband">npband</a> >=4*<a href="varpar.html#npfft">npfft</a>.
+
+<p>
+For additional information,
+download F. Bottin's presentation at the <a href="http://www.abinit.org/community/events/program3rd">ABINIT workshop 2007</a>
+<p>
+Suggested acknowledgments :
+<br>
+F. Bottin, S. Leroux, A. Knyazev and G. Zerah,
+<i>Large scale ab initio calculations based on three levels of parallelization</i>,
+Comput. Mat. Science <b>42</b>, 329 (2008),
+available on arXiv, http://arxiv.org/abs/0707.3405 .
+<p>
+If the total number of processors used is compatible with the three levels of parallelization, the values for <a href="varpar.html#npband">npband</a>, <a href="varpar.html#npfft">npfft</a>, <a href="varpar.html#npband">npband</a> and <a href="varpar.html#bandpp">bandpp</a> will be filled automatically, although the repartition may not be optimal. To optimize the repartition use:
+<p>
+
+<b>If paral_kgb=1 </b> and <b>max_ncpus = n /= 0</b> ABINIT will test automatically if all the processor numbers between 2 and n are convenient 
+for a parallel calculation and print the possible values in the log file. 
+A weight is attributed to each possible processors repartition. It is adviced to select a processor repartition for which the weight is high 
+(as closed to the number of processors as possible). The code will then stop after the printing. 
+This test can be done as well with a sequential as with a parallel version of the code. 
+The user can then choose the adequate number of processor on which he can run his job. 
+He must put again paral_kgb=1 in the input file and put the corresponding values for 
+<a href="varpar.html#npband">npband</a>, <a href="varpar.html#npfft">npfft</a>, <a href="varpar.html#npband">npband</a> 
+and <a href="varpar.html#bandpp">bandpp</a> in the input file.
+
+
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="paral_rf">paral_rf</a></font>
+<br><font id="definition">Mnemonics: activate PARALlelization over Response Function perturbations </font>
+<br><font id="category">Characteristic: can even be specified separately for each dataset </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0.</font>
+<br><br><font id="text">
+<p>
+This parameter activates the parallelization over perturbations which can be used during
+RF-Calculation. It is possible to use this type of parallelization in combination to the
+parallelization over k-points.
+</p>
+<p>
+Currently total energies calculated by groups, where the master process is not in, are saved
+in .status_LOGxxxx files.
+</p>
+<p>
+If <b>paral_rf</b> is set to -1, the code reports the list of irreducible perturbations for the specified
+q-point in the log file (YAML format) and then stops.
+</p>
+
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="use_gpu_cuda">use_gpu_cuda</a></font>
+<br><font id="definition">Mnemonics: activate USE of GPU accelerators with CUDA (nvidia)</font>
+<br><font id="category">Characteristic: </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 1 for ground-state calculations (<a href="vargs.html#optdriver">optdriver</a>=0) when ABINIT has been compiled using cuda, 0 otherwise</font>
+<br><br><font id="text">
+<p>
+Only available if ABINIT executable has been compiled with cuda nvcc compiler.<br>
+This parameter activates the use of NVidia graphic accelerators (GPU) if present.<br>
+If <b>use_gp_cuda</b>=1, some parts of the computation are transmitted to the GPUs.<br>
+If <b>use_gp_cuda</b>=1, no computation is done on GPUs, even if present.<br><br>
+Note that, while running ABINIT on GPUs, it is recommended to use MAGMA external library
+(i.e. Lapack on GPUs). The latter is activated during compilation stage (see "configure"
+step of ABINIT compilation process). If MAGMA is not used, ABINIT performances on GPUs
+can be poor.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="use_slk">use_slk</a></font>
+<br><font id="definition">Mnemonics: USE ScaLapacK</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#develop">DEVELOP</a>  </font>
+<br><font id="vartype">Variable type: integer parameter  </font>
+<br><font id="default">Default is 0</font>
+<br><font id="text">
+<p>
+If set to 1, enable the use of ScaLapack within LOBPCG.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<script type="text/javascript" src="list_internal_links.js"> </script>
+
+</body>
+</html>
+

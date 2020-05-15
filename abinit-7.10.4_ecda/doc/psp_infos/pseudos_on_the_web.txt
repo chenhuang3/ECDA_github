@@ -1,0 +1,25 @@
+Concerning the PAW database on Abinit web site.
+-----------------------------------------------
+
+If you want to post new PAW atomic datasets, the modifications are the
+following:
+
+* The "CONTRIB" table (where you have to put the datasets) is now located at:
+http://www.abinit.org/downloads/PAW2/TABLES/CONTRIB/
+Then you have the different directories, one per atomic specie.
+
+Once you have put your new dataset in CONTRIB, you have to add it in the
+"index.html" file corresponding to the atomic species.
+You can find it at:
+http://www.abinit.org/downloads/PAW2/ATOMICDATA/xxx-specie/index.html
+Put the link to your dataset in the third section (contributed PAW datasets).
+
+I have generated all these index.html files using a script; but this is no
+more possible through plone interface.
+
+Last modification, if needed: the change of the color in the periodic table.
+The picture of the table is located at:
+http://www.abinit.org/downloads/PAW2/Pictures/periodic.gif
+
+In order to have access to http://www.abinit.org/downloads/PAW2, contact
+Jean-Michel Beuken.

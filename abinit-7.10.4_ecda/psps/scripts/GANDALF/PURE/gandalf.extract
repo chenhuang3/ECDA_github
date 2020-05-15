@@ -1,0 +1,401 @@
+#!/usr/bin/python
+#set -x
+#    This utility read the arguments 'sys.argv[]'. Various data 
+#    files ('keyword.dat' and 'keyword.tex') are created in each
+#    directory by extracting data from the '*.keyword.out' output 
+#    files of the ABINIT code.   
+#    The first argument define the type of extraction.  
+#  1)If this one equals to the 'ecut' keyword, it performs 
+#    convergence with respect to the cutoff energy and a 'ecut.dat' 
+#    data file is obtained (first column=ecut, the others=deltaE). 
+#  2)If this one equals to the 'fcc', 'bcc', 'hcp', 'dhcp', 'sc', 
+#    'diamond' ... keywords (this list is not exhaustive), a '*.dat' 
+#    is obtained, with the volume in the first column 
+#    and the energy in the others. A TEX file '*.tex' compiling
+#    the equilibrium parameters of a Birch-Murnaghan fit (volume,
+#    bulk modulus, its derivative, cohesive energy) is also given.
+#  3)If this one equals to the 'dimer' this script computes the 
+#    interatomic distance and the cohesive energy. An output is
+#    given in a TEX format (dimer.tex).  
+#  4)If this one equals to the 'all' keyword, the '*.dat' and 
+#    the '*.tex' data files are created for all the keywords listed 
+#    in 'listkey'.
+#  5)Otherwise, the script stop. 
+####################################################################
+
+#Initialize, import and define 
+#=============================
+import os
+import fnmatch
+import fpformat
+import time
+import sys
+from Numeric import *
+sys.float_output_precision=8
+sys.output_line_width=10000
+(filepath,filename) = os.path.split(os.getcwd())
+ROOTDIR = str('')
+OUTPUT = str('/PURE/OUTPUT/')
+
+#Read the keyword which define the type of data extraction 
+#=========================================================
+listkey={'fcc': 1,'bcc': 1,'diamond': 2,'dimer': 2,'hcp': 2,'dhcp': 4,'ecut': 1}
+
+if len(sys.argv) != 4 :
+	print "################################################################################################"
+	print "Three arguments are needed:"
+	print "The first one deals with the input file: ecut, atom, dimer, fcc, bcc, diamond, ... ====== or all"
+	print "The second one deals with the species: 001-H, 008-O, .... ====== or all"
+	print "The third one deals with the output file: 1.ecut.out, 2.fcc.out,... ====== or all"
+	print "################################################################################################"
+	sys.exit(1)  
+
+if sys.argv[2] == 'all' :
+	DIRECTORY=os.listdir(ROOTDIR+OUTPUT)
+elif os.access(ROOTDIR+OUTPUT+sys.argv[2],os.F_OK) == 1 :
+	DIRECTORY=[sys.argv[2]]
+elif filename == str(sys.argv[2]) :
+	DIRECTORY=[sys.argv[2]]
+	ROOTDIR=str(os.path.split(filepath)[0]+'/')
+else :
+	print "The second argument is not allowed. There is no %s directory in %s" % (str(sys.argv[2]),str(OUTPUT))
+        sys.exit(1)
+
+if (sys.argv[1] in listkey) == 1 :
+	print "#########################################################################"
+	print "############# Extract %s data of the %s directory(ies) #############" % (sys.argv[1],sys.argv[2])
+	print "#########################################################################"
+	listtype=[sys.argv[1]]
+elif sys.argv[1] == 'all' :
+	print "#########################################################################"
+	print "############# Extract all the data of the %s directory(ies) #############" % sys.argv[2]
+	print "#########################################################################"
+	listtype=listkey.keys()
+else :
+	print "The first argument is not allowed"
+	sys.exit(1)
+
+if sys.argv[3] == 'all' :
+	ATOMICDATA=['.']
+elif os.access(ROOTDIR+OUTPUT+DIRECTORY[0]+'/'+sys.argv[3],os.F_OK) == 1 :
+	ATOMICDATA=[sys.argv[3]]
+else :
+	print "The third argument is not allowed. There is no %s output file" % str(OUTPUT+DIRECTORY[0]+'/'+sys.argv[3])
+        sys.exit(1)
+
+#======================================================================================================
+#=============================Loop on the various type of extraction=================================== 
+#======================================================================================================
+for keyword in listtype :
+	print ''
+	print '========================================================================='
+	print '====================== %s output type ==================================' % keyword
+	print '========================================================================='
+
+#Search the directories in OUPUT and initialize various arrays
+#============================================================
+	for directory in DIRECTORY :
+		etottab=array([],'d')
+		ecuttab=array([],'d')
+		filetab=[]
+		nfile=0
+		filetab.append('filename')
+		for files in sorted(os.listdir(ROOTDIR+OUTPUT+directory)) :
+			if files.find(str(ATOMICDATA[0])) != -1 and files.find('.'+str(keyword)+'.out') != -1 :
+				if nfile == 0 :
+					print ''
+					print '+++++++++++++++++++++++++++++ %s SPECIES ++++++++++++++++++++++++++++' % directory
+				print 'Extract data of the output file %s' % files
+				nfile=nfile+1
+				iecut=1
+				ietotal=1
+				endfile=0
+				xangstfind = 0	
+				filetab.append(str(files))
+				outputfile=file(ROOTDIR+OUTPUT+directory+'/'+files,'r')
+				for line in outputfile :
+
+#####################DIMER EXTRACTION############################
+#Store xangst[i,j] (with i=x,y,z and j=1,2) and etotal in etottab 
+#################################################################
+					if keyword == 'dimer' :
+						if xangstfind == 1 :
+							linesplit = line.split()
+							xangst4 = float(linesplit[0])
+							xangst5 = float(linesplit[1])
+							xangst6 = float(linesplit[2])
+							disteq=math.sqrt((xangst1-xangst4)**2+(xangst2-xangst5)**2+(xangst3-xangst6)**2)
+							put(etottab[nfile],1,disteq)
+							xangstfind = 2
+						if line.find(' etotal ') != -1 :
+							linesplit = line.split()
+       			                		etotal = float(linesplit[1])
+							put(etottab[nfile],0,etotal)
+						if line.find('Symmetries') != -1 and nfile == 1:
+							ndtset = 2
+							etottab=resize(etottab,(1,ndtset))
+							put(etottab[0],0,0)
+							put(etottab[0],1,0)
+						if line.find('END') != -1 :
+							xxxtab = zeros([nfile,ndtset],'d')
+							xxxtab = etottab
+							etottab = zeros([nfile+1,ndtset],'d')
+							for ifile in range(nfile) :
+								for idtset in range(ndtset) :
+									etottab[ifile,idtset]=xxxtab[ifile,idtset]
+							endfile=1
+						if line.find('xangst') != -1 and endfile == 1 :
+							linesplit = line.split()
+							xangst1 = float(linesplit[1])
+							xangst2 = float(linesplit[2])
+							xangst3 = float(linesplit[3])
+							xangstfind = 1	
+
+######################## CUTOFF OR VOLUME EXTRACTION ###########################
+#Store in etottab, ecut or volume in the first line and etotal in the following.
+################################################################################
+					if keyword != 'dimer' :
+						if line.find('ndtset') != -1 and endfile != 1 and nfile==1:
+							linesplit = line.split()
+       			                		ndtset = int(linesplit[1])
+							etottab=resize(etottab,(1,ndtset))
+						if line.find('END') != -1 :
+							xxxtab = zeros([nfile,ndtset],'d')
+							xxxtab = etottab
+							etottab = zeros([nfile+1,ndtset],'d')
+							for ifile in range(nfile) :
+								for idtset in range(ndtset) :
+									etottab[ifile,idtset]=xxxtab[ifile,idtset]
+							endfile=1
+						if keyword == 'ecut' :
+							if line.find('ecut'+str(iecut)) != -1 and endfile==1 and nfile==1:
+								linesplit = line.split()
+								ecut = float(linesplit[1])
+								put(etottab[0],iecut-1,ecut)
+								iecut = iecut + 1
+						if keyword != 'ecut' :
+							if line.find('ucvol=') != -1 and nfile==1:
+								linesplit = line.split()
+								ucvol = float(linesplit[4])
+								put(etottab[0],iecut-1,ucvol)
+								iecut = iecut + 1
+						if line.find('etotal'+str(ietotal)) != -1 and endfile==1 :
+							linesplit = line.split()
+       			                		etotal = float(linesplit[1])
+							put(etottab[nfile],ietotal-1,etotal)
+							ietotal = ietotal + 1
+##################################### ADDITIONAL EXTRACTION #################################################
+#Store in ecuttab, the ecut parameters of all the calculations (except for ecut ones).
+##############################################################################################################
+					if keyword != 'ecut' :
+						if line.find(' ecut ') != -1 and  endfile == 1 :
+							xxxtab = zeros([nfile-1,2],'d')
+							xxxtab = ecuttab
+							ecuttab = zeros([nfile,2],'d')
+							for ifile in range(nfile-1) :
+								for idtset in range(2) :
+									ecuttab[ifile,idtset]=xxxtab[ifile,idtset]
+							linesplit = line.split()
+							ecut = float(linesplit[1])
+							put(ecuttab[nfile-1],0,ecut)	
+						if line.find(' pawecutdg ') != -1 and  endfile == 1 :
+							linesplit = line.split()
+							pawecutdg = float(linesplit[1])
+							put(ecuttab[nfile-1],1,pawecutdg)	
+				outputfile.close()
+#===============================================================================================================================
+#============================================If data were extracted=============================================================
+#===============================================================================================================================
+		if nfile != 0 :
+##################### IF CUTOFF PROPERTIES ####################################################
+#For keywords 'ecut', evaluate the convergence wrt                                            #
+#      ***the coarse grid cutoff energy: E(n)-E(infinity)                   (criterion: 1.E-3)#
+###############################################################################################
+			if keyword == 'ecut' :
+				convcriterion = 0.001
+				for ifile in range(nfile) :
+					for idtset in range(ndtset) :
+						if (abs(etottab[ifile+1,idtset]-etottab[ifile+1,ndtset-1])) <= convcriterion :
+							break
+					print etottab[0,idtset]
+
+#################### ELIF DIMER PROPERTIES ################################
+#An output 'keyword.tex' is provided in each directory. 
+###########################################################################
+			elif keyword == 'dimer' :
+				fittex = file(ROOTDIR+OUTPUT+directory+'/'+str(keyword)+'.tex','w')
+				for ifile in range(nfile) :
+					fittex.write(filetab[ifile+1])		
+					fittex.write(' ('+str(fpformat.fix(ecuttab[ifile,0],0))+','+str(fpformat.fix(ecuttab[ifile,1],0))+')')		
+#Read the total energy of an isolated atom in the '*.atom.out' output file. 
+#==========================================================================
+					atomname=filetab[ifile+1].replace(str(keyword),'atom')
+					if os.access(ROOTDIR+OUTPUT+directory+'/'+str(atomname),os.F_OK) == 1 :
+						atomfile = file(ROOTDIR+OUTPUT+directory+'/'+str(atomname),'r')
+						for outputline in atomfile :
+							if outputline.find('etotal') != -1 :
+								outputlinesplit = outputline.split()
+       		                				etotalatom = float(outputlinesplit[1])
+						atomfile.close()
+						atompercell=float(listkey[str(keyword)])
+						fittex.write('&\\multicolumn{2}{c}{'+str(fpformat.fix((etottab[ifile+1,0]-etotalatom*atompercell)*27.2113834,3))+'}')		
+						fittex.write('&\\multicolumn{2}{c}{'+str(fpformat.fix(etottab[ifile+1,1],3))+'}')		
+					else :
+						fittex.write('&\\multicolumn{2}{c}{'+str(etottab[ifile+1,0])+'}')		
+						fittex.write('&\\multicolumn{2}{c}{'+str(etottab[ifile+1,1])+'}')		
+					fittex.write(' \\\ \n')
+				fittex.close()
+
+#################### ELIF BULK PROPERTIES #################################
+#Compute the equilibrium volume, bulk modulus, total energy equilibrium
+#(or cohesive), ... by using the Birch-Murnaghan equation of state.
+#The input file of the fit is: 'fit.inp'. The output file is :'fit.res'
+###########################################################################
+			elif keyword != 'ecut' and keyword != 'dimer' :
+				bulkmod=['$B_0$ (Gpa)']
+				voleq=['$V_0$ ($\AA$/atom)']
+				bprim=['$B_0^{\'}$']
+				etoteq=['$E_{\rm coh}$ (eV/atom)']
+				coveraeq=['c/a']
+				for ifile in range(nfile) :
+					fitinp = file('fit.inp','w')
+					fitinp.write('2'+' \n')
+					fitinp.write('1'+' \n')
+					fitinp.write('2'+' \n')
+					fitinp.write('1'+' \n')
+					fitinp.write('1'+' \n')
+					fitinp.write('1'+' \n')
+					fitinp.write('1'+' \n')
+					fitinp.write('1'+' \n')
+					fitinp.write(''+' \n')
+					fitinp.write('1'+' \n')
+					fitinp.write('1'+' \n')
+					fitinp.write(str(ndtset)+' \n')
+					fitinp.write('0.00000'+' \n')
+					for idtset in range(ndtset) :
+						etotalrydberg = fpformat.fix(etottab[ifile+1,idtset]*2,6)
+						volang3perato = fpformat.fix(etottab[0,idtset]*0.52917715**3,6)
+						fitinp.write(str(volang3perato)+' '+str(etotalrydberg)+' \n')
+					fitinp.write('3'+' \n')
+					fitinp.write('-2'+' \n')
+					fitinp.write('0'+' \n')
+					fitinp.write('0'+' \n')
+					fitinp.write('0'+' \n')
+					fitinp.close()
+					os.system('rm -f fit.dat fit.res')
+					os.system('./BIRCH/benf.x > tmp.benf')
+					os.system('rm -rf tmp.benf')
+					fitres = file('fit.res','r')
+					endoffitres=0
+
+#Read the total energy of an isolated atom in the '*.atom.out' output file. 
+#==========================================================================
+					atomname=filetab[ifile+1].replace(str(keyword),'atom')
+					if os.access(ROOTDIR+OUTPUT+directory+'/'+str(atomname),os.F_OK) == 1 :
+						atomfile = file(ROOTDIR+OUTPUT+directory+'/'+str(atomname),'r')
+						etotalatom = 0
+						for outputline in atomfile :
+							if outputline.find('etotal') != -1 :
+								outputlinesplit = outputline.split()
+								etotalatom = float(outputlinesplit[1])*27.2113834
+						atomfile.close()
+
+#If keyword equals hcp or dhcp, one has to obtain the c/a factor 
+#===============================================================
+					if keyword == 'hcp' or keyword == 'dhcp' :
+						optname=filetab[ifile+1].replace(str(keyword),'opt'+str(keyword))
+						if os.access(ROOTDIR+OUTPUT+directory+'/'+str(optname),os.F_OK) == 1 :
+							optfile = file(ROOTDIR+OUTPUT+directory+'/'+str(optname),'r')
+							coveraval = 0
+							for outputline in optfile :
+								if outputline.find('acell ') != -1 :
+									outputlinesplit = outputline.split()
+									coveraval = "% 1.3f "% float(float(outputlinesplit[3])/float(outputlinesplit[1]))
+							optfile.close()
+						else :
+							coveraval = 0
+						coveraeq.append(str(coveraval))
+
+#Extract various data from the 'fit.res' output file.
+#==========================================================================
+					for outputline in fitres :
+						if outputline.find('Angstroms') != -1 :
+							lq = outputline.split()
+							if float(lq[2]) :
+								atompercell=float(listkey[str(keyword)])
+								voleqval="% 1.3f "% (float(lq[2])/atompercell)
+							else :
+								voleqval=str('N.C.')
+							voleq.append(str(voleqval))
+							endoffitres=1
+						if outputline.find('Eo =') != -1 and endoffitres == 1 :
+							lq = outputline.split()
+							if etotalatom != 0.0 and float(lq[2]) :
+								atompercell=float(listkey[str(keyword)])
+								etoteqval="% 1.3f "% float((float(lq[2])-atompercell*etotalatom)/atompercell)
+							else :
+								etoteqval=str('N.C.')
+							etoteq.append(str(etoteqval))
+						if outputline.find('GPa') != -1 :
+							lq = outputline.split()
+							if float(lq[2]) :
+								bulkmodval="% 3.1f "% (float(lq[2]))
+							else :
+								bulkmodval=str('N.C.')
+							bulkmod.append(str(bulkmodval))
+						if outputline.find('Ko\'=') != -1 and endoffitres == 1 :
+							lq = outputline.split()
+							if float(lq[1]) :
+								bprimval="% 1.1f "% (float(lq[1]))
+							else :
+								bprimval=str('N.C.')
+							bprim.append(str(bprimval))
+					fitres.close()
+					os.system('rm -f fit.res fit.dat fit.inp')
+
+#An output 'keyword.tex' is provided in each directory. This one list the
+#results obtained by using the Birch-Murnaghan fit.
+#==========================================================================
+				fittex = file(ROOTDIR+OUTPUT+directory+'/'+str(keyword)+'.tex','w')
+				for ifile in range(nfile) :
+					fittex.write(filetab[ifile+1])		
+					fittex.write(' ('+str(fpformat.fix(ecuttab[ifile,0],0))+','+str(fpformat.fix(ecuttab[ifile,1],0))+')')		
+					fittex.write('&'+voleq[ifile+1])		
+					fittex.write('&'+etoteq[ifile+1])		
+					fittex.write('&'+bulkmod[ifile+1])		
+					fittex.write('&'+bprim[ifile+1])		
+					if keyword == 'hcp' or keyword == 'dhcp' :
+						fittex.write('&'+coveraeq[ifile+1])		
+					else :
+						fittex.write('&')
+					fittex.write(' \\\ \n')
+				fittex.close()
+
+###################### ELSE ###############################################
+###########################################################################
+			else :
+				print 'This type of extraction is not allowed'
+				sys.exit(1)  
+	
+#################### AT LAST ##############################################
+#Store in 'keyword.dat' the difference of total energy as a function of
+#the volume (or cutoff energy). 
+###########################################################################
+			if keyword != 'dimer' :
+				for ifile in range(nfile) :
+					if keyword == 'ecut' :
+						for idtset in range(ndtset) :
+							etottab[ifile+1,idtset]=abs(etottab[ifile+1,idtset]-etottab[ifile+1,ndtset-1])
+					else :
+						etottab[ifile+1]=etottab[ifile+1]-min(etottab[ifile+1])
+				etottab=transpose(etottab)
+				datfile=file(ROOTDIR+OUTPUT+directory+'/'+str(keyword)+'.dat','w')
+				datfile.write('#')
+				for ifile in range(nfile+1) :
+					datfile.write(filetab[ifile]+' ')
+				datfile.write('\n')
+				for idtset in range(ndtset) :
+					for ifile in range(nfile+1) :
+						datfile.write(str(fpformat.sci(etottab[idtset,ifile],6))+' ')
+					datfile.write('\n')
+				datfile.close

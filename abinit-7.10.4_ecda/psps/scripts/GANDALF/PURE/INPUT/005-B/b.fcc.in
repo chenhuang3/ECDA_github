@@ -1,0 +1,26 @@
+#B structure fcc
+pawovlp 20
+iscf 17
+ndtset 10
+ecut 15
+pawecutdg 30.0
+nstep 50
+toldfe 1.0d-8
+nband 5
+occopt 7
+tsmear 5.0d-3
+getwfk -1 getocc -1
+rprim 0.0 1/2 1/2
+      1/2 0.0 1/2
+      1/2 1/2 0.0
+natom 1 ntypat 1 typat 1 
+znucl 5
+xred 0 0 0
+acell: 3*5.15 acell+ 3*0.05
+kptopt 1 kptrlatt 6 0 0 0 6 0 0 0 6
+nshiftk 4
+shiftk
+1/2 1/2 1/2
+1/2 0.0 0.0
+0.0 1/2 0.0
+0.0 0.0 1/2

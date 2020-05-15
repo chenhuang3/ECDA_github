@@ -1,0 +1,2758 @@
+<html>
+<head><title>GW variables.</title>
+<link rel=stylesheet type="text/css" href="formabinit.css">
+</head>
+<body bgcolor="#ffffff">
+
+<hr>
+<a name="top"></a>
+
+<h1>ABINIT, GW input variables:</h1>
+<h2>List and description.</h2>
+
+<hr>
+
+<br>This document lists and provides the description
+of the name (keywords) of the GW input
+variables to be used in the main input file of the abinit code.
+
+<br>The new user is advised to read first the
+  <a href="../users/new_user_guide.html">new user's guide</a>,
+  then the <a href="../users/abinit_help.html">abinit help file</a>,
+  before reading the present file. It will be easier to discover the
+  present file with the help of the two lessons
+  <a href="../tutorial/lesson_gw1.html">lesson_gw1</a> and
+  <a href="../tutorial/lesson_gw2.html">lesson_gw2</a> of the tutorial.
+  Other input variables directly related to the GW computation are :
+  <a href="varfil.html#getkss">getkss</a>&nbsp;&nbsp;
+  <a href="varfil.html#getscr">getscr</a>&nbsp;&nbsp;
+  <a href="vargs.html#optdriver">optdriver</a>.
+  In case of parallel execution, the input variable
+  <a href="varpar.html#gwpara">gwpara</a>
+  is used to choose between the different parallelization levels presently implemented
+  (k-points or bands).
+<br>
+  Note also the <B>Mrgscr</B> utility
+  which allows one to merge dielectric matrices calculated at different q-points
+  into a unique screening file that can be used for subsequent GW calculations.
+
+<h5>Copyright (C) 2002-2014 ABINIT group (XG)
+<br> This file is distributed under the terms of the GNU General Public License, see
+~abinit/COPYING or <a href="http://www.gnu.org/copyleft/gpl.txt">
+http://www.gnu.org/copyleft/gpl.txt </a>.
+<br> For the initials of contributors, see ~abinit/doc/developers/contributors.txt .
+</h5>
+
+<script type="text/javascript" src="list_internal_links.js"> </script>
+
+<script type="text/javascript" src="list_htmlfiles_input_variables.js"> </script>
+
+<h3><b> Content of the file : alphabetical list of variables.</b></h3>
+ <br>A.
+ <a href="vargw.html#awtr">awtr</a>&nbsp;&nbsp;
+ <br>B.
+ <a href="vargw.html#bdgw">bdgw</a>&nbsp;&nbsp;
+ <a href="vargw.html#bs_algorithm">bs_algorithm</a>&nbsp;&nbsp; 
+ <a href="vargw.html#bs_haydock_niter">bs_haydock_niter</a>&nbsp;&nbsp; 
+ <a href="vargw.html#bs_hayd_term">bs_hayd_term</a>&nbsp;&nbsp; 
+ <a href="vargw.html#bs_haydock_tol">bs_haydock_tol</a>&nbsp;&nbsp; 
+ <a href="vargw.html#bs_loband">bs_loband</a>&nbsp;&nbsp; 
+ <a href="vargw.html#bs_eh_cutoff">bs_eh_cutoff</a>&nbsp;&nbsp; 
+ <a href="vargw.html#bs_exchange_term">bs_exchange_term</a>&nbsp;&nbsp; 
+ <a href="vargw.html#bs_coulomb_term">bs_coulomb_term</a>&nbsp;&nbsp; 
+ <a href="vargw.html#bs_calctype">bs_calctype</a>&nbsp;&nbsp; 
+ <a href="vargw.html#bs_coupling">bs_coupling</a>&nbsp;&nbsp; 
+ <a href="vargw.html#bs_freq_mesh">bs_freq_mesh</a>&nbsp;&nbsp; 
+ <br>C.
+ <a href="vargw.html#cd_customnimfrqs">cd_customnimfrqs</a>&nbsp;&nbsp;
+ <a href="vargw.html#cd_frqim_method">cd_frqim_method</a>&nbsp;&nbsp;
+ <a href="vargw.html#cd_full_grid">cd_full_grid</a>&nbsp;&nbsp;
+ <a href="vargw.html#cd_halfway_freq">cd_halfway_freq</a>&nbsp;&nbsp;
+ <a href="vargw.html#cd_imfrqs">cd_imfrqs</a>&nbsp;&nbsp;
+ <a href="vargw.html#cd_max_freq">cd_max_freq</a>&nbsp;&nbsp;
+ <a href="vargw.html#cd_subset_freq">cd_subset_freq</a>&nbsp;&nbsp;
+ <a href="vargw.html#chkgwcomp">chkgwcomp</a>&nbsp;&nbsp;
+ <br>D.
+ <br>E.
+ <a href="vargw.html#ecuteps">ecuteps</a>&nbsp;&nbsp;
+ <a href="vargw.html#ecutsigx">ecutsigx</a>&nbsp;&nbsp;
+ <a href="vargw.html#ecutwfn">ecutwfn</a>&nbsp;&nbsp;
+ <br>F.
+ <a href="vargw.html#fftgw">fftgw</a>&nbsp;&nbsp;
+ <a href="vargw.html#freqim_alpha">freqim_alpha</a>&nbsp;&nbsp;
+ <a href="vargw.html#freqremax">freqremax</a>&nbsp;&nbsp;
+ <a href="vargw.html#freqremin">freqremin</a>&nbsp;&nbsp;
+ <a href="vargw.html#freqspmax">freqspmax</a>&nbsp;&nbsp;
+ <a href="vargw.html#freqspmin">freqspmin</a>&nbsp;&nbsp;
+ <br>G.
+ <a href="vargw.html#gwcalctyp">gwcalctyp</a>&nbsp;&nbsp;
+ <a href="vargw.html#gwcomp">gwcomp</a>&nbsp;&nbsp;
+ <a href="vargw.html#gwgamma">gwgamma</a>&nbsp;&nbsp;
+ <a href="vargw.html#gwmem">gwmem</a>&nbsp;&nbsp;
+ <a href="vargw.html#gwrpacorr">gwrpacorr</a>&nbsp;&nbsp;
+ <a href="vargw.html#gw_customnfreqsp">gw_customnfreqsp</a>&nbsp;&nbsp;
+ <a href="vargw.html#gw_eet">gw_eet</a>&nbsp;&nbsp;
+ <a href="vargw.html#gw_eet_inclvkb">gw_eet_inclvkb</a>&nbsp;&nbsp;
+ <a href="vargw.html#gw_eet_nband">gw_eet_nband</a>&nbsp;&nbsp;
+ <a href="vargw.html#gw_eet_scale">gw_eet_scale</a>&nbsp;&nbsp;
+ <a href="vargw.html#gw_freqsp">gw_freqsp</a>&nbsp;&nbsp;
+ <a href="vargw.html#gw_nstep">gw_nstep</a>&nbsp;&nbsp;
+ <a href="vargw.html#gw_nqlwl">gw_nqlwl</a>&nbsp;&nbsp;
+ <a href="vargw.html#gw_qlwl">gw_qlwl</a>&nbsp;&nbsp;
+ <a href="vargw.html#gw_qprange">gw_qprange</a>&nbsp;&nbsp;
+ <a href="vargw.html#gw_sctype">gw_sctype</a>&nbsp;&nbsp;
+ <a href="vargw.html#gw_sigxcore">gw_sigxcore</a>&nbsp;&nbsp;
+ <a href="vargw.html#gw_toldfeig">gw_toldfeig</a>&nbsp;&nbsp;
+ <a href="vargw.html#gw_frqre_tangrid">gw_frqre_tangrid</a>&nbsp;&nbsp;
+ <br>H.
+ <br>I.
+ <a href="vargw.html#inclvkb">inclvkb</a>&nbsp;&nbsp;
+ <a href="vargw.html#icutcoul">icutcoul</a>&nbsp;&nbsp;
+ <br>J.
+ <br>K.
+ <a href="vargw.html#kptgw">kptgw</a>&nbsp;&nbsp;
+ <br>M.
+ <a href="vargw.html#mdf_epsinf">mdf_epsinf</a>&nbsp;&nbsp;
+ <br>N.
+ <a href="vargw.html#nbandkss">nbandkss</a>&nbsp;&nbsp;
+ <a href="vargw.html#nfreqim">nfreqim</a>&nbsp;&nbsp;
+ <a href="vargw.html#nfreqmidm">nfreqmidm</a>&nbsp;&nbsp;
+ <a href="vargw.html#nfreqre">nfreqre</a>&nbsp;&nbsp;
+ <a href="vargw.html#nfreqsp">nfreqsp</a>&nbsp;&nbsp;
+ <a href="vargw.html#npwkss">npwkss</a>&nbsp;&nbsp;
+ <a href="vargw.html#nkptgw">nkptgw</a>&nbsp;&nbsp;
+ <a href="vargw.html#nomegasrd">nomegasrd</a>&nbsp;&nbsp;
+ <a href="vargw.html#nomegasi">nomegasi</a>&nbsp;&nbsp;
+ <a href="vargw.html#nomegasf">nomegasf</a>&nbsp;&nbsp;
+ <a href="vargw.html#npvel">npvel</a>&nbsp;&nbsp;
+ <a href="vargw.html#npweps">npweps</a>&nbsp;&nbsp;
+ <a href="vargw.html#npwsigx">npwsigx</a>&nbsp;&nbsp;
+ <a href="vargw.html#npwwfn">npwwfn</a>&nbsp;&nbsp;
+ <a href="vargw.html#nsheps">nsheps</a>&nbsp;&nbsp;
+ <a href="vargw.html#nshsigx">nshsigx</a>&nbsp;&nbsp;
+ <a href="vargw.html#nshwfn">nshwfn</a>&nbsp;&nbsp;
+ <br>O.
+ <a href="vargw.html#omegasimax">omegasimax</a>&nbsp;&nbsp;
+ <a href="vargw.html#omegasrdmax">omegasrdmax</a>&nbsp;&nbsp;
+ <br>P.
+ <a href="vargw.html#ppmfrq">ppmfrq</a>&nbsp;&nbsp;
+ <a href="vargw.html#ppmodel">ppmodel</a>&nbsp;&nbsp;
+ <a href="vargw.html#pvelmax">pvelmax</a>&nbsp;&nbsp;
+ <br>Q.
+ <a href="vargw.html#qptdm">qptdm</a>&nbsp;&nbsp;
+ <br>R.
+ <a href="vargw.html#rhoqpmix">rhoqpmix</a>&nbsp;&nbsp;
+ <br>S.
+ <a href="vargw.html#soenergy">soenergy</a>&nbsp;&nbsp;
+ <a href="vargw.html#spbroad">spbroad</a>&nbsp;&nbsp;
+ <a href="vargw.html#spmeth">spmeth</a>&nbsp;&nbsp;
+ <a href="vargw.html#symchi">symchi</a>&nbsp;&nbsp;
+ <a href="vargw.html#symsigma">symsigma</a>&nbsp;&nbsp;
+ <br>T.
+ <br>U.
+ <a href="vargw.html#ucrpa">ucrpa</a>&nbsp;&nbsp;
+ <a href="vargw.html#ucrpa_bands">ucrpa_bands</a>&nbsp;&nbsp;
+ <a href="vargw.html#ucrpa_window">ucrpa_window</a>&nbsp;&nbsp;
+ <br>V.
+ <br>W.
+ <br>X.
+ <br>Y.
+ <br>Z.
+ <a href="vargw.html#zcut">zcut</a>&nbsp;&nbsp;
+
+<br><br><br><br><hr>
+
+<br><font id="title"><a name="awtr">awtr</a></font>
+<br><font id="definition">Mnemonics: evaluate the Adler-Wiser expression of $\chi^{(0)}_{KS}$ assuming Time-Reversal </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer parameter  </font>
+<br><font id="default">Default is 1 (was 0 prior to 5.8)</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3, that is, screening calculations.
+<p>
+This input variable defines whether the irreducible polarizability $\chi^{(0)}_{KS}$ is evaluated
+taking advantage of time-reversal symmetry or not.
+
+<ul>
+<li>  0 =&gt; Use the "standard" Adler-Wiser expression without assuming time-reversal symmetry.
+In this case, the irreducible polarizability is calculated summing over all possible electronic
+transitions (both resonant and antiresonant).
+<li>  1 =&gt; Take advantage of time-reversal symmetry to halve the number of transitions to be
+explicitly considered. This method leads to a decrease in the CPU time by a factor two with respect
+to the <b>awtr</b>=0 case.
+</ul>
+
+<p>
+Note that the parallel algorithm <a href="varpar.html#gwpara">gwpara</a>=2 is not compatible with
+the choiche <b>awtr</b>=0. 
+
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="bdgw">bdgw</a></font>
+<br><font id="definition">Mnemonics: BanDs for GW calculation </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer array bdgw(2,<a href="vargw.html#nkptgw">nkptgw</a>, <a href="varbas.html#nsppol">nsppol</a>,) </font>
+<br><font id="default">Default is all 0's </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma calculations.
+<p>
+For each k-point with number ikptgw in the range (1:<a href="vargw.html#nkptgw">nkptgw</a>) and each
+spin index isppol, <b>bdgw(1,ikptgw,isppol)</b> is the number of the lowest band for which the GW computation must be done,
+and <b>bdgw(2,ikptgw,isppol)</b> is the number of the highest band for which the GW computation must be done.
+<p>
+When <a href="vargw.html#gwcalctyp">gwcalctyp</a> &#62&#61 20,
+the quasiparticle wavefunctions are computed and represented as linear combination of some Kohn-Sham wavefunctions.
+In this case <b>bdgw</b> designates the KS wavefunctions used as basis set.
+For each k-point, indeed, the quasiparticle wavefunctions are expanded considering only the KS states between
+ <b>bdgw(1,ikptgw,isppol)</b> and <b>bdgw(2,ikptgw,isppol)</b>.
+<p>
+Note that the initial values given in the input file might be changed inside the code so that all
+the degenerate states at a given k-point and spin are included.
+This might happen when <a href="vargw.html#symsigma">symsigma</a>=1 is used or in the case of
+self-consistent GW calculations. 
+<p>
+When <a href="vargw.html#symsigma">symsigma</a>=1, indeed, the diagonal matrix elements of the
+self-energy are obtained by averaging the unsymmetrized results in the degenerate subspace.
+<p>
+For self-consistent calculations, on the other hand, the basis set used to expand the GW
+wavefunctions should include all the degenerate states belonging to the same irreducible
+representation. Only in this case, indeed, the initial symmetries and energy degenerations are preserved.  
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="bs_algorithm">bs_algorithm</a></font>
+<br><font id="definition">Mnemonics: Bethe-Salpeter ALGORITHM </font>
+<br><font id="category">Characteristic: BS  </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 1 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=99, that is, Bethe-Salpeter calculations.
+<p>
+The bs_algorithm input variable defines the algorithm employed to calculate the macroscopic dielectric function. 
+Possible values are 1, 2 or 3:
+
+<ul>
+<li> 1 =&gt; 
+     The macroscopic dielectric is obtained by performing a direct diagonalization of the exciton Hamiltonian. 
+     Advantages: It gives direct access to the excitonic eigenvalues as well as to the oscillator strengths. 
+     Drawbacks: It is a very CPU- and memory-consuming approach as the size of the Hamiltonian scales as (nk*nc*nv)**2.
+     where nk is the number of k-point in the FULL Brillouin zone, and nc and nv are the number of
+     conduction and valence states, respectively.
+     Pros: It can be used both for resonant-only and resonant+coupling calculations.
+<li> 2 =&gt;
+     Haydock iterative method. The macroscopic dielectric function 
+     is obtained by iterative applications of the Hamiltonian on a set of vectors in the electron-hole space. 
+     Advantages: It is less memory demanding and usually faster 
+     than the direct diagonalization provided that <a href="vargw.html#zcut">zcut</a> is larger than the typical 
+     energy spacing of the eigenvalues. Drawbacks: It's an iterative method therefore 
+     the convergence with respect to bs_haydock_niter should be checked. 
+     It is not possible to have direct information on the exciton spectrum, oscillator strengths and excitonic wave functions.
+     For the time being <b>bs_algorithm</b>=2 cannot be used for calculations in which the coupling term is included.
+<li> 3 =&gt;
+     Conjugate-gradient method 
+     [STILL UNDER DEVELOPMENT]
+     Only available for resonant calculations.
+</ul>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="bs_haydock_niter">bs_haydock_niter</a></font>
+ <br><font id="definition">Mnemonics: Bethe-Salpeter HAYDOCK Number of Iterations </font>
+ <br><font id="category">Characteristic: BS </font>
+ <br><font id="vartype">Variable type: integer </font>
+ <br><font id="default">Default is 100 </font>
+ <br><font id="text">
+ <p>
+ Only relevant if <a href="vargs.html#optdriver">optdriver</a>=99 and <a href="vargw.html#bs_algorithm">bs_algorithm</a>=2
+ that is, Bethe-Salpeter calculations with the Haydock iterative method. 
+ <p>
+ <b>bs_haydock_niter</b> defines the maximum number of iterations used to calculate the macroscopic dielectric function. 
+ The iterative algorithm stops when the difference between two consecutive evaluations of the optical 
+ spectra is less than <a href="vargw.html#bs_haydock_tol">bs_haydock_tol</a>.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="bs_hayd_term">bs_hayd_term</a></font>
+ <br><font id="definition">Mnemonics: Bethe-Salpeter HAYdock TERMinator </font>
+ <br><font id="category">Characteristic: BS  </font>
+ <br><font id="vartype">Variable type: integer </font>
+ <br><font id="default">Default is 1 </font>
+ <br><font id="text">
+ <p>
+ Only relevant if <a href="vargs.html#optdriver">optdriver</a>=99 and <a href="vargw.html#bs_algorithm">bs_algorithm</a>=2
+ that is, Bethe-Salpeter calculations with the Haydock iterative method. 
+ <p>
+ Defines how to terminate the continued fraction expression for the dielectic function.
+ The terminator reduces the number of iterations needed to converge by smoothing the oscillation 
+ in the high energy part of the spectrum 
+
+<ul>
+<li> 0 =&gt; 
+     No terminator. The contribution given by the terms missing in the Lanczos chain are set to zero.
+<li> 1 =&gt; Use the terminator function. The particular expression depends on the type of calculation:
+     In the resonant-only case, the a_i and b_i coefficients for i &gt; niter, 
+     are replaced by their values at i=niter.
+     Ehen the coupling block is included, the terminator function described in D. Rocca, R. Gebauer, Y. Saad, S. Baroni, J. Chem. Phys.
+     128, 154105 (2008) is used.
+</ul>
+
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="bs_haydock_tol">bs_haydock_tol</a></font>
+ <br><font id="definition">Mnemonics: Bethe-Salpeter HAYDOCK TOLerance </font>
+ <br><font id="category">Characteristic: BS  </font>
+ <br><font id="vartype">Variable type: real(2) </font>
+ <br><font id="default">Default is (0.02,0) </font>
+ <br><font id="text">
+ <p>
+ Only relevant if <a href="vargs.html#optdriver">optdriver</a>=99 and <a href="vargw.html#bs_algorithm">bs_algorithm</a>=2
+ that is, Bethe-Salpeter calculations with the Haydock iterative method. 
+ <p>
+ Defines the convergence criterion for the Haydock iterative method.
+ The iterative algorithm stops when the difference between two consecutive evaluations of the
+ macroscopic dielectric function is less than <b>bs_haydock_tol(1)</b>.
+ The sign of <b>bs_haydock_tol(1)</b> defines how to estimate the convergence error.
+ A negative value signals that the converge should be reached for each frequency (strict criterion),
+ while a positive value indicates that the converge error is estimated 
+ by averaging over the entire frequency range (mild criterion).
+ <p>
+ bs_haydock_tol(2) defines the quantity that will be checked for convergence: 
+ <ul>
+ <li>0 &rarr; both the real and the imaginary part must converge
+ <li>1 &rarr; only the real part
+ <li>2 &rarr; only the imaginary part
+ </ul>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="bs_loband">bs_loband</a></font>
+ <br><font id="definition">Mnemonics: Bethe-Salpeter Lowest Occupied BAND</font>
+ <br><font id="category">Characteristic: BS  </font>
+ <br><font id="vartype">Variable type: integer array(nsppol)</font>
+ <br><font id="default">Default is 0</font>
+ <br><font id="text">
+ <p>
+ Only relevant if <a href="vargs.html#optdriver">optdriver</a>=99, that is, Bethe-Salpeter calculations.
+ <p>
+ This variable defines the index of the lowest occupied band used for the construction of the electron-hole basis set.
+ For spin polarized calculations, one must provide two separated indices for spin up and spin down.
+ An additional cutoff energy can be applied by means of the bs_eh_window input variable. 
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="bs_eh_cutoff">bs_eh_cutoff</a></font>
+ <br><font id="definition">Mnemonics: Bethe-Salpeter Electron-Hole CUTOFF </font>
+ <br><font id="category">Characteristic: BS  </font>
+ <br><font id="vartype">Variable type: integer(2) </font>
+ <br><font id="default">Default is (-inf,+inf) </font>
+ <br><font id="text">
+ <p>
+ Only relevant if <a href="vargs.html#optdriver">optdriver</a>=99, that is, Bethe-Salpeter calculations.
+ <p>
+ It is used to define a cutoff in the e-h basis set. Only those transitions whose 
+ energy is between bs_eh_window(1) and bs_eh_window(2) will be considered during 
+ the construction of the e-h Hamiltonian.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="bs_exchange_term">bs_exchange_term</a></font>
+ <br><font id="definition">Mnemonics: Bethe-Salpeter EXCHANGE TERM </font>
+ <br><font id="category">Characteristic: BS  </font>
+ <br><font id="vartype">Variable type: integer </font>
+ <br><font id="default">Default is 1 </font>
+ <br><font id="text">
+ <p>
+ Only relevant if <a href="vargs.html#optdriver">optdriver</a>=99, that is, Bethe-Salpeter calculations.
+ <p>
+
+<ul>
+<li> 0 =&gt;   
+    The exchange term is not calculated. This is equivalent to neglecting local field effects
+    in the macroscopic dielectric function.
+<li> 1 =&gt;   
+    The exchange term is calculated and added to the excitonic Hamiltonian. 
+</ul>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="bs_coulomb_term">bs_coulomb_term</a></font>
+ <br><font id="definition">Mnemonics: Bethe-Salpeter COULOMB TERM </font>
+ <br><font id="category">Characteristic: BS  </font>
+ <br><font id="vartype">Variable type: integer </font>
+ <br><font id="default">Default is 11 </font>
+ <br><font id="text">
+ <p>
+ Only relevant if <a href="vargs.html#optdriver">optdriver</a>=99, that is, Bethe-Salpeter calculations.
+ This variable governs the choice among the different options that are available for the treatment
+ of Coulomb term of the BS Hamiltonian.
+ <b>bs_coulomb_term</b> is the concatenation of two digits, labelled (A) and (B).
+ <p>
+ The first digit (A) can assume the values 0,1,2:
+
+<ul>
+<li> 0 =&gt; The Coulomb term is not computed. This choice is equivalent to computing the RPA 
+             spectrum but using the representation in transition space instead of the 
+             more efficient approach based on the sum over states.
+<li> 1 =&gt; The Coulomb term is computed using the screened interaction read from an external SCR file
+             (standard excitonic calculation).
+<li> 2 =&gt; The Coulomb term is computed using a model screening function 
+             (useful for convergence studies or for reproducing published results).
+</ul>
+<p>
+ The second digit (B) can assume the values: 0,1
+<ul>
+<li> 0 =&gt;   
+    Use a diagonal approximation for W_GG' (mainly used for accelerating convergence studies).
+<li> 1 =&gt;   
+    The Coulomb term is correctly evaluated using the truly non-local W(r,r'). 
+</ul>
+
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="bs_calctype">bs_calctype</a></font>
+ <br><font id="definition">Mnemonics: Bethe-Salpeter CALCulation TYPE </font>
+ <br><font id="category">Characteristic: BS  </font>
+ <br><font id="vartype">Variable type: integer </font>
+ <br><font id="default">Default is 1 </font>
+ <br><font id="text">
+ <p>
+ Only relevant if <a href="vargs.html#optdriver">optdriver</a>=99, that is, Bethe-Salpeter calculations.
+ <p>
+ Possible values are 1,2,3
+<ul>
+<li> 1 =&gt; use the KS eigenvalues and wave functions stored in the KSS file
+     to construct the transition space
+
+<li> 2 =&gt; The transition space is constructed with Kohn-Sham orbitals
+     but the energies are read from the external GW file
+
+<li> 3 =&gt; QP amplitudes and energies will be read from the QPS file and used to construct H_ex.
+     Not coded yet
+     Besides <\psi|r|\psj>^QP should be calculated taking into account the non-locality of the
+     the self-energy in the commutator [H,r]. 
+</ul>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="bs_coupling">bs_coupling</a></font>
+ <br><font id="definition">Mnemonics: Bethe-Salpeter COUPLING </font>
+ <br><font id="category">Characteristic: BS </font>
+ <br><font id="vartype">Variable type: integer </font>
+ <br><font id="default">Default is 1 </font>
+ <br><font id="text">
+ <p>
+ Only relevant if <a href="vargs.html#optdriver">optdriver</a>=99, that is, Bethe-Salpeter calculations.
+ <p>
+
+ The <b>bs_coupling</b> input variable defines the treatment of the coupling block of the 
+ BS Hamiltonian. Possible values are 0,1.
+
+<ul>
+<li> 0 =&gt; 
+  The coupling block is neglected. The code runs faster and the Hamiltonian matrix requires 
+  less memory (factor 4). It is a good approximation for the absorption spectrum 
+  which only requires the knowledge of Im(\epsilon). The reliability of this 
+  approximation should be tested in the case of EELF calculations.
+<li> 1 =&gt; 
+   The coupling term is included. 
+</ul>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="bs_freq_mesh">bs_freq_mesh</a></font>
+ <br><font id="definition">Mnemonics: Bethe-Salpeter FREQuency MESH </font>
+ <br><font id="category">Characteristic: BS, <a href="../users/abinit_help.html#energy">ENERGY</a>  </font>
+ <br><font id="vartype">Variable type: real(3) </font>
+ <br><font id="default">Default is (0.0,0.0,0.01) eV </font>
+ <br><font id="text">
+ <p>
+ Only relevant if <a href="vargs.html#optdriver">optdriver</a>=99, that is, Bethe-Salpeter calculations.
+ <p>
+ bs_freq_mesh(1) defines the first frequency for the calculation of the macroscopic dielectric function.
+ bs_freq_mesh(2) gives the last frequency for the calculation of the macroscopic dielectric function. 
+ If zero, bs_freq_mesh(2) is set automatically to MAX(resonant_energy) + 10%.
+ bs_freq_mesh(3) gives the step of the linear mesh used for evaluating the macroscopic dielectric function.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="bs_nstates">bs_nstates</a></font>
+ <br><font id="definition">Mnemonics: Bethe-Salpeter Number of States </font>
+ <br><font id="category">Characteristic: BS </font>
+ <br><font id="vartype">Variable type: integer </font>
+ <br><font id="default">Default is 0 </font>
+ <br><font id="text">
+ <p>
+ Only relevant if <a href="vargs.html#optdriver">optdriver</a>=99 and <a
+ href="vargw.html#bs_algorithm">bs_algorithm</a>=2,3
+ that is, Bethe-Salpeter calculations with the Haydock iterative approach or the Conjugate gradient method
+ <p>
+ <b>bs_nstates</b> defines the maximum number of excitonic states calculated in
+ the direct diagonalization of the excitonic matrix or in the conjugate-gradient method. 
+ The number of states should be sufficiently large 
+ for a correct description of the optical properties in the frequency range of interest.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="cd_frqim_method">cd_frqim_method</a></font>
+<br><font id="definition">Mnemonics: Contour Deformation Imaginary Frequency integration Method</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 1</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma (self-energy) 
+calculations, and <a href="vargw.html#gwcalctyp">gwcalctyp</a>=2, 12 or 22 (contour deformation
+full-frequency treatment).
+<p>
+<b>cd_frqim_method</b> defines the choice of integration method along the imaginary frequency axis
+for Contour Deformation calculations. The default method is very robust, fast and optimal for the 
+vast majority of cases. However, for very accurate (&ldquo;paranoid level&rdquo;) convergence studies, 
+ABINIT offers the possibility of a variety of methods and grids. Note that as one starts to change 
+the defaults, one needs to carefully consider the grid used. Therefore we recommend that in 
+addition to reading the infomation below, the user reads the description of the 
+input variables <a href="vargw.html#freqim_alpha">freqim_alpha</a>, 
+<a href="vargw.html#nfreqim">nfreqim</a>, <a href="vargw.html#ppmfrq">ppmfrq</a>, 
+<a href="vargw.html#gw_frqim_inzgrid">gw_frqim_inzgrid</a>.
+<p>
+The integration to be performed for each matrix element of the self energy along the imaginary axis is of the form:
+</p>
+<p align="center">
+        <img style="width: 461px; height: 49px;" src="./vargw_img/self_energy_cd.png">
+</p>
+<p>
+Where <span style="font-family:Times,Serif"><i>&omega;</i></span> is the frequency point along the real axis, 
+<span style="font-family:Times,Serif"><i>&epsilon;<sub>s</sub></i></span> is an eigenvalue, 
+and <span style="font-family:Times,Serif"><i>i&omega;'</i></span> is the variable along the 
+imaginary axis. Thus the function to be integrated 
+is a Lorentzian weight function centred on the origin (whose FWHM is decided by 
+|<span style="font-family:Times,Serif"><i>&omega; - &epsilon;<sub>s</sub></i></span>|), 
+times a function. The function is related to the inverse dielectric matrix. It might have a peaked structure near the origin and is very smooth otherwise. the function decays 
+asymptotically as <span style="font-family:Times,Serif">1 / <i>i&omega;'</i></span>, so the whole 
+integral converges as this to the third power.
+<ul>
+<li><b>cd_frqim_method = 1 - Histogram:</b> This is the <b>default</b> method where the function
+<span style="font-family:Times,Serif"><i>f(i&omega;')</i></span> is approximated by a histogram, 
+and the Lorentzian is integrated analytically in each sub-interval. See the section on grids 
+below for a description of the default grid. This method combined with the default grid is the 
+fastest and optimised for the use of few points along the imaginary axis.
+
+<li><b>cd_frqim_method = 2 - Trapezoid:</b> The next step up from the histogram approximation in the previous
+method. The integration region is transformed 
+<span style="font-family:Times,Serif"><i>[0,&#8734;[ &rarr; [0,1]</i></span> with a proper
+weight depending on the width of the Lorentian. In this space 
+<span style="font-family:Times,Serif"><i>f(i&omega;')</i></span> 
+is approximated by a linear function between grid points (trapezoids), and the integrand is 
+integrated analytically in each sub-interval. This method tends to slightly overestimate contributions 
+while the default method tends to slightly underestimate them, so the results from methods 
+1 and 2 should bracket the converged values. The asymptotic behaviour is explicitly taken 
+into account by a fit using the last two grid points.
+
+<li><b>cd_frqim_method = 3, 4, 5 - Natural Spline:</b> The function is transfomed <span style="font-family:Times,Serif"><i>[0,&#8734;[ &rarr; [0,1]</i></span>. In this space <span style="font-family:Times,Serif"><i>f(i&omega;')</i></span> is approximated by a natural spline function whose starting and ending sections are linear. This transform is chosen so that the function should approach a linear function asymptotically as the integration interval approaches 1, so that the asymptotic behaviour is automatically taken into account. For each Lorenzian width 
+(determined by |<span style="font-family:Times,Serif"><i>&omega; - &epsilon;<sub>s</sub></i></span>|) 
+the integrand is appropriately scaled in the interval 
+<span style="font-family:Times,Serif"><i>[0,1]</i></span>, and a nested Gauss-Kronrod (GK)
+numerical integration rule is performed. The integrand is evaluated at the GK nodes by means 
+of a spline-fit. The order of the GK rule is controlled by the index of the method:
+  <ul>
+    <li><b>3 =&gt; Gauss  7 point, Kronrod 15 point rule </b>
+    <li><b>4 =&gt; Gauss 11 point, Kronrod 23 point rule </b>
+    <li><b>5 =&gt; Gauss 15 point, Kronrod 31 point rule </b>
+  </ul>
+There is rarely any difference to machine precision between these rules, and the code will 
+issue a warning if a higher-order rule is recommended.
+
+</ul>
+
+<p>
+<b>Grids for the integral along the imaginary axis:</b>
+<p>
+All the methods above should execute no matter what grid is used along the imaginary axis, so this 
+is very much under the user's control. The only requirement is that the grid be strictly increasing. 
+The point at zero frequency is assumed to lie on the real axis, so the calculation of that point
+is controlled by <a href="vargw.html#nfreqre">nfreqre</a> and corresponding variables. We highly 
+recommend extracting various elements of the dielectric matrix from the _SCR file using 
+the <B>Mrgscr</B> utility and plotting them for visual inspection.
+<p>
+<ul>
+   <li><b>Default</b> - The default grid is an exponentially increasing grid given by the formula:
+       <p align="center">
+           <img style="width: 309px; height: 46px;" src="./vargw_img/cd_default_grid.png">
+       </p>Here <span style="font-family:Times,Serif"><i>&omega;<sub>p</sub></i></span> is the
+       plasma frequency (by default determined by the average density of the system, but this
+       can be overridden by setting <a href="vargw.html#ppmfrq">ppmfrq</a>). 
+       <span style="font-family:Times,Serif"><i>N</i></span> is the total number of gridpoints 
+       (set by <a href="vargw.html#nfreqim">nfreqim</a>).
+       <span style="font-family:Times,Serif"><i>&alpha;</i></span> is a parameter which determines
+       how far out the final grid point will lie. The final point will be at 
+       <span style="font-family:Times,Serif"><i>&alpha;&middot;&omega;<sub>p<sub></i></span> 
+       (the default is <span style="font-family:Times,Serif"><i>&alpha; = 5</i></span>, 
+       and was hard-coded in older versions of ABINIT). 
+       This grid is designed so that approximately half the grid points are always distributed 
+       to values lower than the plasma frequency, in order to resolve any peaked structure. If one
+       seeks to increase the outermost reach by increasing <a href="vargw.html#ppmfrq">ppmfrq</a>
+       one must simultaneously take care to increase <a href="vargw.html#nfreqim">nfreqim</a> 
+       in order to have the appropriate resolution for the low-frequency region. 
+       In more recent versions of ABINIT one can also simply adjust the parameter 
+       <span style="font-family:Times,Serif"><i>&alpha;</i></span> by using 
+       <a href="vargw.html#freqim_alpha">freqim_alpha</a>. This grid is optimised for 
+       speed and accurate results with few gridpoints for <b>cd_frqim_method = 1</b>.
+   <li><b>Inverse z transform</b> - This grid is activated by the use of the variable 
+       <a href="vargw.html#gw_frqim_inzgrid">gw_frqim_inzgrid</a>. This is the standard 
+       <span style="font-family:Times,Serif"><i>[0,&#8734;[ &rarr; [0,1]</i></span> transform
+       using the formula:
+       <p align="center">
+           <img style="width: 122px; height: 38px;" src="./vargw_img/cd_inzgrid.png">
+       </p>Here <span style="font-family:Times,Serif"><i>&omega;<sub>p</sub></i></span> is the
+       plasma frequency (default can be overridden by setting <a href="vargw.html#ppmfrq">ppmfrq</a>).
+       The gridpoints are then picked by an equidistant grid (number of points set by 
+       <a href="vargw.html#nfreqim">nfreqim</a>) in the interval 
+       <span style="font-family:Times,Serif"><i>z &sub; [0,1]</i></span>. This grid can easily 
+       be uniquely converged by just increasing <a href="vargw.html#nfreqim">nfreqim</a>. Again 
+       the points are distributed so that approximately half of them lie below the plasma frequency.
+   <li><b>User defined</b> - The user can also define their own grid using the variables 
+       <a href="vargw.html#nfreqim">cd_customnimfrqs</a> and 
+       <a href="vargw.html#nfreqim">cd_imfrqs</a>. <i>With great power comes great responsibility!</i>
+</ul>
+<p>
+The <B>Mrgscr</B> utility is handy in optimising the numerical effort expended in convergence studies. 
+By estimating the densest grid one can afford to calculate in the SCR file, and succesively removing 
+frequencies from a single file (using the utility), one only needs to perform the screening 
+calculation <b>once</b> on the dense mesh for a given convergence study. One can also use the utility to
+merge independent screening calculations over q-points and frequency sections.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="cd_customnimfrqs">cd_customnimfrqs</a></font>
+<br><font id="definition">Mnemonics: Contour Deformation Custom Imaginary Frequencies</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0 (off)</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations,
+and <a href="vargw.html#gwcalctyp">gwcalctyp</a>=2, 12 or 22.
+<p>
+<b>cd_customnimfrqs</b> lets the user define the gridpoints along the imaginary axis by hand. Set this
+to the number of frequencies you want. The frequencies are specified with <a href="vargw.html#cd_imfrqs">cd_imfrqs</a>.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="cd_imfrqs">cd_imfrqs</a></font>
+<br><font id="definition">Mnemonics: Contour Deformation Imaginary Frequencies </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: real array cd_imfrqs(cd_customnimfrqs)</font>
+<br><font id="default">Default is none</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3, that is, screening calculations,
+and <a href="vargw.html#gwcalctyp">gwcalctyp</a>=2, 12 or 22.
+<p>
+<b>cd_imfrqs</b> Specifies the grid points for the imginary axis. Only activated if
+<a href="vargw.html#cd_customnimfrqs">cd_customnimfrqs</a> is not equal to 0. The number of frequencies
+is set by the value of <a href="vargw.html#cd_customnimfrqs">cd_customnimfrqs</a>. Example:
+<pre>
+cd_customnimfrqs   5
+nfreqim            5
+cd_imfrqs          0.1  0.2  0.5  1.0  5.0
+</pre>
+If <a href="vargw.html#nfreqim">nfreqim</a> is not equal to
+<a href="vargw.html#cd_customnimfrqs">cd_customnimfrqs</a> a warning will be issued.
+</p>
+<p>
+<b>Use at own risk!</b> The use of a custom grid makes it your responsibility that the SUS and 
+SCR files are valid in self-energy (i.e. <a href="vargs.html#optdriver">optdriver</a>=4) 
+calculations, so caution is advised. Note that frequencies have to be strictly increasing, and the
+point at zero frequency is <b>not</b> considered to be part of the imaginary grid, but rather 
+the grid along the real axis. The calculation of that point should be controlled by 
+<a href="vargw.html#nfreqre">nfreqre</a> and related variables.
+</p><p>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="cd_full_grid">cd_full_grid</a></font>
+<br><font id="definition">Mnemonics: Contour Deformation Full Grid in complex plane</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0 (off)</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3, that is, screening calculations,
+and <a href="vargw.html#gwcalctyp">gwcalctyp</a>=2, 12 or 22.
+<p>
+<b>cd_full_grid</b> enables the calculation of the screening [both chi0 and epsilon^(-1)] on a grid in the first
+quadrant of the complex plane. The grid is determined by the (tensor) product of the grid in real frequency and
+the grid in imaginary frequency. In the SUS and SCR files the grid points are stored as follows:
+<pre>
+<b>Index:</b>  1   . . .   nfreqre   nfrqre+1 . . . nfreqre+nfreqim   nfreqre+nfreqim+1 . . . nfreqre*nfreqim
+<b>Entry:</b> | purely real freq.  |     purely imaginary freq.     |      gridpoints in complex plane        |
+</pre>
+The grid in the complex plane is stored looping over the real dimension as the inner loop and the imaginary as
+the outer loop. The contents of the generated SUS and SCR files can be extracted for visualisation and further
+analysis with the <B>Mrgscr</B> utility.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="cd_halfway_freq">cd_halfway_freq</a></font>
+<br><font id="definition">Mnemonics: Contour Deformation tangent grid Halfway Frequency </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a> </font>
+<br><font id="vartype">Variable type: real parameter</font>
+<br><font id="default">Default is 100.0 eV</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations,
+and <a href="vargw.html#gwcalctyp">gwcalctyp</a>=2, 12 or 22.
+<p>
+<b>cd_halfway_freq</b> determines the frequency where half of the number of points defined in 
+<a href="vargw.html#nfreqre">nfreqre</a> are used up. The tangent transformed grid is approximately
+linear up to this point. To be used in conjunction with <a href="vargw.html#gw_frqre_tangrid">gw_frqre_tangrid</a>.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="cd_max_freq">cd_max_freq</a></font>
+<br><font id="definition">Mnemonics: Contour Deformation grid Maximum Frequency </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a> </font>
+<br><font id="vartype">Variable type: real parameter</font>
+<br><font id="default">Default is 1000.0 eV</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations,
+and <a href="vargw.html#gwcalctyp">gwcalctyp</a>=2, 12 or 22.
+<p>
+<b>cd_max_freq</b> determines the frequency where all the points defined in 
+<a href="vargw.html#nfreqre">nfreqre</a> are used up. To be used in conjunction with 
+<a href="vargw.html#gw_frqre_tangrid">gw_frqre_tangrid</a>.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="cd_subset_freq">cd_subset_freq</a></font>
+<br><font id="definition">Mnemonics: Contour Deformation grid calculate Subset of Frequencies </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: integer array cd_subset_freq(2)</font>
+<br><font id="default">Default is full set</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3, that is, screening calculations,
+and <a href="vargw.html#gwcalctyp">gwcalctyp</a>=2, 12 or 22.
+<p>
+<b>cd_subset_freq</b> Specifies that only a subset of the frequencies defined by
+<a href="vargw.html#nfreqre">nfreqre</a> are to be calculated. The first index is the start and
+the second the end, with index number 1 always being the origin. For example a calculation with 
+<b><a href="vargw.html#nfreqre">nfreqre</a>=100</b> could be separated into two datasets with:
+<pre>
+subset_freq1   1   50
+subset_freq2   51  100
+</pre>
+Any resulting susceptibiltiy (_SUS) and screening (_SCR) files can then be merged with the <b>mrgscr</b> utility.
+</p><p>
+<br>
+Note that this does <b>NOT</b>
+have to be used in conjunction with <a href="vargw.html#gw_frqre_tangrid">gw_frqre_tangrid</a>.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="gw_frqre_tangrid">gw_frqre_tangrid</a></font>
+<br><font id="definition">Mnemonics: Contour Deformation Use Tangent Grid </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0 (off)</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations,
+and <a href="vargw.html#gwcalctyp">gwcalctyp</a>=2, 12 or 22.
+<p>
+<b>gw_frqre_tangrid</b> defines a nonuniform grid to be used in frequency, with stepsize increasing 
+proportional to tan(x). This makes the grid approximately linear to start with, with a rapid increase 
+towards the end. Also, this is the grid which gives equal importance to each point used in the integration
+of a function which decays as 1/x^2. To be used in conjuction with <a href="vargw.html#nfreqre">nfreqre</a>, 
+<a href="vargw.html#cd_max_freq">cd max_freq</a> and <a href="vargw.html#cd_halfway_freq">cd halfway_freq</a> 
+which determine the parameters of the transformed grid.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="chkgwcomp">chkgwcomp</a></font>
+<br><font id="definition">Mnemonics: Check GW Completeness</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a></font>
+<br><font id="vartype">Variable type: integer  </font>
+<br><font id="default">Default is 0</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3, that is, screening calculations.
+<p>
+<b>chkgwcomp</b> performs a check on the completeness relation that is assumend to be fulfilled by the oscillator strenghts
+in the limit of very large number of bands.
+If <b>chkgwcomp==1</b>, a _DELI file is generated, containing the incompleteness matrix in reciprocal space for each q-point. 
+This matrix is the difference between the identity and the projection over all bands (the oscillator strengths),
+summed over all occupied states. It is relevant in case one performs a GW + PAW calculation, especially if one is
+willing to use the extrapolar approximation (<b><a href="vargw.html#gwencomp">gwencomp</a>=1</b>). 
+Note that this closure relation is not fulfilled in PAW, due to the incompleteness of the basis.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="ecuteps">ecuteps</a></font>
+<br><font id="definition">Mnemonics: Energy CUT-off for EPSilon (the dielectric matrix) </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a> </font>
+<br><font id="vartype">Variable type: real parameter</font>
+<br><font id="default">Default is 0.0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations.
+<p>
+<b>ecuteps</b> determines the cut-off energy of the planewave set used to represent the
+independent-particle susceptibility $\chi^{(0)}_{KS}$, the dielectric matrix $\epsilon$, and its inverse.
+<br>
+It is not worth to take <b>ecuteps</b> bigger than four times <a href="vargw.html#ecutwfn">ecutwfn</a>,
+this latter limit corresponding to the highest Fourier components of a wavefunction convoluted with itself.
+Usually, even twice the value of <a href="vargw.html#ecutwfn">ecutwfn</a> might overkill. A value of <b>ecuteps</b>
+between 5 and 10 Hartree often leads to converged results (at the level of 0.01 eV for the energy gap).
+In any case, a convergence study is worth.
+<p>
+This set of planewaves can also be determined by the other input variables
+<a href="vargw.html#npweps">npweps</a> and <a href="vargw.html#nsheps">nsheps</a>,
+but these are much less convenient to use for general systems, than the selection
+criterion based on a cut-off energy.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="ecutsigx">ecutsigx</a></font>
+<br><font id="definition">Mnemonics: Energy CUT-off for SIGma eXchange </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a></font>
+<br><font id="vartype">Variable type: real parameter</font>
+<br><font id="default">Default is 0.0 .</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma calculations.
+<p>
+<b>ecutsigx</b> determines the cut-off energy of the planewave set used to generate the
+exchange part of the self-energy operator. For norm-conserving calculations, it is pointless
+to have <b>ecutsigx</b> bigger than 4*<a href="varbas.html#ecut">ecut</a>,
+while for PAW calculations, the maximal useful value is 
+<a href="varpaw.html#pawecutdg">pawecutdg</a>. Thus, if you do not care about CPU time, please use these
+values. If you want to spare some CPU time, you might try to use a value between <a href="varbas.html#ecut">ecut</a> and these
+upper limits.
+<p>
+This set of planewaves can also be determined by the other input variables
+<a href="vargw.html#npwsigx">npwsigx</a> and <a href="vargw.html#nshsigx">nshsigx</a>,
+but these are much less convenient to use for general systems, than the
+selection criterion based on the cut-off energy (<b>ecutsigx</b> has to be 0.0 for using these).
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="ecutwfn">ecutwfn</a></font>
+<br><font id="definition">Mnemonics: Energy CUT-off for WaveFunctions</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a></font>
+<br><font id="vartype">Variable type: real parameter</font>
+<br><font id="default">Default is 0.0, although, if a screening or self-energy calculation is done (<a href="vargs.html#optdriver">optdriver</a>=3 or 4), <b>ecutwfn</b> is automatically set to <a href="varbas.html#ecut">ecut</a> </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening and sigma calculations.
+<p>
+<b>ecutwfn</b> determines the cut-off energy of the planewave set used to represent the wavefunctions
+in the formula that generates the independent-particle susceptibility $\chi^{(0)}_{KS}$
+(for <a href="vargs.html#optdriver">optdriver</a>=3), or the
+self-energy (for <a href="vargs.html#optdriver">optdriver</a>=4).
+<br>
+Usually, <b>ecutwfn</b> is smaller than <a href="varbas.html#ecut">ecut</a>,
+so that the wavefunctions are filtered, and some components are ignored.
+As a side effect, the wavefunctions are no more normalized, and also, no more orthogonal.
+Also, the set of plane waves can be much smaller for <a href="vargs.html#optdriver">optdriver</a>=3,
+than for <a href="vargs.html#optdriver">optdriver</a>=4, although a convergence
+study is needed to choose correctly both values.
+<p>
+This set of planewaves can also be determined by the other input variables
+<a href="vargw.html#npwwfn">npwwfn</a> and <a href="vargw.html#nshwfn">nshwfn</a>,
+but these are much less convenient to use for general systems, than the
+selection criterion based on the cut-off energy (<b>ecutwfn</b> has to be set to 0.0 for using these).
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="fftgw">fftgw</a></font>
+<br><font id="definition">Mnemonics: FFT for GW calculation</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: integer parameter  </font>
+<br><font id="default">Default is 21.</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations.
+<p>
+The basic ingredients needed to perform both a screening and a sigma calculation are the so-called
+oscillator matrix elements defined as
+
+<br><br> $<
+<B>k-q</B>, b1 | e^{-i (<B>q+G</B>).<B>r</B>} | <B>k</B> b2 >$ &nbsp;&nbsp;&nbsp;1)
+<br><br>
+
+In reciprocal space, Eq.1 is given by a convolution in which the number of reciprocal
+lattice vectors employed to describe the wavefunctions is given
+by <a href="vargw.html#ecutwfn">ecutwfn</a> 
+Tn the case of screening calculations, the number of <B>G</B> vectors in Eq.1 is defined
+by <a href="vargw.html#ecuteps">ecuteps</a>, 
+while <a href="vargw.html#ecutsigx">ecutsigx</a> defined the number of <B>G</B> used in sigma calculations.
+To improve the efficiency of the code, the oscillator matrix elements are evaluated
+in real space through FFT techniques, and the <b>fftgw</b> input variable is used to select the FFT
+mesh to be used.
+<p>
+<b>fftgw</b> is the concatenation of two digits, labelled (A) and (B) whose value is internally used
+to define the value of  <a href="vargs.html#ngfft">ngfft</a>(1:3) (see the setmesh.F90 routine).
+<p>
+The first digit (A) defines the augmentation of the FFT grid. Possible values are 1, 2 and 3.
+
+<ul>
+<li> 0 =&gt; Use the FFT grid specified by the user through <a href="vargs.html#ngfft">ngfft</a>(1:3) </li>
+<li> 1 =&gt; Use a coarse FFT grid which encloses a sphere in reciprocal space whose radius depends
+     on the largest value between
+     <a href="vargw.html#ecutwfn">ecutwfn</a> and <a href="vargw.html#ecuteps">ecuteps</a> </li>
+<li> 2 =&gt;  Use a slightly augmented FFT which is sufficient for the correct treatment of the
+     convolution
+<li> 3 =&gt; Doubled FFT grid (same mesh as that used for GS calculations).</li>
+</ul>
+
+<p>
+The second digit (B) can be chosen between 0 and 1. It defines whether a FFT grid compatible with all
+the symmetries of the space group must be enforced or not:
+
+<ul>
+<li> 0 =&gt; Use the smallest FFT mesh which is compatible with the FFT library (faster, save memory
+but is less accurate)</li>
+<li> 1 =&gt; Enforce a FFT grid which is compatible with all the symmetry operations of the space
+group. This method leads to an increase both of CPU time and memory, but the matrix elements
+are more accurate since the symmetry properties of the system are preserved.</li>
+</ul>
+
+The behaviour of ABINIT before v5.5 corresponds to the default value 11.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="freqim_alpha">freqim_alpha</a></font>
+<br><font id="definition">Mnemonics: FREQuencies along the IMaginary axis ALPHA parameter</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: real parameter  </font>
+<br><font id="default">Default is 5.0</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, self-energy calculations.
+<p>
+<b>freqim_alpha</b> is used only for numerical integration of the GW self-energy
+(<a href="vargw.html#gwcalctyp">gwcalctyp</a>= 2, 12, 22, 9, 19, 29).
+<br>
+<b>freqim_alpha</b> determines the location of the maximum frequency point along the imaginary axis 
+if the default grid is used in Contour Deformation (numerical integration) calculations. It is set 
+as <span style="font-family:Times,Serif"><i>&alpha;&middot;&omega;<sub>p<sub></i></span>, where 
+<span style="font-family:Times,Serif"><i>&omega;<sub>p<sub></i></span> is the plasma frequency 
+determined by the average density of the system (this can be set by hand by using the variable <a href="vargw.html#ppmfrq">ppmfrq</a>). See the section on grids in the descriptive text for <a href="vargw.html#cd_frqim_method">cd_frqim_method</a> for a detailed description of the formula.
+
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="freqremax">freqremax</a></font>
+<br><font id="definition">Mnemonics: FREQuencies along the Real axis MAXimum</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a></font>
+<br><font id="vartype">Variable type: real parameter  </font>
+<br><font id="default">Default is 0.0</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3, that is, screening calculations.
+<p>
+<b>freqremax</b> is used only for numerical integration of the GW self-energy
+(<a href="vargw.html#gwcalctyp">gwcalctyp</a>= 2, 12, 22, 9, 19, 29).
+<br>
+<b>freqremax</b> sets the maximum real frequency used to calculate the dielectric matrix in order
+to perform the numerical integration of the GW self-energy.
+<b>freqremax</b>, <a href="vargw.html#freqremin">freqremin</a> and <a href="vargw.html#nfreqre">nfreqre</a> 
+define the spacing of the frequency mesh along the real axis.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="freqremin">freqremin</a></font>
+<br><font id="definition">Mnemonics: FREQuencies along the Real axis MINimum</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a></font>
+<br><font id="vartype">Variable type: real parameter  </font>
+<br><font id="default">Default is 0.0</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3, that is, screening calculations.
+<p>
+<b>freqremin</b> is used only for numerical integration of the GW self-energy
+(<a href="vargw.html#gwcalctyp">gwcalctyp</a>= 2, 12, 22, 9, 19, 29).
+<br>
+<b>freqremin</b> sets the minimum real frequency used to calculate the dielectric matrix in order
+to perform the numerical integration of the GW self-energy.
+<b>freqremin</b> can be used to split a wide frequency interval into smaller subintervals that
+can be calculated independently.
+The different subintervals can then be merged together with the <B>Mrgscr</B> utility thus obtaining 
+a single screening file that can used for self-energy calculations.
+
+Note that <a href="vargw.html#freqremax">freqremax</a>, <a href="vargw.html#freqremin">freqremin</a> 
+and <a href="vargw.html#nfreqre">nfreqre</a> define the spacing of the frequency mesh along the real axis.
+
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="freqspmax">freqspmax</a></font>
+<br><font id="definition">Mnemonics: FREQuencies for the SPectral function MAXimum</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a></font>
+<br><font id="vartype">Variable type: real parameter  </font>
+<br><font id="default">Default is 0.0</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma calculations.
+<p>
+<b>freqspmax</b> sets the maximum real frequency used to calculate the spectral function
+from the GW Green's function. <a href="vargw.html#freqspmin">freqspmin</a>, <b>freqspmax</b> and 
+<a href="vargw.html#nfreqsp">nfreqsp</a> define the spacing of an equidistant frequency mesh along 
+the real axis. Alternatively, the variables <a href="vargw.html#gw_customnfreqsp">gw_customnfreqsp</a> and
+<a href="vargw.html#gw_freqsp">gw_freqsp</a> can be used to make a user-defined grid.
+
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="freqspmin">freqspmin</a></font>
+<br><font id="definition">Mnemonics: FREQuencies for the SPectral function MINimum</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a></font>
+<br><font id="vartype">Variable type: real parameter  </font>
+<br><font id="default">Default is -<a href="vargw.html#freqspmax">freqspmax</a></font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma calculations.
+<p>
+<b>freqspmin</b> sets the minimum real frequency used to calculate the spectral function
+from the GW Green's function. <b>freqspmin</b> is set to -<a href="vargw.html#freqspmax">freqspmax</a> 
+if left undefined. <b>freqspmin</b>, <a href="vargw.html#freqspmax">freqspmax</a>, and 
+<a href="vargw.html#nfreqsp">nfreqsp</a> define the spacing of an equidistant frequency mesh along 
+the real axis. Alternatively, the variables <a href="vargw.html#gw_customnfreqsp">gw_customnfreqsp</a> and 
+<a href="vargw.html#gw_freqsp">gw_freqsp</a> can be used to make a user-defined grid.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="gwcalctyp">gwcalctyp</a></font>
+<br><font id="definition">Mnemonics: GW CALCulation TYPe</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer parameter</font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations.
+<p>
+<b>gwcalctyp</b> governs the choice between the different capabilities of the GW code.
+
+<ul>
+<li>  0 &#60&#61 <b>gwcalctyp</b> &#60&#61  9 : standard "1 shot" quasiparticle method
+<li> 10 &#60&#61 <b>gwcalctyp</b> &#60&#61 19 : self-consistent quasiparticle method on energies only
+<li> 20 &#60&#61 <b>gwcalctyp</b> &#60&#61 29 : self-consistent quasiparticle method on energies and wavefunctions
+</ul>
+
+<p>
+<ul>
+<li> <b>gwcalctyp</b> &#61 0, 10, or 20 : standard Plasmon-Pole model GW calculation
+<li> <b>gwcalctyp</b> &#61 2, 12, or 22 : GW calculation using numerical integration
+ (contour deformation method, see e.g. S. Lebegue <i> et al.</i> PRB <b>67</b>, 155208 (2003).)
+<li> <b>gwcalctyp</b> &#61 5, 15, or 25 : Hartree-Fock calculation
+<li> <b>gwcalctyp</b> &#61 6, 16, or 26 : Screened Exchange calculation
+<li> <b>gwcalctyp</b> &#61 7, 17, or 27 : COHSEX calculation
+<li> <b>gwcalctyp</b> &#61 8, 18, or 28 : model GW calculation
+ following S. Faleev <i>et al.</i> PRL <b>93</b>, 126406 (2004) using a Plasmon-Pole model
+<li> <b>gwcalctyp</b> &#61 9, 19, or 29 : model GW calculation
+ following S. Faleev <i>et al.</i> PRL <b>93</b>, 126406 (2004) using numerical integration
+(contour deformation method)
+</ul>
+
+<p>
+Also
+<ul>
+<li> <b>gwcalctyp</b> &#61 105,125 : HSE06 calculations (1-shot and self-consistent)
+<li> <b>gwcalctyp</b> &#61 205,225 : PBE0 calculations  (1-shot and self-consistent)
+<li> <b>gwcalctyp</b> &#61 305,325 : B3LYP calculations (1-shot and self-consistent)
+
+</ul>
+
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="gwcomp">gwcomp</a></font>
+<br><font id="definition">Mnemonics: GW COMPletness </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations.
+<p>
+<b>gwcomp</b> governs the use of an extrapolar approximation. If <b>gwcomp</b>==1, one improves the completeness
+in a truncated sum over states. In practice, this permits one to reduce quite much the number of 
+bands required in the calculation of the screening or of the self-energy.
+The energy parameter
+needed in the extrapolar approximation is set by <a href="vargw.html#gwencomp">gwencomp</a>.
+See F. Bruneval, X. Gonze, Phys. Rev. B 78, 085125 (2008) for a description of the methodology.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="gwencomp">gwencomp</a></font>
+<br><font id="definition">Mnemonics: GW Energy for COMPletness </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: energy </font>
+<br><font id="default">Default is 2. </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations,
+when <a href="vargw.html#gwcomp">gwcomp</a> is equal to 1.
+<p>
+<b>gwencomp</b> sets the energy parameter used in the extrapolar approximation used to improve
+completeness and make the convergence against the number of bands much faster.
+<p>
+See F. Bruneval, X. Gonze, Phys. Rev. B 78, 085125 (2008) for a description of the methodology.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="gwgamma">gwgamma</a></font>
+<br><font id="definition">Mnemonics: GW Gamma </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma calculations.
+<p>
+If <b>gwgamma</b> is 1, the vertex correction will be included leading to what is known as "GWGamma" approximation.
+see R. Del Sole, L. Reining, and R. W. Godby, Phys. Rev. B  49, 8024 (1994).
+Note that, in order to include the vertex correction in W, one has to start the sigma calculation
+from the susceptibility file_SUSC instead of the _SCR file (see <a href="varfil.html#getsuscep">getsuscep</a>&nbsp;&nbsp;
+and <a href="varfil.html#irdsuscep">irdsuscep</a>&nbsp;&nbsp;) 
+Not available for PAW calculations.
+<p>
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="gwmem">gwmem</a></font>
+<br><font id="definition">Mnemonics: GW MEMory </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 11 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3,4, that is, sigma calculations.
+<p>
+<b>gwmem</b> governs the memory strategy during a screening and/or a sigma run.
+<ul>
+<li> <b>gwmem</b> = 1x , the screening matrix are read for all q-vectors and stored in the memory.
+<li> <b>gwmem</b> = 0x , the screening matrix are read just a q-vector after another.
+<br>
+<li> <b>gwmem</b> = x1 , the real-space wavefunctions are stored in the memory.
+<li> <b>gwmem</b> = x0 , the real-space wavefunctions are not stored, but rather recalculated on-fly each abinit needs them using FFTs.
+</ul>
+The default is <b>gwmem</b> = 11, which is the fastest, but also the most memory consuming.
+When experiencing memory shortage, one should try <b>gwmem</b> = 0.
+The first digit is only meaningful when performing sigma calculations.
+<p>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="gwrpacorr">gwrpacorr</a></font>
+<br><font id="definition">Mnemonics: GW RPA CORRelation energy </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 and if <a href="vargw.html#gwcalctyp">gwcalctyp</a>=x1, i.e. a screening calculation for imaginary frequencies.
+<p>
+<b>gwrpacorr</b> governs the calculation of the RPA correlation energy.
+<ul>
+<li> <b>gwrpacorr</b> = 0, no RPA correlation energy is calculated
+<li> <b>gwrpacorr</b> = 1, the RPA correlation energy is calculated using an exact integration over the coupling constant: it requires one diagonalization of the polarizability matrix
+<li> <b>gwrpacorr</b> = <i>n</i> &gt 1, the RPA correlation energy is calculated using <i> n </i> values for the coupling constant: it requires <i>n</i> inversions of the polarizability matrix
+</ul>
+<p>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="gw_customnfreqsp">gw_customnfreqsp</a></font>
+<br><font id="definition">Mnemonics: GW CUSTOM SPectral FREQuencies</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0 (off)</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma calculations,
+and <a href="vargw.html#gwcalctyp">gwcalctyp</a>=2, 12 or 22.
+<p>
+<b>gw_customnfreqsp</b> lets the user define the gridpoints along the real frequency axis by hand 
+for the calculation of the self-energy along the real axis. Set this to the number of frequencies 
+you want. The frequencies are specified with <a href="vargw.html#gw_freqsp">gw_freqsp</a>.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="gw_eet">gw_eet</a></font>
+<br><font id="definition">Mnemonics: GW Effective Energy Technique </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is -1 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations.
+<p>
+<b>gw_eet</b> governs the use of the effective energy technique (EET).
+With the EET GW calculations can be performed without summing over the empty states, both in the calculation of the screening and the self-energy. 
+This is achieved by using a single effective energy that takes into account the contributions of all the empty states.
+See J.A. Berger, L. Reining, and, F. Sottile, Phys. Rev. B (82), 041103(R) (2010) for a more detailed description of the method.
+<ul>
+<li> <b>gw_eet</b> = -1, no effective energy technique is used
+<li> <b>gw_eet</b> = 0, 1, or 2 an effective energy is used. These numbers correspond to the order of the approxiation for the effective energy as given in Eqs. (10), (11), and (12), respectively, in J.A. Berger, L. Reining, and, F. Sottile, Phys. Rev. B (82), 041103(R) (2010). The higher the order, the more accurate (in principle) is the result. However, also the calculation time of the effective energy will increase.
+</ul>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="gw_eet_inclvkb">gw_eet_inclvkb</a></font>
+<br><font id="definition">Mnemonics: GW Effective Energy Technique INCLude VKB </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations 
+and if <a href="vargw.html#gw_eet">gw_eet</a>=1 or 2
+<p>
+<b>gw_eet_inclvkb</b> governs the use of the commutator of the non-local part of the pseudo-potential in determining the effective energy of the EET.
+<ul>
+<li> <b>gw_eet_inclvkb</b> = 0 the commutator is not included
+<li> <b>gw_eet_inclvkb</b> = 1 the commutator is included
+</ul>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="gw_eet_nband">gw_eet_nband</a></font>
+<br><font id="definition">Mnemonics: GW Effective Energy Technique Number of BANDs </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is -1 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations 
+and if <a href="vargw.html#gw_eet">gw_eet</a>=0, 1, or 2
+<p>
+<b>gw_eet_nband</b> governs the number of bands to be used in the effective energy technique (EET). It will only be taken into account if it is higher than the number of occupied bands. If this is not the case, summations will only include occupied states.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="gw_eet_scale">gw_eet_scale</a></font>
+<br><font id="definition">Mnemonics: GW Effective Energy Technique SCALE </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: real parameter </font>
+<br><font id="default">Default is 1 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations 
+and if <a href="vargw.html#gw_eet">gw_eet</a>=0, 1, or 2
+<p><b>gw_eet_scale</b> sets the prefactor with which the effective energy can be scaled to 
+obtain a faster convergence with respect to the number of empty states.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="gw_freqsp">gw_freqsp</a></font>
+<br><font id="definition">Mnemonics: GW SPectral FREQuencies </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: real array gw_freqsp(gw_customnfreqsp)</font>
+<br><font id="default">Default is none</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is sigma calculations.
+<p>
+<b>gw_freqsp</b> specifies the grid points for the real frequency axis when the real and imaginary 
+(spectral funtion) parts of sigma are calculated explicitly for post-processing or plotting. 
+Only activated if
+<a href="vargw.html#gw_customnfreqsp">gw_customnfreqsp</a> is not equal to 0. The number of frequencies
+is set by the value of <a href="vargw.html#gw_customnfreqsp">gw_customnfreqsp</a>. Example:
+<pre>
+gw_customnfreqsp   5
+nfreqsp            5
+gw_freqsp         -0.5  -0.1  0.0  1.0  10.0 eV          
+</pre>
+If <a href="vargw.html#nfreqsp">nfreqsp</a> is not equal to
+<a href="vargw.html#gw_customnfreqsp">gw_customnfreqsp</a> a warning will be issued.
+</p>
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="gw_qprange">gw_qprange</a></font>
+<br><font id="definition">Mnemonics: GW Policy for K-point and Bands selection</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: integer</font>
+<br><font id="default">Default is 0</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is sigma calculations.
+<p>
+<b>gw_qprange</b> is active only when <a href="vargw.html#nkptgw">nkptgw</a> is equal to zero (default value).
+This variable simplifies the specification of the list of kpoints and of the bands to be used 
+for the computation of the quasi-particle corrections. 
+The possible values are:
+
+<ul>
+ <li>0    => Compute the QP corrections only for the fundamental and the optical gap</li>
+ <li>+num => Compute the QP corrections for all the k-points in the irreducible zone. 
+             and include `num` bands above and below the Fermi level. </li>
+ <li>-num => Compute the QP corrections for all the k-points in the irreducible zone. 
+             Include all occupied states and `num` empty states.</li>
+</ul>
+
+The default value is 0 and is very handy for one-shot calculations.
+It is important to stress, however, that the position of the optical/fundamental gaps is deduced from the energies computed 
+on the k-mesh used for the WFK file. Therefore the computed gaps might differ from the correct ones that can only be 
+obtained with an appropriate sampling of the irreducible zone.
+
+Positive values are useful if we don't know the position of the GW HOMO, LOMO and we want to investigate 
+the effect of the GW corrections on the states close to the gap
+Negative values are usually used for self-consistent calculations
+
+Note that, in the case of self-consistency or symsigma=1, the code might change the bands range 
+so that all the degenerate states are included.
+
+Note also that <a href="vargw.html#kptgw">kptgw</a>, and <a href=vargw.html#bdgw">bdgw</a> are ignored when this options is used. 
+If you want to select manually the list of k-points and bands, you have 
+to provide the three variables <a href="vargw.html#nkptgw">nkptgw</a>, <a href="vargw.html#kptgw">kptgw</a>, and <a href=vargw.html#bdgw">bdgw</a>.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="gw_frqim_inzgrid">gw_frqim_inzgrid</a></font>
+<br><font id="definition">Mnemonics: Contour Deformation Imaginary Frequencies Inverse Z Grid</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0 (off)</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations,
+and <a href="vargw.html#gwcalctyp">gwcalctyp</a>=2, 12 or 22.
+<p>
+<b>gw_frqim_inzgrid</b> creates gridpoints along the <b>imaginary</b> frequency axis by using an 
+equidistant grid in the variable 
+<span style="font-family:Times,Serif"><i>z &sub; [0,1]</i></span>
+where the transform is:
+<p align="center">
+         <img style="width: 122px; height: 38px;" src="./vargw_img/cd_inzgrid.png">
+</p>
+<p>Here <span style="font-family:Times,Serif"><i>&omega;<sub>p</sub></i></span> is the
+ plasma frequency (default can be overridden by setting <a href="vargw.html#ppmfrq">ppmfrq</a>).
+The equidistant grid in z is determined uniquely by <a href="vargw.html#nfreqim">nfreqim</a>) and 
+the points are distributed so that half of them lie below the plasma frequency.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="gw_frqre_inzgrid">gw_frqre_inzgrid</a></font>
+<br><font id="definition">Mnemonics: Contour Deformation Real Frequencies Inverse Z Grid</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0 (off)</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations,
+and <a href="vargw.html#gwcalctyp">gwcalctyp</a>=2, 12 or 22.
+<p>
+<b>gw_frqre_inzgrid</b> creates gridpoints along the <b>real</b> frequency axis by using an 
+equidistant grid in the variable 
+<span style="font-family:Times,Serif"><i>z &sub; [0,1]</i></span>
+where the transform is:
+<p align="center">
+         <img style="width: 122px; height: 38px;" src="./vargw_img/cd_inzgrid_re.png">
+</p>
+<p>Here <span style="font-family:Times,Serif"><i>&omega;<sub>p</sub></i></span> is the
+ plasma frequency (default can be overridden by setting <a href="vargw.html#ppmfrq">ppmfrq</a>).
+The equidistant grid in z is determined uniquely by <a href="vargw.html#nfreqim">nfreqre</a>) and 
+the points are distributed so that half of them lie below the plasma frequency. This is useful in 
+conjuction with <a href="vargw.html#gw_frqim_inzgrid">gw_frqim_inzgrid</a> if one needs to use a grid 
+which maps <span style="font-family:Times,Serif"><i>[0,&#8734;[ &rarr; [0,1]</i></span>. Note that 
+typically <i>many</i> more points are needed along the real axis in order to properly resolve 
+peak structures. In contrast, both the screening and self-energy are very smooth along the 
+imaginary axis. Also, please note that this is <b>not</b> an efficient grid for <b>standard</b> 
+Contour Deformation calculations, where typically only a smaller range of frequencies near the 
+origin is required. The maximum value needed along the real frequency axis is output in the 
+logfile during Contour Deformation sigma calculations.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="gw_nstep">gw_nstep</a></font>
+<br><font id="definition">Mnemonics: GW Number of self-consistent STEPS </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 30 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=8, that is, self-consistent GW calculations.
+<p>
+Gives the maximum number of self-consistent GW cycles (or "iterations").
+in which G and/or W will be updated until the quasi-particle energied are converged 
+within <a href="vargw.html#gw_toldfeig">gw_toldfeig</a>.
+<a href="vargw.html#gwcalctyp">gwcalctyp</a> and <a href="vargw.html#gw_sctype">gw_sctype</a> are 
+used to define the type of self-consistency.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="gw_nqlwl">gw_nqlwl</a></font>
+<br><font id="definition">Mnemonics: GW, Number of Q-points for the Long Wave-Length Limit </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 1 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3,4,99 that is, screening, sigma or BS
+calculations, althought the actual meaning of the variable depends on the particular run-level (see 
+discussion below).
+<p>
+<b>gw_nqlwl</b> defines the number of directions in reciprocal space used to describe the non-analytical behaviour 
+of the heads (G = G'=0) and the wings (G=0 or G'=0) of the dielectric matrix in the optical limit 
+(i.e. for q tending to zero).
+The number of directions is specified by the additional variable <a href="vargw.html#gw_qlwl">gw_qlwl</a>.
+<p>
+When <a href="vargs.html#optdriver">optdriver</a>=3, <b>gw_nqlwl</b> and <b>gw_qlwl</b> define
+the set of "small" q that will be calculated and stored in the final SCR file. Therefore, the two 
+variables can be used to analyze how the optical spectra depend on the direction 
+of the incident phonon (useful especially in anisotropic systems).
+<p>
+When <a href="vargs.html#optdriver">optdriver</a>=4, <b>gw_nqlwl</b> and <b>gw_qlwl</b> can be used 
+to specify the heads and the wings to be used to perform the quadrature of the correlated 
+part of the self-energy in the small region around the origin.
+(NB: not yet available, at present the quadrature is performed using a single direction in q-space)
+<p>
+When <a href="vargs.html#optdriver">optdriver</a>=99, <b>gw_nqlwl</b> and <b>gw_qlwl</b> define
+the set of directions in q-space along which the macroscopic dielectric function is evaluated.
+By default the BS code calculates the macroscopic dielectric function using six different 
+directions in q-space (the three basis vectors of the reciprocal lattice and the three Cartesian axis).
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="gw_qlwl">gw_qlwl</a></font>
+<br><font id="definition">Mnemonics: GW, Q-points for the Long Wave-Length Limit </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: real array gw_qlwl(3,<a href="vargw.html#gw_nqlwl">gw_nqlwl</a>) </font>
+<br><font id="default">Default is 0.00001 0.00002 0.00003</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3,4 that is, screening or sigma calculations.
+<p>
+When <a href="vargs.html#optdriver">optdriver</a>=3,
+<b>gw_qlwl</b> defines the set of q-points around Gamma that are considered during the evaluation 
+of the non-analytical behaviour of the dielectrix matrix. Optical spectra (with and without
+non-local field effects) are evaluated for each direction specified by <b>gw_qlwl</b>.
+<p>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="gw_sctype">gw_sctype</a></font>
+<br><font id="definition">Mnemonics: GW, Self-Consistency TYPE </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0 so that no choice is done</font>
+<br><font id="text">
+<p>
+This variable is used to partially define the kind of self-consistency for GW calculations. 
+The other piece of information is given by <a href="vargw.html#gwcalctyp">gwcalctyp</a>
+that defines the particular approximation for the self-energy operator as well as whether the 
+wavefunctions have to replaced by quasi-particle amplitudes.
+<p>
+If <b>gw_sctype</b> is specified in the input file, the code will perform an iterative update
+of the quantities entering the GW equations until the quasi-particle energies are converged 
+within <a href="vargw.html#gw_toldfeig">gw_toldfeig</a>. The maximum number of iterations is
+specified by <a href="vargw.html#gw_nstep">gw_nstep</a>.
+Possible values are:
+<ul>
+<li>  1 =&gt; standard one-shot method (one screening calculation followed by a single sigma run)
+<li>  2 =&gt; self-consistency only on W (iterative update of W followed by a sigma run in which G 
+              is approximated with the Kohn-Sham independent-particle Green's function G0)
+<li>  3 =&gt; self-consistency only of G (a single screening calculation to obtain the Kohn-Sham
+              polarizability followed by an iterative update of the Green's functions in the self-energy)
+<li>  4 =&gt; fully self-consistent algorithm (iterative update of both G and W) 
+</ul>
+
+It is possible to initialize the self-consistent procedure by reading a previously calculated
+SCR or SUSC file via the variables <a href="varfil.html#getscr">getscr</a> or
+<a href="varfil.html#getsuscep">getsuscep</a>, respectively.
+<a href="varfil.html#getqps">getqps</a> can be used to read a previous QPS file thus initializing 
+the Green's functions to be used in the first self-consistent iteration. 
+
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="gw_sigxcore">gw_sigxcore</a></font>
+<br><font id="definition">Mnemonics: GW, treatment of the ... </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+<p>
+Only available for PAW and relevant if <a href="vargs.html#optdriver">optdriver</a>=4 that is, sigma calculations.
+<p>
+Theoretical introduction: GW calculations perfomed on top of electronic calculations relying 
+when the frozen-core approximation is used to separate inner-core electrons from valence electrons,
+only the contribution to the self-energy arising from valence electrons is explicitly accounted for.
+In the standard approach based on pseudopotentials the contribution to the self-energy due to core electrons is approximated
+by means of the KS exchange-correlation potential generated by the core density.
+In the case of GW calculations employing the PAW method, the core contribution to the self-energy
+can be more accurately estimated in terms of the Fock operator generated by the core wavefunctions.
+In the simplest approach, the only ingredients required for this more refined treatment are the wave
+functions of the core electrons in the reference atomic configuration that are calculated during the 
+generation of the PAW setup. This is a good approximation provided that the core wave functions 
+are strictly localized inside the PAW spheres.
+<p>
+<b>gw_sigxcore</b> defines the approximation used to evaluate the core contribution to sigma.
+<ul>
+<li> <b>gw_sigxcore</b> = 0, standard approach, the core contribution is approximated with vxc.
+<li> <b>gw_sigxcore</b> = 1, the core term is approximated with the Fock operator inside the PAW spheres.
+</ul>
+<p>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="gw_toldfeig">gw_toldfeig</a></font>
+<br><font id="definition">Mnemonics: GW TOLerance on the DiFference of the EIGenvalues </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a> </font>
+<br><font id="vartype">Variable type: REAL </font>
+<br><font id="default">Default is 0.1 eV </font>
+<br><font id="text">
+<p>
+Sets a tolerance for absolute differences of QP energies that will cause one self-consistent GW cycle to stop.
+<br>Can be specified in Ha (the default), Ry, eV or Kelvin, since
+<b>toldfe</b> has the '<a href="../users/abinit_help.html#dimensions">ENERGY</a>' characteristics (1 Ha=27.2113845 eV)
+<br>Effective only when self-consistent GW calculations are done  (<a href="vargs.html#optdriver">optdriver</a>=8).
+<p>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="inclvkb">inclvkb</a></font>
+<br><font id="definition">Mnemonics: INCLude VKB </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer parameter </font>
+<br><font id="default">Default is 1 <b>TODO: should be changed to 0 or 2</b></font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3,99 that is, a screening or BS calculations.
+<p>
+Possible values of <b>inclvkb</b> are 0,1,2.
+If <b>inclvkb</b> is 1 or 2, the commutator of the non-local part of the pseudopotential
+with the position operator is correctly included in the q =&gt; 0 contribution. This is
+unfortunately time-consuming. When <b>inclvkb</b> is 0, this contribution is incorrectly
+omitted, but the computation is much faster.
+<p>
+The importance of this contribution depends on the number of k points. Turning off
+<b>inclvkb</b> should be made by experienced users only.
+<p>
+The use of <b>inclvkb</b>=2 is strongy recommended for the calculation of optical properties.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="icutcoul">icutcoul</a></font>
+<br><font id="definition">Mnemonics: Integer that governs the CUT-off for COULomb interaction </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer parameter </font>
+<br><font id="default">Default is 6</font>
+<br><font id="text">
+<p>
+(This documentation is still very primitive, and should be checked)
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, a screening or self-energy calculation.
+<p>
+Many-body calculations for isolated systems present a slow convergence with respect to the size of
+the supercell due to the long ranged Coulomb interaction and the high degree of non-locality of the 
+operators involved. A similar issue occur also in fully periodic systems due to the presence
+of the integrable Coulomb singularity at G=0 that hinders the convergence with respect to the number 
+of q-points used to sample the Brillouin zone.
+The convergence can be accelerated by replacing the true bare Coulomb interaction with other
+expressions  
+<b>icutcoul</b> defines the particular expression to be used for the Coulomb term in reciprocal
+space. The choice of <b>icutcoul</b>  depends on the dimensionality of the system.
+Possible values of <b>icutcoul</b> are 0 to 6. To be complemented by values of <a href="vargw.html#vcutgeo">vcutgeo</a>
+and <a href="vargw.html#rcut">rcut</a>
+<ul>
+ <li>0 => sphere (molecules but also 3D-crystals) </li>
+ <li>1 => cylinder (nanowires, nanotubes)</li>
+ <li>2 => surface </li>
+ <li>3 => 3D crystal (no cut-off, G=0 excluded, default value)</li>
+ <li>4 => ERF, long-range only Coulomb interaction </li>
+ <li>5 => ERFC, short-range only Coulomb interaction (e.g. as used in the HSE functional) </li>
+ <li>6 => auxiliary function integration for 3D systems from P. Carrier <i>et al.</i>, PRB <b>75</b>, 205126 (2007).</li>
+</ul>
+Note that Spencer and Alavi PRB <b>77</b>, 193110 (2008) showed that the spherical cutoff can efficiently be used also for 3D systems.
+In the latter case, use a negative value for the cutoff radius of the sphere (<a href="vargw.html#rcut">rcut</a>&lt0),
+which is automatically calculated so that the volume enclosed in the sphere is equal to the volume of the solid.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="kptgw">kptgw</a></font>
+<br><font id="definition">Mnemonics: K-PoinTs for GW calculations </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: real array kptgw(3,<a href="vargw.html#nkptgw">nkptgw</a>)</font>
+<br><font id="default">Default is all 0.0's </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma calculations.
+<p>
+For each k-point with number igwpt in the range (1:<a href="vargw.html#nkptgw">nkptgw</a>),
+<b>kptgw(1,igwpt)</b> is the reduced coordinate of the k-point where GW corrections are required.
+while <a href=vargw.html#bdgw">bdgw</a>(1:2,igwpt) specifies the range of bands to be considered.
+<p>
+At present, not all k-points are possible. Only those corresponding to the k-point
+grid defined with the same repetition parameters (<a href="vargs.html#kptrlatt" target="kwimg">kptrlatt</a>,
+or <a href="varbas.html#ngkpt" target="kwimg">ngkpt</a>) than the GS one, but WITHOUT any shift, are allowed.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="mdf_epsinf">mdf_epsinf</a></font>
+<br><font id="definition">Mnemonics: Model dielectric function, epsilon infinity </font>
+<br><font id="category">Characteristic:  </font>
+<br><font id="vartype">Variable type: real parameter  </font>
+<br><font id="default">Default is 0.0</font>
+<br><font id="text">
+<p>
+Only relevant if 
+<a href="vargs.html#optdriver">optdriver</a>=99, 
+<a href="vargw.html#bs_coulomb_term">bs_coulomb_term</a>=2x, 
+that is, bethe-salpeter calculations with a model dielectric function.
+<p>
+<b>mdf_epsinf</b> specifies the value of the macroscopic dielectric function used 
+to model the screening function (see Solid State Commun. 84, 765 (1992)).
+The proper spatial symmetry of the screening W(r,r') is enforced using Eq. (7) of Phys. Rev. B 37, (1988) 
+<br>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="nbandkss">nbandkss</a></font>
+<br><font id="definition">Mnemonics: Number of BaNDs in the KSS file </font>
+<br><font id="category">Characteristic:  </font>
+<br><font id="vartype">Variable type: integer parameter  </font>
+<br><font id="default">Default is 0</font>
+<br><font id="text">
+<p>
+This input variable is used for the preparation of a GW calculation :
+it is used in a GS run (where <a href="vargs.html#optdriver">optdriver</a>=0) to generate a _KSS file.
+In this run, <b>nbandkss</b> should be non-zero.
+The generated _KSS file can be subsequently used to calculate the irreducible polarizabilty
+$\chi^{(0)}_{KS}$ using <a href="vargs.html#optdriver">optdriver</a>=3
+or to calculate GW corrections setting <a href="vargs.html#optdriver">optdriver</a>=4.
+<p>
+
+<ul>
+ <li>If <b>nbandkss</b>=0, no _KSS file is created</li>
+ <li>If <b>nbandkss</b>=-1, all the available eigenstates (energies and eigenfunctions) are stored in the
+  abo_KSS file at the end of the ground state calculation. The number of states is forced to be
+  the same for all k-points : it will be the minimum of the number of plane waves over all k-points.</li>
+ <li>If <b>nbandkss</b> is greater than 0, abinit stores (about) <b>nbandkss</b> eigenstates in the abo_KSS file.
+  This number of states is forced to be the same for all k-points.</li>
+</ul>
+
+<p>
+See <a href="vargw.html#npwkss">npwkss</a> for the selection of the number of the planewave components of
+the eigenstates to be stored.
+<br>
+The input variable <a href="vardev.html#accesswff">accesswff</a> can be used
+to read and write KSS files according to different fileformat
+(presently only <a href="vardev.html#accesswff">accesswff</a>=0 and 3 are available in the GW part).
+<br>
+The precision of the KSS file can be tuned through the input variable <a href="varfil.html#kssform">kssform</a>.
+<br>
+For more details about the format of the abo_KSS file, see the routine outkss.F90.
+<p>
+Very important : for the time being, <a href="vardev.html#istwfk">istwfk</a> must be 1 for all the k-points
+in order to generate a _KSS file.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="nfreqim">nfreqim</a></font>
+<br><font id="definition">Mnemonics: Number of FREQuencies along the IMaginary axis </font>
+<br><font id="category">Characteristic:  </font>
+<br><font id="vartype">Variable type: integer parameter  </font>
+<br><font id="default">Default is 0</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3, that is, screening calculations.
+<p>
+<b>nfreqim</b> is used only for numerical integration of the GW self-energy
+(<a href="vargw.html#gwcalctyp">gwcalctyp</a>= 2, 12, 22, 9, 19, 29).
+<br>
+<b>nfreqim</b> sets the number of pure imaginary frequencies used to calculate
+the dielectric matrix in order to perform the numerical integration of the GW self-energy.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="nfreqmidm">nfreqmidm</a></font>
+<br><font id="definition">Mnemonics: Nth FREQuencey moment of the IMaginary part of DM </font>
+<br><font id="category">Characteristic:  </font>
+<br><font id="vartype">Variable type: integer parameter  </font>
+<br><font id="default">Default is No default </font>
+<br><font id="text">
+<p>
+at the moment only relevant if <a href="vargs.html#optdriver">optdriver</a>=4,
+that is, a screening calculation.
+<p>
+depending on the value of <b>>nfreqmidm</b> will calculate the frequency moment of the Dielectric matrix or its inverse,
+
+if <b>>nfreqmidm</b> positive : calculate (nth=nfreqmidm) frequency moment of the Dielectric matrix
+if <b>>nfreqmidm</b> negative : calculate (nth=nfreqmidm) frequency moment of the inverse Dielectric matrix
+if <b>>nfreqmidm</b> = 0 : calculate first frequency moment of the full polarizability
+
+see M. Taut, J. Phys. C: Solid State Phys. 18 (1985) 2677-2690.
+
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="nfreqre">nfreqre</a></font>
+<br><font id="definition">Mnemonics: Number of FREQuencies along the Real axis </font>
+<br><font id="category">Characteristic:  </font>
+<br><font id="vartype">Variable type: integer parameter  </font>
+<br><font id="default">Default is 0</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3, that is, screening calculations.
+<p>
+<b>nfreqre</b> is used only for numerical integration of the GW self-energy
+(<a href="vargw.html#gwcalctyp">gwcalctyp</a>= 2, 12, 22, 9, 19, 29).
+<br>
+<b>nfreqre</b> sets the number of real frequencies used to calculate
+the dielectric matrix in order to perform the numerical integration of the GW self-energy.
+<p>
+It can be used also in case of GW calculations with plasmon-pole models,
+<i>i.e</i> <a href="vargw.html#gwcalctyp">gwcalctyp</a>&lt;10,
+to reduce the number of frequencies used to evaluate the dielectric matrix from the (default) two to
+one frequency (omega=0) by setting <b>nfreqre</b>=1.
+This might be a good idea in case one is planning to use ppmodel&gt;1.
+This will force the calculation of the screening on a single frequency (omega=0) and hence
+reduce memory and disk space requirement.
+The only draw back is that the user will not be able to perform self energy calculation using
+<a href="vargw.html#ppmodel">ppmodel</a>=1,
+since in the last case the dielectric matrix calculated on two frequencies is required.
+If the user is not sure which ppmodel to use, then s/he is not advised
+to use this input variable.
+Using the default values, one must be able to get a screening file that can be used with any ppmodel.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="nfreqsp">nfreqsp</a></font>
+<br><font id="definition">Mnemonics: Number of FREQuencies for the SPectral function </font>
+<br><font id="category">Characteristic:  </font>
+<br><font id="vartype">Variable type: integer parameter  </font>
+<br><font id="default">Default is 0</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma calculations.
+<p>
+<b>nfreqsp</b> defines the number of real frequencies used to calculate the spectral function
+of the GW Green's function.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="npwkss">npwkss</a></font>
+<br><font id="definition">Mnemonics: Number of PlaneWaves in the KSS file </font>
+<br><font id="category">Characteristic: </font>
+<br><font id="vartype">Variable type: integer parameter  </font>
+<br><font id="default">Default is 0</font>
+<br><font id="text">
+<p>
+This input variable is used for the preparation of a GW calculation:
+the GS run (where <a href="vargs.html#optdriver">optdriver</a>=1 and <b>nbandkss</b>/=0) should be followed
+with a run where <a href="vargs.html#optdriver">optdriver</a>=3.
+Also, if <a href="vargw.html#nbandkss">nbandkss</a>=0, no use of <b>npwkss</b>.
+<p>
+<b>npwkss</b> defines the number of planewave components of the Kohn-Sham states
+to build the Hamiltonian, in the routine outkss.F90, and so, the size of the matrix, the size of eigenvectors,
+and the number of available states, to be stored in the abo_KSS file.
+If it is set to 0, then, the planewave basis set defined by the usual Ground State input variable
+<a href="varbas.html#ecut">ecut</a> is used to generate the superset of all planewaves used for all k-points.
+Note that this (large) planewave basis is the same for all k-points.
+<p>
+Very important : for the time being, <a href="vardev.html#istwfk">istwfk</a> must be 1 for all the k-points.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="nkptgw">nkptgw</a></font>
+<br><font id="definition">Mnemonics: Number of K-Points for GW corrections </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer parameter</font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma calculations.
+This input variable was called "ngwpt" in versions before v4.3.
+<p>
+<b>nkptgw</b> gives the number of k-points for which the GW calculation must be done.
+It is used to dimension <a href="vargw.html#kptgw">kptgw</a>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="nomegasi">nomegasi</a></font>
+<br><font id="definition">Mnemonics: Number of OMEGA(S) along the Imaginary axis </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 12 </font>
+<br><font id="text">
+<p>
+
+Only relevant for sigma calculations in which the self-energy along the real axis is obtained
+by performing the analytic continuation from the imaginary axis to the full complex plane 
+via the Pade approximant 
+(<a href="vargs.html#optdriver">optdriver</a>=4 and <a href="vargw.html#gwcalctyp">gwcalctyp</a>=x1).
+<p>
+<b>nomegasi</b> defines the number of frequency points used to sample the self-energy along the
+imaginary axis. The frequency mesh is linear and covers the interval between OMEGASIMIN=0.01 Hartree and
+<a href="vargw.html#omegasimax">omegasimax</a>.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="nomegasf">nomegasf</a></font>
+<br><font id="definition">Mnemonics: Number of OMEGA to evaluate the Spectral Function </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a> </font>
+<br><font id="vartype">Variable type: integer parameter </font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 and
+<a href="vargw.html#spmeth">spmeth</a>/=0, that is, screening calculations
+based on the spectral reprentation of the irreducible polarizability.
+<p>
+<b>nomegasf</b> defines the number of real frequencies used to describe the spectral function
+associated to the irreducible polarizability $\chi^{(0)}_{KS}$.
+The frequency mesh will cover the interval between 0 and the maximum (positive) transition
+energy between occupied and empty states.
+The delta function entering the expression defining the spectral function is approximated using two
+different methods according to the value of the <a href="vargw.html#spmeth">spmeth</a> input variable.
+<p> It is important to notice that an accurate description of the imaginary part of $\chi^{(0)}_{KS}$
+requires an extremely dense frequency mesh. It should be kept in mind, however, that the memory required
+grows fast with the value of <b>nomegasf</b>.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="nomegasrd">nomegasrd</a></font>
+<br><font id="definition">Mnemonics: Number of OMEGA to evaluate the Sigma Real axis Derivative </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer parameter </font>
+<br><font id="default">Default is 9 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma calculations.
+<p>
+The number of real frequencies around the KS energy where the self-energy Sigma is evaluated.
+From these values, the derivative of Sigma at the KS energy is numerically estimated through linear interpolation.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="npvel">npvel</a></font>
+<br><font id="definition">Mnemonics: Number of Particle Velocities </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer parameter</font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 , that is screening calculations.
+<p>
+In the context of the electronic stopping power of impinging ion in matter,
+<b>npvel</b> sets the number of the ion velocities to be calculated via linear response.<br>
+When <b>npvel</b>=0, no stopping power calculation is performed.<br>
+The direction and the velocity maximum are set with the input variable <a href="vargw.html#pvelmax">pvelmax</a>.
+Note that the results are output for a Z=1 impinging ion, i.e. a proton.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="npweps">npweps</a></font>
+<br><font id="definition">Mnemonics: Number of PlaneWaves for EPSilon (the dielectric matrix) </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer parameter</font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations.
+<p>
+<b>npweps</b> determines the size of the planewave set used to represent the independent-particle
+susceptibility $\chi^{(0)}_{KS}$, the dielectric matrix $\epsilon$ and its inverse.
+<br>See <a href="vargw.html#ecuteps">ecuteps</a> (preferred over <b>npweps</b>) for more information.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="npwsigx">npwsigx</a></font>
+<br><font id="definition">Mnemonics: Number of PlaneWaves for SIGma eXchange </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer parameter</font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma calculations.
+<p>
+<b>npwsigx</b> determines the cut-off energy of the planewave set used to generate the
+exchange part of the self-energy operator.
+<br>See <a href="vargw.html#ecutsigx">ecutsigx</a> (preferred over <b>npwsigx</b>) for more information.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="npwwfn">npwwfn</a></font>
+<br><font id="definition">Mnemonics: Number of PlaneWaves for WaveFunctioNs </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer parameter</font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screeening or sigma calculations.
+<p>
+<b>npwwfn</b> determines the size of the planewave set used to represent the wavefunctions
+in the formula that generates the independent-particle susceptibility $\chi^{(0)}_{KS}$.
+<br>
+See <a href="vargw.html#ecutwfn">ecutwfn</a> (preferred over <b>nshwfn</b>) for more information.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="nqptdm">nqptdm</a></font>
+<br><font id="definition">Mnemonics: Number of Q-PoinTs for the Dielectric Matrix</font>
+<br><font id="category">Characteristic:  </font>
+<br><font id="vartype">Variable type: integer parameter</font>
+<br><font id="default">Default is 0</font>
+<br><font id="text">
+<p>
+Used only in the screening part, that is for <a href="vargs.html#optdriver">optdriver</a>=3.
+<p>
+If <b>nqptdm</b> is equal to 0, the set of q-points for computing the dielectric matrix is
+determined automatically considering all the possible differences between the k-points contained
+in the _KSS file. When <b>nqptdm</b> is non-zero, the list of q points is read from <a href="vargw.html#qptdm">qptdm</a>.
+This allows one to split the big calculation of all the dielectric matrices into smaller
+calculations that can be performed independently. The _SCR files generated in different runs
+can be merged thanks to the <B>Mrgscr</B> utility.
+If <b>nqptdm</b> is equal to -1, the code reports the list of q-points in the log file (YAML format) and then stops.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="nsheps">nsheps</a></font>
+<br><font id="definition">Mnemonics: Number of SHells for EPSilon (the dielectric matrix) </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer parameter</font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3, that is, screening calculations.
+<p>
+<b>nsheps</b> determines the size of the planewave set used to represent the independent-particle
+susceptibility $\chi^{(0)}_{KS}$, the dielectric matrix $\epsilon$ and its inverse.
+<br>
+See <a href="vargw.html#ecuteps">ecuteps</a> (preferred over <b>nsheps</b>) for more information.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="nshsigx">nshsigx</a></font>
+<br><font id="definition">Mnemonics: Number of SHells for SIGma eXchange </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer parameter</font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma calculations.
+<p>
+<b>nshsigx</b> determines the cut-off energy of the planewave set used to generate the
+exchange part of the self-energy operator.
+<br>
+See <a href="vargw.html#ecutsigx">ecutsigx</a> (preferred over <b>nshsigx</b>) for more information.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="nshwfn">nshwfn</a></font>
+<br><font id="definition">Mnemonics: Number of SHells for WaveFunctioNs </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer parameter</font>
+<br><font id="default">Default is 0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening or sigma calculations.
+<p>
+<b>nshwfn</b> determines the number of shells of the planewave set used to represent the wavefunctions
+in the formula that generates the independent-particle susceptibility $\chi^{(0)}_{KS}$.
+<br>
+See <a href="vargw.html#ecutwfn">ecutwfn</a> (preferred over <b>nshwfn</b>) for more information.
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="omegasimax">omegasimax</a></font>
+<br><font id="definition">Mnemonics: OMEGA to evaluate Sigma along the Imaginary axis D: MAXimal value </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a></font>
+<br><font id="vartype">Variable type: real </font>
+<br><font id="default">Default is 50 eV </font>
+<br><font id="text">
+<p>
+Only relevant for sigma calculations in which the self-energy along the real axis is obtained
+by performing the analytic continuation from the imaginary axis to the full complex plane via the Pade approximant 
+(<a href="vargs.html#optdriver">optdriver</a>=4 and <a href="vargw.html#gwcalctyp">gwcalctyp</a>=x1).
+<p>
+<b>omegasimax</b> defines the maximum frequency along the imaginary the axis. 
+In conjunction with <a href="vargw.html#nomegasi">nomegasi</a>, 
+<b>omegasimax</b> uniquely defines the linear mesh employed to sample the self-energy along the imaginary axis.
+
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="omegasrdmax">omegasrdmax</a></font>
+<br><font id="definition">Mnemonics: OMEGA to evaluate the Sigma Real axis Derivative : MAXimal value </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a></font>
+<br><font id="vartype">Variable type: real </font>
+<br><font id="default">Default is 1.0 eV </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma calculations.
+<p>
+The maximum distance from the KS energy where to evaluate Sigma. Sigma is evaluated at
+[KS_energy - maxomegasrd, KS_energy + maxomegasrd] sampled <a href="vargw.html#nomegasrd">nomegasrd</a> times.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="ppmfrq">ppmfrq</a></font>
+<br><font id="definition">Mnemonics: Plasmon Pole Model FReQuency </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a> </font>
+<br><font id="vartype">Variable type: real parameter</font>
+<br><font id="default">Default is 0.0 Ha </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening
+calculations or sigma calculations.
+Usually only effective if GW corrections are evaluated using the plasmon-pole model of Godby-Needs
+(<i>i.e</i> <a href="vargw.html#ppmodel">ppmodel</a>=1).
+<br><br>
+<B> In plasmon-pole calculations</B>
+<p>
+In the present status of the GW code, the convolution in frequency space
+defining the self-energy operator can be evaluated using two different approaches:
+numerical integration and plasmon-pole models.
+<br>
+Methods based on the numerical integration (contour deformation, analytic continuation) require
+the knowledge of the screened interaction for several frequencies. These approaches give
+the most accurate results but at the price of an increase in the CPU time required.
+<br>
+Alternatively, it is possible to approximate the dynamical behaviour of the screened interaction
+through simple analytical expressions, the so-called plasmon-pole models.
+In the plasmon-pole model proposed by Godby-Needs (<a href="vargw.html#ppmodel">ppmodel</a>=1),
+the screening must be available at zero frequency, as well as at another imaginary frequency,
+of the order of the plasmon frequency (the peak in the EELS spectrum).
+This information is used to model the behaviour of the dielectric matrix
+for all frequencies.
+During the calculation of the screening, <b>ppmfrq</b> defines the imaginary frequency where the 
+dielectric matrix is evaluated, in addition to the zero frequency. 
+During the self-energy run, <b>ppmfrq</b> can be used to define the second frequency to be used 
+to calculate the plasmon-pole parameters. This is particularly useful when the 
+SCR file contains several frequencies along the imaginary axis. 
+In this case the frequency whose value is the closest one to <b>ppmfrq</b> will be selected.
+Note that, if the plasmon-pole approximation is good, then, the
+choice of <b>ppmfrq</b> should have no influence on the final result.
+One should check whether this is the case. In general, the plasmon frequencies of bulk solids
+are of the order of 0.5 Hartree.
+<br><br>
+<B> In Contour Deformation calculations</B>
+<p>
+<b>ppmfrq</b> is here used to <b>override</b> the default value calculated from the average electronic
+density per unit cell. This can affect the distribution of gridpoints along the imaginary and 
+real frequency axes. See <a href="vargw.html#cd_frqim_method">gw_frqim_method</a>, <a href="vargw.html#gw_frqim_inzgrid">gw_frqim_inzgrid</a> and <a href="vargw.html#gw_frqre_inzgrid">gw_frqre_inzgrid</a> for more details.
+
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="ppmodel">ppmodel</a></font>
+<br><font id="definition">Mnemonics: Plasmon Pole MODEL </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer parameter </font>
+<br><font id="default">Default is 1 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 or 4, that is, screening calculations and self-energy calculations.
+
+<ul>
+<li> <b>ppmodel</b>=1 : PP model of Godby and Needs,
+                        See <B> FIXME>REFERENCE MISSING!</B></li>
+<li> <b>ppmodel</b>=2 : PP model of Hybertsen and Louie,
+                        See Phys Rev B 34, 5390 (1986) </li>
+<li> <b>ppmodel</b>=3 : PP model of  W. von der Linden
+                        and P. Horsh see Phys Rev B 37, 8351 (1988) </li>
+<li> <b>ppmodel</b>=4 : PP model of Farid and Engel.
+                        See Phys Rev B47,15931 (1993)
+<li> <b>ppmodel</b>=0 : no PP model, numerical integration
+                       (contour deformation method, see e.g. S. Lebegue  et al. PRB  67, 155208 (2003).)  </li>
+</ul>
+
+Please note the difference between <b>ppmodel</b> 1 and <b>ppmodel</b> 2,3,4.
+In the first case (<b>ppmodel</b>=1), the plasmon-pole parameters are determined in order to reproduce
+the behaviour of the dielectric matrix at two calculated frequencies: the static limit (omega=0)
+and the imaginary frequency defined by <a href="vargw.html#ppmfrq">ppmfrq</a>.
+In the last three cases, instead, the plasmon-pole parameters are found
+by using the dielectric matrix calculated only at omega=0 and enforcing the so-called f-sum rule.
+See also <a href="vargw.html#nfreqre">nfreqre</a>.
+<p>
+Please note also that in the case of <b>ppmodel</b> 4, the plasmon energies are not simple mathematical parameters,
+but rather have a physical meaning (at least the lowest ones).
+Thus the calculated plasmon band structure (plasmon energy vs q vector) is reported in the output file for the
+lowest 10 bands.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="pvelmax">pvelmax</a></font>
+<br><font id="definition">Mnemonics: Particle VELocity MAXimum</font>
+<br><font id="category">Characteristic: </font>
+<br><font id="vartype">Variable type: real array pvelmax(3)  </font>
+<br><font id="default">Default is 3*1.0</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3, that is screening calculations.
+<p>
+When <a href="vargw.html#npvel">npvel</a> is larger than 0, it performs electronic stopping power calculations
+on a velocity grid along the direction determined by <b>pvelmax</b>.<br>
+The vector <b>pvelmax</b> defines both the direction and the maximum velocity.
+<b>pvelmax</b> is input in Cartesian coordinates.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="qptdm">qptdm</a></font>
+<br><font id="definition">Mnemonics: Q-PoinTs for the Dielectric Matrix</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: real array qptdm(3,<a href="vargw.html#nqptdm">nqptdm</a>)  </font>
+<br><font id="default">Default is 0. 0. 0. (for just one q-point)</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3, that is, screening calculations,
+and only if <a href="vargw.html#nqptdm">nqptdm</a>/=0.
+<p>
+<b>qptdm</b> contains the set of q-points used in the screening part of ABINIT,
+instead of the automatic generation of the q points when <a href="vargw.html#nqptdm">nqptdm</a>=0.
+These q points are given in terms of reciprocal space primitive translations (NOT in cartesian coordinates!).
+For further explanation, see the input variable <a href="vargw.html#nqptdm">nqptdm</a>.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="rcut">rcut</a></font>
+<br><font id="definition">Mnemonics: Radius of the CUT-off for coulomb interaction </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: real parameter </font>
+<br><font id="default">Default is 0.0d0</font>
+<br><font id="text">
+<p>
+Truncation of the Coulomb interaction in real space. The meaning of <b>rcut</b> is governed by the cutoff shape option <a href="vargw.html#icutcoul">icutcoul</a>.
+<p>
+If <b>rcut</b> is negative, the cutoff is automatically calculated so to enclose the same volume inside the cutoff as the volume of the solid.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="rhoqpmix">rhoqpmix</a></font>
+<br><font id="definition">Mnemonics: RHO QuasiParticle MIXing</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: real parameter  </font>
+<br><font id="default">Default is 1.0</font>
+<br><font id="text">
+<p>
+For self-consistent GW runs, <b>rhoqpmix</b> sets the mixing coefficient between the new and the previous
+electronic densities.
+This mixing damps the spurious oscillations in the Hartree potential when achieving self-consistency.
+<b>rhoqpmix</b> is meaningful only when doing self-consistency on the wavefunctions with
+<a href="vargw.html#gwcalctyp">gwcalctyp</a> &#62&#61 20.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="soenergy">soenergy</a></font>
+<br><font id="definition">Mnemonics: Scissor Operator ENERGY </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a> </font>
+<br><font id="vartype">Variable type: real </font>
+<br><font id="default">Default is 0.0 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3,4,99 that is, screening, sigma or Bethe-Salpeter calculations.
+<p>
+The Scissors operator energy added to the conductions states.
+In some cases, it mimics a second iteration self-consistent GW calculation.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="spbroad">spbroad</a></font>
+<br><font id="definition">Mnemonics: SPectral BROADening </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a> </font>
+<br><font id="vartype">Variable type: real parameter </font>
+<br><font id="default">Default is 0.0 </font>
+<br><font id="text">
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3 and
+<a href="vargw.html#spmeth">spmeth</a>=2, that is, screening calculations
+based on the spectral reprentation of the irreducible polarizability in which 
+the delta function is replaced by the gaussian approximant whose standard deviation
+is given by <b>spbroad</b>.
+
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="spmeth">spmeth</a></font>
+<br><font id="definition">Mnemonics: SPectral METHod </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0  </b></font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4, that is, sigma calculations.
+<p>
+The <b>spmeth</b> input variable defines the method used to calculate the irreducible
+polarizability $\chi^{(0)}_{KS}$.
+<p>
+By default $\chi^{(0)}_{KS}$ is calculated employing the Adler-Wiser expression (<b>spmeth</b>=0)
+with a CPU effort that scales linearly with the number of frequencies.
+This approach is convenient when few frequencies are required, and is usually
+used in conjunction with plasmon-pole models in which only one or two frequencies are calculated,
+according to the value of <a href=vargw.html#ppmodel">ppmodel</a>.
+<br>
+Unfortunately a calculation based on the Adler-Wiser expression might be quite CPU demanding
+if the matrix elements of the self-energy operator are evaluated by performing numerically
+the convolution defining the self-energy.
+The integrand function, indeed, has poles above and below the real axis, and
+the screened interaction has to be evaluated on a dense frequency mesh in order to obtain accurate
+results.
+<p>
+In the spectral method (<b>spmeth</b>=1 or 2) the irreducible polarizability is expressed as
+the Hilbert transform of the imaginary part.
+The advantage in using this approach consists in the fact that, once the spectral function is known,
+the irreducible polarizability for an arbitrary frequency can be easily obtained through inexpensive
+integrations. On the other hand an accurate evaluation of the imaginary part requires a dense
+frequency mesh due to the presence of delta functions.
+Two different approaches can be used to approximate these delta functions thus allowing the use
+of affordable frequency grids.
+<p>
+Summarizing:
+
+<ul>
+ <li> 0 =&gt; use Adler-Wiser expression to calculate $\chi^{(0)}_{KS}$  </li>
+ <li> 1 =&gt; use the spectral method approximating the delta function with a triangular approximant
+       as proposed in <B>REF TO BE ADDED</B> </li>
+ <li> 2 =&gt; use spectral method but approximating the delta function with a Taylor expansion of the exponential
+              as proposed in <B>REF TO BE ADDED</B> </li>
+</ul>
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="symchi">symchi</a></font>
+<br><font id="definition">Mnemonics: SYMmetryze \chi_o </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#develop">DEVELOP</a>, GW </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 1 </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3, that is, screening calculations.
+<p>
+The evaluation of the irreducible polarizability for a given q-point requires an
+integration over the Brillouin zone (BZ) which is approximated by a discrete sum over k-points.
+In principle the integrand function should be evaluated for each k-point in the BZ, however it is possible
+to reduce the number of points to be explicitly considered by taking advantage of symmetry properties.
+The development input variable <b>symchi</b> is used to choose between these two equivalent methods:
+
+<ul>
+<li> 0=&gt; the summation over k-points is performed considering ALL the points in the BZ (useful for testing and debugging).
+<li> 1=&gt; the summation is restricted to the k-points belonging to the irreducible wedge
+defined by the little group associated to the external vector q.
+</ul>
+
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="symmorphi">symmorphi</a></font>
+<br><font id="definition">Mnemonics: SYMMORPHIc symmetry operations </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#develop">DEVELOP</a>, GW </font>
+<br><font id="vartype">Variable type: integer parameter</font>
+<br><font id="default">Default is 1</font>
+<br><font id="text">
+<p>
+With <b>symmorphi</b>=1, symmetry operations with a non-symmorphic vector are allowed.
+With <b>symmorphi</b>=0, they are not allowed.
+In the latter case, if the symmetry operations are specified in the input file, the code
+will stop and print an error message if a non-symmorphic vector is encountered.
+By contrast, if the symmetry operations are to be determined automatically
+(if <a href="varbas.html#nsym">nsym</a>=0), then the set of symmetries will
+not include the non-symmorphic operations.
+<p>
+Note : this feature exist because in a previous status of the GW calculations, non-symmorphic
+symmetry operations could not be exploited. Thus, the k points were restricted
+to the IBZ. In order to prepare GW calculations, and to perform GW calculations,
+<b>symmorphi</b>=0 was to be used, together with <a href="varbas.html#nsym">nsym</a>=0.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<font id="title"><a name="ucrpa">ucrpa</a></font>
+<br><font id="definition">Mnemonics: calculation of the screened interaction U with the Constrained RPA method </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0</font>
+<br><br><font id="text">
+<p>
+When equal to one or two, this variable allows for the calculation of U with the cRPA method.
+An explicit test is shown in automatic tests v7/t23-t24-t25 and in v7/t68.
+The present implementation is parallelized (as for usual GW calculations), use symetry over k-points only for calculations involving one correlated atom,
+and can be use when correlated bands are entangled or not.
+The constrained calculation of the polarisability can be done by eliminating
+transition betweens correlated bands (and not orbitals) with the variable <a href="vargw.html#ucrpa_bands">ucrpa_bands</a>. </p>
+
+<p> For <a href="vargw.html#ucrpa">ucrpa</a> = 1, two solutions are possible. The first one is to specify 
+(with the variable <a href="vargw.html#ucrpa_bands">ucrpa_bands</a>) the bands to exclude from the polarisability calculation.
+The second solution is to provide an energy window (with the variable <a href="vargw.html#ucrpa_window">ucrpa_window</a>). The transition 
+inside this window will not be taken into account in
+the polarisability calculation.</p>
+
+<p> For <a href="vargw.html#ucrpa">ucrpa</a> = 2, the ucrpa_bands should be equal to the dmftbandi and dmftbandf 
+values, and the polarisability of the correlated subspace
+is constructed with a band and k-point dependant weight.
+
+A short presentation of the method and some aspect of the implementation can be found in Section II and Appendix A of <a href="http://journals.aps.org/prb/abstract/10.1103/PhysRevB.89.125110">B. Amadon, T. Applencourt and F. Bruneval Phys. Rev. B 89, 125110 (2014)</a>. </p>
+
+
+<p>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<font id="title"><a name="ucrpa_bands">ucrpa_bands</a></font>
+<br><font id="definition">Mnemonics: For the calculation of U with the Constrained RPA method, gives correlated BANDS </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is -1</font>
+<br><br><font id="text">
+<p>
+Gives the first and last correlated bands for the cRPA calculation of the polarisability.
+<p>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<font id="title"><a name="ucrpa_window">ucrpa_window</a></font>
+<br><font id="definition">Mnemonics: For the calculation of U with the Constrained RPA method, gives energy WINDOW</font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: real </font>
+<br><font id="default">Default is -1</font>
+<br><br><font id="text">
+<p>
+Specify a window of energy for the cRPA calculation of the polarisability. 
+The transition inside this window will not be taken into account in the constrained polarisabilty calculations. </p>
+The lower bound and the upper bound energies must be specified (two real numbers) with respect to the position of the Fermi level.
+<p>
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+<br><font id="title"><a name="symsigma">symsigma</a></font>
+<br><font id="definition">Mnemonics: SYMmetrization of SIGMA matrix elements </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a> </font>
+<br><font id="vartype">Variable type: integer </font>
+<br><font id="default">Default is 0</font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=4 that is sigma calculations.
+<p>
+This option is used to switch on the symmetrization of the self-energy matrix elements (<a href="vargw.html#symsigma">symsigma</a>=1).
+In this case the BZ integration defining the self-energy matrix elements is 
+reduced to an appropriate irreducible wedge defined by the point group of the wave-vector k
+specified in the <a href="vargw.html#kptgw">kptgw</a> list.
+<p>
+The symmetrized expression leads to a considerable speedup of the run but, unfortunately,
+this option is not yet compatible with self-consistent GW calculations 
+(see <a href="vargw.html#gwcalctyp">gwcalctyp</a>).
+<p>
+The algorithm implemented in <a href="vargw.html#symsigma">symsigma</a>=1
+constructs a symmetric invariant for the diagonal matrix elements of the self-energy 
+by simply averaging the GW results within the degenerate subspace.
+
+Therefore particular care has to be taken in the presence of accidental degeneracies.
+since GW calculations performed with <a href="vargw.html#symsigma">symsigma</a>=1 won't be able to remove
+the initial accidental degeneracy.
+
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="vcutgeo">vcutgeo</a></font>
+<br><font id="definition">Mnemonics: V (potential) CUT-off GEOmetry </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>  </font>
+<br><font id="vartype">Variable type: real array vcutgeo(3)</font>
+<br><font id="default">Default is 3*0.0d0</font>
+<br><font id="text">
+<p>
+(No explicit documentation, please see
+<a href="https://listes-2.sipr.ucl.ac.be/abinit.org/arc/forum/2008-11/msg00087.html">
+https://listes-2.sipr.ucl.ac.be/abinit.org/arc/forum/2008-11/msg00087.html </a> 
+for the time being)
+<p>
+<b>vcutgeo</b> is used in conjunction with <a href="vargw.html#icutcoul">icutcoul</a>
+to specify the geometry used to truncate the Coulomb interaction as well as the 
+particular approach to be used.
+It has a meaning only for the cylindrical symmetry
+(<a href="vargw.html#icutcoul">icutcoul</a>=1) or in the case of surfaces
+<a href="vargw.html#icutcoul">icutcoul</a>=2.
+For each geometry, two different definition of the cutoff region are available
+(see Phys. Rev. B 73, 233103 and Phys. Rev. B 73, 205119 for a complete description of the methods)
+<p>
+In Beigi's method (Phys. Rev. B 73, 233103), the cutoff region is given by the Wigner-Seitz cell 
+centered on the axis of the cylinder.
+The cutoff region is thus automatically defined by the unit cell and there's no need to specify 
+When <a href="vargw.html#rcut">rcut</a>.
+<p>
+To define a cylinder along the z-axis use the following two lines.
+
+icutcoul 1
+rprim    1 0 0
+         0 1 0
+         0 0 1
+vcutgeo  0 0 1
+
+<p>
+Please note that Beigi's method is implemented only in the case if an orthorombic 
+Bravais lattic. For hexagonal lattices, one has to use the method of Rozzi (Phys. Rev. B 73, 205119)
+In this case, the interaction is truncated in a finite cylinder. 
+Contrarily to the first approach, here one has to specify both the radius of the cylinder 
+with <a href="vargw.html#rcut">rcut</a>
+as well as the length of the cylinder along the periodic dimension that should always be smaller 
+than the extension of the Born von Karman box.
+The length of the cylinder is given in terms of the primitive vector along the periodic direction.
+<p>
+For example, in order to define a finite cylinder along z of radius 2.5 Bohr and length 3*R3
+
+icutcoul 1
+rprim    1 0 0
+         0 1 0
+         0 0 1
+vcutgeo  0 0 -3.0 # note the minus sign
+rcut     2.5
+
+<p>
+For surface calculations (<a href="vargw.html#icutcoul">icutcoul</a>=2), 
+<b>vcutgeo</b> is used to define the two periodic directions defining the surface. 
+Also in this case two different techniques are available.
+In the method of Beigi, the (positive) non-zero components of vcutgeo define the periodic
+directions of the infinite surface. The interaction is truncated within a slab 
+of width L where L is the length of the primitive vector of the lattice along the non-periodic dimension.
+For example:
+
+icutcoul 2
+rprim    1 0 0
+         0 1 0
+         0 0 1
+vcutgeo 1 1 0
+
+It is also possible to define a finite surface by employing negative values 
+For example:
+
+icutcoul 2
+vcutgeo -3 -2 0
+
+defines ....
+
+
+</font>
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a><hr>
+
+
+<br><font id="title"><a name="zcut">zcut</a></font>
+<br><font id="definition">Mnemonics: Z-CUT </font>
+<br><font id="category">Characteristic: <a href="../users/abinit_help.html#gw">GW</a>, <a href="../users/abinit_help.html#energy">ENERGY</a> </font>
+<br><font id="vartype">Variable type: real parameter </font>
+<br><font id="default">Default is 0.1 eV = 3.67493260d-03Ha </font>
+<br><font id="text">
+<p>
+Only relevant if <a href="vargs.html#optdriver">optdriver</a>=3,4,99 that is, screening, sigma or BS calculations.
+<p>
+It is meant to avoid some divergencies that might occur during the evaluation of the Adler-Wiser expression of
+the irreducible polarizability (<a href="vargs.html#optdriver">optdriver</a>=3) or during the numerical treatment
+of the integrals defining the contribution to the self-energy matrix elements
+(<a href="vargs.html#optdriver">optdriver</a>=4).
+If the denominator becomes smaller than <b>zcut</b>, a small imaginary part (depending on <b>zcut</b>) is added,
+in order to avoid the divergence.
+<p>
+When <a href="vargs.html#optdriver">optdriver</a>=99, <b>zcut</b> defines the small complex shift
+used to avoid divergences in the expression for the macroscopic dieletric function.
+It simulates the experimental uncertainty and the finite lifetime of the quasiparticles 
+(although the true lifetime should be k- and band-dependent). 
+The value of <b>zcut</b> affects the number of iteration needed to achieve convergence 
+in the Haydock iterative method. In this case, <b>zcut</b> should be 
+larger than the typical distance between the eigenvalues of the exciton Hamiltonian.
+<br>
+Ideally, one should make a convergence study decreasing the value of <b>zcut</b> for increasing number of k-points.
+</font>
+
+
+<br><br><br><br><a href=#top>Go to the top</a>
+<B> | </B><a href="keyhr.html#list">Complete list of input variables</a>
+
+<script type="text/javascript" src="list_internal_links.js"> </script>
+
+</body>
+</html>
+

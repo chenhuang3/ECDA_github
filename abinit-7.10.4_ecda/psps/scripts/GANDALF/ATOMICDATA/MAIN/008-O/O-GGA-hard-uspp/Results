@@ -1,0 +1,21 @@
+O-GGA-hard-uspp
+
+
+ABINIT v5.3.4
+USPP v7.3.6
+uspp2abinit v2.2.1
+
+XC= PBE
+R-PAW=1.1 a.u.
+Author= parametrization by Bernd Meyer; translated for Abinit by Francois Jollet
+
+FCC:
+  Ecut=16.Ha
+  a=3.17 A  (6.00 a.u.)
+  B=142.3 GPa
+
+Dimer: 
+  Ecut=28. Ha
+  Box=20x20x20
+  d= 1.226 A=2.318 a.u.
+  Ebind=-5,97 eV

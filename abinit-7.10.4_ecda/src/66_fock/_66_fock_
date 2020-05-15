@@ -1,0 +1,21 @@
+!!****d* ABINIT/66_fock
+!! NAME
+!! 66_fock
+!!
+!! DESCRIPTION
+!! This directory contains routines for hybrid functionals
+!!
+!! COPYRIGHT
+!! Copyright (C) 1998-2013 ABINIT group
+!! This file is distributed under the terms of the
+!! GNU General Public License, see ~abinit/COPYING
+!! or http://www.gnu.org/copyleft/gpl.txt .
+!! For the initials of contributors, see ~abinit/doc/developers/contributors.txt .
+!!
+!! CHILDREN
+!! fock_getghc.F90
+!! fock_updatecwaveocc.F90
+!! interfaces_66_fock.F90
+!! m_fock.F90
+!!
+!!***

@@ -1,0 +1,21 @@
+pawovlp 20
+iscf 17
+acell 3*7.0 
+nband 25
+occopt 7 tsmear 5.0d-3
+znucl 38 22 8
+natom 5 ntypat 3 typat 1 2 3 3 3
+ndtset 20
+getwfk -1 getocc -1
+ecut: 4 ecut+ 2
+pawecutdg 50
+kptopt 1 kptrlatt 2 0 0 0 2 0 0 0 2
+nshiftk 1
+shiftk 0.5 0.5 0.5
+nstep 50
+toldfe   1.0d-8
+xred    0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+        5.0000000000E-01  5.0000000000E-01  5.0000000000E-01
+        5.0000000000E-01  5.0000000000E-01  0.0000000000E+00
+        5.0000000000E-01  0.0000000000E+00  5.0000000000E-01
+        0.0000000000E+00  5.0000000000E-01  5.0000000000E-01

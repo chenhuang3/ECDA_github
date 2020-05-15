@@ -1,0 +1,13 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+bindir=${exec_prefix}/bin
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: Abinit
+Description: Atomic-scale simulation software
+Version: 7.10.4
+URL: http://www.abinit.org/
+Requires: libatlas, netcdf
+Libs: -L${libdir} -lab7_parser
+Cflags: -I${includedir}/abinit
