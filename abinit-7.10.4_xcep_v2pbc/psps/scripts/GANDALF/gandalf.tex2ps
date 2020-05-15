@@ -1,0 +1,290 @@
+#!/bin/sh
+#    This utility runs LATEX in order to display some equilibrium parameters
+####################################################################################
+
+TITLE="Equilibrium parameters of the PAW atomic data"
+ABINITversion="x.y.z"
+ATOMPAWversion="a.b.c"
+GANDALFDIR=""
+OUTPUTPURE=PURE/OUTPUT
+OUTPUTCOMPOUND=COMPOUND/OUTPUT
+#If the following option is equal to 1, an html output is obtained
+HTML=0
+
+#Read the argument which define the type of display 
+# =================================================
+if [  ! "$#" = 2 ]
+then
+ echo 'Two arguments are needed for' $0 
+ echo "The first one deals with the input file:  dimer, fcc, diamond, ... phases of pure materials ======"
+ echo "                                       or molec, fluorite, zincblende, ... structures of compounds  ====== or all"
+ echo "The second one deals with the subdirectories: 001-H, CO2, .... for pure materials or compounds ====== or all"
+ exit 1
+fi
+argument1=$1
+argument2=$2
+listkey="ecut fcc bcc diamond hcp dhcp dimer molec molec2 rutile fluorite zincblende perovskite"
+
+if [ -d ${OUTPUTPURE}/${argument2} -o -d ${OUTPUTCOMPOUND}/${argument2} ] ; then
+ DIRECTORY=${argument2}
+elif [ ${argument2} == all ] ; then
+ DIRECTORY=*
+else
+ echo "The second argument is not allowed. There is no ${OUTPUTPURE}/${argument2} or ${OUTPUTCOMPOUND}/${argument2} directory."
+ exit 1 
+fi
+
+case ${argument1} in
+ ecut | fcc | bcc | diamond | hcp | dhcp | dimer | rutile | fluorite | perovskite | zincblende | molec | molec2) echo "Create LATEX postcript with the ${argument1} and ${argument2} arguments";
+ listtype="${argument1}";;
+ all) echo "Create LATEX postcript for all the data of ${argument2} element(s)";
+ listtype=$listkey;;
+ *) echo "The first argument is not allowed. There is no ${argument1} type of calculation.";
+ exit 1 
+esac
+
+#Create the header of the "all.tex" file
+# =======================================
+rm -rf all.tex all.ps all.bbl all.blg
+if [ ${HTML} == 1 ] ; then
+ echo "\\documentclass[11pt,a4paper]{article}" > all.tex
+elif [ ${HTML} == 0 ] ; then
+ echo "\\documentclass[onecolumn]{revtex4}" > all.tex
+ echo "\\usepackage{fancyhdr}" >> all.tex
+fi
+export TEXINPUTS=$TEXINPUTS:/usr/share/texmf/tex/latex/html
+echo "\\usepackage{html}" >> all.tex
+echo "\\usepackage{graphicx}" >> all.tex
+echo "\\usepackage{url}" >> all.tex
+echo "\\begin{document}" >> all.tex
+echo "\\title{$TITLE}" >> all.tex
+echo "\\date{\\today}" >> all.tex
+echo "\\author{\textsc{Abinit}}" >> all.tex
+if [ ${HTML} == 0 ] ; then
+ echo "\\affiliation{\url{http://wwww.abinit.org}}" >> all.tex
+fi
+echo "\\begin{abstract}" >> all.tex
+echo "The present results have been obtained through the use of the ABINIT code, " >> all.tex
+echo "a common project of the Universit\'e Catholique de Louvain, Corning" >> all.tex
+echo "Incorporated, and other contributors~\\cite{ABINIT,ABINITbis}, in the framework of the Projector augmented-wave (PAW)" >> all.tex
+echo "method introduced by Peter Bl\\\"ochl in 1994~\\cite{Blochl_PRB50_1994}. " >> all.tex
+echo "" >> all.tex
+echo "" >> all.tex
+echo "The atomic data are generated using the" >> all.tex
+echo "PAW atomic data generator (ATOMPAW) written by N. Holzwarth~\\cite{Holzwarth_PRB55_1997,Holzwarth_PRB57_1998,Tackett_CPC135_2001}." >> all.tex
+echo "" >> all.tex
+echo "" >> all.tex
+echo "Versions of the ABINIT and ATOMPAW codes are ${ABINITversion} and ${ATOMPAWversion}." >> all.tex
+echo "\\end{abstract}" >> all.tex
+echo "\\maketitle" >> all.tex
+
+##################################################################################
+######## FOR PURE MATERIALS ######################################################
+##################################################################################
+
+#Loop on atomic species in ${OUTPUTPURE} directory
+# =======================================
+echo "\\section{PURE MATERIALS: Bulk and dimer properties}" >> all.tex
+for ATOM in ${OUTPUTPURE}/${DIRECTORY} ; do
+ if [ -d "${ATOM}" ] ; then
+  if [ -f ${ATOM}/pseudo.in ] ; then
+  echo "\\newpage" >> all.tex
+  echo "\\paragraph*{\bf{${ATOM}}}" >> all.tex
+
+#Associate the index to the pseudo file
+#======================================
+  echo "\\begin{center}" >> all.tex
+  echo "\\begin{tabular}{lc}" >> all.tex
+  echo "\\hline" >> all.tex
+  echo "Index & Atomic data file \\\\" >> all.tex
+  echo "\\hline" >> all.tex
+  NPSEUDO=`cat ${ATOM}/pseudo.in | wc -l`
+  for (( IPSEUDO=1 ; IPSEUDO <= ${NPSEUDO} ; IPSEUDO++)) ; do
+   END_OF_PSEUDO=`awk -F "/" 'NR=='${IPSEUDO}' { print $(NF-2)"/"$(NF-1)"/"$NF }' ${ATOM}/pseudo.in`
+   echo "${IPSEUDO} & \verb?${END_OF_PSEUDO}?\\\\" >> all.tex
+  done 
+  echo "\\hline" >> all.tex
+  echo "\\end{tabular}" >> all.tex
+  echo "\\end{center}" >> all.tex
+
+  echo "\\begin{center}" >> all.tex
+  echo "\\begin{tabular}{lccccc}" >> all.tex
+  echo "\\hline" >> all.tex
+
+#Loop on tex files for this atomic species
+# ===============================================
+  for itype in $listtype ; do
+   for TEXFILE in ${ATOM}/$itype.tex ; do
+    if [ -f "${TEXFILE}" ] ; then
+     echo "\\hline" >> all.tex
+     if [ $itype == dimer ] ; then
+      echo "\bf{${itype}}&\multicolumn{2}{c}{\$E_{\rm bind}\$ (eV/dimer)}&\multicolumn{3}{c}{\$d_{\rm eq}\$ (\AA)} \\\\" >> all.tex
+     elif [ $itype == hcp -o $itype == dhcp ] ; then
+      echo "\bf{${itype}}&\$V_0\$ (\AA\$^3\$/atom)&\$E_{\rm coh}\$ (eV/atom)&\$B_0\$ (Gpa)&\$B_0^{'}\$&c/a \\\\" >> all.tex
+     else
+      echo "\bf{${itype}}&\$V_0\$ (\AA\$^3\$/atom)&\$E_{\rm coh}\$ (eV/atom)&\$B_0\$ (Gpa)&\$B_0^{'}\$& \\\\" >> all.tex
+     fi
+     if [ $itype == hcp ] ; then
+      echo "&\multicolumn{4}{c}{\$\underbrace{\mbox{With an ideal ratio } c/a=\sqrt{8/3}=1.633}_{}\$} \\\\" >> all.tex
+     elif [ $itype == dhcp ] ; then
+      echo "&\multicolumn{4}{c}{\$\underbrace{\mbox{With an ideal ratio } c/a=2\sqrt{8/3}=3.266}_{}\$} \\\\" >> all.tex
+     fi
+     echo "\\hline" >> all.tex
+     ATOMNAME=`expr ${ATOM} | sed 's/\// /g' | awk '{print $3}'`
+     cat ${TEXFILE} >> all.tex
+     grep "${ATOMNAME}" ref.tex | grep ${itype}  >> all.tex
+     echo "\\hline" >> all.tex
+    fi
+   done
+  done
+    
+#End loop on tex files
+# ===========================
+  echo "\\hline" >> all.tex
+  echo "\\end{tabular}" >> all.tex
+  echo "\\end{center}" >> all.tex
+
+#Include the xmgrace figures
+# ==========================
+  for itype in $listtype ; do
+   for GRACEFILE in ${ATOM}/$itype.agr ; do
+    if [ -f "${GRACEFILE}" ] ; then
+     gracebat -printfile ${ATOM}/$itype.eps ${GRACEFILE}
+     convert -rotate 90 ${ATOM}/$itype.eps ${ATOM}/$itype.gif
+     echo "\begin{figure}[h] " >> all.tex
+     echo "\centering " >> all.tex
+     echo "\includegraphics[height=0.7\textwidth,width=0.5\textwidth,angle=-90]{${ATOM}/${itype}.eps}" >> all.tex
+     echo "\end{figure}" >> all.tex
+    fi
+   done
+  done
+
+#Include link toward ATOM directories in the case of html
+# =======================================================
+  if [ ${HTML} == 1 ] ; then
+   echo "\begin{htmlonly} " >> all.tex
+   echo "The input, output and atomicdata files are available in the following directory " >> all.tex
+   echo "\htmladdnormallink{${ATOM}}  {${GANDALFDIR}/${ATOM}} " >> all.tex
+   echo "\end{htmlonly} " >> all.tex
+  fi
+
+#End loop on atomic species
+# =========================
+  fi
+ fi
+done
+
+##################################################################################
+######## FOR COMPOUND ###########################################################
+##################################################################################
+
+#Loop on compounds in ${OUTPUTCOMPOUND} directory
+# =======================================
+echo "\\newpage" >> all.tex
+echo "\\section{COMPOUND: Bulk and molecule properties}" >> all.tex
+for COMPOUND in ${OUTPUTCOMPOUND}/${DIRECTORY} ; do
+ if [ -d "${COMPOUND}" ] ; then
+  END_OF_COMPOUND=`expr ${COMPOUND} | awk -F "/" '{print $NF}'`
+  if [ -f "${COMPOUND}/${END_OF_COMPOUND}.pseudo.in" ] ; then
+  echo "\\newpage" >> all.tex
+  echo "\\paragraph*{\bf{${COMPOUND}}}" >> all.tex
+
+#Associate the indices to the pseudo files
+#=========================================
+  NUMBERSPECIES=`expr ${END_OF_COMPOUND} | sed -e "s/\([A-Z][a-z]*\)/ \1 /g" | sed 's/\([1-9]\)//g' | wc -w`
+  echo "\\begin{center}" >> all.tex
+  echo "\\begin{tabular}{lcc}" >> all.tex
+  echo "\\hline" >> all.tex
+  echo "Index & \multicolumn{2}{c}{Atomic data files} \\\\" >> all.tex
+  echo "\\hline" >> all.tex
+  NPSEUDO=`cat ${COMPOUND}/${END_OF_COMPOUND}.pseudo.in | wc -l`
+  for (( IPSEUDO=1 ; IPSEUDO <= ${NPSEUDO} ; IPSEUDO++)) ; do
+   END_OF_PSEUDO1=`awk 'NR=='${IPSEUDO}' {print $1}' ${COMPOUND}/${END_OF_COMPOUND}.pseudo.in | awk -F "/" '{ print $(NF-2)"/"$(NF-1)"/"$NF }' `
+   END_OF_PSEUDO2=`awk 'NR=='${IPSEUDO}' {print $2}' ${COMPOUND}/${END_OF_COMPOUND}.pseudo.in | awk -F "/" '{ print $(NF-2)"/"$(NF-1)"/"$NF }' `
+   echo "${IPSEUDO} & \verb?${END_OF_PSEUDO1}? & \verb?${END_OF_PSEUDO2}? \\\\" >> all.tex
+   if [ ${NUMBERSPECIES} == 3 ] ; then
+    END_OF_PSEUDO3=`awk 'NR=='${IPSEUDO}' {print $3}' ${COMPOUND}/${END_OF_COMPOUND}.pseudo.in | awk -F "/" '{ print $(NF-2)"/"$(NF-1)"/"$NF }' `
+    echo "& \verb?${END_OF_PSEUDO3}? & \\\\" >> all.tex
+   fi
+  done 
+  echo "\\hline" >> all.tex
+  echo "\\end{tabular}" >> all.tex
+  echo "\\end{center}" >> all.tex
+
+  echo "\\begin{center}" >> all.tex
+  echo "\\begin{tabular}{lccccc}" >> all.tex
+  echo "\\hline" >> all.tex
+
+#Loop on tex files for this compound directory
+# ============================================
+  for itype in $listtype ; do
+   for TEXFILE in ${COMPOUND}/$itype.tex ; do
+    if [ -f "${TEXFILE}" ] ; then
+     echo "\\hline" >> all.tex
+     if [ $itype == molec -o $itype == molec2 ] ; then
+      echo "\bf{${itype}}&\multicolumn{2}{c}{E\$_{\rm bind}\$ (eV/molec)}&\multicolumn{3}{c}{d\$_{\rm eq}^{\rm ij}\$ (\AA) with i=1,natom} \\\\" >> all.tex
+      echo "&\multicolumn{2}{c}{}&\multicolumn{3}{c}{and j=i+1,natom} \\\\" >> all.tex
+     elif [ $itype == rutile ] ; then
+      echo "\bf{${itype}}&V\$_0\$ (\AA\$^3\$/atom)&E\$_{\rm coh}\$ (eV/f.u.)&B\$_0\$ (Gpa)&B\$_0^{'}\$& c/a \\\\" >> all.tex
+      echo "&\multicolumn{4}{c}{\$\underbrace{\mbox{With an arbitrary ratio } c/a=0.644}_{}\$}& \\\\" >> all.tex
+     else
+      echo "\bf{${itype}}&V\$_0\$ (\AA\$^3\$/atom)&E\$_{\rm coh}\$ (eV/f.u.)&B\$_0\$ (Gpa)&B\$_0^{'}\$& \\\\" >> all.tex
+     fi
+     echo "\\hline" >> all.tex
+     COMPOUNDNAME=`expr ${COMPOUND} | sed 's/\// /g' | awk '{print $3}'`
+     cat ${TEXFILE} >> all.tex
+     grep "${COMPOUNDNAME}" ref.tex | grep ${itype}  >> all.tex
+     echo "\\hline" >> all.tex
+    fi
+   done
+  done
+    
+#End loop on tex files
+# ====================
+  echo "\\hline" >> all.tex
+  echo "\\end{tabular}" >> all.tex
+  echo "\\end{center}" >> all.tex
+
+#Include the xmgrace figures
+# ==========================
+  for itype in $listtype ; do
+   for GRACEFILE in ${COMPOUND}/$itype.agr ; do
+    if [ -f "${GRACEFILE}" ] ; then
+     gracebat -printfile ${COMPOUND}/$itype.eps ${GRACEFILE}
+     convert -rotate 90 ${COMPOUND}/$itype.eps ${COMPOUND}/$itype.gif
+     echo "\begin{figure}[h] " >> all.tex
+     echo "\centering " >> all.tex
+     echo "\includegraphics[height=0.7\textwidth,width=0.5\textwidth,angle=-90]{${COMPOUND}/${itype}.eps}" >> all.tex
+     echo "\end{figure}" >> all.tex
+    fi
+   done
+  done
+
+#Include link toward COMPOUND directories in the case of html
+# =======================================================
+  echo "\begin{htmlonly} " >> all.tex
+  echo "The input, output and atomicdata files are available in the following directory " >> all.tex
+  echo "\htmladdnormallink{${COMPOUND}}  {${GANDALFDIR}/${COMPOUND}} " >> all.tex
+  echo "\end{htmlonly} " >> all.tex
+
+#End loop on compounds
+# ====================
+  fi
+ fi
+done
+
+if [ ${HTML} == 1 ] ; then
+ echo "\\bibliographystyle{plain}" >> all.tex
+fi
+echo "\\bibliography{all}" >> all.tex
+echo "\\end{document}" >> all.tex
+if [ ${HTML} == 1 ] ; then
+ latex all.tex ; bibtex all ; latex all.tex ; latex all.tex ; latex all.tex 
+ sed 's/\.eps/\.gif/g' all.tex > tmp.tex
+ mv tmp.tex all.tex
+ latex2html all.tex
+elif [ ${HTML} == 0 ] ; then
+ latex all.tex ; bibtex all ; latex all.tex ; latex all.tex ; latex all.tex ; dvips -o all.ps all.dvi ; gv all.ps
+ mv all.ps rapport.ps
+fi
+rm -rf all.aux  all.dvi  all.log all.bbl all.blg

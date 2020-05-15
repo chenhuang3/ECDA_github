@@ -1,0 +1,38 @@
+HOWTO to obtain a standalone libPAW library from ABINIT sources
+=====
+Just type 'make dist' (or simply 'make') in the present directory
+
+Other commands:
+ make clean: clean all libPAW files (source file directory & tarball)
+ make libpaw: build the libPAW source file directory
+ make libpaw-tarball: create the tarball from the libPAW source file directory
+
+----------------------------------------------------------------------------
+
+Then you get a tarball containing the libPAW library;
+you can use it as explained below:
+
+HOWTO to compile a standalone libPAW library
+=====
+Untar the libpaw.tar.gz file
+Edit the makefile.in file and adjust some parameters
+Type 'make libpaw'
+
+FC : Fortran compiler (use mpif90 to include MPI)
+FCFLAGS= Fortran compiler flags
+
+DEFS_BASIS_DIR =
+  path_to_defs_basis_mod : to use an external (already compiled) defs_basis module
+  Comment this line to build and use the defs_basis module delivered with libPAW
+MEM_PROFILING_DIR =
+  path_to_m_profiling_abi : to use an external (already compiled) m_profiling_abi module
+  Comment this line to build and use the m_profiling_abi module delivered with libPAW
+HIDEMPI_DIR =
+  path_to_m_profiling_abi : to use an external (already compiled) m_xmpi module
+  Comment this line to build and use the m_xmpi module delivered with libPAW
+HIDEWRITE_DIR =
+  path_to_m_profiling_abi : to use an external (already compiled) hidewrite module
+  Comment this line to build and use the hidewrite module delivered with libPAW
+HIDELEAVE_DIR =
+  path_to_m_profiling_abi : to use an external (already compiled) hideleave module
+  Comment this line to build and use the hideleave module delivered with libPAW

@@ -1,0 +1,34 @@
+!!****d* ABINIT/56_xc
+!! NAME
+!! 56_xc
+!!
+!! DESCRIPTION
+!! This directory contains level-3 routines used
+!! to treat the exchange-correlation energy. The main entry point to
+!! this library is the routine rhohxc.F90 .
+!!
+!! COPYRIGHT
+!! Copyright (C) 1998-2014 ABINIT group (TD)
+!! This file is distributed under the terms of the
+!! GNU General Public License, see ~abinit/COPYING
+!! or http://www.gnu.org/copyleft/gpl.txt .
+!! For the initials of contributors, see ~abinit/doc/developers/contributors.txt .
+!!
+!! CHILDREN
+!! calc_smeared_density.F90
+!! gammapositron.F90
+!! hartre.F90
+!! interfaces_56_xc.F90
+!! m_electronpositron.F90
+!! m_kxc.F90
+!! m_xc_vdw.F90
+!! mkcore.F90
+!! mkvxc3.F90
+!! mkvxcgga3.F90
+!! phase.F90
+!! rhohxc.F90
+!! rhohxcpositron.F90
+!! xcden.F90
+!! xcpot.F90
+!!
+!!***

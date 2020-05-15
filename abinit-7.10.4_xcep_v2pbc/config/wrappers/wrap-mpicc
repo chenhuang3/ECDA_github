@@ -1,0 +1,6 @@
+#!/bin/sh
+
+CC="mpicc"
+export CC
+
+/opt/hpc/intel/openmpi//bin/mpicc ${*}

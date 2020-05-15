@@ -1,0 +1,37 @@
+\contentsline {chapter}{\numberline {1}Installing BigDFT}{4}
+\contentsline {section}{\numberline {1.1}Building the executables}{4}
+\contentsline {subsection}{\numberline {1.1.1}Configure}{4}
+\contentsline {subsection}{\numberline {1.1.2}Make}{6}
+\contentsline {subsection}{\numberline {1.1.3}Install}{6}
+\contentsline {subsection}{\numberline {1.1.4}Clean}{6}
+\contentsline {section}{\numberline {1.2}Building a library}{6}
+\contentsline {chapter}{\numberline {2}File formats and conventions in BigDFT}{7}
+\contentsline {section}{\numberline {2.1}The basis set}{7}
+\contentsline {subsection}{\numberline {2.1.1}One dimensional functions}{7}
+\contentsline {subsection}{\numberline {2.1.2}Wavelet basis sets in three dimensions}{7}
+\contentsline {subsection}{\numberline {2.1.3}Visualizing the simulation grid with V\_Sim package}{9}
+\contentsline {section}{\numberline {2.2}Format of Input/Output files for atomic coordinates}{9}
+\contentsline {subsection}{\numberline {2.2.1}The \texttt {.xyz} format}{10}
+\contentsline {subsection}{\numberline {2.2.2}The \texttt {.ascii} format}{11}
+\contentsline {section}{\numberline {2.3}The input file '\texttt {input.dft}'}{12}
+\contentsline {section}{\numberline {2.4}The input file '\texttt {input.geopt}'}{15}
+\contentsline {section}{\numberline {2.5}The input file '\texttt {input.kpt}'}{18}
+\contentsline {section}{\numberline {2.6}The input file '\texttt {input.mix}'}{19}
+\contentsline {section}{\numberline {2.7}The input file '\texttt {input.perf}'}{19}
+\contentsline {chapter}{\numberline {3} Running BigDFT executables}{21}
+\contentsline {section}{\numberline {3.1}Estimating the memory usage: \texttt {memguess}}{21}
+\contentsline {section}{\numberline {3.2}Single point or geometry optimization: \texttt {bigdft}}{22}
+\contentsline {section}{\numberline {3.3}Doing a path minimization: \texttt {NEB}}{22}
+\contentsline {section}{\numberline {3.4}Doing frequencies calculations: \texttt {frequencies}}{24}
+\contentsline {subsection}{\numberline {3.4.1}The '\texttt {input.freq}' file}{24}
+\contentsline {chapter}{\numberline {4}XANES calculations}{25}
+\contentsline {section}{\numberline {4.1}Abstract}{25}
+\contentsline {section}{\numberline {4.2}Introduction}{25}
+\contentsline {section}{\numberline {4.3}Use of the code}{27}
+\contentsline {subsection}{\numberline {4.3.1}Note about the absorber pseudopotential}{28}
+\contentsline {section}{\numberline {4.4}Description of the output}{29}
+\contentsline {section}{\numberline {4.5}The reversed PAW method}{29}
+\contentsline {section}{\numberline {4.6}Test against an exactly solvable case.}{30}
+\contentsline {chapter}{\numberline {A}XC functionals codes}{32}
+\contentsline {section}{\numberline {A.1}Native ABINIT XC codes}{32}
+\contentsline {section}{\numberline {A.2}libXC functional codes}{33}

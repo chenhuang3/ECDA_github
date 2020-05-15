@@ -1,0 +1,104 @@
+ATTRBEGIN attributes_flags
+file_format
+file_format_version
+Conventions
+title
+history
+ATTREND attributes_flags
+
+DIMBEGIN dimensions_flags
+number_of_atoms
+number_of_atom_species
+number_of_cartesian_directions
+number_of_symmetry_operations
+number_of_vectors
+max_number_of_states
+number_of_kpoints
+number_of_spins
+number_of_spinor_components
+max_number_of_coefficients
+real_or_complex_coefficients
+number_of_reduced_dimensions
+number_of_components
+character_string_length
+number_of_wavelet_resolutions
+max_number_of_basis_grid_points
+complex
+max_number_of_angular_momenta
+max_number_of_projectors
+number_of_coefficients_dielectric_function
+number_of_frequencies_dielectric_function
+number_of_grid_points_vector1
+number_of_grid_points_vector2
+number_of_grid_points_vector3
+number_of_localization_regions
+number_of_qpoints_dielectric_function
+number_of_qpoints_gamma_limit
+symbol_length
+npsp
+codvsnlen
+rhoijdim1
+psptitlen
+DIMEND dimensions_flags 
+
+VARBEGIN variables_flags
+space_group
+primitive_vectors
+reduced_symmetry_matrices symmorphic
+reduced_symmetry_translations symmorphic
+atom_species
+reduced_atom_positions
+atomic_numbers
+atom_species_names
+chemical_symbols
+reduced_coordinates_of_kpoints
+kpoint_weights
+number_of_states k_dependent
+fermi_energy units scale_to_atomic_units
+smearing_scheme
+smearing_width
+tsmear
+ecutdg
+usepaw
+etot
+kinetic_energy_cutoff units scale_to_atomic_units
+ecut_eff
+ixc
+ecutsm
+exchange_functional
+correlation_functional
+occopt
+valence_charges
+number_of_wavelets
+number_of_coefficients_per_grid_point
+coordinates_of_basis_grid_points
+pseudopotential_types
+number_of_electrons
+eigenvalues units scale_to_atomic_units
+occupations
+basis_set
+number_of_coefficients k_dependent
+reduced_coordinates_of_plane_waves k_dependent used_time_reversal_at_gamma
+date
+codvsn
+headform
+fform
+intxc
+pertcase
+residm
+stmbias
+tphysel
+pspcod
+pspdat
+pspso
+pspxc
+qptn
+so_psp
+symafm
+title
+znuclpsp
+lmn_size
+rhoij
+usewvl
+coefficients_of_wavefunctions
+VAREND variables_flags

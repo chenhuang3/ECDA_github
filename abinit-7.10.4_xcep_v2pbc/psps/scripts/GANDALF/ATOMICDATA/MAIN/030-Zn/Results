@@ -1,0 +1,25 @@
+HCP Zinc
+
+LDA
+==============================================================
+                               V0(A3/at)   c/a     K0(GPa)
+PAW AtomPAW [1]  (3d4s)         13.675     1.84       90
+PAW AtomPAW [1]  (3s3p3d4s)     13.617     1.85       92
+PAW USPP         (3d4s)         13.617     1.85       90 
+PAW USPP         (3s3p3d4s)     13.624     1.85       90
+
+GGA
+==============================================================
+                               V0(A3/at)   c/a      K0(GPa)
+PAW AtompPAW [1] (3d4s)         15.430     1.92       63
+PAW AtomPAW  [1] (3s3p3d4s)     15.400     1.92       63
+PAW USPP         (3d4s)         15.347     1.92       63
+PAW USPP         (3s3p3d4s)     15.402     1.92       63
+FLAPW Wien2k [2] (3s3p3d4s)     15.233     1.92       63
+
+Exp. Dewaele  [1]               15.213      1.85      60
+Exp. cited in [2]               15.203   1.85-1.90   60-65
+
+[1] Dewaele, Torrent, Loubeyre, Mezzouar, PRB 78, 104102 (2008)
+[2] Steinle-Neumann, Stixrude, Cohen, PRB 63, 054103 (2001)
+

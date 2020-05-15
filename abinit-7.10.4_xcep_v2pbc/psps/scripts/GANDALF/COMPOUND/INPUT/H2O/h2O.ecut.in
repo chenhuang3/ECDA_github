@@ -1,0 +1,20 @@
+diemac 2.0
+
+nsym 1
+nband 6 occopt 0 occ 2 2 2 2 0 0
+
+pawovlp 20
+toldfe 1.0d-7
+
+ndtset 20
+iscf 17
+ecut: 4 ecut+ 2
+pawecutdg 50.0
+nstep 50
+natom 3 ntypat 2 typat 2*1 1*2
+znucl 1 8
+    xcart     0.0000000000E+00  1.1539459530E+00 -1.4632821670E+00
+              0.0000000000E+00  1.1539459530E+00  1.4632821670E+00
+              0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+acell 3*10.0
+kptopt 1 kptrlatt 1 0 0 0 1 0 0 0 1

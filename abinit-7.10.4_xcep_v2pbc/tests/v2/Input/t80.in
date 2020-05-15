@@ -1,0 +1,28 @@
+t76o_DS1_DEN
+1
+1
+1
+0.0  0.0  0.0
+1
+1
+2
+0.25 0.25 0.25
+0
+
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = cut3d
+#%% test_chain = t76.in, t77.in, t78.in, t79.in, t80.in
+#%% [files]
+#%% files_to_test = 
+#%%   t80.stdout, tolnlines = 1, tolabs = 1.010e-06, tolrel = 3.000e-07
+#%% [paral_info]
+#%% max_nprocs = 1
+#%% [extra_info]
+#%% keywords = 
+#%% authors = 
+#%% description = 
+#%%   Cut3d code. Silicon, diamond structure.
+#%%   Using the unformatted density file generated in test #76,
+#%%   compute the density at two different points.
+#%%<END TEST_INFO>

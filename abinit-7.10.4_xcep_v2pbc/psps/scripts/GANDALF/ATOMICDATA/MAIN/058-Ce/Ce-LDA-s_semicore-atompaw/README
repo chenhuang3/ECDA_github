@@ -1,0 +1,19 @@
+Results obtained with this PAW dataset are detailed in the follwing paper:
+  Gamma and beta cerium: LDA+U calculations of ground-state parameters
+  Amadon B, Jollet F, Torrent M
+  Physical Review B 77, 155104 (2008)
+
+Gamma Cerium:
+ LDA (without +U): a_0=8.54 ua, B_0=59 GPa
+
+WARNING:
+Published results (above reference) have been obtained with
+dmatpuopt=1
+in the ABINIT input file.
+This was the default value for Abinit v5.4; now it has changed.
+
+Contact:
+  Bernard Amadon
+  Departement de Physique Theorique et Appliquee
+  CEA, DAM, DIF
+  Arpajon, France

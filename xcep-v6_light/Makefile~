@@ -1,0 +1,28 @@
+FC=gfortran
+FFLAGS= -c -fbounds-check -g
+##FFLAGS= 
+LDFLAGS= -L/home/chenh/work/fftw-3.3.2/install/lib -lfftw3 -lm 
+##LDFLAGS=  -lfftw3 
+OBJECTS=mathfunc.o uopt.o load_parameters.o make_gprim.o make_q_vector.o\
+        Lbfgsb_chen.o fft.o get_data.o  \
+        pw92lda.o tf.o vw.o dump_u.o gradient.o laplacian.o \
+        wait_for_system.o waitforfile.o write_msg.o compute_int_pot.o \
+        get_eigen_info.o huang_carter.o assign_new_nele.o \
+        read_and_run_all.o llp.o tsoep.o shuffle_electron_opt.o get_electron_number.o \
+        obtain_subsystem.o calc_iterative_uemb.o mix_uemb.o calc_etotal.o check_conv.o pbe.o \
+        load_embgms_param.o run_gms_rhf.o run_gms_mcscf.o get_subsystem_vxc_int.o get_subsystem_vts_int.o get_subsystem_results.o\
+        get_int_vxc_rho_total.o get_int_vts_rho_total.o get_int_vion_rho_total.o get_int_jpot_rho_total.o \
+        update_uemb.o pad_uemb.o info_display.o after_gms_rhf.o run_invKS.o calc_next_uemb.o wrap_rhorsp.o
+
+
+all: $(OBJECTS)
+	$(FC) -o uopt $(OBJECTS) $(LDFLAGS) 
+
+%.o : %.f90
+	$(FC) -c $(FFLAGS) $< 
+
+%.o : %.f
+	$(FC) -c $(FFLAGS) $< 
+
+clean: 
+	rm -rf *.o uopt

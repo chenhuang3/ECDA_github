@@ -1,0 +1,22 @@
+!!****d* ABINIT/21_psiesta_noabirule
+!! NAME
+!! 21_psiesta_noabirule
+!!
+!! DESCRIPTION
+!!  FIXME: Description is missing
+!!
+!! COPYRIGHT
+!! Copyright (C) 1998-2013 ABINIT group
+!! This file is distributed under the terms of the
+!! GNU General Public License, see ~abinit/COPYING
+!! or http://www.gnu.org/copyleft/gpl.txt .
+!! For the initials of contributors, see ~abinit/doc/developers/contributors.txt .
+!!
+!! CHILDREN
+!! arw.F90
+!! interfaces_21_psiesta_noabirule.F90
+!! m_pspsiesta_io.F90
+!! m_pspsiesta_schrodinger.F90
+!! pspsiesta_xc.F90
+!!
+!!***

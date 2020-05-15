@@ -1,0 +1,132 @@
+#!/bin/sh
+#    This utility copies the atomic data and
+#    the input files in the OUTPUT directory 
+# ==============================================
+
+GANDALFDIR=""
+PSEUDODIR=""
+WORKDIR="${GANDALFDIR}/PURE"
+OUTPUT=OUTPUT
+INPUT=INPUT
+
+#If the following keyword equals 1, the ecut.in input file is generated automatically. 
+AUTOMATICCUTOFFINPUT=1
+
+#Define the type of copy
+#=======================
+if [  ! "$#" = 3 ]
+then
+ echo "Three arguments are needed for" $0
+ echo "The first one deals with the input file: ecut, atom, dimer, fcc, bcc, diamond, ... ====== or none, all"
+ echo "The second one deals with the species: 001-H, 008-O, .... ====== or all"
+ echo "The third one deals with the atomic data: /users/home/GANDALF/H.LDA-PW-paw.abinit, ... ====== or atompaw, uspp, paw, fhi98pp, nc... ====== or none, clean, all"
+ exit 1
+fi
+argument1=$1
+argument2=$2
+argument3=$3
+listkey="ecut atom dimer fcc bcc opthcp hcp optdhcp dhcp diamond"
+
+echo "##############################################################################################################################"
+case $argument1 in
+ ecut | atom | dimer | fcc | bcc | opthcp | hcp | optdhcp | dhcp | diamond) echo "######### This script will copy ${argument1}.in input file and ${argument3} atomic data of ${argument2} species in ${OUTPUT} ##########";
+ listtype="${argument1}";;
+ none) echo "######### This script will copy ${argument3} atomic data of ${argument2} species in ${OUTPUT} ##########";
+ listtype="";;
+ all) echo "########## This script will copy all input files and ${argument3} atomic data of ${argument2} species in ${OUTPUT} ##########";
+ listtype=$listkey;;
+ *) echo "########## The first argument is not allowed. There is no ${argument1} type of calculation ##########";
+ exit 1
+esac
+echo "##############################################################################################################################"
+
+if [ ! -d ${PSEUDODIR} ] ; then
+ echo "${PSEUDODIR} directory is missing"
+fi
+
+if [ -d ${WORKDIR}/${INPUT}/${argument2} ] ; then
+ DIRECTORY=${argument2}
+elif [ ${argument2} == all ] ; then
+ DIRECTORY=`ls ${WORKDIR}/${INPUT}`
+else
+ echo "The second argument is not allowed. There is no ${INPUT}/${argument2} directory."
+ exit 1
+fi
+
+case ${argument3} in
+ all) ATOMICDATA="";;
+ clean) ATOMICDATA="";;
+ *) ATOMICDATA=${argument3};;
+esac
+
+
+#Create the OUTPUT directory
+# ==========================
+rm -rf Bug_copy
+if [ -d ${WORKDIR}/${OUTPUT} ] ; then
+ echo "${OUTPUT} directory found"
+# tar cvf output.tar ${WORKDIR}/${OUTPUT}  > output.tar.log
+else
+ mkdir ${WORKDIR}/${OUTPUT}
+ echo "${OUTPUT} directory created"
+fi
+
+#Loop on species. Copy the input files in the OUTPUT/${SUBDIRECTORY} directories
+# =============================================================================
+ echo "Search all the atomic data"
+ ALLATOMICDATA=`find ${PSEUDODIR} -type f -exec grep -l "pspdat" {} \;`
+ for SUBDIRECTORY in ${DIRECTORY} ; do
+  echo ''
+  echo "++++++++++++++++++++++++++++"${SUBDIRECTORY}" species++++++++++++++++++++++++++++"
+  if [ ! -d ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY} ] ; then
+   mkdir ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}
+   echo "${OUTPUT}/${SUBDIRECTORY} directory created"
+  fi
+
+  for itype in ${listtype} ; do
+   if [ -f ${WORKDIR}/${INPUT}/${SUBDIRECTORY}/*.${itype}.in ] ; then
+    cp ${WORKDIR}/${INPUT}/${SUBDIRECTORY}/*.${itype}.in ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}
+    echo "  Copy the ${INPUT}/${SUBDIRECTORY}/${itype}.in file in the ${OUTPUT}/${SUBDIRECTORY} directory"
+   elif [ ${AUTOMATICCUTOFFINPUT} == 1 ] ; then
+    autofile=${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}/auto.${itype}.in
+    if [ ${itype} == ecut ] ; then
+     echo "  Generate an auto.${itype}.in file in the ${OUTPUT}/${SUBDIRECTORY} directory" 
+     echo "#This input file is generated automatically by the gandalf.copy script"  > ${autofile}
+     echo "ndtset 20" >> ${autofile}
+     echo "ecut: 4 ecut+ 2 pawecutdg 100" >> ${autofile}
+     echo "iscf 17" >> ${autofile}
+     echo "nstep 50" >> ${autofile}
+     echo "toldfe 1.0d-7" >> ${autofile}
+     echo "fband 5" >> ${autofile}
+     echo "rprim 1 0 0 0 1 0 0 0 1" >> ${autofile}
+     echo "occopt 7 tsmear 5.0d-3" >> ${autofile}
+     echo "getocc -1 getwfk -1" >> ${autofile}
+     echo "natom 1 ntypat 1 typat 1" >> ${autofile}
+     echo "xred 0 0 0" >> ${autofile}
+     echo "acell 3*5.0" >> ${autofile}
+     echo "kptopt 1 kptrlatt 2 0 0 0 2 0 0 0 2" >> ${autofile}
+     echo "nshiftk 1" >> ${autofile}
+     echo "shiftk 1/2 1/2 1/2" >> ${autofile}
+     znucl=`expr ${SUBDIRECTORY} | sed 's/-/ /g' | awk '{print $1}'`
+     echo "znucl ${znucl}" >> ${autofile}
+    fi
+   fi
+  done
+
+  LISTATOMICDATA=`ls ${ALLATOMICDATA} | grep "${SUBDIRECTORY}\/" | grep "${ATOMICDATA}"`
+  if [ ${argument3} == 'clean' ] ; then
+   rm -f ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}/pseudo.in
+   rm -f ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}/*.out
+   rm -f ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}/*.log
+   rm -f ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}/*.tmp
+  else 
+   for IATOMICDATA in ${LISTATOMICDATA} ; do
+    echo "${IATOMICDATA}" >> ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}/pseudo.in
+    echo "  GANDALF found the ${IATOMICDATA} atomic data"
+   done
+   echo " All the atomic data file names are stored in the ${OUTPUT}/${SUBDIRECTORY}/pseudo.in file"
+  fi
+#End loop on species
+# ==================
+ done
+echo "############################## DONE #######################################"

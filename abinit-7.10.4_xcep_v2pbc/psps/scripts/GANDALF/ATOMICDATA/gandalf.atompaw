@@ -1,0 +1,144 @@
+#!/bin/sh
+#    This utility build PAW atomic data files
+#    in a directory for the Abinit's Web site
+#    from N. Holzwarth's AtomPAW input files
+#    TO BE LAUNCHED INSIDE ATOMICDATA DIR
+# ============================================
+
+#Parameters - User may change them
+#---------------------------------
+GANDALFDIR=""
+PSEUDODIR=""
+ATOMPAW_EXEC="${GANDALFDIR}/../../../build/plugins/atompaw/atompaw"
+
+if [  ! "$#" = 3 ]
+then
+ echo "Three arguments are needed for" $0
+ echo "The first one deals with the origin: MAIN, CONTRIB, ... ====== or all"
+ echo "The second one deals with the species (the sub-directories): 001-H, 008-O, ... ====== or all"
+ echo "The third one deals with the xc functionnal, ... (the sub-sub-directories): GGA-ATOMPAW, LDA-ATOMPAW-SOFT... ====== or all"
+ exit 1
+fi
+argument1=$1
+argument2=$2
+argument3=$3
+
+cd ${PSEUDODIR}
+
+if [ -d "${argument1}" ] ; then
+ DIRECTORY="${argument1}"
+elif [ ${argument1} == all ] ; then
+ DIRECTORY=*
+else
+ echo "The first argument is not allowed. There is no ${argument1} directory."
+ exit 1
+fi
+
+if [ -d ${DIRECTORY}/${argument2} ] ; then
+ SUBDIRECTORY=${argument2}
+elif [ ${argument2} == all ] ; then
+ SUBDIRECTORY=*
+else
+ echo "The second argument is not allowed. There is no ${argument1}/${argument2} sub-directory."
+ exit 1
+fi
+
+if [ -d ${argument1}/${argument2}/${argument3} ] ; then
+ SUBSUBDIRECTORY=${argument3}
+elif [ ${argument3} == all ] ; then
+ SUBSUBDIRECTORY=*
+else
+ echo "The third argument is not allowed. There is no ${argument1}/${argument2}/${argument3} sub-sub-directory."
+ exit 1
+fi
+
+#Write comment
+#-------------
+echo '========================================'
+echo '=  This utility build PAW atomic data'
+echo '=  files for Abinit''s Web site'
+echo '=  inherited from N. Holzwarth''s AtomPAW'
+echo '========================================'
+echo
+
+#Search for AtomPAW
+#------------------
+if [ ! -f "${ATOMPAW_EXEC}" ];then
+ echo 'AtomPAW missing !'
+ echo 'There is no ${ATOMPAW_EXEC}'
+ echo 'Nothing done !'
+ exit
+fi
+echo 'AtomPAW found'
+echo
+
+#Loop on various type of ATOMPAW directories
+#----------------------------------------
+for ATOMPAWDIR in ${DIRECTORY} ; do
+ if [ -d "${ATOMPAWDIR}" ] ; then
+  rm -rf ../Bug_list
+  cd ${ATOMPAWDIR}
+  echo "Enter in the ${ATOMPAWDIR} directory"
+
+#Loop on atomic species in Work directory
+#----------------------------------------
+  for ATOM in ${SUBDIRECTORY} ; do
+   if [ -d "${ATOM}" ] ; then
+    cd ${ATOM}
+    echo "Enter in the ${ATOM} directory"
+
+#Loop on pseudopotentials for this atomic specie
+#-----------------------------------------------
+    for PSPDIR in ${SUBSUBDIRECTORY} ; do
+     if [ ! -f ${PSPDIR}/*/*.input ] ; then
+      echo "There is no input file"
+     else
+      INPUTDIR=`ls ${PSPDIR}/*/*.input | awk -F "/" '{print $(NF-1)}'`
+      INPUTFILE=`ls ${PSPDIR}/*/*.input | awk -F "/" '{print $NF}'`
+      cd ${PSPDIR}/${INPUTDIR}
+      echo "Treat ${INPUTFILE} in ${ATOM}/${PSPDIR}/${INPUTDIR}:"
+#     Find files names
+      ATOMNAME=`awk 'NR==1 {print $1}' ${INPUTFILE}`
+      EXCHNAME=`awk 'NR==2 {print $1}' ${INPUTFILE}`
+      PREFIX=${ATOMNAME}.${EXCHNAME}
+      SUFFIX=`expr ${PSPDIR} | sed 's/-/ /g' | awk '{print $NF}'`
+      PAWNAME=${PREFIX}-paw.abinit
+      rm -rf ../*.paw
+#     Run AtomPAW
+      echo 'Launch AtomPAW...'
+      ${ATOMPAW_EXEC} < ${INPUTFILE} > ${PREFIX}.atompaw.log
+      echo "==========> File ${PAWNAME} has been created."
+      echo
+      mv ${PAWNAME} ../
+#     Clean Input directory
+      rm -rf 0 1 2 3 *.0 *.1 *.2 *.3 *.4 *.5 *.6 *.7 *.gnu wfn* wfnr* ftvloc vloc NC
+      rm -rf *.atomdata *.atomicdata density potential *.log *.dat dummy
+      rm -rf ${ATOMNAME} *.xml *.paw fort.* compare.abinit
+#     End Loop on input files
+      cd ../..
+     fi
+#    End loop on pseudopotential directories
+    done
+    cd ..
+#   End loop on atomic species
+   fi
+  done
+  cd ..
+# End loop on various types of ATOMPAW directories
+ fi
+done
+
+#Create "Directories_list" file
+#------------------------------
+find . -name "*LDA-PW-paw.abinit" -print >List.lda
+find . -name "*GGA-PBE-paw.abinit" -print >List.gga
+TIT1='============ LDA ============= '
+TIT2='============ GGA ============= '
+echo ${TIT1}`cat List.lda` | awk '{gsub(/ \./,"\n\.");print}' > ${PSEUDODIR}/Directories_list_lda
+echo ${TIT2}`cat List.gga` | awk '{gsub(/ \./,"\n\.");print}' > ${PSEUDODIR}/Directories_list_gga
+rm -rf List.lda List.gga
+echo
+echo 'File '${PSEUDODIR}'/Directories_list_lda updated.'
+echo 'File '${PSEUDODIR}'/Directories_list_gga updated.'
+
+echo '-- DONE --'

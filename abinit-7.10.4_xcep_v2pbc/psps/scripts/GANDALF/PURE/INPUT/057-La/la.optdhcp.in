@@ -1,0 +1,32 @@
+#La structure dhcp
+#spgroup 194
+pawovlp 20
+ntime 50
+optcell 2
+tolmxf 5.0d-5
+dilatmx 1.2
+ecutsm 0.5
+ionmov 2
+
+iscf 17
+diemix 0.5
+ecut 20
+pawecutdg 40.0
+nstep 50
+toldfe 1.0d-8
+nband 30
+occopt 7 tsmear 5.0d-3
+getwfk -1 getocc -1
+acell 7.12 7.12 22.9772
+rprim  0.86602540378  0.5  0.0
+      -0.86602540378  0.5  0.0
+       0.0            0.0  1.0
+natom 4 ntypat 1 typat 4*1 
+znucl 57
+xred .0000000000   .0000000000   .00000000     
+     .0000000000   .0000000000   .50000000    
+     .3333333333   .6666666667   .25000000   
+     .6666666667   .3333333333   .75000000  
+kptopt 1 kptrlatt 6 0 0 0 6 0 0 0 6
+nshiftk 1
+shiftk 0. 0. 0.5

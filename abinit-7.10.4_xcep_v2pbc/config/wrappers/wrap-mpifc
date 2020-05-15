@@ -1,0 +1,6 @@
+#!/bin/sh
+
+FC="mpif90"
+export FC
+
+/opt/hpc/intel/openmpi//bin/mpif90 ${*}

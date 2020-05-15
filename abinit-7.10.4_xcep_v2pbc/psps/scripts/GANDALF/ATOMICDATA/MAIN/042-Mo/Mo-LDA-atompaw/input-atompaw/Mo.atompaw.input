@@ -1,0 +1,42 @@
+Mo 42 
+LDA-PW scalarrelativistic loggrid 1000 80 2.75
+5 4 4 0 0 0
+5 0 1
+4 2 5
+0 0 0
+c
+c
+c
+c
+v
+c
+c
+c
+c
+v
+2
+2.75 2.0 2.1 2.5
+y
+4.
+n
+y
+-0.1
+y
+3.6
+n
+y
+1
+n
+custom rrkj besselshape
+bessel
+2.5
+2.5
+2.75
+2.75
+2.5
+2.5
+2
+rsoptim 8. 2. 0.0001
+0
+
+#RSO: 8,2,0.0001

@@ -1,0 +1,22 @@
+Cobalt
+
+GGA
+=====================================================================
+HCP                                V0(A3/at)   c/a    K0(GPa)    mu
+PAW this work [1] (3s3p3d4s4p)       10.90     1.617    220      1.61
+FLAPW Wien2k  [2] (3s3p3d4s4p)       10.90     1.615    212      1.55
+FLAPW Wien2k  [3] (valence?)         10.97     1.618    205      1.62
+Exp.          [4]                              1.615    199      1.58
+Exp. Dewaele  [1]                    11.09     1.625    184
+
+FCC                               V0(A3/at)   K0(GPa)    mu 
+PAW this work [1] (3s3p3d4s4p)       11.06       187     1.66
+FLAPW Wien2k  [3] (valence?)         10.94       247     1.62
+Exp.          [4]                    10.43       224
+
+
+[1] Dewaele, Torrent, Loubeyre, Mezzouar, PRB 78, 104102 (2008)
+[2] Steinle-Neumann, Stixrude, Cohen, PRB 60, 791 (1999)
+[3] Modak, Verma, Rao, Godwal, Jeanloz, PRB 74, 012103 (2006)
+[4] Yoo, Cynn, Soderlind, Iota, PRL 84, 4132 (2000)
+

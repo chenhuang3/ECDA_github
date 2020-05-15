@@ -1,0 +1,18 @@
+H 1
+GGA-PBE scalarrelativistic loggrid 1000
+1 0 0 0 0 0
+1 0 1
+0 0 0
+v
+0
+1.1 1.0 0.7 1.1
+y
+1.
+n
+custom rrkj vanderbiltortho besselshape
+bessel
+1.1
+1.1
+2
+default
+0

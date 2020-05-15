@@ -1,0 +1,139 @@
+#!/bin/sh
+#    This utility runs the XMGRACE code in order to display the convergence of the 
+#    total energy wrt the cutoff energy and/or the 0K temperature equation of state
+####################################################################################
+
+GANDALFDIR=""
+OUTPUTPURE=PURE/OUTPUT
+OUTPUTCOMPOUND=COMPOUND/OUTPUT
+#If the following option is equal to visualize, xmgrace
+#is launched to visualize the itype.agr previously obtained. 
+INTERNALOPTION=novisualize
+
+#Read the argument which define the type of display 
+# =================================================
+if [  ! "$#" = 2 ]
+then
+ echo "Two arguments are needed for" $0 
+ echo "The first one deals with the input file: ecut, fcc, diamond, ... keywords of pure materials ======"
+ echo "                                       or ecut, fluorite, zincblende, ... keywords of compounds  ====== or all"
+ echo "The second one deals with the subdirectories: 001-H, CO2, .... for pure materials or compounds ====== or all"
+ exit 1
+fi
+argument1=$1
+argument2=$2
+listkey="ecut pawecutdg fcc bcc hcp diamond rutile fluorite zincblende perovskite"
+listOUTPUT="${OUTPUTPURE} ${OUTPUTCOMPOUND}"
+
+if [ -d ${OUTPUTPURE}/${argument2} -o -d ${OUTPUTCOMPOUND}/${argument2} ] ; then
+ DIRECTORY=${argument2}
+elif [ ${argument2} == all ] ; then
+ DIRECTORY=*
+else
+ echo "The second argument is not allowed. There is no ${OUTPUTPURE}/${argument2} or ${OUTPUTCOMPOUND}/${argument2} directory."
+ exit 1
+fi
+
+echo "##################################################################################"
+case $argument1 in
+ ecut | pawecutdg | fcc | bcc | hcp | diamond | rutile | fluorite | zincblende | perovskite) echo "########## Create XMGRACE figures for the ${argument1} data of ${argument2} element(s) ##########";
+ listtype="${argument1}";;
+ all) echo "########## Create XMGRACE figures for all the data of ${argument2} element(s) ##########";
+ listtype=$listkey;;
+ *) echo "########## The first argument is not allowed. There is no ${argument1} type of calculation ##########";
+ exit 1 
+esac
+echo "##################################################################################"
+
+#Loop on the various type of display
+#===================================
+for itype in $listtype ; do
+ echo''
+ echo "========================================================================="
+ echo "====================== "${itype}" output type ================================" 
+ echo "========================================================================="
+
+#Loop on atomic species in ${OUTPUTPURE} directory
+# and on compounds in ${OUTPUTCOMPOUND} directory
+# =======================================
+ for OUTPUTTYPE in ${listOUTPUT} ; do
+#  echo "################# Enter in the ${OUTPUTTYPE} directory ############################"
+  if [ -d "${GANDALFDIR}/${OUTPUTTYPE}" ] ; then
+   cd "${GANDALFDIR}/${OUTPUTTYPE}"
+   for ATOM in ${DIRECTORY} ; do
+    if [ -d "${ATOM}" ] ; then
+     cd ${ATOM}
+
+#Loop on xmgrace files for this atomic species
+# ============================================
+     if [ ${INTERNALOPTION} == visualize ] ; then
+      for XMGRFILE in $itype.agr ; do
+       if [ -f "${XMGRFILE}" ] ; then
+        xmgrace ${XMGRFILE}
+       fi
+      done
+     else
+      rm -rf $itype.agr
+
+#Loop on data files for this atomic species
+# =========================================
+      for DATAFILE in $itype.dat ; do
+       if [ -f "${DATAFILE}" ] ; then
+        echo "Create XMGRACE "${itype}".agr file in the" ${ATOM} "DIRECTORY by using "${DATAFILE} 
+        sed '/'$itype'/D' $itype.dat > tmp
+        if [ ${itype} == ecut ] ; then
+         xmgrace -nxy tmp -fixed 450 350 -timestamp -world 0 0.00001 40 0.1 -autoscale x -log y -saveall $itype.agr 
+        elif [ ${itype} == pawecutdg ] ; then
+         xmgrace -nxy tmp -fixed 450 350 -timestamp -autoscale xy -log y -saveall $itype.agr 
+        else
+         xmgrace -nxy tmp -fixed 450 350 -timestamp -autoscale xy -saveall $itype.agr
+        fi
+        run_OK=$?
+        if [ "${run_OK}" = 0 ] ; then
+         echo '  XMGRACE code successfully terminated'
+        else
+         echo '  XMGRACE code abnormally terminated *********************************'
+         echo '  XMGRACE code abnormally terminated in the '${ATOM}' directory' >> ../../Bug_xmgrace
+         echo '         for the '${ATOM}' directory ' >> ../../Bug_xmgrace
+        fi
+    
+        if [ $itype == ecut -o ${itype} == pawecutdg ] ; then
+         awk '{sub(/@    title ""/,"@    title \"'${ATOM}'\""); print}' $itype.agr > tmp1
+         awk '{sub(/@    xaxis  label ""/,"@    xaxis  label \"Cutoff energy '${itype}' (Hartree)\"");print}' tmp1 > tmp2
+         awk '{sub(/@    yaxis  label ""/,"@    yaxis  label \"\\xD\\f{}E (Hartree)\"");print}' tmp2 > tmp3
+         awk '{sub(/@    yaxis  tick major linestyle 1/,"@    yaxis  tick major linestyle 2");print}' tmp3 > tmp4
+         awk '{sub(/@    yaxis  tick major grid off/,"@    yaxis  tick major grid on");print}' tmp4 > tmp5
+         awk '{sub(/@    legend 0.85, 0.8/,"@    legend 0.6, 0.8");print}' tmp5 > $itype.agr
+        else
+         awk '{sub(/@    title ""/,"@    title \"'${ATOM}'\""); print}' $itype.agr > tmp1
+         awk '{sub(/@    xaxis  label ""/,"@    xaxis  label \"Volume of the unit cell (Bohr\\S3\\N)\"");print}' tmp1 > tmp2
+         awk '{sub(/@    yaxis  label ""/,"@    yaxis  label \"\\xD\\f{}E (Hartree)\"");print}' tmp2 > tmp3
+         awk '{sub(/@    legend 0.85, 0.8/,"@    legend 0.6, 0.8");print}' tmp3 > $itype.agr
+        fi
+        NFILE=`awk 'NR==1 {print NF}' $itype.dat` 
+        for (( ii=2 ; ii <= ${NFILE} ; ii++)) ; do
+         OUTPUTFILE=`awk 'NR==1 {print $'${ii}'}' $itype.dat`
+         echo "  ${OUTPUTFILE}"
+         jj=`expr ${ii} - 2`
+         awk '{sub(/@    s'${jj}' legend  ""/,"@    s'${jj}' legend  \"'${OUTPUTFILE}'\"");print}' $itype.agr  > tmp
+         mv tmp $itype.agr
+        done
+        rm -rf tmp*
+       
+#End loop on data files
+# ===========================
+       fi
+      done
+     fi
+ 
+#End loop on atomic species
+# =========================
+     cd ..
+    fi
+   done
+   cd ../..
+  fi
+ done
+#End loop on the various type of display
+#=======================================
+done

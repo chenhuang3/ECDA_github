@@ -1,0 +1,17 @@
+B-GGA-atompaw
+
+ABINIT v5.3.4
+atompaw v2.1
+atompaw2abinit v3.1.1
+
+XC= PBE
+Valence= 2s 2p
+R-PAW=1.7 a.u.
+Author= Marc Torrent
+
+FCC:
+  Ecut for Delta(Etotal)=0.001 Ha : 9.5 Ha
+  Ecut for Delta(Etotal)=0.0001 Ha: 13. Ha
+  V=5.88 A3
+  B=268 GPa
+

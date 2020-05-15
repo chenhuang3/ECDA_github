@@ -1,0 +1,26 @@
+#The FCC phase is obtained NM even if the following lines are uncommented
+pawovlp 20
+#nsppol 2
+#spinat 0.0 0.0 6.0
+ndtset 10
+ecut 15
+pawecutdg 30.0
+iscf 17
+nstep 50
+toldfe 1.0d-7
+nband 12
+occopt 7 tsmear 5.0d-3
+natom 1 ntypat 1 typat 1 
+znucl 26
+xred 0 0 0
+acell: 3*6.40 acell+ 3*0.05 
+kptopt 1 
+kptrlatt 6 0 0 0 6 0 0 0 6
+rprim 0.0 1/2 1/2
+      1/2 0.0 1/2
+      1/2 1/2 0.0
+nshiftk 4
+shiftk 1/2 1/2 1/2
+1/2 0.0 0.0
+0.0 1/2 0.0
+0.0 0.0 1/2

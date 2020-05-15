@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE abinitRun SYSTEM "extras/post_processing/abinitRun.dtd">
+<abinitRun>
+  <dataSet>
+    <scfcvLoop>
+      <initialConditions>
+        <geometry>
+          <rprimd x1="      0.00000000E+00" x2="      5.20000000E+00" x3="      5.20000000E+00" y1="      5.20000000E+00" y2="      0.00000000E+00" y3="      5.20000000E+00" z1="      5.20000000E+00" z2="      5.20000000E+00" z3="      0.00000000E+00" />
+          <position atom="a_1_1" x="      0.00000000E+00" y="      0.00000000E+00" z="      0.00000000E+00" />
+          <position atom="a_1_2" x="      2.60000000E+00" y="      2.60000000E+00" z="      2.60000000E+00" />
+        </geometry>
+      </initialConditions>
+      <scfcvStep eTotal="     -8.7062495241E+00" deltaETotal="     -8.70624952E+00" maxResid="      3.21522807E-04" potResid="      1.90249325E-01" deltaForces="      1.69678074E-23" maxForces="      1.69678074E-23" />
+      <scfcvStep eTotal="     -8.7071360053E+00" deltaETotal="     -8.86481285E-04" maxResid="      9.35859854E-10" potResid="      4.45025785E-03" deltaForces="      1.18774652E-23" maxForces="      8.48390372E-24" />
+      <scfcvStep eTotal="     -8.7071547431E+00" deltaETotal="     -1.87377925E-05" maxResid="      3.12290385E-08" potResid="      7.27443241E-05" deltaForces="      2.71484919E-23" maxForces="      2.03613689E-23" />
+      <scfcvStep eTotal="     -8.7071548892E+00" deltaETotal="     -1.46073193E-07" maxResid="      5.96105857E-10" potResid="      4.13872133E-06" deltaForces="      1.36802947E-23" maxForces="      6.89317177E-24" />
+      <scfcvStep eTotal="     -8.7071548987E+00" deltaETotal="     -9.45165723E-09" maxResid="      7.71371204E-11" potResid="      7.44007115E-08" deltaForces="      6.89317177E-24" maxForces="      0.00000000E+00" />
+      <scfcvStep eTotal="     -8.7071548991E+00" deltaETotal="     -4.29162483E-10" maxResid="      8.23897475E-12" potResid="      4.03263799E-09" deltaForces="      2.05734665E-23" maxForces="      2.05734665E-23" />
+      <scfcvStep eTotal="     -8.7071548991E+00" deltaETotal="     -2.90363289E-11" maxResid="      4.46108212E-13" potResid="      1.79889435E-10" deltaForces="      2.05734665E-23" maxForces="      0.00000000E+00" />
+      <scfcvStep eTotal="     -8.7071548991E+00" deltaETotal="      5.11590770E-13" maxResid="      5.88174631E-15" potResid="      1.36415583E-11" deltaForces="      1.39984411E-23" maxForces="      1.39984411E-23" />
+      <status cvState="Ok" stop-criterion="toldfe" />
+      <finalConditions>
+        <energy type="direct" kinetic="      2.77579750E+00" local="     -2.39277644E+00" non-local="      2.10285098E+00" ewald="     -8.28738161E+00" hartree="      4.91482743E-01" core="      8.15811232E-02" xc="     -3.47870920E+00" total="     -8.70715490E+00" />
+        <forces>
+          <force atom="a_1_1" x="     -1.39984411E-23" y="      1.39984411E-23" z="     -0.00000000E+00" />
+          <force atom="a_1_2" x="      1.39984411E-23" y="     -1.39984411E-23" z="     -0.00000000E+00" />
+        </forces>
+      </finalConditions>
+    </scfcvLoop>
+    <scfcvLoop>
+      <initialConditions>
+        <geometry>
+          <rprimd x1="      0.00000000E+00" x2="      5.17061287E+00" x3="      5.17061287E+00" y1="      5.17061287E+00" y2="      0.00000000E+00" y3="      5.17061287E+00" z1="      5.17061287E+00" z2="      5.17061287E+00" z3="      0.00000000E+00" />
+          <position atom="a_1_1" x="     -1.39193307E-23" y="      1.39193307E-23" z="      0.00000000E+00" />
+          <position atom="a_1_2" x="      2.58530643E+00" y="      2.58530643E+00" z="      2.58530643E+00" />
+        </geometry>
+      </initialConditions>
+      <scfcvStep eTotal="     -8.7078761238E+00" deltaETotal="     -8.70787612E+00" maxResid="      7.97461693E-10" potResid="      4.50109173E-03" deltaForces="      6.95944056E-24" maxForces="      7.03900057E-24" />
+      <scfcvStep eTotal="     -8.7078968006E+00" deltaETotal="     -2.06767687E-05" maxResid="      3.27590903E-12" potResid="      2.49247256E-04" deltaForces="      6.50574295E-24" maxForces="      1.35447435E-23" />
+      <scfcvStep eTotal="     -8.7078976807E+00" deltaETotal="     -8.80117170E-07" maxResid="      4.34586427E-09" potResid="      1.77921117E-06" deltaForces="      2.09303616E-23" maxForces="      2.03971039E-23" />
+      <scfcvStep eTotal="     -8.7078976832E+00" deltaETotal="     -2.44686227E-09" maxResid="      7.02303323E-12" potResid="      1.69718207E-08" deltaForces="      2.72361329E-23" maxForces="      6.83902897E-24" />
+      <scfcvStep eTotal="     -8.7078976832E+00" deltaETotal="     -4.35029790E-12" maxResid="      1.57455171E-14" potResid="      1.18048012E-10" deltaForces="      6.86569185E-24" maxForces="      2.66628810E-26" />
+      <scfcvStep eTotal="     -8.7078976832E+00" deltaETotal="     -1.87938554E-12" maxResid="      5.46712992E-16" potResid="      5.86280657E-12" deltaForces="      2.04370983E-23" maxForces="      2.04637611E-23" />
+      <status cvState="Ok" stop-criterion="toldfe" />
+      <finalConditions>
+        <energy type="direct" kinetic="      2.79878133E+00" local="     -2.35830701E+00" non-local="      2.10796044E+00" ewald="     -8.33448286E+00" hartree="      4.83880199E-01" core="      8.29800406E-02" xc="     -3.48870982E+00" total="     -8.70789768E+00" />
+        <forces>
+          <force atom="a_1_1" x="     -6.82569753E-24" y="      6.82569753E-24" z="     -2.04637611E-23" />
+          <force atom="a_1_2" x="      6.82569753E-24" y="     -6.82569753E-24" z="      2.04637611E-23" />
+        </forces>
+      </finalConditions>
+    </scfcvLoop>
+    <scfcvLoop>
+      <initialConditions>
+        <geometry>
+          <rprimd x1="      0.00000000E+00" x2="      5.11742434E+00" x3="      5.11742434E+00" y1="      5.11742434E+00" y2="      0.00000000E+00" y3="      5.11742434E+00" z1="      5.11742434E+00" z2="      5.11742434E+00" z3="      0.00000000E+00" />
+          <position atom="a_1_1" x="     -3.25446091E-23" y="      3.25446091E-23" z="     -5.62687297E-23" />
+          <position atom="a_1_2" x="      2.55871217E+00" y="      2.55871217E+00" z="      2.55871217E+00" />
+        </geometry>
+      </initialConditions>
+      <scfcvStep eTotal="     -8.7082659713E+00" deltaETotal="     -8.70826597E+00" maxResid="      8.09617672E-10" potResid="      1.43983308E-02" deltaForces="      2.04637611E-23" maxForces="      0.00000000E+00" />
+      <scfcvStep eTotal="     -8.7083311650E+00" deltaETotal="     -6.51937677E-05" maxResid="      8.23783620E-12" potResid="      7.58898758E-04" deltaForces="      1.01294418E-23" maxForces="      1.01294418E-23" />
+      <scfcvStep eTotal="     -8.7083338058E+00" deltaETotal="     -2.64081442E-06" maxResid="      1.34095216E-08" potResid="      5.11880815E-06" deltaForces="      9.48288164E-24" maxForces="      6.46560112E-25" />
+      <scfcvStep eTotal="     -8.7083338128E+00" deltaETotal="     -6.96188707E-09" maxResid="      1.88660683E-11" potResid="      4.65392270E-08" deltaForces="      3.87936067E-24" maxForces="      3.23280056E-24" />
+      <scfcvStep eTotal="     -8.7083338128E+00" deltaETotal="     -2.09627871E-11" maxResid="      3.78832412E-14" potResid="      3.07237445E-10" deltaForces="      2.00433635E-23" maxForces="      1.68105629E-23" />
+      <scfcvStep eTotal="     -8.7083338128E+00" deltaETotal="     -2.93631786E-12" maxResid="      1.41910993E-15" potResid="      1.43576467E-11" deltaForces="      1.63795228E-23" maxForces="      6.89664119E-24" />
+      <status cvState="Ok" stop-criterion="toldfe" />
+      <finalConditions>
+        <energy type="direct" kinetic="      2.84151422E+00" local="     -2.29630182E+00" non-local="      2.11918180E+00" ewald="     -8.42110826E+00" hartree="      4.70007004E-01" core="      8.55944136E-02" xc="     -3.50722117E+00" total="     -8.70833381E+00" />
+        <forces>
+          <force atom="a_1_1" x="      6.89664119E-24" y="     -6.89664119E-24" z="      4.31040075E-25" />
+          <force atom="a_1_2" x="     -6.89664119E-24" y="      6.89664119E-24" z="     -4.31040075E-25" />
+        </forces>
+      </finalConditions>
+    </scfcvLoop>
+    <scfcvLoop>
+      <initialConditions>
+        <geometry>
+          <rprimd x1="      0.00000000E+00" x2="      5.12925039E+00" x3="      5.12925039E+00" y1="      5.12925039E+00" y2="      0.00000000E+00" y3="      5.12925039E+00" z1="      5.12925039E+00" z2="      5.12925039E+00" z3="      0.00000000E+00" />
+          <position atom="a_1_1" x="     -2.47194372E-23" y="      2.47194372E-23" z="     -4.79962351E-23" />
+          <position atom="a_1_2" x="      2.56462520E+00" y="      2.56462520E+00" z="      2.56462520E+00" />
+        </geometry>
+      </initialConditions>
+      <scfcvStep eTotal="     -8.7083559547E+00" deltaETotal="     -8.70835595E+00" maxResid="      3.68200821E-11" potResid="      7.12474739E-04" deltaForces="      1.11821967E-23" maxForces="      1.07511566E-23" />
+      <scfcvStep eTotal="     -8.7083592020E+00" deltaETotal="     -3.24725793E-06" maxResid="      4.21899720E-13" potResid="      3.77376116E-05" deltaForces="      1.52666424E-23" maxForces="      4.51548577E-24" />
+      <scfcvStep eTotal="     -8.7083593341E+00" deltaETotal="     -1.32150978E-07" maxResid="      6.56268546E-10" potResid="      2.60063117E-07" deltaForces="      6.45069395E-25" maxForces="      3.87041637E-24" />
+      <scfcvStep eTotal="     -8.7083593346E+00" deltaETotal="     -4.31130687E-10" maxResid="      1.03380303E-12" potResid="      2.25694590E-09" deltaForces="      6.66571709E-24" maxForces="      3.22534698E-24" />
+      <scfcvStep eTotal="     -8.7083593346E+00" deltaETotal="     -4.11581880E-12" maxResid="      1.79604581E-15" potResid="      1.58307336E-11" deltaForces="      1.89220356E-23" maxForces="      1.61267349E-23" />
+      <scfcvStep eTotal="     -8.7083593346E+00" deltaETotal="      4.86721774E-13" maxResid="      6.93617352E-17" potResid="      7.56913546E-13" deltaForces="      1.61267349E-23" maxForces="      4.30046264E-25" />
+      <status cvState="Ok" stop-criterion="toldfe" />
+      <finalConditions>
+        <energy type="direct" kinetic="      2.83190106E+00" local="     -2.31006283E+00" non-local="      2.11643863E+00" ewald="     -8.40169246E+00" hartree="      4.73115743E-01" core="      8.50037353E-02" xc="     -3.50306321E+00" total="     -8.70835933E+00" />
+        <forces>
+          <force atom="a_1_1" x="     -4.30046264E-25" y="      4.30046264E-25" z="     -0.00000000E+00" />
+          <force atom="a_1_2" x="      4.30046264E-25" y="     -4.30046264E-25" z="     -0.00000000E+00" />
+        </forces>
+      </finalConditions>
+    </scfcvLoop>
+    <geometryMinimisation type="bfgs">
+      <status cvState="Failed" stop-criterion="tolmxf" />
+    </geometryMinimisation>
+  </dataSet>
+  <!-- timeInfo markup : cpu and wall attributes are given in seconds. -->
+  <timeInfo day="12" month="5" year="2011" cpu="  0.78800000017508864" wall="  0.78799999994225800" />
+</abinitRun>

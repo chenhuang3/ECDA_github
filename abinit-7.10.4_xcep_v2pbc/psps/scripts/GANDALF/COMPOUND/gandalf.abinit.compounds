@@ -1,0 +1,218 @@
+#!/bin/sh
+#    This utility runs the ABINIT code for 
+#    various atomic data and configurations
+# ==============================================
+
+GANDALFDIR=""
+WORKDIR="${GANDALFDIR}/COMPOUND"
+ABINIS="${GANDALFDIR}/../../../build/src/98_main/abinit"
+OUTPUT=OUTPUT
+
+#The following keyword is used in the framework of rutile, ... calculations.
+#That is to say, when the lattice is not a cubic one: c or b /= a.
+#If this keyword equals 1, an optrutile ... output file is searched.
+#If this one exists, the a0 and c0 equilibrium lattice parameters are stored and 
+#used in the rutile ... calculation in order to obtain the 0K equation of 
+#state (B0, E0, B') with a a0/c0 constant ratio which is the equilibrium one.
+OPTIMIZECOVERA=0
+#TO BE USED IN SINGLE CALCULATION ONLY!!! (see the third argument).
+#IF YOU WANT TO USE THIS OPTION WITH VARIOUS SET OF ATOMIC DATA AND ONE COMPOUND, 
+#BE AWARE OF THE DISCREPENCIES WHICH WILL APPEAR BETWEEN THEIR ABSCISSA. THE
+#BIRCH MURNAGHAN FITS AND XMGRACE VIZUALIZATION ARE NO LONGER POSSIBLE FOR ALL 
+#THE OUTPUTS TOGETHER, BUT REMAIN USABLE FOR A SINGLE ONE.
+
+#When the type of calculation is not a ecut one, an ecut converged calculation 
+#is possible. If this keyword equals 1, an ecut output file is searched. 
+#The gandalf.extract script find out the ecut value corresponding to a 10-3 Ha convergence. 
+CONVERGEDCALCULATION=1  
+
+#Define the type of calculation
+#==============================
+if [  ! "$#" = 3 ]
+then
+ echo "Three arguments are needed for" $0
+ echo "The first one deals with the input file: ecut, molec, molec2, rutile, fluorite, ... ====== or all"
+ echo "The second one deals with the compounds: CO2, BaTiO3, ... ====== or all"
+ echo "The third one deals with the atomic data: uspp-ori, uspp-abi, atompaw-holz, ... ====== or all"
+ exit 1
+fi
+argument1=$1
+argument2=$2
+argument3=$3
+listkey="ecut molec molec2 optrutile rutile fluorite perovskite zincblende"
+
+echo "##############################################################################################################################"
+case $argument1 in
+ ecut | pawecutdg | molec | optrutile | rutile | fluorite | perovskite | zincblende) echo "# This script will launch ${ABINIS} #";
+ echo "############ with the ${argument1}.in input file and the ${argument2} compound(s) #############";
+ listtype="${argument1}";;
+ all) echo "# This script launch ${ABINIS} #";
+ echo "############ with all the input files and the ${argument2} compound(s) ###############";
+ listtype=$listkey;;
+ *) echo "# The first argument is not allowed. There is no ${argument1} type of calculation ####";
+ exit 1
+esac
+echo "##############################################################################################################################"
+
+cd ${WORKDIR}
+if [ -d ${OUTPUT}/${argument2} ] ; then
+ DIRECTORY=`expr ${argument2} | sed 's/\///g'`
+elif [ ${argument2} == all ] ; then
+ DIRECTORY=*
+else
+ echo "The second argument is not allowed. There is no ${OUTPUT}/${argument2} directory."
+ exit 1
+fi
+rm -fr Bug_abinit
+
+#Search for abinis
+#=================
+if [ ! -f "${ABINIS}" ];then
+ echo 'abinis missing !'
+ echo 'There is no ${ABINIS}'
+ echo 'Nothing done !'
+ exit 1
+fi
+ 
+#Loop on compounds in ${OUTPUT} directory
+#========================================
+cd ${OUTPUT}
+for COMPOUND in ${DIRECTORY} ; do
+ if [ -d "${COMPOUND}" ] ; then
+  cd ${COMPOUND}
+  echo ""
+  NUMBERSPECIES=`expr ${COMPOUND} | sed -e "s/\([A-Z][a-z]*\)/ \1 /g" | sed 's/\([1-9]\)//g' | wc -w`
+  SPECIES=`expr ${COMPOUND} | sed -e "s/\([A-Z][a-z]*\)/ \1 /g" | sed 's/\([1-9]\)//g'`
+  echo "++++++++++ Compound "${COMPOUND}". There are "${NUMBERSPECIES}" species. These ones are: "${SPECIES}"++++++++++"
+
+# Couple the various pseudopotential files as a function of their XC functionnals
+# One have to take into account of their compensation charge
+# ===============================================================================
+  rm -f ${COMPOUND}.pseudo.in
+  ISPECIES1=`expr "${SPECIES}" | awk '{print $1}'`
+  ISPECIES2=`expr "${SPECIES}" | awk '{print $2}'`
+  NPSEUDO1=`cat ${ISPECIES1}.pseudo.in | wc -l`
+  NPSEUDO2=`cat ${ISPECIES2}.pseudo.in | wc -l`
+  for (( IPSEUDO1=1 ; IPSEUDO1 <= ${NPSEUDO1} ; IPSEUDO1++)) ; do
+   PSEUDO1=`awk 'NR=='${IPSEUDO1}' {print $0}' ${ISPECIES1}.pseudo.in`
+   IXC1=`awk 'NR==3 {print $2}' ${PSEUDO1}`
+   COMPCHARGE1=`grep format ${PSEUDO1} | awk '{print $2}'`
+   for (( IPSEUDO2=1 ; IPSEUDO2 <= ${NPSEUDO2} ; IPSEUDO2++)) ; do
+    PSEUDO2=`awk 'NR=='${IPSEUDO2}' {print $0}' ${ISPECIES2}.pseudo.in`
+    IXC2=`awk 'NR==3 {print $2}' ${PSEUDO2}`
+    COMPCHARGE2=`grep format ${PSEUDO2} | awk '{print $2}'`
+    if [ "${IXC1}" == "${IXC2}" -a "${COMPCHARGE1}" == "${COMPCHARGE2}" ] ; then
+     if [ "${NUMBERSPECIES}" == 3 ] ; then
+      ISPECIES3=`expr "${SPECIES}" | awk '{print $3}'`
+      NPSEUDO3=`cat ${WORKDIR}/${OUTPUT}/${COMPOUND}/${ISPECIES3}.pseudo.in | wc -l`
+      for (( IPSEUDO3=1 ; IPSEUDO3 <= ${NPSEUDO3} ; IPSEUDO3++)) ; do
+       PSEUDO3=`awk 'NR=='${IPSEUDO3}' {print $0}' ${ISPECIES3}.pseudo.in`
+       IXC3=`awk 'NR==3 {print $2}' ${PSEUDO3}`
+       COMPCHARGE3=`grep format ${PSEUDO3} | awk '{print $2}'`
+       if [ "${IXC1}" == "${IXC3}" -a "${COMPCHARGE1}" == "${COMPCHARGE3}" ] ; then
+        echo ${PSEUDO1} ${PSEUDO2} ${PSEUDO3} >> ${COMPOUND}.pseudo.in
+       fi
+      done
+     else 
+      echo ${PSEUDO1} ${PSEUDO2} >> ${COMPOUND}.pseudo.in
+     fi
+    fi
+   done
+  done 
+
+# Loop on atomic data for this compound
+# =====================================
+  NPSEUDO=`cat ${COMPOUND}.pseudo.in | wc -l`
+  rm -fr all.out all.log all.in all_STATUS *WFK
+  for (( IPSEUDO=1 ; IPSEUDO <= ${NPSEUDO} ; IPSEUDO++)) ; do
+   PSEUDO=`awk 'NR=='${IPSEUDO}' {print $0}' ${COMPOUND}.pseudo.in`
+   PSEUDO1=`awk 'NR=='${IPSEUDO}' {print $1}' ${COMPOUND}.pseudo.in`
+   PSEUDO2=`awk 'NR=='${IPSEUDO}' {print $2}' ${COMPOUND}.pseudo.in`
+   PSEUDO3=""
+   if [ ${NUMBERSPECIES} == 3 ] ; then
+    PSEUDO3=`awk 'NR=='${IPSEUDO}' {print $3}' ${COMPOUND}.pseudo.in`
+   fi
+   if [ "${PSEUDO1}" == "${argument3}" -o "${PSEUDO2}" == "${argument3}" -o "${PSEUDO3}" == "${argument3}" -o "${argument3}" == 'all' ] ; then
+    echo''
+    echo "all.in" > all.files
+    echo "all.out" >> all.files
+    echo "allo" >> all.files
+    echo "alli" >> all.files
+    echo "all" >> all.files
+    echo "${PSEUDO1}" >> all.files
+    echo "${PSEUDO2}" >> all.files
+    echo "Copy the ${PSEUDO1} filename in the all.files file" 
+    echo "Copy the ${PSEUDO2} filename in the all.files file" 
+    if [ ${NUMBERSPECIES} == 3 ] ; then
+     echo "${PSEUDO3}" >> all.files
+     echo "Copy the ${PSEUDO3} filename in the all.files file" 
+    fi
+
+#   Loop on input file for these atomic data
+#   ========================================
+    for itype in ${listtype} ; do
+     if [ -f *.${itype}.in ] ; then
+      if [ ! -f ${IPSEUDO}.${itype}.out ] ; then
+       cp *.${itype}.in all.in
+
+       if [ ${CONVERGEDCALCULATION} == 1 -a ! "${itype}" = 'ecut' ] ; then
+        if [ -f ${IPSEUDO}.ecut.out ] ; then
+         python ${WORKDIR}/gandalf.extract.compounds ecut ${COMPOUND} ${IPSEUDO}.ecut.out > python.log
+         ECUT=`tail -n 1 python.log | awk '{print $1} '`
+         PAWECUTDG=`tail -n 1 python.log | awk '{print $1*2} '`
+         rm -fr python.log
+         sed '/ecut /D' *.${itype}.in | sed '/pawecutdg/D' > all.in
+         echo "ecut ${ECUT}" >> all.in
+         echo "pawecutdg ${PAWECUTDG}" >> all.in
+        fi
+        echo "  --->The coarse (fine) grid cutoff parameter ecut (pawecutdg) is adjusted to "${ECUT}" ("${PAWECUTDG}")"
+       fi
+
+       if [ ${OPTIMIZECOVERA} == 1 ] ; then
+        if [ "${itype}" == 'rutile' -a -f ${IPSEUDO}.optrutile.out ] ; then
+         alatt=`grep acell ${IPSEUDO}.optrutile.out | tail -n 1 | awk '{print $2*(0.99)**5} '`
+         blatt=`grep acell ${IPSEUDO}.optrutile.out | tail -n 1 | awk '{print $3*(0.99)**5} '`
+         clatt=`grep acell ${IPSEUDO}.optrutile.out | tail -n 1 | awk '{print $4*(0.99)**5} '`
+         sed '/acell/D' all.in | sed '/ndtset/D' > tmp.in
+         echo "ndtset 10" >> tmp.in
+         echo "acell: ${alatt} ${blatt} ${clatt} acell* 3*1.01" >> tmp.in
+         echo "  --->The starting equilibrium lattice parameters used in this calculation are: acell " ${alatt} ${blatt} ${clatt}
+         echo "  --->Be aware of the limitations coming from the use of this option"
+         mv tmp.in all.in
+        fi
+       fi
+
+       echo '  Launching ABINIT in the '${OUTPUT}/${COMPOUND}' directory with the '${itype}'.in input file'
+       ${ABINIS} < all.files > all.log
+       run_OK=$?
+       if [ "${run_OK}" = 0 ] ; then
+        echo '  ABINIT code successfully terminated.' 
+        echo '  Copy the all.out standard output to '${IPSEUDO}'.'${itype}'.out'
+        mv all.out ${IPSEUDO}.${itype}.out
+       else
+        echo '  ABINIT code abnormally terminated *********************************' 
+        echo '  ABINIT code abnormally terminated in the '${OUTPUT}/${COMPOUND}' directory' >> ../../Bug_abinit
+        echo '         with the '${PSEUDO}' atomic data and the '${itype}'.in input file' >> ../../Bug_abinit
+        mv all.log ${IPSEUDO}.${itype}.log
+        echo '  Copy the all.out standard output to '${IPSEUDO}'.'${itype}'.tmp'
+        mv all.out ${IPSEUDO}.${itype}.tmp
+       fi
+       rm -fr all.out all.log all.in all_STATUS *WFK *EIG *DEN *DDB
+      else
+       echo "There is a ${IPSEUDO}.${itype}.out output file already created"
+      fi
+     fi
+    done
+
+#    End loop on atomic data
+#    =======================
+   fi
+  done
+
+# End loop on couple of ${PSEUDO}
+# ===============================
+  cd ..
+ fi
+done
+cd ..
+echo "############################## DONE #######################################"

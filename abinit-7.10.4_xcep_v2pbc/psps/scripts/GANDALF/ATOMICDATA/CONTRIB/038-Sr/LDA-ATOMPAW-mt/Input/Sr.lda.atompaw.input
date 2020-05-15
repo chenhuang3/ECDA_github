@@ -1,0 +1,35 @@
+Sr 38 
+LDA-PW scalarrelativistic loggrid 600 100. 2.5
+5 4 4 0 0 0
+4 2 0
+0 0 0
+c
+c
+c
+v
+v
+c
+c
+v
+c
+v
+2
+2.5 2.25 1.6 2.5
+n
+y
+2.75
+n
+y
+1.
+n
+custom rrkj vanderbiltortho besselshape
+bessel
+2.5
+2.5
+2.5
+2.5
+2.5
+2.5
+2
+default
+0

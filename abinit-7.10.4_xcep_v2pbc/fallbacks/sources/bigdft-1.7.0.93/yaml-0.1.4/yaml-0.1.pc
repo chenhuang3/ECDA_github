@@ -1,0 +1,10 @@
+prefix=/gpfs/home/chuang3/XCEP_codes/abinit-7.10.4_xcep_v2pbc/fallbacks/exports
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=/gpfs/home/chuang3/XCEP_codes/abinit-7.10.4_xcep_v2pbc/fallbacks/exports/lib
+
+Name: LibYAML
+Description: Library to parse and emit YAML
+Version: 0.1.4
+Cflags:
+Libs: -L${libdir} -lyaml

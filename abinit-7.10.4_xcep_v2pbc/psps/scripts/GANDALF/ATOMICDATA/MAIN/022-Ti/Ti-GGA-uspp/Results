@@ -1,0 +1,35 @@
+Ti-GGA-uspp
+
+
+ABINIT v5.3.4
+USPP v7.3.6
+uspp2abinit v2.2.1
+
+XC= PBE
+R-PAW=2.1 a.u.
+Author= translated for Abinit by Francois Jollet
+
+FCC:
+  Ecut=12.Ha
+  a=4.11 A  (7.78 u.a.)
+  B=107.9 GPa
+  V/at=17.40 A3
+
+Ref: A. Aguayo et al. PRB, 65, 092106 (2002)
+  FP-LAPW
+  B=107 GPa
+  V/at= 17.4 A3
+
+HCP: 
+  Ecut=20. Ha
+  c/a=1.633 (ideal ratio)
+  B=111.7 GPa
+  V/at= 17.38 A3
+
+  V/at= 17.38 (after relaxation)
+
+Ref: A. Aguayo et al. PRB, 65, 092106 (2002)
+  FP-LAPW
+  B=112 GPa
+  V/at= 17.4 A3
+

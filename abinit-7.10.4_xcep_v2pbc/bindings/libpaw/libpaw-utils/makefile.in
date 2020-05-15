@@ -1,0 +1,34 @@
+# ===========================================
+# Makefile (include)
+# Use it to build a standalone LIBPAW library
+#                              M.T. June 2013
+# ===========================================
+
+
+# FC : Fortran compiler (use mpif90 to include MPI)
+# FCFLAGS= Fortran compiler flags
+# 
+# DEFS_BASIS_MODDIR =
+# path_to_defs_basis_mod : to use an external (already compiled) defs_basis module
+# Comment this line to build and use the defs_basis module delivered with libpaw
+# MEM_PROFILING_MODDIR =
+# path_to_m_profiling : to use an external (already compiled) m_profiling module
+# Comment this line to build and use the m_profiling module delivered with libpaw
+# HIDEMPI_MODDIR =
+# path_to_m_profiling : to use an external (already compiled) m_xmpi module
+# Comment this line to build and use the m_xmpi module delivered with libpaw
+# HIDEWRITE_MODDIR =
+# path_to_m_profiling : to use an external (already compiled) hidewrite module
+# Comment this line to build and use the hidewrite module delivered with libpaw
+# HIDELEAVE_MODDIR =
+# path_to_m_profiling : to use an external (already compiled) hideleave module
+# Comment this line to build and use the hideleave module delivered with libpaw
+
+FC = gfortran
+FCFLAGS = -O2
+
+#DEFS_BASIS_MODDIR = /cea/home/abinit/abinit/BZR/torrent-733-bigdft/build/src/mods
+#MEM_PROFILING_MODDIR = /cea/home/abinit/abinit/BZR/torrent-733-bigdft/build/src/mods
+#HIDEMPI_MODDIR = /cea/home/abinit/abinit/BZR/torrent-733-bigdft/build/src/mods
+#HIDEWRITE_MODDIR = /cea/home/abinit/abinit/BZR/torrent-733-bigdft/build/src/mods
+#HIDELEAVE_MODDIR = /cea/home/abinit/abinit/BZR/torrent-733-bigdft/build/src/mods

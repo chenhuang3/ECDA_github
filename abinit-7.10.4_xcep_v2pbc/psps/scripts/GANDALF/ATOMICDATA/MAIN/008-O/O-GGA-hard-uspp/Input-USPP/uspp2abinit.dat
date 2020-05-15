@@ -1,0 +1,4 @@
+#Data for Real Space Optimization (RSO)
+ECUT_RSO= 10.0
+GAMMAFACT_RSO= 2.0
+WERROR_RSO= 0.001

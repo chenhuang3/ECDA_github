@@ -1,0 +1,22 @@
+t47o_DS4_WFK
+1
+2
+t49.in_aux
+
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = cut3d
+#%% test_chain = t47.in, t48.in, t49.in 
+#%% [files]
+#%% files_to_test = 
+#%%   t49.stdout, tolnlines = 72, tolabs = 1.0e-05, tolrel = 4.0e-05
+#%% extra_inputs = t49.in_aux
+#%% [paral_info]
+#%% max_nprocs = 1
+#%% [extra_info]
+#%% authors = J. Battacharjee
+#%% keywords = 
+#%% description = 
+#%%   Compute atom-centered Wannier functions. Code cut3d
+#%%   Silicon, diamond structure.
+#%%<END TEST_INFO>

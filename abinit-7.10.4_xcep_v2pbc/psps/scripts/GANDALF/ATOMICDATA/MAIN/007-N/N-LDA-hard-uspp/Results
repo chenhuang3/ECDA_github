@@ -1,0 +1,27 @@
+N-LDA-hard-uspp
+
+
+ABINIT v5.3.4
+USPP v7.3.6
+uspp2abinit v2.2.1
+
+XC= PZ-CA
+R-PAW=1.1 a.u.
+Author= parametrization by Bernd Meyer; translated for Abinit by Francois Jollet
+
+FCC:
+  Ecut=15.Ha
+  a=3.046 A  (5.76 u.a.)
+  B=234.6 GPa
+  V/at=7.06 A3
+
+Dimer:(with ixc=1)
+   Ecut=20 Ha
+   box=20x20x20
+   Ebind=-11.45 eV
+   d=2.084 a.u.
+
+Ref: P.A. Serena et al. PRB 48, 2046, (1993)
+   APW, LDA
+   d=2.07 a.u.
+   Ebind=-11.3 eV

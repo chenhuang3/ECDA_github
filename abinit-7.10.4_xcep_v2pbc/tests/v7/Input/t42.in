@@ -1,0 +1,28 @@
+t41o_DS4_1WF7
+t41o_DS5_1WF8
+t41o_DS6_1WF9
+t41o_DS3_WFK
+0.002         ! Value of the smearing factor, in Hartree
+0.0003  0.3   ! Difference between frequency values (in Hartree), and maximum frequency ( 1 Ha is about 27.211 eV)
+0.031         ! Scissor shift chosen to reproduce experimental gap
+0.002         ! Tolerance on closeness of singularities (in Hartree)
+1             ! Number of components of linear optic tensor to be computed
+11            ! Linear coefficients to be computed (x=1, y=2, z=3)
+0             ! Number of components of nonlinear optic tensor to be computed
+              ! Non-linear coefficients to be computed
+
+
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = optic
+#%% test_chain = t41.in, t42.in
+#%% [files]
+#%% files_to_test = 
+#%%   t42_0001_0001-linopt.out, tolnlines = 0, tolabs = 0.0, tolrel = 0.0, fld_options = -easy
+#%% [paral_info]
+#%% max_nprocs = 1
+#%% [extra_info]
+#%% authors = 
+#%% keywords = 
+#%% description = Silicon, 'optic' test with scissor
+#%%<END TEST_INFO>

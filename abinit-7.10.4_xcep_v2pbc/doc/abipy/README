@@ -1,0 +1,34 @@
+
+Abipy is a library for analysing and plotting the results produced by ABINIT. 
+abipy is written in Python, and is designed with the philosophy that you should be able to create simple plots with just a few commands.
+
+------------------------------------------------
+WHERE TO FIND SOURCES AND BINARIES ?
+------------------------------------------------
+
+Abipy is hosted on GitHub :  https://github.com/gmatteo/abipy
+
+------------------------------------------------
+WHERE TO FIND THE DOCUMENTATION ?
+------------------------------------------------
+
+See http://pythonhosted.org/abipy/index.html
+
+Numerous plot examples can be seen at
+http://pythonhosted.org/abipy/examples/plot/index.html
+(bands, bands and dos, Brillouin Zone, spectral functions, etc ...)
+
+------------------------------------------------
+
+Authors of Abipy
+================
+
+Abipy has been created by:
+
+  * Matteo Giantomassi <matteo.giantomassi@uclouvain.be>
+
+With contributions from:
+  
+  * Gabriel Antonius gabriel.antonius@umontreal.ca>
+  * David Waroquiers <david.waroquiers@uclouvain.be>
+

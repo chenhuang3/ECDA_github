@@ -1,0 +1,22 @@
+t47o_DS2_WFK
+1
+2
+t48.in_aux
+
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = cut3d
+#%% test_chain = t47.in, t48.in, t49.in
+#%% [files]
+#%% files_to_test = 
+#%%   t48.stdout, tolnlines = 36, tolabs = 1.131e-06, tolrel = 1.100e-00
+#%% extra_inputs = t48.in_aux
+#%% [paral_info]
+#%% max_nprocs = 1
+#%% [extra_info]
+#%% authors = J. Battacharjee
+#%% keywords = 
+#%% description = 
+#%%   Compute bond-centered Wannier functions. Code cut3d
+#%%   Silicon, diamond structure.
+#%%<END TEST_INFO>

@@ -1,0 +1,22 @@
+Ti-LDA-uspp
+
+
+ABINIT v5.3.4
+USPP v7.3.6
+uspp2abinit v2.2.1
+
+XC= PZ-CA
+R-PAW=2.1 a.u.
+Author= translated for Abinit by Francois Jollet
+
+FCC:
+  Ecut=12.Ha
+  a=4.00 A  (7.56 u.a.)
+  B=123.3 GPa
+  V/at=15.96 A3
+
+HCP: 
+  c/a=1.633 (ideal ratio)
+  B=127.8 GPa
+  V/at= 16.01 A3
+

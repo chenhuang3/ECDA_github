@@ -1,0 +1,29 @@
+FCC Silver
+==========
+
+                                      a0(a)      B(GPa)
+LDA
+---
+This work AtomPAW (4p4d5s)     [1]    4.008       139
+This work USPP    (4p4d5s)            3.996       141
+VASP              (4p4d5s)            4.013       139
+This work AtomPAW (3s3p4p4d5s) [1]    4.003       138
+LAPW              (4p4d5s)     [2]    3.999       139
+
+GGA
+---
+This work AtomPAW (4p4d5s)     [1]    4.154       90
+This work USPP    (4p4d5s)            4.148       89
+VASP              (4p4d5s)            4.172       87
+This work AtomPAW (3s3p4p4d5s) [1]    4.152       90
+LAPW (PW91)       (4p4d5s)     [2]    4.168       85
+
+Exp 
+---
+Dewaele, Ref [1]                      4.083       104
+Ref [2]                               4.068       102
+
+
+
+[1] Dewaele, Torrent, Loubeyre, Mezzouar, PRB 78, 104102 (2008)
+[2] PRB 51, 4105 (1995)

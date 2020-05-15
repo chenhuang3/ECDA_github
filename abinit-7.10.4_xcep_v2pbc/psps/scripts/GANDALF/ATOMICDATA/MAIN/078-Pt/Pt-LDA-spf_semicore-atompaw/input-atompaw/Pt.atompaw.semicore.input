@@ -1,0 +1,51 @@
+Pt 78
+LDA-PW scalarrelativistic loggrid 1000 100. 2.3
+6 5 5 4 0 0
+6 0 1
+5 2 9
+0 0 0
+c !1s
+c !2s
+c !3s
+c !4s
+v !5s
+v !6s
+c !2p
+c !3p
+c !4p
+v !5p
+c !3d
+c !4d
+v !5d
+v !4f
+3
+2.3 1.9 1.7 2.25
+y
+5.
+n
+y
+3.
+y
+6.
+n
+y
+1.
+n
+y
+-1.5
+n
+custom rrkj vanderbiltortho
+4 0. bessel
+2.3
+2.3
+2.3
+2.3
+2.3
+2.3
+2.3
+2.3
+2.3
+2.3
+2
+default
+0

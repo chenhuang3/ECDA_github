@@ -1,0 +1,119 @@
+#!/bin/sh
+#    This utility copies the atomic data and
+#    the input files in the OUTPUT directory 
+# ==============================================
+
+GANDALFDIR=""
+PSEUDODIR=""
+WORKDIR="${GANDALFDIR}/COMPOUND"
+OUTPUT=OUTPUT
+INPUT=INPUT
+
+
+#Define the type of copy
+#=======================
+if [  ! "$#" = 3 ]
+then
+ echo "Three arguments are needed for" $0
+ echo "The first one deals with the input file: ecut, molec, molec2, rutile, fluorite, ... ====== or none, all"
+ echo "The second one deals with the species: CO2, BaTiO3, ... ====== or all"
+ echo "The third one deals with the atomic data: atompaw, uspp, paw, fhi98pp, nc... ====== or none, clean, all"
+ exit 1
+fi
+argument1=$1
+argument2=$2
+argument3=$3
+listkey="ecut molec molec2 optrutile rutile fluorite perovskite zincblende"
+
+echo "##############################################################################################################################"
+case $argument1 in
+ ecut | molec | moledc2 | optrutile | rutile | fluorite | perovskite | zincblende) echo "######### This script will copy ${argument1}.in input file and ${argument3} atomic data of ${argument2} species in ${OUTPUT} ##########";
+ listtype="${argument1}";;
+ none) echo "######### This script will copy ${argument3} atomic data of ${argument2} species in ${OUTPUT} ##########";
+ listtype="";;
+ all) echo "########## This script will copy all input files and ${argument3} atomic data of ${argument2} species in ${OUTPUT} ##########";
+ listtype=$listkey;;
+ *) echo "########## The first argument is not allowed. There is no ${argument1} type of calculation ##########";
+ exit 1
+esac
+echo "##############################################################################################################################"
+
+if [ ! -d ${PSEUDODIR} ] ; then
+ echo "${PSEUDODIR} directory is missing"
+fi
+
+if [ -d ${WORKDIR}/${INPUT}/${argument2} ] ; then
+ DIRECTORY=${argument2}
+elif [ ${argument2} == all ] ; then
+ DIRECTORY=`ls ${WORKDIR}/${INPUT}`
+else
+ echo "The second argument is not allowed. There is no ${INPUT}/${argument2} directory."
+ exit 1
+fi
+
+case ${argument3} in
+ all) ATOMICDATA="";;
+ clean) ATOMICDATA="";;
+ *) ATOMICDATA=${argument3};;
+esac
+
+
+#Create the OUTPUT directory
+# ==========================
+rm -rf Bug_copy
+if [ -d ${WORKDIR}/${OUTPUT} ] ; then
+ echo "${OUTPUT} directory found"
+# tar cvf output.tar ${WORKDIR}/${OUTPUT}  > output.tar.log
+else
+ mkdir ${WORKDIR}/${OUTPUT}
+ echo "${OUTPUT} directory created"
+fi
+
+#Loop on species. Copy the input files in the OUTPUT/${SUBDIRECTORY} directories
+# =============================================================================
+ echo "Search all the atomic data"
+ ALLATOMICDATA=`find ${PSEUDODIR} -type f -exec grep -l "pspdat" {} \;`
+ for SUBDIRECTORY in ${DIRECTORY} ; do
+  echo ''
+  echo "++++++++++++++++++++++++++++"${SUBDIRECTORY}" species++++++++++++++++++++++++++++"
+  if [ ! -d ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY} ] ; then
+   mkdir ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}
+   echo "${OUTPUT}/${SUBDIRECTORY} directory created"
+  fi
+
+  for itype in ${listtype} ; do
+   if [ -f ${WORKDIR}/${INPUT}/${SUBDIRECTORY}/*.${itype}.in ] ; then
+    cp ${WORKDIR}/${INPUT}/${SUBDIRECTORY}/*.${itype}.in ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}
+    echo "  Copy the ${INPUT}/${SUBDIRECTORY}/${itype}.in file in the ${OUTPUT}/${SUBDIRECTORY} directory"
+   fi
+  done
+
+  NUMBERSPECIES=`expr ${SUBDIRECTORY} | sed -e "s/\([A-Z][a-z]*\)/ \1 /g" | sed 's/\([1-9]\)//g' | wc -w`
+  SPECIES=`expr ${SUBDIRECTORY} | sed -e "s/\([A-Z][a-z]*\)/ \1 /g" | sed 's/\([1-9]\)//g'`
+  echo " There are "${NUMBERSPECIES}" species. These ones are: "${SPECIES}
+  
+  for ISPECIES in ${SPECIES} ; do
+   LISTATOMICDATA=`ls ${ALLATOMICDATA} | grep "[0-9][0-9][0-9]-${ISPECIES}\/" | grep "${ATOMICDATA}"`
+   if [ ${argument3} == 'clean' ] ; then
+    rm -f ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}/${SUBDIRECTORY}.pseudo.in
+    rm -f ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}/${ISPECIES}.pseudo.in
+    rm -f ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}/*.out
+    rm -f ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}/*.log
+    rm -f ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}/*.tmp
+   elif [ -f ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}/${ISPECIES}.pseudo.in ] ; then
+    echo " There is already a ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}/${ISPECIES}.pseudo.in file "
+    echo " Clean or save this directory before installing new atomic data "
+    exit 1
+   else
+    for IATOMICDATA in ${LISTATOMICDATA} ; do
+     echo "${IATOMICDATA}" >> ${WORKDIR}/${OUTPUT}/${SUBDIRECTORY}/${ISPECIES}.pseudo.in
+     echo "  GANDALF found the ${IATOMICDATA} atomic data"
+    done
+    echo " All the atomic data file names for ${ISPECIES} are stored in the ${OUTPUT}/${SUBDIRECTORY}/${ISPECIES}.pseudo.in file"
+   fi
+  done
+
+#End loop on species
+# ==================
+ done
+echo "############################## DONE #######################################"

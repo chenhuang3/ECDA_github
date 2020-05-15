@@ -1,0 +1,53 @@
+Strontium - PAW dataset for Abinit
+
+---------------------
+Abinit v5.9.2
+Atompaw v2.2
+Atompaw2Abinit v3.2.1
+---------------------
+
+LDA
+--------------------------------
+FCC : a0=5.79 Ang,   K0=14.5 GPa
+BCC : a0=4.57 Ang,   K0=14.3 GPa
+SC  : a0=3.64 Ang,   K0= 9.0 GPa
+--------------------------------
+
+
+GGA
+--------------------------------
+FCC : a0=5.99 Ang,   K0=11.5 GPa
+BCC : a0=4.74 Ang,   K0=12.2 GPa
+SC  : a0=3.83 Ang,   K0= 7.5 GPa
+--------------------------------
+
+
+============================================
+Experimental results:
+C. Kittel, Introduction to Solid State Physics.
+(John Wiley & Sons, New York, 1986)
+
+FCC : a0=6.08 Ang,   K0=11.6 GPa
+
+============================================
+From VASP code (distributed with the code v4.6):
+LDA
+ element Sr_sv
+fcc   V0=5.789 Ang,   K0=14.36 GPa
+hcp   V0=3.252 Ang,   K0=13.04 GPa
+bcc   V0=4.568 Ang,   K0=14.25 GPa
+ sc   V0=3.637 Ang,   K0= 8.46 GPa
+GGA-PW91
+element Sr_sv
+fcc   V0=5.998 Ang,   K0=11.69 GPa
+hcp   V0=3.384 Ang,   K0=11.23 GPa
+bcc   V0=4.737 Ang,   K0=12.17 GPa
+ sc   V0=3.831 Ang,   K0= 7.10 GPa
+
+
+Contact:
+Marc Torrent
+Service de PHysique de la Matière Condensée
+Commissariat à l'Energie Atomique
+Arpajon - France
+

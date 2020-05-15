@@ -1,0 +1,138 @@
+# ===========================================
+# Makefile
+# Use it to create a tar.gz containing
+# a standalone LIBPAW library
+#                M.T. July 2013, rev Feb 2014
+# ===========================================
+
+#Define main directories
+LIBPAW_DIR = $(top_builddir)/libpaw/libpaw
+LIBPAW_UTIL_DIR = $(top_srcdir)/libpaw/libpaw-utils
+LIBPAW_SRC_DIR = $(LIBPAW_DIR)/src
+LIBPAW_INC_DIR = $(LIBPAW_DIR)/inc
+LIBPAW_LIB_DIR = $(LIBPAW_DIR)/lib
+LIBPAW_CFG_DIR = $(LIBPAW_DIR)/config
+
+#Define directories for dependencies
+DEFS_BASIS_DIR = $(LIBPAW_LIB_DIR)/defs_basis
+MEM_PROFILING_DIR = $(LIBPAW_LIB_DIR)/memory_profiling
+HIDEMPI_DIR = $(LIBPAW_LIB_DIR)/hide_mpi
+HIDEWRITE_DIR = $(LIBPAW_LIB_DIR)/hidewrite
+HIDELEAVE_DIR = $(LIBPAW_LIB_DIR)/hideleave
+
+#Define ABINIT directories
+ABINIT_SRC_DIR = $(abinit_srcdir)
+LIBPAW_ABINIT_DIR = $(ABINIT_SRC_DIR)/src/42_libpaw
+INCS_ABINIT_DIR = $(ABINIT_SRC_DIR)/src/incs
+DEFS_BASIS_ABINIT_DIR = $(ABINIT_SRC_DIR)/src/10_defs
+MEM_PROFILING_ABINIT_DIR = $(ABINIT_SRC_DIR)/src/11_memory_mpi
+HIDEMPI_ABINIT_DIR = $(ABINIT_SRC_DIR)/src/12_hide_mpi
+HIDEWRITE_ABINIT_DIR = $(ABINIT_SRC_DIR)/src/14_hidewrite
+HIDELEAVE_ABINIT_DIR = $(ABINIT_SRC_DIR)/src/16_hideleave
+
+#Useful names
+LIBPAW_VERSION = @libpaw_version@
+LIBPAW_TAR_NAME = libpaw-$(LIBPAW_VERSION)
+
+bindings-ready: dist
+
+default: dist
+
+dist: libpaw libpaw-tarball clean-src done
+
+libpaw-tarball:
+	@echo "Making libPAW tarball..."
+	$(TAR) -czvf $(LIBPAW_TAR_NAME).tar.gz libpaw >>/dev/null
+
+clean:
+	rm -rf $(LIBPAW_DIR) $(LIBPAW_TAR_NAME).tar.gz
+
+clean-src:	
+	@echo "Cleaning libPAW source files..."
+	rm -rf $(LIBPAW_DIR)
+
+clean-tarball:
+	rm -rf $(LIBPAW_TAR_NAME).tar.gz
+
+libpaw: check_interfaces clean libpaw_message libpaw_create_dirs libpaw_copy_src \
+	libpaw_copy_inc libpaw_copy_lib libpaw_copy_makefile
+
+libpaw_create_dirs:
+	if ! test -d $(LIBPAW_DIR); then $(INSTALL) -d -m 755 $(LIBPAW_DIR);fi
+	if ! test -d $(LIBPAW_SRC_DIR); then $(INSTALL) -d -m 755 $(LIBPAW_SRC_DIR);fi
+	if ! test -d $(LIBPAW_INC_DIR); then $(INSTALL) -d -m 755 $(LIBPAW_INC_DIR);fi
+	if ! test -d $(LIBPAW_LIB_DIR); then $(INSTALL) -d -m 755 $(LIBPAW_LIB_DIR);fi
+	if ! test -d $(LIBPAW_CFG_DIR); then $(INSTALL) -d -m 755 $(LIBPAW_CFG_DIR);fi
+
+#Eliminate unwanted "use interfaces_*" statements
+libpaw_copy_src:
+	cp -rf $(LIBPAW_ABINIT_DIR)/*.F90 $(LIBPAW_SRC_DIR)
+	$(FIND) $(LIBPAW_SRC_DIR) -name '*.F90' -exec \
+	 $(SED) -i'.orig' -e '/use[ ]*interfaces_.*\(libpaw\|memory_mpi\|hide_mpi\|hidewrite\|hideleave\)/!s/use[ ]*interfaces_/\!&/g' {} \;
+	rm -rf $(LIBPAW_SRC_DIR)/*.orig
+
+libpaw_copy_inc:
+	cp -rf $(INCS_ABINIT_DIR)/abi_common.h $(LIBPAW_INC_DIR)
+
+libpaw_copy_lib: libpaw_copy_defs_basis libpaw_copy_mem_profiling \
+	libpaw_copy_hidempi libpaw_copy_hidewrite libpaw_copy_hideleave
+
+libpaw_copy_makefile:
+	cp -rf $(LIBPAW_UTIL_DIR)/VERSION $(LIBPAW_DIR)
+	cp -rf $(LIBPAW_UTIL_DIR)/Makefile.main $(LIBPAW_DIR)/Makefile
+	cp -rf $(LIBPAW_UTIL_DIR)/makefile.in $(LIBPAW_DIR)
+	cp -rf $(LIBPAW_UTIL_DIR)/Makefile.src $(LIBPAW_CFG_DIR)
+	cp -rf $(LIBPAW_UTIL_DIR)/Makefile.lib $(LIBPAW_CFG_DIR)
+	@echo 'LIBPAW_SRC_FILES= \' > $(LIBPAW_CFG_DIR)/libpaw.src
+	$(GREP) '\.F90' $(LIBPAW_ABINIT_DIR)/abinit.src | \
+	 $(SED) -e 's/,/\ \\/g' | $(SED) -e 's/\"//g' \
+	 >> $(LIBPAW_CFG_DIR)/libpaw.src
+
+libpaw_copy_defs_basis:
+	if ! test -d $(DEFS_BASIS_DIR); then $(INSTALL) -d -m 755 $(DEFS_BASIS_DIR);fi
+	cp -rf $(DEFS_BASIS_ABINIT_DIR)/defs_basis.F90 $(DEFS_BASIS_DIR)
+
+libpaw_copy_mem_profiling:
+	if ! test -d $(MEM_PROFILING_DIR); then $(INSTALL) -d -m 755 $(MEM_PROFILING_DIR);fi
+	cp -rf $(MEM_PROFILING_ABINIT_DIR)/*.F90 $(MEM_PROFILING_DIR)
+	cp -rf $(MEM_PROFILING_ABINIT_DIR)/*.finc $(MEM_PROFILING_DIR)
+	cp -rf $(MEM_PROFILING_ABINIT_DIR)/*.py $(MEM_PROFILING_DIR)
+
+libpaw_copy_hidempi:
+	if ! test -d $(HIDEMPI_DIR); then $(INSTALL) -d -m 755 $(HIDEMPI_DIR);fi
+	cp -rf $(HIDEMPI_ABINIT_DIR)/*.finc $(HIDEMPI_DIR)
+	cp -rf $(HIDEMPI_ABINIT_DIR)/*.F90 $(HIDEMPI_DIR)
+
+libpaw_copy_hidewrite:
+	if ! test -d $(HIDEWRITE_DIR); then $(INSTALL) -d -m 755 $(HIDEWRITE_DIR);fi
+	cp -rf $(HIDEWRITE_ABINIT_DIR)/*.F90 $(HIDEWRITE_DIR)
+
+libpaw_copy_hideleave:
+	if ! test -d $(HIDELEAVE_DIR); then $(INSTALL) -d -m 755 $(HIDELEAVE_DIR);fi
+	cp -rf $(HIDELEAVE_ABINIT_DIR)/*.F90 $(HIDELEAVE_DIR)
+#	Add m_xieee.F90 dependency
+	$(FIND) $(ABINIT_SRC_DIR) -name 'm_xieee.F90' -exec cp {} $(HIDELEAVE_DIR) \; 
+#	Eliminate dumpinfo dependency
+	$(FIND) $(HIDELEAVE_DIR) -name '*.F90' -exec $(SED) -i'.orig' \
+	 -e 's/use[ ]*.*_dumpinfo/\!&/g' \
+	 -e 's/use[ ]*.*_dumper/\!&/g' \
+	 -e 's/use[ ]*m_build_info/\!&/g' \
+	 -e 's/call[ ]*dump_/\!&/g' \
+	 {} \;
+	rm -rf $(HIDELEAVE_DIR)/*.orig
+
+check_interfaces:
+	if ! test -f $(MEM_PROFILING_ABINIT_DIR)/interfaces_*.F90 \
+	 -a -f $(HIDEMPI_ABINIT_DIR)/interfaces_*.F90 \
+	 -a -f $(HIDEWRITE_ABINIT_DIR)/interfaces_*.F90 \
+	 -a -f $(HIDELEAVE_ABINIT_DIR)/interfaces_*.F90; then \
+	@echo 'Before building the libPAW library, you must execute'; \
+	@echo 'the "*/*/makemake" script in ABINIT root dir!'; \
+	@echo ; exit 2; \
+	 fi
+
+libpaw_message:
+	@echo "Building libPAW directory..."
+
+done:
+	@echo "Done."

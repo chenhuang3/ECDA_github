@@ -1,0 +1,33 @@
+**********************************************************************
+Warning pattern : 'Nonstandard type declaration'
+**********************************************************************
+m_profiling_abi.F90 : line = 273 [11_memory_mpi]
+m_profiling_abi.F90 : line = 273 [11_memory_mpi]
+m_profiling_abi.F90 : line = 273 [11_memory_mpi]
+m_xmpi.F90 : line = 2932 [12_hide_mpi]
+m_xmpi.F90 : line = 2933 [12_hide_mpi]
+m_xmpi.F90 : line = 2934 [12_hide_mpi]
+m_xmpi.F90 : line = 2936 [12_hide_mpi]
+m_xmpi.F90 : line = 3071 [12_hide_mpi]
+m_xmpi.F90 : line = 3072 [12_hide_mpi]
+m_xmpi.F90 : line = 3073 [12_hide_mpi]
+m_xmpi.F90 : line = 3075 [12_hide_mpi]
+m_xmpi.F90 : line = 3641 [12_hide_mpi]
+m_xmpi.F90 : line = 3642 [12_hide_mpi]
+m_xmpi.F90 : line = 3643 [12_hide_mpi]
+m_xmpi.F90 : line = 3645 [12_hide_mpi]
+m_xmpi.F90 : line = 4084 [12_hide_mpi]
+m_xmpi.F90 : line = 4085 [12_hide_mpi]
+m_xmpi.F90 : line = 4086 [12_hide_mpi]
+m_xmpi.F90 : line = 4088 [12_hide_mpi]
+m_wffile.F90 : line = 433 [51_manage_mpi]
+m_wffile.F90 : line = 434 [51_manage_mpi]
+m_wffile.F90 : line = 435 [51_manage_mpi]
+m_wffile.F90 : line = 437 [51_manage_mpi]
+m_wffile.F90 : line = 1930 [51_manage_mpi]
+m_wffile.F90 : line = 1931 [51_manage_mpi]
+m_wffile.F90 : line = 1932 [51_manage_mpi]
+m_wffile.F90 : line = 1935 [51_manage_mpi]
+**********************************************************************
+Warning count = 27
+**********************************************************************

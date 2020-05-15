@@ -1,0 +1,42 @@
+# Test Fe XML pseudopotential with and without sppol
+
+ndtset 2
+nsppol1 1
+nsppol2 2
+spinat2 0 0 5.0
+
+acell 3*2.870 Angstr
+ecut 8
+kptopt 1
+ngkpt 6 6 6
+occopt 4
+tsmear 0.001
+nstep 20
+natom 1
+ntypat 1
+typat 1
+znucl 26
+xred 3*0
+
+rprim  
+-0.5  0.5  0.5
+ 0.5 -0.5  0.5
+ 0.5  0.5 -0.5
+tolwfr 1.0d-14
+nband 7
+
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = abinit
+#%% [files]
+#%% files_to_test = 
+#%%  t02.out, tolnlines = 4, tolabs = 2.0e-04, tolrel = 4.00e-04
+#%% psp_files = Fe.tm2.xml
+#%% [paral_info]
+#%% max_nprocs = 14
+#%% [extra_info]
+#%% authors = M. Verstraete
+#%% keywords = NC
+#%% description = 
+#%%   Bulk iron, with and without spin-polarization 
+#%%<END TEST_INFO>

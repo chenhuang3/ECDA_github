@@ -1,0 +1,4 @@
+Specifications of the Abinit input variables in YML
+     Y. Gillet   ----    version 21/08/2014
+
+To be completed

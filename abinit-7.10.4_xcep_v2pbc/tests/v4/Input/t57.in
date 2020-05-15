@@ -1,0 +1,31 @@
+t56o_DS3_1WF7
+t56o_DS4_1WF8
+t56o_DS5_1WF9
+t56o_DS2_WFK
+0.001         ! Value of the smearing factor, in Hartree
+0.010   1     ! Difference between frequency values (in Hartree), and maximum frequency ( 1 Ha is about 27.211 eV)
+0.000         ! Scissor shift if needed, in Hartree
+0.001         ! Tolerance on closeness of singularities (in Hartree)
+3             ! Number of components of linear optic tensor to be computed
+11 33 23      ! Linear coefficients to be computed (x=1, y=2, z=3)
+2             ! Number of components of nonlinear optic tensor to be computed
+123 222       ! Non-linear coefficients to be computed
+
+
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = optic
+#%% test_chain = t56.in, t57.in 
+#%% [files]
+#%% files_to_test = 
+#%%   t57_0001_0001-linopt.out       , tolnlines = 0,  tolabs = 0.000e+00, tolrel = 0.000e+00; 
+#%%   t57_0001_0002_0003-ChiTotRe.out, tolnlines = 84, tolabs = 3.000e-03, tolrel = 2.000e-04; 
+#%%   t57_0001_0002_0003-ChiTotIm.out, tolnlines = 100, tolabs = 0.015, tolrel = 0.002
+#%% [paral_info]
+#%% max_nprocs = 1
+#%% [extra_info]
+#%% authors = 
+#%% keywords = 
+#%% description = 
+#%%  GaAs, zinc-blende structure. Code optic.
+#%%<END TEST_INFO>

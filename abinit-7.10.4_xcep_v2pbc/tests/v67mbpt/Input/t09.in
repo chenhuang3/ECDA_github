@@ -1,0 +1,93 @@
+# Isolated H atom: HF calculation with cutoff in the Coulomb interaction and with auxiliary function technique
+# The H atom is EXACT within H-F.
+ndtset  4
+gwpara  2
+
+# Dataset 1: KSS generation
+kssform1      3   # conjugate gradient
+nbandkss1     5  # nbandkss1 must be <= nband1
+tolwfr1       1.0d-6
+
+# Dataset 2: screening calculation # FAKE calculation
+optdriver2 3
+gwcalctyp  5
+getkss2   -1
+ecutwfn2  6.0
+npweps2    1
+inclvkb2   0
+
+# Dataset 3: Sigma calculation with "true" Coulomb interaction integrated with an auxiliary function
+optdriver3  4
+gwcalctyp3 25
+getkss3     1
+getscr3     2   # SCR file is always obtained using the "true" Coulomb interaction.
+icutcoul3   6
+ecutwfn3  15.0
+ecutsigx3 15.0
+
+# Dataset 4: Sigma calculation with a cutoff in Vcoul (Beigi's method)
+optdriver4  4
+gwcalctyp4 25
+getkss4     1
+getsuscep4  2            # Get SUSC file from dataset 2, new screening is calculated with the modified Coulomb
+icutcoul4   0            # Spherical cutoff
+rcut4      -1.0
+ecutwfn4  15.0
+ecutsigx4 15.0
+
+# The following GW variable are meaningful only during the sigma run.
+nkptgw 1
+kptgw  0.00000000E+00  0.00000000E+00  0.00000000E+00
+
+bdgw
+ 1 5
+ 1 5
+
+##################################
+#Variables common to all datasets.
+##################################
+
+acell 3*15.0
+rprim
+       0.0 0.5 0.5
+       0.5 0.0 0.5
+       0.5 0.5 0.0
+natom  1
+ntypat 1
+typat  1
+xcart  0.000  0.000  0.000
+
+znucl  1
+
+#Gamma-Point calculation
+kptopt       1
+ngkpt        1 1 1
+shiftk       0. 0. 0.
+istwfk      *1
+#fixed occupations
+occopt       2
+nsppol       2
+occ          1.00  7*0.00
+             0.00  7*0.00
+nband       *5
+
+ecut        15.0
+nstep       50
+enunit       2
+
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = abinit
+#%% [files]
+#%% files_to_test = 
+#%%   t09.out, tolnlines = 20, tolabs = 1.1e-3, tolrel = 1.1, fld_options =  -medium
+#%% psp_files = 1h.pspnc
+#%% [paral_info]
+#%% max_nprocs = 2
+#%% [extra_info]
+#%% authors = F. Bruneval
+#%% keywords =  GW
+#%% description = 
+#%%   Isolated hydrogen atom
+#%%   Calculation of the HF levels with different ways to integrate the Coulomb divergence
+#%%<END TEST_INFO>

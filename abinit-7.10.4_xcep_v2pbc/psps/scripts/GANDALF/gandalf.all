@@ -1,0 +1,47 @@
+#!/bin/sh
+#    This utility runs all the GANDALF scripts
+####################################################################################
+
+
+#Read the argument which define the type of display
+# =================================================
+if [  ! "$#" = 2 ]
+then
+ echo "Two arguments are needed for" $0
+ echo "The first one deals with pure materials or compounds: PURE or COMPOUND ====== or all"
+ echo "The second one deals with the kind(s) of element(s): 001-H, CO2, .... ====== or all"
+ exit 1
+fi
+argument1=$1
+argument2=$2
+
+if [ -d "./ATOMICDATA" ] ; then
+ PSEUDODIR="${PWD}/ATOMICDATA"
+else
+ echo "There is no ${PSEUDODIR} directory."
+ exit 1
+fi
+
+#Change the directory name of Atomic data files
+find . -name "gandalf.*" -type f -exec sed -i "s|\(^PSEUDODIR=\)\(..*$\)|\1\"$PSEUDODIR\"|" {} \;
+find . -name "gandalf.*" -type f -exec sed -i "s|\(^GANDALFDIR=\)\(..*$\)|\1\"$PWD\"|" {} \;
+find . -name "gandalf.*" -type f -exec sed -i "s|\(^ROOTDIR = str('\)\(..*$\)|\1$PWD')|" {} \;
+
+#Generation of the atomic data
+ATOMICDATA/gandalf.atompaw all all all
+
+#Compilation of the Birch-Murnaghan code
+ifort -O -o BIRCH/benf.x BIRCH/benf.f
+
+#Install the files in OUTPUT and perform the calculations
+if [ ${argument1} == all -o ${argument1} == PURE ] ; then
+ PURE/gandalf.copy all ${argument2} all
+ PURE/gandalf.abinit all ${argument2} all
+ PURE/gandalf.extract all ${argument2} all
+fi
+
+if [ ${argument1} == all -o ${argument1} == COMPOUND ] ; then
+ COMPOUND/gandalf.copy.compounds all ${argument2} all
+ COMPOUND/gandalf.abinit.compounds all ${argument2} all
+ COMPOUND/gandalf.extract.compounds all ${argument2} all
+fi

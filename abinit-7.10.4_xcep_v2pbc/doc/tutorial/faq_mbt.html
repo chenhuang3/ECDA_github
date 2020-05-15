@@ -1,0 +1,179 @@
+<html>
+<head>
+<title>
+Frequently Asked Questions about GW and BS calculations</title>
+</head>
+<body bgcolor="#ffffff">
+<hr>
+<h1>Frequently Asked Questions about GW and BS calculations.</h1>
+<hr>
+
+<h5>Copyright (C) 2000-2014 ABINIT group (MG)
+<br> This file is distributed under the terms of the GNU General Public License, see
+~abinit/COPYING or <a href="http://www.gnu.org/copyleft/gpl.txt">
+http://www.gnu.org/copyleft/gpl.txt </a>.
+<br> For the initials of contributors, see ~abinit/doc/developers/contributors.txt .
+</h5>
+
+<HR ALIGN=left>
+Goto :
+<A href="http://www.abinit.org"><B>ABINIT home Page</B></A>
+<B> | </B>
+<A href="../users/acknowledgments.html"><B>Suggested acknowledgments</B></A>
+<B> | </B>
+<A href="../input_variables/keyhr.html"><B>List of input variables</B></A>
+<B> | </B>
+<A href="welcome.html"><B>Tutorial home page</B></A>
+<B> | </B>
+<A href="../users/bibliography.html"><B>Bibliography</B></A>
+<HR ALIGN=left>
+Help files :
+<A href="../users/new_user_guide.html"><B>New user's guide</B></A>
+<B> | </B>
+<A href="../users/abinit_help.html"><B>Abinit (main)</B></A>
+<B> | </B>
+<A href="../users/respfn_help.html"><B>Abinit (respfn)</B></A>
+<B> | </B>
+<A href="../users/mrgddb_help.html"><B>Mrgddb</B></A>
+<B> | </B>
+<A href="../users/anaddb_help.html"><B>Anaddb</B></A>
+<B> | </B>
+<A href="../users/aim_help.html"><B>AIM (Bader)</B></A>
+<B> | </B>
+<A href="../users/cut3d_help.html"><B>Cut3D</B></A>
+<B> | </B>
+<A href="../users/optic_help.html"><B>Optic</B></A>
+<B> | </B>
+<A href="../users/mrgscr_help.html"><B>Mrgscr</B></A>
+<HR ALIGN=left>
+
+<a name="FAQ_MBT">
+<h3><b>FAQ about GW and BS calculations:</b></h3>
+</a>
+
+<ol>
+  <li> <a href="faq_mbt.html#KSS_with_paralkgb"><i>How can I run the KSS generation in parallel with the paralkgb algorithm?</i></a>
+  <li> <a href="faq_mbt.html#Reducing_memory"  ><i>How can I reduce the memory requirements in GW calculations?</i></a>
+  <li> <a href="faq_mbt.html#QP_bands"         ><i>Is there any automatic procedure to produce quasi-particle band structures?</i></a>
+  <li> <a href="faq_mbt.html#MultiProj_inclvkb"><i>Why does the code complain when norm-conserving pseudopotentials with more than one 
+                                                   projector are used to perform GW or BSE calculations?</i></a>
+  <li> <a href="faq_mbt.html#3_vs_99"          ><i>What is the difference between the RPA optical calculation done with optdriver=3 and the 
+                                                   one performed with optdriver=99 ?
+</ol>
+
+<hr>
+<a name="KSS_with_paralkgb"></a>
+<b><i>Q) How can I run the KSS generation in parallel with the paralkgb algorithm?</i></b>
+</br>
+</br>
+Although the routines used to generate the KSS file do not support the paralkgb option it is
+possible to bypass this limitation by using a two-step procedure.
+<p>
+In the first step, one performs a NSCF calculation in parallel with paralkbg thus producing the WFK file with
+the states that will be used for the GW calculation. 
+The KSS file can then be obtained by running a sequential calculation that reads the previous WFK file and produces 
+the KSS file using getwfk, nbandkss, kssform=3 and nstep=0.
+<p>
+This trick is particularly useful in the case of gamma-only calculations or when the number of
+k-points is much smaller than the number of processors available. 
+The main limitation of this approach is that the second step has to be done in sequential and the node
+should have enough memory to store the full set of wavefunctions. 
+For very large KSS files, one might use mkmem=0 to avoid the storage of the wavefunctions.
+
+<hr>
+<a name="Reducing_Memory"></a>
+<b><i>Q) How can I reduce the memory requirements in GW calculations?</i></b></br>
+</br>
+Use gwmem to avoid the storage of the real space orbitals, set fftgw to 11
+to decrease the size of the FFT mesh or just use more processors ;)
+For very large systems it is possible to compile the code so that single precision arithmetics is used
+(see the configure option --enable-gw-dpc).
+
+<hr>
+<a name="QP_bands"></a>
+<b><i>Q) Is there any automatic procedure to produce quasi-particle band structures?</i></b></br>
+</br>
+For the time being the answer is no. One can calculate the QP corrections only for the
+k-points that are contained in the KSS file.
+To obtain the QP band dispersion for arbitrary k-points in the Brillouin zone, one can 
+employ two different methods:
+
+<ol>
+<li> Since the GW corrections are usually smooth when plotted versus the initial Kohn-Sham energy,
+     it is possible to perform a linear interpolation of the corrections as a function of the KS energy. 
+     Once the two parameters of the linear fit are known, one can easily obtain an approximated QP
+     dispersion by applying the correction on top of a Kohn-Sham band structure obtained along
+     an arbitrary k-path.
+
+<li> Another more involved method employs Wannier functions to interpolate the matrix elements of the 
+     self-energy. We refer to the Wannier tutorial and the test file ??? 
+     for a more detailed description of the technique.
+</ol>
+<hr>
+
+<a name="MultiProj_inclvkb"></a>
+<b><i>
+Q) Why does the code complain when norm-conserving pseudopotentials with more than one 
+   projector are used to perform GW or BSE calculations?
+</i></b></br>
+</br>
+The correct evaluation of the q &rarr; 0 component of the inverse dielectric matrix 
+requires the calculation of the commutator of the nonlocal part of the Hamiltonian with the position operator.
+<p>
+Unfortunately only norm-conserving pseudopotentials with one projector per angular channel are
+presently supported. 
+This means that optical properties obtained with pseudopotentials with more than one projector are affected by errors.
+This error is of minor importance if we are only interested in quasi-particle corrections
+in crystalline systems since only the screening matrix at <b>q</b>=0 is affected by the commutator.
+Note, however, that the error in the QP corrections is expected to be larger in the case of isolated systems where, due to the
+reduced dimensionality of the problem.
+
+<hr>
+<a name="3_vs_99"></a>
+<b><i>
+Q) What is the difference between the RPA optical calculation done with optdriver=3 and optdriver=99 and the 
+   one performed with optdriver=99 ?
+</i></b>
+</br>
+</br>
+The main difference between the RPA calculation executed with 
+<a href="../input_variables/vargs.html#optdriver" target="kwimg">optdriver</a>=3
+and the one performed with <a href="../input_variables/vargs.html#optdriver" target="kwimg">optdriver</a>=99 
+is that the BS code expands the RPA polarizability in the transition space instead of using the much more efficient 
+approach based on the sum over states.
+
+<HR ALIGN=left>
+Goto :
+<A href="http://www.abinit.org"><B>ABINIT home Page</B></A>
+<B> | </B>
+<A href="../users/acknowledgments.html"><B>Suggested acknowledgments</B></A>
+<B> | </B>
+<A href="../input_variables/keyhr.html"><B>List of input variables</B></A>
+<B> | </B>
+<A href="welcome.html"><B>Tutorial home page</B></A>
+<B> | </B>
+<A href="../users/bibliography.html"><B>Bibliography</B></A>
+<HR ALIGN=left>
+Help files :
+<A href="../users/new_user_guide.html"><B>New user's guide</B></A>
+<B> | </B>
+<A href="../users/abinit_help.html"><B>Abinit (main)</B></A>
+<B> | </B>
+<A href="../users/respfn_help.html"><B>Abinit (respfn)</B></A>
+<B> | </B>
+<A href="../users/mrgddb_help.html"><B>Mrgddb</B></A>
+<B> | </B>
+<A href="../users/anaddb_help.html"><B>Anaddb</B></A>
+<B> | </B>
+<A href="../users/aim_help.html"><B>AIM (Bader)</B></A>
+<B> | </B>
+<A href="../users/cut3d_help.html"><B>Cut3D</B></A>
+<B> | </B>
+<A href="../users/optic_help.html"><B>Optic</B></A>
+<B> | </B>
+<A href="../users/mrgscr_help.html"><B>Mrgscr</B></A>
+<HR ALIGN=left>
+
+</body>
+</html>
+

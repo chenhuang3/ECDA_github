@@ -1,0 +1,4613 @@
+
+.Version 7.10.4 of CUT3D 
+.(MPI version, prepared for a x86_64_linux_gnu4.7 computer) 
+
+.Copyright (C) 1998-2014 ABINIT group . 
+ CUT3D comes with ABSOLUTELY NO WARRANTY.
+ It is free software, and you are welcome to redistribute it
+ under certain conditions (GNU General Public License,
+ see ~abinit/COPYING or http://www.gnu.org/copyleft/gpl.txt).
+
+ ABINIT is a project of the Universite Catholique de Louvain,
+ Corning Inc. and other collaborators, see ~abinit/doc/developers/contributors.txt .
+ Please read ~abinit/doc/users/acknowledgments.html for suggested
+ acknowledgments of the ABINIT effort.
+ For more information, see http://www.abinit.org .
+
+.Starting date : Wed 11 Mar 2015.
+- ( at 10h26 )
+  
+
+  What is the name of the 3D function (density, potential or wavef) file ?
+  => Your 3D function file is : t47o_DS4_WFK
+
+  Does this file contain formatted 3D ASCII data (=0)  
+   or unformatted binary header + 3D data        (=1) ?
+   or ETSF binary                                (=2) ?
+  1 => Your file contains unformatted binary header + 3D data
+  The information it contains should be sufficient.
+  cut3d : read file t47o_DS4_WFK from unit number 19.
+
+ ===============================================================================
+ ECHO of the ABINIT file header 
+ 
+ First record :
+.codvsn,headform,fform = 7.10.4   57    2
+ 
+ Second record :
+ bantot,intxc,ixc,natom  =   216     0     3     2
+ ngfft(1:3),nkpt         =    15    15    15    27
+ nspden,nspinor          =     1     1
+ nsppol,nsym,npsp,ntypat =     1    48     1     1
+ occopt,pertcase,usepaw  =     3     0     0
+ ecut,ecutdg,ecutsm      =  4.0000000000E+00  4.0000000000E+00  0.0000000000E+00
+ ecut_eff                =  4.0000000000E+00
+ qptn(1:3)               =  0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+ rprimd(1:3,1)           =  0.0000000000E+00  5.1022625650E+00  5.1022625650E+00
+ rprimd(1:3,2)           =  5.1022625650E+00  0.0000000000E+00  5.1022625650E+00
+ rprimd(1:3,3)           =  5.1022625650E+00  5.1022625650E+00  0.0000000000E+00
+ stmbias,tphysel,tsmear  =  0.0000000000E+00  0.0000000000E+00  1.5000000000E-03
+
+ Third record :
+ istwfk=   2   1   1   1   1   1   1   1   1   1   1   1
+   1   1   1   1   1   1   1   1   1   1   1   1
+   1   1   1
+ nband =   8   8   8   8   8   8   8   8   8   8   8   8
+   8   8   8   8   8   8   8   8   8   8   8   8
+   8   8   8
+ npwarr=   57   98   98   98  104  101   98  101  104   98
+  104  101  104   98  101  101  101  101   98  101
+  104  101  101  101  104  101   98
+ so_psp=   1
+ symafm=
+          1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+          1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+ symrel=
+           1   0   0   0   1   0   0   0   1    -1   0   0   0  -1   0   0   0  -1
+           0  -1   1   0  -1   0   1  -1   0     0   1  -1   0   1   0  -1   1   0
+          -1   0   0  -1   0   1  -1   1   0     1   0   0   1   0  -1   1  -1   0
+           0   1  -1   1   0  -1   0   0  -1     0  -1   1  -1   0   1   0   0   1
+          -1   0   0  -1   1   0  -1   0   1     1   0   0   1  -1   0   1   0  -1
+           0  -1   1   1  -1   0   0  -1   0     0   1  -1  -1   1   0   0   1   0
+           1   0   0   0   0   1   0   1   0    -1   0   0   0   0  -1   0  -1   0
+           0   1  -1   0   0  -1   1   0  -1     0  -1   1   0   0   1  -1   0   1
+          -1   0   1  -1   1   0  -1   0   0     1   0  -1   1  -1   0   1   0   0
+           0  -1   0   1  -1   0   0  -1   1     0   1   0  -1   1   0   0   1  -1
+           1   0  -1   0   0  -1   0   1  -1    -1   0   1   0   0   1   0  -1   1
+           0   1   0   0   0   1   1   0   0     0  -1   0   0   0  -1  -1   0   0
+           1   0  -1   0   1  -1   0   0  -1    -1   0   1   0  -1   1   0   0   1
+           0  -1   0   0  -1   1   1  -1   0     0   1   0   0   1  -1  -1   1   0
+          -1   0   1  -1   0   0  -1   1   0     1   0  -1   1   0   0   1  -1   0
+           0   1   0   1   0   0   0   0   1     0  -1   0  -1   0   0   0   0  -1
+           0   0  -1   0   1  -1   1   0  -1     0   0   1   0  -1   1  -1   0   1
+           1  -1   0   0  -1   1   0  -1   0    -1   1   0   0   1  -1   0   1   0
+           0   0   1   1   0   0   0   1   0     0   0  -1  -1   0   0   0  -1   0
+          -1   1   0  -1   0   0  -1   0   1     1  -1   0   1   0   0   1   0  -1
+           0   0   1   0   1   0   1   0   0     0   0  -1   0  -1   0  -1   0   0
+           1  -1   0   0  -1   0   0  -1   1    -1   1   0   0   1   0   0   1  -1
+           0   0  -1   1   0  -1   0   1  -1     0   0   1  -1   0   1   0  -1   1
+          -1   1   0  -1   0   1  -1   0   0     1  -1   0   1   0  -1   1   0   0
+ type  =   1   1
+ kptns =                 (max 50 k-points will be written)
+            0.000000E+00    0.000000E+00    0.000000E+00
+            3.333333E-01    0.000000E+00    0.000000E+00
+           -3.333333E-01    0.000000E+00    0.000000E+00
+            0.000000E+00    3.333333E-01    0.000000E+00
+            3.333333E-01    3.333333E-01    0.000000E+00
+           -3.333333E-01    3.333333E-01    0.000000E+00
+            0.000000E+00   -3.333333E-01    0.000000E+00
+            3.333333E-01   -3.333333E-01    0.000000E+00
+           -3.333333E-01   -3.333333E-01    0.000000E+00
+            0.000000E+00    0.000000E+00    3.333333E-01
+            3.333333E-01    0.000000E+00    3.333333E-01
+           -3.333333E-01    0.000000E+00    3.333333E-01
+            0.000000E+00    3.333333E-01    3.333333E-01
+            3.333333E-01    3.333333E-01    3.333333E-01
+           -3.333333E-01    3.333333E-01    3.333333E-01
+            0.000000E+00   -3.333333E-01    3.333333E-01
+            3.333333E-01   -3.333333E-01    3.333333E-01
+           -3.333333E-01   -3.333333E-01    3.333333E-01
+            0.000000E+00    0.000000E+00   -3.333333E-01
+            3.333333E-01    0.000000E+00   -3.333333E-01
+           -3.333333E-01    0.000000E+00   -3.333333E-01
+            0.000000E+00    3.333333E-01   -3.333333E-01
+            3.333333E-01    3.333333E-01   -3.333333E-01
+           -3.333333E-01    3.333333E-01   -3.333333E-01
+            0.000000E+00   -3.333333E-01   -3.333333E-01
+            3.333333E-01   -3.333333E-01   -3.333333E-01
+           -3.333333E-01   -3.333333E-01   -3.333333E-01
+ wtk =
+          0.04  0.04  0.04  0.04  0.04  0.04  0.04  0.04  0.04  0.04
+          0.04  0.04  0.04  0.04  0.04  0.04  0.04  0.04  0.04  0.04
+          0.04  0.04  0.04  0.04  0.04  0.04  0.04
+   occ =
+          2.00  2.00  2.00  2.00  0.00  0.00  0.00  0.00  2.00  2.00
+          2.00  2.00  0.00  0.00  0.00  0.00  2.00  2.00  2.00  2.00
+          0.00  0.00  0.00  0.00  2.00  2.00  2.00  2.00  0.00  0.00
+          0.00  0.00  2.00  2.00  2.00  2.00  0.00  0.00  0.00  0.00
+          2.00  2.00  2.00  2.00  0.00  0.00  0.00  0.00  2.00  2.00
+          2.00  2.00  0.00  0.00  0.00  0.00  2.00  2.00  2.00  2.00
+          0.00  0.00  0.00  0.00  2.00  2.00  2.00  2.00  0.00  0.00
+          0.00  0.00  2.00  2.00  2.00  2.00  0.00  0.00  0.00  0.00
+          2.00  2.00  2.00  2.00  0.00  0.00  0.00  0.00  2.00  2.00
+          2.00  2.00  0.00  0.00  0.00  0.00  2.00  2.00  2.00  2.00
+          0.00  0.00  0.00  0.00  2.00  2.00  2.00  2.00  0.00  0.00
+          0.00  0.00  2.00  2.00  2.00  2.00  0.00  0.00  0.00  0.00
+          2.00  2.00  2.00  2.00  0.00  0.00  0.00  0.00  2.00  2.00
+          2.00  2.00  0.00  0.00  0.00  0.00  2.00  2.00  2.00  2.00
+          0.00  0.00  0.00  0.00  2.00  2.00  2.00  2.00  0.00  0.00
+          0.00  0.00  2.00  2.00  2.00  2.00  0.00  0.00  0.00  0.00
+          2.00  2.00  2.00  2.00  0.00  0.00  0.00  0.00  2.00  2.00
+          2.00  2.00  0.00  0.00  0.00  0.00  2.00  2.00  2.00  2.00
+          0.00  0.00  0.00  0.00  2.00  2.00  2.00  2.00  0.00  0.00
+          0.00  0.00  2.00  2.00  2.00  2.00  0.00  0.00  0.00  0.00
+          2.00  2.00  2.00  2.00  0.00  0.00  0.00  0.00  2.00  2.00
+          2.00  2.00  0.00  0.00  0.00  0.00
+ tnons =
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+          0.000000  0.000000  0.000000    0.250000  0.250000  0.250000
+  znucl= 14.00
+
+ Pseudopotential info :
+ title=2 bohr rc 15 hartree ec psp for silicon 8 November 1991 (new)
+  znuclpsp= 14.00, zionpsp=  4.00, pspso=  0, pspdat=980710, pspcod=  5, pspxc=  3
+  lmnmax  =  4
+ 
+ Last record :
+ residm,etot,fermie=    7.807540E-13   -7.817057280332E+00    0.000000E+00
+ xred =
+            0.000000E+00    0.000000E+00    0.000000E+00
+            2.500000E-01    2.500000E-01    2.500000E-01
+ End the ECHO of the ABINIT file header 
+ ===============================================================================
+
+ ===========================================================
+
+ ECHO important input variables ...
+
+  Dimensional primitive vectors (ABINIT equivalent : rprimd):
+    0.000000E+00    5.102263E+00    5.102263E+00
+    5.102263E+00    0.000000E+00    5.102263E+00
+    5.102263E+00    5.102263E+00    0.000000E+00
+  Grid density (ABINIT equivalent : ngfft):    15   15   15
+  Number of atoms       :           2
+  Number of atomic types:           1
+
+   #    Atomic positions (cartesian coordinates - Bohr)
+   1    0.000000E+00    0.000000E+00    0.000000E+00
+   2    2.551131E+00    2.551131E+00    2.551131E+00
+
+  This file is a WF file. 
+  If you want to analyze one wavefunction,                   type  0 
+  If you want to construct Wannier-type Localized Orbitals,  type  2 
+  You typed            2
+-instrng :    43 lines of input have been read from file t49.in_aux
+
+
+ Echoing out the read input variables for WLO calculation:
+
+ ncenter        2
+ norb           8
+ supercell      3   3   3
+ wfcell         3   3   3
+ alpha           1.000000E+00
+ lofwrite       1
+ shiftk          0.000000E+00    0.000000E+00    0.000000E+00
+ insmet         2
+ efermi          2.515300E-01
+ tsmear          1.500000E-03
+ For each atom :        rcoord(1:3)                                 numorb
+           1    2.500000E-01    2.500000E-01    2.500000E-01          4
+           2    0.000000E+00    0.000000E+00    0.000000E+00          4
+ For each orbital : spin, ltypeorb     and      rtheta(1:3) 
+           1         1         1        0.000000E+00    0.000000E+00    0.000000E+00
+           2         1         2        0.000000E+00    0.000000E+00    0.000000E+00
+           3         1         3        0.000000E+00    0.000000E+00    0.000000E+00
+           4         1         4        0.000000E+00    0.000000E+00    0.000000E+00
+           5         1         1        0.000000E+00    0.000000E+00    0.000000E+00
+           6         1         2        0.000000E+00    0.000000E+00    0.000000E+00
+           7         1         3        0.000000E+00    0.000000E+00    0.000000E+00
+           8         1         4        0.000000E+00    0.000000E+00    0.000000E+00
+ wfconstrctn    8
+ They are :
+    1   2   3   4   5   6   7   8
+ real space grids:    15    15    15
+ k space grids:     3     3     3
+ rlx rly rlz    1.020453E+01    1.020453E+01    1.020453E+01
+ Box width outside which localized template is set to zero:
+          15  x           15  x           15
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   1   1
+ folded to:   3   3   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   1   1
+ folded to:   1   3   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   1   1
+ folded to:   2   3   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   2   1
+ folded to:   3   1   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   2   1
+ folded to:   1   1   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   2   1
+ folded to:   2   1   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   3   1
+ folded to:   3   2   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   3   1
+ folded to:   1   2   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   3   1
+ folded to:   2   2   3
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   1   2
+ folded to:   3   3   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   1   2
+ folded to:   1   3   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   1   2
+ folded to:   2   3   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   2   2
+ folded to:   3   1   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   2   2
+ folded to:   1   1   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   2   2
+ folded to:   2   1   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   3   2
+ folded to:   3   2   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   3   2
+ folded to:   1   2   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   3   2
+ folded to:   2   2   1
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   1   3
+ folded to:   3   3   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   1   3
+ folded to:   1   3   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   1   3
+ folded to:   2   3   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   2   3
+ folded to:   3   1   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   2   3
+ folded to:   1   1   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   2   3
+ folded to:   2   1   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    1   3   3
+ folded to:   3   2   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    2   3   3
+ folded to:   1   2   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+ Doing : Overlap matrix and its singular value decomposition 
+ kpoint index:    3   3   3
+ folded to:   2   2   2
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  overlap_wf : before reading 
+  overlap_wf : after reading 
+  reading
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   1   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   1   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   1   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   2   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   2   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   2   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   3   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   3   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   3   1
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   1   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   1   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   1   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   2   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   2   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   2   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   3   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   3   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   3   2
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   1   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   1   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   1   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   2   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   2   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   2   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    1   3   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    2   3   3
+  Doing : WLO construction.
+  WLO index:           1
+ kpoint index :    3   3   3
+  ========================
+  WLO :            1 csppol:           1
+  normalization:    0.64981961342781369     
+  qo center x   2.4177302790478583     
+  qo center y   2.3401391455986054     
+  qo center z   2.3914623333370568     
+ -----------------------------
+  loclength_x*x   4.7490190382421584     
+  loclength_y*y   4.5973250634024216     
+  loclength_z*z   4.6366824448665538     
+ mid points :   23   23   23
+ center sites :   27   27   27
+ plotting range of LO :
+ plot x :   13   42
+ plot y :   13   42
+ plot z :   13   42
+ ng :   15   15   15
+        45   45   45
+-wanmax:   25   31   25
+    2.529277E-02    1.093318E-03
+ norm enclosed:  0.62030943915953107     
+  reading
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   1   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   1   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   1   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   2   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   2   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   2   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   3   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   3   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   3   1
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   1   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   1   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   1   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   2   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   2   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   2   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   3   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   3   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   3   2
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   1   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   1   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   1   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   2   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   2   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   2   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    1   3   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    2   3   3
+  Doing : WLO construction.
+  WLO index:           2
+ kpoint index :    3   3   3
+  ========================
+  WLO :            2 csppol:           1
+  normalization:    0.44868679840200698     
+  qo center x   2.0517941895141734     
+  qo center y   2.0702251652754406     
+  qo center z   2.0483038702268015     
+ -----------------------------
+  loclength_x*x   8.2273633610046186     
+  loclength_y*y   10.316650015756636     
+  loclength_z*z   8.2088076335587203     
+ mid points :   23   23   23
+ center sites :   27   27   27
+ plotting range of LO :
+ plot x :   13   42
+ plot y :   13   42
+ plot z :   13   42
+ ng :   15   15   15
+        45   45   45
+-wanmax:   25   29   24
+   -2.256378E-02    8.670862E-05
+ norm enclosed:  0.40046718334210363     
+  reading
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   1   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   1   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   1   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   2   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   2   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   2   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   3   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   3   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   3   1
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   1   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   1   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   1   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   2   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   2   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   2   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   3   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   3   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   3   2
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   1   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   1   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   1   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   2   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   2   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   2   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    1   3   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    2   3   3
+  Doing : WLO construction.
+  WLO index:           3
+ kpoint index :    3   3   3
+  ========================
+  WLO :            3 csppol:           1
+  normalization:    0.44821516106254411     
+  qo center x   2.0760292211155824     
+  qo center y   2.1922190868535378     
+  qo center z   2.0391774775952878     
+ -----------------------------
+  loclength_x*x   7.9583130176951284     
+  loclength_y*y   7.5698161476246666     
+  loclength_z*z   9.9677114388852033     
+ mid points :   23   23   23
+ center sites :   27   27   27
+ plotting range of LO :
+ plot x :   13   42
+ plot y :   13   42
+ plot z :   13   42
+ ng :   15   15   15
+        45   45   45
+-wanmax:   24   25   29
+   -2.262346E-02    6.659502E-05
+ norm enclosed:  0.39881828281699361     
+  reading
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   1   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   1   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   1   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   2   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   2   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   2   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   3   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   3   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   3   1
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   1   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   1   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   1   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   2   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   2   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   2   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   3   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   3   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   3   2
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   1   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   1   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   1   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   2   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   2   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   2   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    1   3   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    2   3   3
+  Doing : WLO construction.
+  WLO index:           4
+ kpoint index :    3   3   3
+  ========================
+  WLO :            4 csppol:           1
+  normalization:    0.44887714171054793     
+  qo center x   2.1111425063632225     
+  qo center y   2.1862016663212374     
+  qo center z   2.2191562334592745     
+ -----------------------------
+  loclength_x*x   10.046863036049794     
+  loclength_y*y   7.5255365035535036     
+  loclength_z*z   7.3628423770796489     
+ mid points :   23   23   23
+ center sites :   27   27   27
+ plotting range of LO :
+ plot x :   13   42
+ plot y :   13   42
+ plot z :   13   42
+ ng :   15   15   15
+        45   45   45
+-wanmax:   29   25   24
+   -2.256372E-02    1.713839E-04
+ norm enclosed:  0.40156951724142870     
+  reading
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    1   1   1
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    2   1   1
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    3   1   1
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    1   2   1
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    2   2   1
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    3   2   1
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    1   3   1
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    2   3   1
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    3   3   1
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    1   1   2
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    2   1   2
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    3   1   2
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    1   2   2
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    2   2   2
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    3   2   2
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    1   3   2
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    2   3   2
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    3   3   2
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    1   1   3
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    2   1   3
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    3   1   3
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    1   2   3
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    2   2   3
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    3   2   3
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    1   3   3
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    2   3   3
+  Doing : WLO construction.
+  WLO index:           5
+ kpoint index :    3   3   3
+  ========================
+  WLO :            5 csppol:           1
+  normalization:    0.65094651920621516     
+  qo center x   1.3138368169806550E-002
+  qo center y  0.10123392151404367     
+  qo center z   4.1955559021734659E-002
+ -----------------------------
+  loclength_x*x   4.2318173186298411     
+  loclength_y*y   4.2666207205831324     
+  loclength_z*z   4.2064784129167281     
+ mid points :   23   23   23
+ center sites :   23   23   23
+ plotting range of LO :
+ plot x :    9   38
+ plot y :    9   38
+ plot z :    9   38
+ ng :   15   15   15
+        45   45   45
+-wanmax:   25   18   25
+    2.508902E-02    1.506143E-04
+ norm enclosed:  0.61812196950275322     
+  reading
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    1   1   1
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    2   1   1
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    3   1   1
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    1   2   1
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    2   2   1
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    3   2   1
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    1   3   1
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    2   3   1
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    3   3   1
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    1   1   2
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    2   1   2
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    3   1   2
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    1   2   2
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    2   2   2
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    3   2   2
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    1   3   2
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    2   3   2
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    3   3   2
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    1   1   3
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    2   1   3
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    3   1   3
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    1   2   3
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    2   2   3
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    3   2   3
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    1   3   3
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    2   3   3
+  Doing : WLO construction.
+  WLO index:           6
+ kpoint index :    3   3   3
+  ========================
+  WLO :            6 csppol:           1
+  normalization:    0.44984025564534658     
+  qo center x  0.18491572903876646     
+  qo center y  0.22955005394205907     
+  qo center z  0.18950409152626729     
+ -----------------------------
+  loclength_x*x   6.6548614059931719     
+  loclength_y*y   9.3914777587366061     
+  loclength_z*z   6.6453486361095910     
+ mid points :   23   23   23
+ center sites :   23   23   23
+ plotting range of LO :
+ plot x :    9   38
+ plot y :    9   38
+ plot z :    9   38
+ ng :   15   15   15
+        45   45   45
+-wanmax:   25   21   25
+    2.274297E-02    1.172594E-04
+ norm enclosed:  0.39974744951328306     
+  reading
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    1   1   1
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    2   1   1
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    3   1   1
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    1   2   1
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    2   2   1
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    3   2   1
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    1   3   1
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    2   3   1
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    3   3   1
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    1   1   2
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    2   1   2
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    3   1   2
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    1   2   2
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    2   2   2
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    3   2   2
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    1   3   2
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    2   3   2
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    3   3   2
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    1   1   3
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    2   1   3
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    3   1   3
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    1   2   3
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    2   2   3
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    3   2   3
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    1   3   3
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    2   3   3
+  Doing : WLO construction.
+  WLO index:           7
+ kpoint index :    3   3   3
+  ========================
+  WLO :            7 csppol:           1
+  normalization:    0.44938342356108613     
+  qo center x  0.17763743058675505     
+  qo center y   5.3789068978311351E-002
+  qo center z  0.21148605269036255     
+ -----------------------------
+  loclength_x*x   6.6570877841765599     
+  loclength_y*y   6.1885609952628036     
+  loclength_z*z   8.6546409824625936     
+ mid points :   23   23   23
+ center sites :   23   23   23
+ plotting range of LO :
+ plot x :    9   38
+ plot y :    9   38
+ plot z :    9   38
+ ng :   15   15   15
+        45   45   45
+-wanmax:   25   25   21
+    2.271385E-02    1.797454E-04
+ norm enclosed:  0.39855759080533260     
+  reading
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    1   1   1
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    2   1   1
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    3   1   1
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    1   2   1
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    2   2   1
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    3   2   1
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    1   3   1
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    2   3   1
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    3   3   1
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    1   1   2
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    2   1   2
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    3   1   2
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    1   2   2
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    2   2   2
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    3   2   2
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    1   3   2
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    2   3   2
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    3   3   2
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    1   1   3
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    2   1   3
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    3   1   3
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    1   2   3
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    2   2   3
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    3   2   3
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    1   3   3
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    2   3   3
+  Doing : WLO construction.
+  WLO index:           8
+ kpoint index :    3   3   3
+  ========================
+  WLO :            8 csppol:           1
+  normalization:    0.45004086273280364     
+  qo center x  0.12190201961141427     
+  qo center y   5.6234330301426133E-002
+  qo center z   3.8385198871204999E-002
+ -----------------------------
+  loclength_x*x   8.9133260569063015     
+  loclength_y*y   6.3746330718343254     
+  loclength_z*z   6.3878831024098615     
+ mid points :   23   23   23
+ center sites :   23   23   23
+ plotting range of LO :
+ plot x :    9   38
+ plot y :    9   38
+ plot z :    9   38
+ ng :   15   15   15
+        45   45   45
+-wanmax:   21   25   25
+    2.271116E-02    2.053206E-04
+ norm enclosed:  0.40196930413719922     
+  
+  ###################################################### 
+  
+  Localized orbital files fort.1**1 for spin up 
+                      and fort.1**2 for spin dn written.
+  
+  ###################################################### 
+-
+- Proc.   0 individual time (sec): cpu=          6.7  wall=          6.7
+
+  Thank you for using me
+

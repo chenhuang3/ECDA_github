@@ -1,0 +1,19 @@
+Cobalt
+
+GGA
+=====================================================================
+HCP                                V0(A3/at)   c/a    K0(GPa)    mu
+PAW this work [1] (3d4s4p)           10.83     1.617    218      1.60
+PAW Vasp      [2] (3d4s4p)           10.76              213      1.59
+Exp.          [3]                              1.615    199      1.58
+Exp. Dewaele  [1]                    11.09     1.625    184
+
+FCC                               V0(A3/at)   K0(GPa)    mu 
+PAW this work [1] (3d4s4p)           10.90       198     1.65
+Exp.          [3]                    10.43       224
+
+
+[1] Dewaele, Torrent, Loubeyre, Mezzouar, PRB 78, 104102 (2008)
+[2] Kresse, Joubert, PRB 59, 1758 (1999)
+[3] Yoo, Cynn, Soderlind, Iota, PRL 84, 4132 (2000)
+
